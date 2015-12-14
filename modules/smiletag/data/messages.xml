@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<smiletag_message>
+    <row>
+        <name><![CDATA[ioswc]]></name>
+        <url><![CDATA[ioswc]]></url>
+        <message><![CDATA[<img src="images/smilies/laugh.gif" border="0" alt=":D"/>]]></message>
+        <datetime>1402237460</datetime>
+        <ipaddress>110.78.175.224</ipaddress>
+    </row>
+    <row>
+        <name>joe1828</name>
+        <url>joe1828</url>
+        <message><img src="images/smilies/tongue.gif" border="0" alt=":p"/></message>
+        <datetime>1402125867</datetime>
+        <ipaddress>113.53.99.252</ipaddress>
+    </row>
+    <row>
+        <name>iooi</name>
+        <url>iooi</url>
+        <message>
+            <img src="images/smilies/mad.gif" border="0" alt="x(" />
+        </message>
+        <datetime>1402032098</datetime>
+        <ipaddress>110.77.216.89</ipaddress>
+    </row>
+    <row>
+        <name>iooi</name>
+        <url>iooi</url>
+        <message>
+            <img src="images/smilies/drool.gif" border="0" alt=":~" />
+        </message>
+        <datetime>1402032095</datetime>
+        <ipaddress>110.77.216.89</ipaddress>
+    </row>
+    <row>
+        <name>iooi</name>
+        <url>iooi</url>
+        <message>
+            <img src="images/smilies/laugh.gif" border="0" alt=":D" />
+        </message>
+        <datetime>1402032086</datetime>
+        <ipaddress>110.77.216.89</ipaddress>
+    </row>
+    <row>
+        <name>snightingalejr</name>
+        <url>snightingalejr</url>
+        <message />
+    </row>
+</smiletag_message>

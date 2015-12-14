@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Configuration panel -->
+<banner width = "" height = ""
+		startWith = "1" 
+		random = "false"
+
+		backgroundColor = "0xffffff" 
+		backgroundTransparency = "100"
+		
+		cellWidth = "50"
+		cellHeight = "50"
+		
+		showMinTime = "0.2"
+		showMaxTime = "1.5"
+		
+		blur = "50"
+		netTime = "0.5"
+		alphaNet = "80"
+		netColor = "0x000000"
+		
+		overColor = "0x473C31"
+		normalColor = "0x000000"
+		selectedTextColor = "0xffffff"
+		
+		selectedButtonAlpha = "70"
+		
+		controllerVisible = "true"
+		controllerBackgroundVisible = "true"
+		
+		prevNextVisible = "true"
+		playBtVisible = "true"
+		autoPlay = "true"
+		navigationButtonsColor = "0x1a1a1a"
+		
+		controllerDistanceX = "4"
+		controllerDistanceY = "4"
+		
+		controllerHeight = "20"
+		distanceBetweenControllerElements = "10"
+		distanceBetweenThumbs = "3"
+		
+		itemNumberSize = "14"
+		
+		captionY = "2"
+		captionX = "2"			
+		
+		captionWidth = "525"
+
+
+		
+		loaderColor = "0x000000">
+<!-- End panel -->
+
+
+	<item>
+		<path>../../icon/ran_25.jpg</path>
+		<title><![CDATA[<font color="#990000">สืบพยานนัดแรก พนง.ชันสูตรศพย้ำ! ไม่พบร่องรอยการถูกทำร้าย อับดุลลายิบ ดอเลาะ</font>]]></title>
+		<caption><![CDATA[<font color="#000033">คณะกรรมการตรวจสอบการเสียชีวิต สืบพยานนัดแรก เจ้าพนักงานชันสูตรศพย้ำ! ไม่พบร่องรอยการถูกทำร้ายร่างกาย นายอับดุลลายิบ ดอเลาะ ผู้ต้องหาคดีความมั่นคงที่เสียชีวิตปริศนาในค่ายทหาร</font>]]></caption>
+		
+		<target>_blank</target>
+		<link>http://io-pr.org/?name=news&amp;file=readnews&amp;id=1944</link>
+		
+		<bar_color>0xffffff</bar_color>
+		<bar_transparency>40</bar_transparency>
+		
+		<caption_color>0xffffff</caption_color>
+		<caption_transparency>60</caption_transparency>
+		
+		<stroke_color>0xffffff</stroke_color>
+		<stroke_transparency>40</stroke_transparency>
+		
+		<slideshowTime>10</slideshowTime>
+	</item>
+
+
+	<item>
+		<path>../../icon/ran_�ٻ�Ҿ1.png</path>
+		<title><![CDATA[<font color="#990000">สืบพยานนัดแรก พนง.ชันสูตรศพย้ำ! ไม่พบร่องรอยการถูกทำร้าย อับดุลลายิบ ดอเลาะ</font>]]></title>
+		<caption><![CDATA[<font color="#000033">คณะกรรมการตรวจสอบการเสียชีวิต สืบพยานนัดแรก เจ้าพนักงานชันสูตรศพย้ำ! ไม่พบร่องรอยการถูกทำร้ายร่างกาย นายอับดุลลายิบ ดอเลาะ ผู้ต้องหาคดีความมั่นคงที่เสียชีวิตปริศนาในค่ายทหาร</font>]]></caption>
+		
+		<target>_blank</target>
+		<link>http://io-pr.org/?name=news&amp;file=readnews&amp;id=1944</link>
+		
+		<bar_color>0xffffff</bar_color>
+		<bar_transparency>40</bar_transparency>
+		
+		<caption_color>0xffffff</caption_color>
+		<caption_transparency>60</caption_transparency>
+		
+		<stroke_color>0xffffff</stroke_color>
+		<stroke_transparency>40</stroke_transparency>
+		
+		<slideshowTime>10</slideshowTime>
+	</item>
+
+
+	<item>
+		<path>../../icon/ran_369.jpg</path>
+		<title><![CDATA[<font color="#990000">ข้าราชการเบตง ร่วมด้วยพ่อค้า ประชาชน นักเรียนนักศึกษา กว่า 1,000 คน ร่วมปั่นจักรยานเพื่อพ่อ</font>]]></title>
+		<caption><![CDATA[<font color="#000033">ข้าราชการเบตง ร่วมด้วยพ่อค้า ประชาชน นักเรียน นักศึกษา กว่า 1,000 คน ร่วมปั่นจักรยานเพื่อพ่อ ที่ทางอำเภอเบตงจัดขึ้น เนื่องในโอกาสมหามงคลเฉลิมพระชนมพรรษา 88 พรรษา 5 ธันวาคม 2558</font>]]></caption>
+		
+		<target>_blank</target>
+		<link>http://io-pr.org/?name=news&amp;file=readnews&amp;id=1943</link>
+		
+		<bar_color>0xffffff</bar_color>
+		<bar_transparency>40</bar_transparency>
+		
+		<caption_color>0xffffff</caption_color>
+		<caption_transparency>60</caption_transparency>
+		
+		<stroke_color>0xffffff</stroke_color>
+		<stroke_transparency>40</stroke_transparency>
+		
+		<slideshowTime>10</slideshowTime>
+	</item>
+
+
+	<item>
+		<path>../../icon/ran_PNROY581213001004102_13122015_084157.jpg</path>
+		<title><![CDATA[<font color="#990000">วีดีโอและภาพฝีพระหัตถ์พระราชทานในกิจกรรมปั่นจักรยานเฉลิมพระเกียรติพระบาทสมเด็จพระเจ้าอยู่หัว ปั่นเพื่อพ่อ BIKE FOR DAD วันที่ 11 ธันวาคม 2558 เพลง Soldier of the queen</font>]]></title>
+		<caption><![CDATA[<font color="#000033">วีดีโอและภาพฝีพระหัตถ์พระราชทานในกิจกรรมปั่นจักรยานเฉลิมพระเกียรติพระบาทสมเด็จพระเจ้าอยู่หัว ปั่นเพื่อพ่อ BIKE FOR DAD วันที่ 11 ธันวาคม 2558 เพลง Soldier of the queen</font>]]></caption>
+		
+		<target>_blank</target>
+		<link>http://io-pr.org/?name=news&amp;file=readnews&amp;id=1942</link>
+		
+		<bar_color>0xffffff</bar_color>
+		<bar_transparency>40</bar_transparency>
+		
+		<caption_color>0xffffff</caption_color>
+		<caption_transparency>60</caption_transparency>
+		
+		<stroke_color>0xffffff</stroke_color>
+		<stroke_transparency>40</stroke_transparency>
+		
+		<slideshowTime>10</slideshowTime>
+	</item>
+
+
+	<item>
+		<path>../../icon/ran_79f60e82-0265-4685-94aa-0310c99794dd.jpg</path>
+		<title><![CDATA[<font color="#990000">จังหวัดยะลา จัดงานเฉลิมพระเกียรติพระบาทสมเด็จพระเจ้าอยู่หัวฯ ภายใต้หัวข้อ ยะลา รวมใจเทิดไท้องค์มหาราชา ๘๘ พรรษา พ่อของแผ่นดิน</font>]]></title>
+		<caption><![CDATA[<font color="#000033">จังหวัดยะลา จัดงานเฉลิมพระเกียรติพระบาทสมเด็จพระเจ้าอยู่หัวฯ ภายใต้หัวข้อ ยะลา รวมใจเทิดไท้องค์มหาราชา ๘๘ พรรษา พ่อของแผ่นดิน</font>]]></caption>
+		
+		<target>_blank</target>
+		<link>http://io-pr.org/?name=news&amp;file=readnews&amp;id=1934</link>
+		
+		<bar_color>0xffffff</bar_color>
+		<bar_transparency>40</bar_transparency>
+		
+		<caption_color>0xffffff</caption_color>
+		<caption_transparency>60</caption_transparency>
+		
+		<stroke_color>0xffffff</stroke_color>
+		<stroke_transparency>40</stroke_transparency>
+		
+		<slideshowTime>10</slideshowTime>
+	</item>
+
+
+	<item>
+		<path>../../icon/ran_14.jpg</path>
+		<title><![CDATA[<font color="#990000">ผู้ว่าฯ ยะลา เปิดกิจกรรมการประกวดอาซูรอสัมพันธ์จังหวัดยะลา รวมพลังสู่สันติสุข</font>]]></title>
+		<caption><![CDATA[<font color="#000033">ที่สำนักงานคณะกรรมการอิสลามประจำจังหวัดยะลา นายดลเดช พัฒนรัฐ ผู้ว่าราชการจังหวัดยะลา เป็นประธานเปิดกิจกรรมการประกวดอาซูรอสัมพันธ์จังหวัดยะลา รวมพลังสู่สันติสุข</font>]]></caption>
+		
+		<target>_blank</target>
+		<link>http://io-pr.org/?name=news&amp;file=readnews&amp;id=1932</link>
+		
+		<bar_color>0xffffff</bar_color>
+		<bar_transparency>40</bar_transparency>
+		
+		<caption_color>0xffffff</caption_color>
+		<caption_transparency>60</caption_transparency>
+		
+		<stroke_color>0xffffff</stroke_color>
+		<stroke_transparency>40</stroke_transparency>
+		
+		<slideshowTime>10</slideshowTime>
+	</item>
+
+
+	<item>
+		<path>../../icon/ran_�ٻ�Ҿ2.jpg</path>
+		<title><![CDATA[<font color="#990000">ศอ.บต. ประชุมชี้แจงแนวทางการดำเนินกิจกรรมการฝึกอาชีพให้ผู้ผ่านการบำบัดรักษายาเสพติดตามโครงการพัฒนาคุณภาพชีวิตผู้ผ่านการบำบัดรักษา และฟื้นฟูสมรรถภาพผู้ติดยาเสพติดในพื้นที่ จชต.</font>]]></title>
+		<caption><![CDATA[<font color="#000033">นายภาณุ อุทัยรัตน์ เลขาธิการ ศอ.บต. เป็นประธานการประชุมชี้แจงแนวทางการดำเนินกิจกรรมการฝึกอาชีพให้ผู้ผ่านการบำบัดรักษายาเสพติดตามโครงการพัฒนาคุณภาพชีวิตผู้ผ่านการบำบัดรักษา และฟื้นฟูสมรรถภาพผู้ติดยาเสพติดในพื้นที่จังหวัดชายแดนภาคใต้ ประจำปี 2559</font>]]></caption>
+		
+		<target>_blank</target>
+		<link>http://io-pr.org/?name=news&amp;file=readnews&amp;id=1931</link>
+		
+		<bar_color>0xffffff</bar_color>
+		<bar_transparency>40</bar_transparency>
+		
+		<caption_color>0xffffff</caption_color>
+		<caption_transparency>60</caption_transparency>
+		
+		<stroke_color>0xffffff</stroke_color>
+		<stroke_transparency>40</stroke_transparency>
+		
+		<slideshowTime>10</slideshowTime>
+	</item>
+
+
+	<item>
+		<path>../../icon/ran_151019-095803_1.jpg</path>
+		<title><![CDATA[<font color="#990000">ผบ.หน่วยเฉพาะกิจนราธิวาส เปิดการฝึกประชารัฐร่วมใจสร้างอำเภอสันติสุข ที่ อ.เจาะไอร้อง</font>]]></title>
+		<caption><![CDATA[<font color="#000033">พล.ต.เอกรัตน์ ช้างแก้ว ผู้บังคับหน่วยเฉพาะกิจนราธิวาส เป็นประธานในพิธีเปิดการฝึกทบทวนกำลังประจำถิ่น และกำลังภาคประชาชนตามแนวทางการขับเคลื่อนแผนยุทธการ 4591 ประชารัฐร่วมใจ สร้างอำเภอสันติสุข</font>]]></caption>
+		
+		<target>_blank</target>
+		<link>http://io-pr.org/?name=news&amp;file=readnews&amp;id=1929</link>
+		
+		<bar_color>0xffffff</bar_color>
+		<bar_transparency>40</bar_transparency>
+		
+		<caption_color>0xffffff</caption_color>
+		<caption_transparency>60</caption_transparency>
+		
+		<stroke_color>0xffffff</stroke_color>
+		<stroke_transparency>40</stroke_transparency>
+		
+		<slideshowTime>10</slideshowTime>
+	</item>
+
+
+	<item>
+		<path>../../icon/ran_PNRGN581208001000805_08122015_062147.jpg</path>
+		<title><![CDATA[<font color="#990000">ผบ.ฉก.ยะลา ตรวจเยี่ยมหน่วยปฏิบัติการ ลาซู ตชด.44 ยะลา \&quot;ซ้อมเข้ม\&quot; ช่วยเหลือผู้ประสบอุทกภัยภาคใต้</font>]]></title>
+		<caption><![CDATA[<font color="#000033">ผบ.ฉก.ยะลา ตรวจเยี่ยม และรับชมการฝึกซ้อมหน่วยปฏิบัติการทางน้ำ ตชด.44 ยะลา เพื่อเตรียมความพร้อมช่วยเหลือผู้ประสบอุทกภัยในพื้นที่ภาคใต้</font>]]></caption>
+		
+		<target>_blank</target>
+		<link>http://io-pr.org/?name=news&amp;file=readnews&amp;id=1926</link>
+		
+		<bar_color>0xffffff</bar_color>
+		<bar_transparency>40</bar_transparency>
+		
+		<caption_color>0xffffff</caption_color>
+		<caption_transparency>60</caption_transparency>
+		
+		<stroke_color>0xffffff</stroke_color>
+		<stroke_transparency>40</stroke_transparency>
+		
+		<slideshowTime>10</slideshowTime>
+	</item>
+
+
+	<item>
+		<path>../../icon/ran_258.jpg</path>
+		<title><![CDATA[<font color="#990000">เลขาธิการ ศอ.บต.มอบเงินรางวัลแก่นักกีฬาปันจักสีลัตรุ่นเยาวชน หลังคว้า 1 เหรียญทอง 2 เหรียญทองแดง ที่ประเทศบรูไน</font>]]></title>
+		<caption><![CDATA[<font color="#000033">เลขาธิการ ศอ.บต.มอบเงินรางวัลเพื่อเป็นขวัญกำลังใจ แก่นักกีฬาปันจักสีลัตรุ่นเยาวชน หลังคว้า 1 เหรียญทอง 2 เหรียญทองแดง ในการแข่งขันกีฬาอาเซียนสะคูณเกมส์ ครั้งที่ 7 ประเทศบรูไน</font>]]></caption>
+		
+		<target>_blank</target>
+		<link>http://io-pr.org/?name=news&amp;file=readnews&amp;id=1925</link>
+		
+		<bar_color>0xffffff</bar_color>
+		<bar_transparency>40</bar_transparency>
+		
+		<caption_color>0xffffff</caption_color>
+		<caption_transparency>60</caption_transparency>
+		
+		<stroke_color>0xffffff</stroke_color>
+		<stroke_transparency>40</stroke_transparency>
+		
+		<slideshowTime>10</slideshowTime>
+	</item>
+
+</banner>
