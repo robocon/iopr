@@ -389,10 +389,10 @@ $arr['member'] = $db->fetch($res['member']);
 							<TD width="80" align="right"><B><?=_FROM_COMMENT_AUTH;?> </B></TD>
 							<TD><INPUT TYPE="text" NAME="NAME" style="width:300" <?if($login_true){echo "value=\"".$login_true."\" readonly style=\"color: #FF0000\" ";};?><?if($admin_user){echo "value=\"".$admin_user."\" readonly style=\"color: #FF0000\" ";};?>></TD>
 						</TR>
-<?
- if($login_true || $admin_user){
-} else {
-if(USE_CAPCHA){
+<?php
+ if( !$login_true || !$admin_user){
+
+// if(USE_CAPCHA){
 ?>
 						<TR>
 							<TD width="80" align="right">
@@ -405,7 +405,7 @@ if(USE_CAPCHA){
 							<TD><input name="security_code" type="text" id="security_code" size="20" maxlength="6" style="width:80" > <?=_JAVA_CAPTCHA_ADD;?> </TD>
 						</TR>
 <?
-}
+// }
 }
 ?>
 						<TR>

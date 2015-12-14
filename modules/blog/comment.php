@@ -21,7 +21,7 @@ if(!$_POST['NAME'] OR !$_POST['COMMENT']){
 }
  if($login_true || $admin_user){
 } else {
-if(USE_CAPCHA){
+// if(USE_CAPCHA){
 	if($_SESSION['security_code'] != $_POST['security_code'] OR empty($_POST['security_code'])) {
 		echo "<script language='javascript'>" ;
 		echo "alert('"._JAVA_CAPTCHA_NOACC."')" ;
@@ -29,7 +29,7 @@ if(USE_CAPCHA){
 		echo "<script language='javascript'>javascript:history.go(-1)</script>";
 		exit();
 	}
-}
+// }
 }
 checkban($_POST['NAME']);
 checkban($_POST['COMMENT']);
