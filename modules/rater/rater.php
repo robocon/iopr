@@ -1,5 +1,4 @@
-<?
-$IPADDRESS=get_real_ip();
+<?php $IPADDRESS=get_real_ip();
 // User settings
 $rater_ip_voting_restriction = true; // restrict ip address voting (true or false)
 $rater_ip_vote_qty=1; // how many times an ip address can vote
@@ -8,7 +7,7 @@ $rater_not_selected_msg=""._RATER_MOD_VOTE_SELECT_NUM."";
 $rater_thankyou_msg=""._RATER_MOD_VOTE_THANK."";
 $rater_generic_text="this item"; // generic item text
 $rater_end_of_line_char="\n"; // may want to change for different operating systems
- $rater_ip = $IPADDRESS; 
+ $rater_ip = $IPADDRESS;
  if(!isset($rater_id)) $rater_id=1;
 if(!isset($rater_item_name)) $rater_item_name=$rater_generic_text;
 
@@ -110,4 +109,3 @@ echo '</form>';
 echo '</div></td></tr></table>';
 
 ?>
-

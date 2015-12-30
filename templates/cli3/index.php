@@ -209,7 +209,7 @@ $config = $db->fetch($query);
 ?>
 <TABLE width="<?=$config['width'];?>" align=right cellSpacing=0 cellPadding=0 border=0>
 <TR>
-<TD valign="top" width="<?=$config['width'];?>" background="templates/<?echo WEB_TEMPLATES;?>/images/config/<?=$config['picname'];?>"  width="<?=$config['width'];?>" height="<?=$config['height'];?>" border="0" valign="top" colspan="6">
+<TD valign="top" width="<?=$config['width'];?>" background="templates/<?echo WEB_TEMPLATES;?>/images/config/<?=$config['picname'];?>"  width="<?=$config['width'];?>" height="<?=$config['height'];?>" border="0" valign="top" colspan="6" style="background-repeat: no-repeat;">
 <table align=right cellSpacing=0 cellPadding=0 border="0">
 <tr>
 <td colspan="6" align="right" >

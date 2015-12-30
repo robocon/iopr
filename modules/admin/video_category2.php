@@ -15,9 +15,14 @@ CheckAdmin($admin_user, $admin_pwd);
 				</TR>
 				<TR>
 					<TD>
-					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; video </B>
+					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> 
+					<A HREF="?name=admin&file=main"><?php  echo _ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; video </B>
 					<BR><BR>
-					<A HREF="?name=admin&file=video2"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_VIDEO_MOD_MENU_MAIN;?> </A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video2&op=video_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_VIDEO_MENU_ADD_NEW_FILE;?> </A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video_youtube2"><IMG SRC="images/admin/7_40.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_VIDEO_MENU_ADD_NEW_YOUTUBE;?>  </A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video_category2"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_MENU_DTAIL_CAT;?></A>  &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video_category2&op=videocat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_MENU_ADD_CAT;?></A><BR><BR>
+					<A HREF="?name=admin&file=video2"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?php  echo _VIDEO_MOD_MENU_MAIN;?> </A> &nbsp;&nbsp;&nbsp;
+					<A HREF="?name=admin&file=video_youtube2"><IMG SRC="images/admin/7_40.gif"  BORDER="0" align="absmiddle"> <?php  echo _ADMIN_VIDEO_MENU_ADD_NEW_YOUTUBE;?>  </A>&nbsp;&nbsp;&nbsp;
+					<A HREF="?name=admin&file=video_category2"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"> <?php  echo _ADMIN_MENU_DTAIL_CAT;?></A>  &nbsp;&nbsp;&nbsp;
+					<A HREF="?name=admin&file=video_category2&op=videocat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?php  echo _ADMIN_MENU_ADD_CAT;?></A>
+					<BR><BR>
 <?
 //////////////////////////////////////////// แสดงรายการ
 if($op == ""){

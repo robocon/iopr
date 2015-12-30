@@ -6,8 +6,6 @@ include ("editor.php");
 <link href="modules/admin/uploadify/uploadify.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="modules/admin/uploadify/swfobject.js"></script>
 <script type="text/javascript" src="modules/admin/uploadify/jquery.uploadify.v2.1.4.js"></script>
-
-
 	<TABLE cellSpacing=0 cellPadding=0 width=820 border=0>
       <TBODY>
         <TR>
@@ -21,122 +19,147 @@ include ("editor.php");
 				</TR>
 				<TR>
 					<TD>
-					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?php  echo _ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; video </B>
+					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> 
+					<A HREF="?name=admin&file=main"><?php  echo _ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; video </B>
 					<BR><BR>
-					<A HREF="?name=admin&file=video2"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?php  echo _VIDEO_MOD_MENU_MAIN;?> </A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video2&op=video_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?php  echo _ADMIN_VIDEO_MENU_ADD_NEW_FILE;?> </A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video_youtube2"><IMG SRC="images/admin/7_40.gif"  BORDER="0" align="absmiddle"> <?php  echo _ADMIN_VIDEO_MENU_ADD_NEW_YOUTUBE;?>  </A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video_category2"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"> <?php  echo _ADMIN_MENU_DTAIL_CAT;?></A>  &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video_category2&op=videocat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?php  echo _ADMIN_MENU_ADD_CAT;?></A><BR><BR>
+					<A HREF="?name=admin&file=video2"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?php  echo _VIDEO_MOD_MENU_MAIN;?> </A> &nbsp;&nbsp;&nbsp;
+					<A HREF="?name=admin&file=video_youtube2"><IMG SRC="images/admin/7_40.gif"  BORDER="0" align="absmiddle"> <?php  echo _ADMIN_VIDEO_MENU_ADD_NEW_YOUTUBE;?>  </A>&nbsp;&nbsp;&nbsp;
+					<A HREF="?name=admin&file=video_category2"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"> <?php  echo _ADMIN_MENU_DTAIL_CAT;?></A>  &nbsp;&nbsp;&nbsp;
+					<A HREF="?name=admin&file=video_category2&op=videocat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?php  echo _ADMIN_MENU_ADD_CAT;?></A>
+					<BR><BR>
 <?php 
 //////////////////////////////////////////// แสดงรายการvideo 
 if($op == ""){
 	
 	$limit = 10 ;
 	$SUMPAGE = $db->num_rows("web_video_category2","id","");
-
+	
 	if (empty($page)){
 		$page=1;
 	}
 	$rt = $SUMPAGE%$limit ;
 	$totalpage = ($rt!=0) ? floor($SUMPAGE/$limit)+1 : floor($SUMPAGE/$limit); 
 	$goto = ($page-1)*$limit ;
-?>
- <form action="?name=admin&file=video2&op=video_del&action=multidel" name="myform" method="post">
- <table width="100%" cellspacing="0" cellpadding="0" class="grids">
-  <tr class="odd">
-   <td width="44"><CENTER><B>Option</B></CENTER></td>
-  <td width="100"><CENTER><B>thumbs</B></CENTER></td>
-   <td><CENTER><B><?php  echo _ADMIN_FORM_TOPIC;?></B></CENTER></td>
-   <td width="100"><CENTER><B><?php  echo _ADMIN_TABLE_TITLE_POSTED;?></B></CENTER></td>
-   <td width="40"><CENTER><B><?php  echo _ADMIN_TABLE_TITLE_CAT;?></B></CENTER></td>
-   <td width="40"><CENTER><B>Check</B></CENTER></td>
-  </tr>  
-<?php 
-$res['video'] = $db->select_query("SELECT * FROM web_video2 ORDER BY id DESC LIMIT $goto, $limit ");
-$count=0;
-while($arr['video'] = $db->fetch($res['video'])){
-	$res['category'] = $db->select_query("SELECT * FROM web_video_category2 WHERE id='".$arr['video']['category']."' ");
-	$arr['category'] = $db->fetch($res['category']);
-	$content = $arr['video']['detail'];
-	$Detail = stripslashes(FixQuotes($content));
-if($arr['video']['youtube']==1){
-$durationx=timeyoutube($arr['video']['times']);
-} else {
-$durationx = $arr['video']['times'];
-}
-	//Comment Icon
-	if($arr['video']['enable_comment']){
-		$CommentIcon = " <IMG SRC=\"images/icon/comments-icon.jpg\" WIDTH=\"16\" HEIGHT=\"16\" BORDER=\"0\" ALIGN=\"absmiddle\" alt=\""._ADMIN_LINK_ALLOW_COMMENT."\">";
-	}else{
-		$CommentIcon = "";
-	}
-	if($arr['video']['youtube']!=1){
-	if($arr['video']['pic']){
-		$PicIcon = " <A HREF=video/thumbs/".$arr['video']['pic']." class=\"highslide\" onclick=\"return hs.expand(this)\"><IMG SRC=\"images/preview.gif\" WIDTH=\"16\" HEIGHT=\"16\" BORDER=\"0\" ALIGN=\"absmiddle\" alt=\""._ADMIN_LINK_PICTURE."\"></a>";
-	}else{
-		$PicIcon = "";
-	}
-	}else {
-		$PicIcon = " <A HREF=http://img.youtube.com/vi/".$arr['video']['video']."/default.jpg class=\"highslide\" onclick=\"return hs.expand(this)\"><IMG SRC=\"images/preview.gif\" WIDTH=\"16\" HEIGHT=\"16\" BORDER=\"0\" ALIGN=\"absmiddle\" alt=\""._ADMIN_LINK_PICTURE."\"></a>";
-	}
-
-if($count%2==0) { //ส่วนของการ สลับสี 
-$ColorFill = ' onmouseover="this.style.backgroundColor=\'#FFF0DF\'" onmouseout="this.style.backgroundColor=\'#ffffff\'"  ';
-} else {
-$ColorFill = 'class="odd"';
-}
-	$videoid=$arr['video']['id'];
-	$ress['com'] = $db->select_query("SELECT *,count(video_id) as com FROM web_video_comment2 WHERE video_id ='".$videoid."' group by video_id"); 
-	$arrs['com'] = $db->fetch($ress['com']);
-?>
-    <tr <?php  echo $ColorFill; ?> >
-     <td width="44" valign="top">
-<?php 
-if ($arr['video']['youtube']!=1){
 	?>
-      <a href="?name=admin&file=video2&op=video_edit&id=<?php  echo $arr['video']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?php  echo _ADMIN_BUTTON_EDIT;?>" ></a> 
-<?php 
-} else {
-?>
-      <a href="?name=admin&file=video_youtube2&op=video_edit&id=<?php  echo $arr['video']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?php  echo _ADMIN_BUTTON_EDIT;?>" ></a> 
-	  <?php 
-	}
-if ($arr['video']['youtube']!=1){
-	?>
-      <a href="javascript:Confirm('?name=admin&file=video2&op=video_del&id=<?php  echo $arr['video']['id'];?>&pic=<?php  echo $arr['video']['pic'];?>&prefix=<?php  echo $arr['video']['post_date'];?>','<?php  echo _ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?php  echo _ADMIN_BUTTON_DEL;?>" ></a>
-<?php 
-} else {
-?>
-      <a href="javascript:Confirm('?name=admin&file=video_youtube2&op=video_del&id=<?php  echo $arr['video']['id'];?>&prefix=<?php  echo $arr['video']['post_date'];?>','<?php  echo _ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?php  echo _ADMIN_BUTTON_DEL;?>" ></a>
-	  <?php 
-	}
-	  ?>
-     </td> 
-     <td valign="top" align="center" width="40">
-<div class="photomini" >
-<a HREF="index.php?name=video2&file=readvideo&id=<?php  echo $arr['video']['id'];?>" ><span></span><img src="<?php if ($arr['video']['youtube']!=1){ if ($arr['video']['pic']){echo "video/thumbs/".$arr['video']['pic'].""; } else{ echo "images/video_blank.gif";} }else { echo "http://img.youtube.com/vi/".$arr['video']['video']."/default.jpg";}?>" width="<?php  echo _IVIDEOT_W/2;?>" height="<?php  echo _IVIDEOT_H/2;?>"></a>
-<div class="photominix"><?php  echo $durationx;?></div>
-															</div>
-</td>
-     <td valign="top"><A HREF="?name=video2&file=readvideo&id=<?php  echo $arr['video']['id'];?>" target="_blank"><?php  echo $arr['video']['topic'];?></A><?php  echo $CommentIcon;?><?php  echo $PicIcon;?><?php  echo NewsIcon(TIMESTAMP, $arr['video']['post_date'], "images/icon_new.gif");?>( <?php  echo $arr['video']['pageview'];?> / <?php  echo $arrs['com']['com'];?> )<br><?php  echo $Detail;?> <A HREF="?name=video2&file=readvideo&id=<?php  echo $arr['video']['id'];?>" ><font color="#0066FF"><?php  echo _BLOG_NEXT;?></font></a></td>
-     <td valign="top"><CENTER><?php  echo ThaiTimeConvert($arr['video']['post_date'],'','');?></CENTER></td>
-     <td align="center" valign="top">
-	 <?php if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
-	 <A HREF="#"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle" alt="<?php  echo $arr['category']['category_name'];?>" onMouseOver="MM_displayStatusMsg('<?php  echo $arr['category']['category_name'];?>');return document.MM_returnValue"></A>
-	 <?php  } ?>
-	 </td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<?php  echo $arr['video']['id'];?>"></td>
-    </tr>
+	<form action="?name=admin&file=video2&op=video_del&action=multidel" name="myform" method="post">
+		<table width="100%" cellspacing="0" cellpadding="0" class="grids">
+			<tr class="odd">
+				<td width="44"><CENTER><B>Option</B></CENTER></td>
+				<td width="100"><CENTER><B>thumbs</B></CENTER></td>
+				<td><CENTER><B><?php  echo _ADMIN_FORM_TOPIC;?></B></CENTER></td>
+				<td width="100"><CENTER><B><?php  echo _ADMIN_TABLE_TITLE_POSTED;?></B></CENTER></td>
+				<td width="40"><CENTER><B><?php  echo _ADMIN_TABLE_TITLE_CAT;?></B></CENTER></td>
+				<td width="40"><CENTER><B>Check</B></CENTER></td>
+			</tr>  
+			<?php 
+			$sql = "SELECT * FROM web_video2 ORDER BY id DESC LIMIT $goto, $limit ";
+			$res['video'] = $db->select_query($sql);
+			$count=0;
+			while($vdo = $db->fetch($res['video'])){
+				$res['category'] = $db->select_query("SELECT * FROM web_video_category2 WHERE id='".$vdo['category']."' ");
+				$arr['category'] = $db->fetch($res['category']);
+				// $content = $vdo['detail'];
+				// $Detail = stripslashes(FixQuotes($content));
+				if($vdo['youtube']==1){
+					$durationx=timeyoutube($vdo['times']);
+				} else {
+					$durationx = $vdo['times'];
+				}
+				
+				//Comment Icon
+				if($vdo['enable_comment']){
+					$CommentIcon = " <IMG SRC=\"images/icon/comments-icon.jpg\" WIDTH=\"16\" HEIGHT=\"16\" BORDER=\"0\" ALIGN=\"absmiddle\" alt=\""._ADMIN_LINK_ALLOW_COMMENT."\">";
+				}else{
+					$CommentIcon = "";
+				}
+				if($vdo['youtube']!=1){
+					if($vdo['pic']){
+						$PicIcon = " <A HREF=video/thumbs/".$vdo['pic']." class=\"highslide\" onclick=\"return hs.expand(this)\"><IMG SRC=\"images/preview.gif\" WIDTH=\"16\" HEIGHT=\"16\" BORDER=\"0\" ALIGN=\"absmiddle\" alt=\""._ADMIN_LINK_PICTURE."\"></a>";
+					}else{
+						$PicIcon = "";
+					}
+				}else {
+					$PicIcon = " <A HREF=http://img.youtube.com/vi/".$vdo['video']."/default.jpg class=\"highslide\" onclick=\"return hs.expand(this)\"><IMG SRC=\"images/preview.gif\" WIDTH=\"16\" HEIGHT=\"16\" BORDER=\"0\" ALIGN=\"absmiddle\" alt=\""._ADMIN_LINK_PICTURE."\"></a>";
+				}
 
-<?php 
-	$count++;
- } 
-?>
- </table>
- <div align="right">
- <input type="button" class="btn btn-success btn-success-iefix" name="CheckAll"  value="Check All" onclick="checkAll(document.myform)" >
- <input type="button" class="btn btn-warning btn-warning-iefix" name="UnCheckAll"  value="Uncheck All" onclick="uncheckAll(document.myform)" >
- <input type="hidden" name="ACTION" value="video_del">
- <input type="submit" class="btn btn-danger btn-danger-iefix" value="Delete" onclick="return delConfirm(document.myform)">
- </div>
- </form><BR><BR>
+				if($count%2==0) { //ส่วนของการ สลับสี 
+					$ColorFill = ' onmouseover="this.style.backgroundColor=\'#FFF0DF\'" onmouseout="this.style.backgroundColor=\'#ffffff\'"  ';
+				} else {
+					$ColorFill = 'class="odd"';
+				}
+				$videoid=$vdo['id'];
+				$ress['com'] = $db->select_query("SELECT *,count(video_id) as com FROM web_video_comment2 WHERE video_id ='".$videoid."' group by video_id"); 
+				$arrs['com'] = $db->fetch($ress['com']);
+			?>
+			<tr <?php  echo $ColorFill; ?> >
+				<td width="44" valign="top">
+				<?php 
+				if ($vdo['youtube']!=1){
+					?><a href="?name=admin&file=video2&op=video_edit&id=<?php  echo $vdo['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?php  echo _ADMIN_BUTTON_EDIT;?>" ></a> <?php 
+				} else {
+					?><a href="?name=admin&file=video_youtube2&op=video_edit&id=<?php  echo $vdo['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?php  echo _ADMIN_BUTTON_EDIT;?>" ></a> <?php 
+				}
+				
+				if ($vdo['youtube']!=1){ 
+					?><a href="javascript:Confirm('?name=admin&file=video2&op=video_del&id=<?php  echo $vdo['id'];?>&pic=<?php  echo $vdo['pic'];?>&prefix=<?php  echo $vdo['post_date'];?>','<?php  echo _ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?php  echo _ADMIN_BUTTON_DEL;?>" ></a><?php 
+				} else { 
+					?><a href="?name=admin&file=video_youtube2&op=video_del&id=<?=$vdo['id'];?>&prefix=<?=$vdo['post_date'];?>" onclick="return confirm_del()"><img src="images/admin/trash.gif"  border="0" alt="<?php  echo _ADMIN_BUTTON_DEL;?>" ></a><?php 
+				} 
+				?>
+				</td> 
+				<td valign="top" align="center" width="40">
+					<div class="photomini" >
+						<a HREF="index.php?name=video2&file=readvideo&id=<?php  echo $vdo['id'];?>" ><span></span>
+						<img src="<?php 
+						if ($vdo['youtube']!=1){ 
+							if ($vdo['pic']){
+								echo "video/thumbs/".$vdo['pic']."";
+							} else { 
+								echo "images/video_blank.gif";
+							}
+						}else{ 
+							echo "http://img.youtube.com/vi/".$vdo['video']."/default.jpg";
+						}?>" width="<?php  echo _IVIDEOT_W/2;?>" height="<?php  echo _IVIDEOT_H/2;?>"></a>
+					</div>
+				</td>
+				<td valign="top">
+					<A HREF="?name=video2&file=readvideo&id=<?php echo $vdo['id'];?>" target="_blank"><?php  echo $vdo['topic'];?></A>
+					<?php  echo $CommentIcon;?><?php  echo $PicIcon;?><?php  echo NewsIcon(TIMESTAMP, $vdo['post_date'], "images/icon_new.gif");?>
+					<br>
+					( <?php  echo $vdo['pageview'];?> / <?php  echo $arrs['com']['com'];?> )
+					<br>
+					
+				</td>
+				<td valign="top">
+					<CENTER><?php  echo ThaiTimeConvert($vdo['post_date'],'','');?></CENTER>
+				</td>
+				<td align="center" valign="top">
+					<?php if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
+					<A HREF="#"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle" alt="<?php  echo $arr['category']['category_name'];?>" onMouseOver="MM_displayStatusMsg('<?php  echo $arr['category']['category_name'];?>');return document.MM_returnValue"></A>
+					<?php  } ?>
+				</td>
+				<td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<?php  echo $vdo['id'];?>"></td>
+			</tr>
+				
+			<?php 
+			$count++;
+			} // End while
+			?>
+		</table>
+		<script type="text/javascript">
+		function confirm_del(){
+			var c = confirm('<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');
+			return c;
+		}
+		</script>
+		<div align="right">
+			<input type="button" class="btn btn-success btn-success-iefix" name="CheckAll"  value="Check All" onclick="checkAll(document.myform)" >
+			<input type="button" class="btn btn-warning btn-warning-iefix" name="UnCheckAll"  value="Uncheck All" onclick="uncheckAll(document.myform)" >
+			<input type="hidden" name="ACTION" value="video_del">
+			<input type="submit" class="btn btn-danger btn-danger-iefix" value="Delete" onclick="return delConfirm(document.myform)">
+		</div>
+	</form>
+ <BR><BR>
 <?php 
 	SplitPage($page,$totalpage,"?name=admin&file=video2");
 	echo $ShowSumPages ;

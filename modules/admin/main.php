@@ -1,4 +1,4 @@
-<?
+<?php
 CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=820 border=0>
@@ -12,7 +12,7 @@ CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 <center><table cellpadding=0 cellspacing=0 bgcolor=#ffffff bordercolor=#CCCCCC border=0 width=650 >
 <tr><td align="center" width=650>
 <center></h4><h6>
-<?
+<?php
 echo "<table cellpadding=0 cellspacing=0 bordercolor=#0A7CC0 border=0  width=Ø650>";
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['menu'] = $db->select_query("SELECT * FROM ".TB_MENU." order by id ");
@@ -36,7 +36,7 @@ echo "<div id=cpanel>";
                         </a>
                     </div>
                 </div>
-<?
+<?php
 	$count++;
 if (($count%$col) == 0) { echo "</div></div></td></TR>"; $count=0; 
 } else{

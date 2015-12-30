@@ -17,54 +17,45 @@ function checkToken(){
 	return true;
 }
 
+if( !function_exists('input') ){
+	function input($t, $d = false){
+		$v = ( isset($_POST[$t]) ) ? trim($_POST[$t]) : ( ( isset($_GET[$t]) ) ? trim($_GET[$t]) : $d ) ;
+		return htmlspecialchars(strip_tags($v));
+	}
+}
+
 function anti_injection( $user, $pass ,$ip) {
 	global $db;
-           // We'll first get rid of any special characters using a simple regex statement.
-           // After that, we'll get rid of any SQL command words using a string replacment.
-            $banlist = ARRAY ("'", "--", "select", "union", "insert", "update", "like", "delete", "distinct", "having", "truncate", "replace", "handler", " as ", "or ", "procedure", "limit", "order by", "group by", "asc", "desc" , "1=1", "or", "#", "//","' or '1'='1'","'1'='1'" );
-            // ---------------------------------------------
-            IF ( preg_match ( "/[a-zA-Z0-9]+/i", $user ) ) {
-                    $user = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( $user ) ) );
-            } ELSE {
-                    $user = NULL;
-            }
-            // ---------------------------------------------
-            // Now to make sure the given password is an alphanumerical string
-            // devoid of any special characters. strtolower() is being used
-            // because unfortunately, str_ireplace() only works with PHP5.
-            IF ( preg_match ( "/[a-zA-Z0-9]+/i", $pass ) ) {
-                    $pass = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( $pass ) ) );
-            } ELSE {
-                    $pass = NULL;
-            }
-            // ---------------------------------------------
-            // Now to make an array so we can dump these variables into the SQL query.
-            // If either user or pass is NULL (because of inclusion of illegal characters),
-            // the whole script will stop dead in its tracks.
-            $array = ARRAY ( 'user' => $user, 'pass' => $pass );
-            // ---------------------------------------------
-            IF ( IN_ARRAY ( NULL, $array ) ) {
-/*
-		$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
-		$db->add_db(TB_IPBLOCK,array(
-			"ip"=>"".$ip."",
-			"post_date"=>"".time().""
-		));
-		$db->closedb ();
-?>
-<BR><BR>
-<CENTER><A HREF="?name=index"><IMG SRC="images/dangerous.png" BORDER="0"></A><BR><BR>
-<FONT COLOR="#336600"><B><?=_ADMIN_IPBLOCK_MESSAGE_HACK;?> <?=WEB_EMAIL;?></B></FONT><BR><BR>
-<A HREF="?name=index"><B><?=_ADMIN_IPBLOCK_MESSAGE_HACK1;?></B></A>
-</CENTER>
-<? echo "<meta http-equiv='refresh' content='10; url=?name=index'>" ; ?>
-<BR><BR>
-<?
-*/
-            } ELSE {
-                    RETURN $array;
-            }
-    }
+	// We'll first get rid of any special characters using a simple regex statement.
+	// After that, we'll get rid of any SQL command words using a string replacment.
+	$banlist = ARRAY ("'", "--", "select", "union", "insert", "update", "like", "delete", "distinct", "having", "truncate", "replace", "handler", " as ", "or ", "procedure", "limit", "order by", "group by", "asc", "desc" , "1=1", "or", "#", "//","' or '1'='1'","'1'='1'" );
+	
+	// ---------------------------------------------
+	IF ( preg_match ( "/[a-zA-Z0-9]+/i", $user ) ) {
+		$user = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( $user ) ) );
+	} ELSE {
+		$user = NULL;
+	}
+	// ---------------------------------------------
+	// Now to make sure the given password is an alphanumerical string
+	// devoid of any special characters. strtolower() is being used
+	// because unfortunately, str_ireplace() only works with PHP5.
+	IF ( preg_match ( "/[a-zA-Z0-9]+/i", $pass ) ) {
+		$pass = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( $pass ) ) );
+	} ELSE {
+		$pass = NULL;
+	}
+	// ---------------------------------------------
+	// Now to make an array so we can dump these variables into the SQL query.
+	// If either user or pass is NULL (because of inclusion of illegal characters),
+	// the whole script will stop dead in its tracks.
+	$array = ARRAY ( 'user' => $user, 'pass' => $pass );
+	
+	// ---------------------------------------------
+	IF ( !IN_ARRAY ( NULL, $array ) ) {
+		RETURN $array;
+	}
+}
 
 function youtubeID($url){
  	 $res = explode("v=",$url);

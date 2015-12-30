@@ -1,4 +1,4 @@
-<?
+<?php
 $IPADDRESS=get_real_ip();
 // User settings
 $rater_ip_voting_restriction = true; // restrict ip address voting (true or false)

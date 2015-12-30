@@ -1,17 +1,18 @@
-<?
+<?php
+error_reporting(0);
+session_start();
 
-require_once("mainfile.php");
+include 'mainfile.php';
 
 $PHP_SELF = "index.php";
-GETMODULE($_GET[name],$_GET[file]);
-//include ("db_config.php");
-include ("editor.php");
+GETMODULE($_GET['name'], $_GET['file']);
+include 'editor.php';
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
 <TITLE><?=WEB_TITILE;?></TITLE>
-<meta http-equiv="Content-Type" content="text/html; charset=<?echo ISO;?>">
+<meta http-equiv="Content-Type" content="text/html; charset=<?=ISO;?>">
 
 <meta name="keywords" content="<?=WEB_TITILE;?>">
 <meta name="description" content="<?=WEB_TITILE;?>">
@@ -126,9 +127,9 @@ function MM_jumpMenuGo(selName,targ,restore){ //v3.0
               <tr>
 			  <td width="11" align="center"  height="100%"  background="images/pic/block04.jpg"></td>
                 <td  valign="top" align="center">
-<?
-if($name!="") { 
-	include ("".$MODPATHFILE."");
+<?php
+if($_GET['name'] != '') { 
+	include ($MODPATHFILE);
 } ?>
 				</td>
 				<td width="12" align="center"  height="100%"  background="images/pic/block05.jpg"></td>
