@@ -97,8 +97,8 @@ $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 											$youtube = $json->items['0']->snippet;
 											
 											$title = utf8_to_tis620($youtube->title);
-											$detail= utf8_to_tis620(htmlentities($youtube->description, ENT_QUOTES));
-											$posted = $youtube->channelTitle;
+											$detail= utf8_to_tis620(htmlspecialchars($youtube->description, ENT_QUOTES));
+											$posted = utf8_to_tis620($youtube->channelTitle);
 											$times = strtotime($youtube->publishedAt);
 											$duration = 0;
 											
@@ -155,8 +155,8 @@ $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 											$youtube = $json->items['0']->snippet;
 											
 											$title = utf8_to_tis620($youtube->title);
-											$detail= utf8_to_tis620(htmlentities($youtube->description, ENT_QUOTES));
-											$posted = $youtube->channelTitle;
+											$detail= utf8_to_tis620(htmlspecialchars($youtube->description, ENT_QUOTES));
+											$posted = utf8_to_tis620($youtube->channelTitle);
 											$times = strtotime($youtube->publishedAt);
 											$duration = 0;
 											

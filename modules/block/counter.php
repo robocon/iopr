@@ -1,6 +1,6 @@
 <table width="<?php echo $widthSUM;?>" border="0" cellspacing="0" cellpadding="0" height="3" >
-
-</table><br>
+</table>
+<br>
 <table width="<?php echo $widthSUM;?>" border="0" cellspacing="0" cellpadding="0" height="3" >
     <tr>
         <td align="center"><img src="images/ip.gif"> <font color="#888888"><b><?php echo _COUNT_START;?> <?php echo ThaiTimeConvert("".WEB_TIMESTART."","",""); ?></b>
@@ -67,17 +67,17 @@
                     $ct_dd = date("d") ;
                     $ct_dd1 = date("d")-1 ;
                     $ct_time = time();
-                    $timecheck = time()-$time_delay; // นับจำนวนเข้าชมขณะนี้ ในช่วงเวลา 15 นาที
+                    $timecheck = time()-$time_delay; // �Ѻ�ӹǹ��Ҫ���й�� 㹪�ǧ���� 15 �ҷ�
 
                     $sql = " select COUNT(ct_no) AS ct_count from ".TB_ACTIVEUSER." where ct_dd = '$ct_dd' AND ct_mm = '$ct_mm' AND ct_yyyy = '$ct_yyyy' AND ct_time >= '$timecheck' ";
                     $result = mysql_query($sql);
                     $row = mysql_fetch_array($result);
-                    $stat_now = $row["ct_count"];  // แสดงสถิติเข้าชมคณะนี้
+                    $stat_now = $row["ct_count"];  // �ʴ�ʶԵ���Ҫ���й��
 
                     $sql = " select SUM(ct_count) AS ct_count from ".TB_ACTIVEUSER." where ct_dd = '$ct_dd' AND ct_mm = '$ct_mm' AND ct_yyyy = '$ct_yyyy' ";
                     $result = mysql_query($sql);
                     $row = mysql_fetch_array($result);
-                    $stat_dd = $row["ct_count"];  // แสดงสถิติวันนี้
+                    $stat_dd = $row["ct_count"];  // �ʴ�ʶԵ��ѹ���
 
                     $a_date = date("Y-m-d");
                     //$lastDate=date("Y-m-d", strtotime($a_date."-1 day"));
@@ -88,22 +88,22 @@
                     $sql = " select SUM(ct_count) AS ct_count from ".TB_ACTIVEUSER." where ct_dd = '$lastdd' AND ct_mm = '$lastmm' AND ct_yyyy = '$lastyy' ";
                     $result = mysql_query($sql);
                     $row = mysql_fetch_array($result);
-                    $stat_dd1 = $row["ct_count"];  // แสดงสถิติเมื่อวานนี้ี้
+                    $stat_dd1 = $row["ct_count"];  // �ʴ�ʶԵ�������ҹ�����
 
                     $sql = " select SUM(ct_count) AS ct_count from ".TB_ACTIVEUSER." where ct_mm = '$ct_mm' AND ct_yyyy = '$ct_yyyy' ";
                     $result = mysql_query($sql);
                     $row = mysql_fetch_array($result);
-                    $stat_mm = $row["ct_count"];  // แสดงสถิติเดือนนี้
+                    $stat_mm = $row["ct_count"];  // �ʴ�ʶԵ���͹���
 
                     $sql = " select SUM(ct_count) AS ct_count from ".TB_ACTIVEUSER." where ct_yyyy = '$ct_yyyy' ";
                     $result = mysql_query($sql);
                     $row = mysql_fetch_array($result);
-                    $stat_yyyy = $row["ct_count"];  // แสดงสถิติปีนี้
+                    $stat_yyyy = $row["ct_count"];  // �ʴ�ʶԵԻչ��
 
                     $sql = " select SUM(ct_count) AS ct_count from ".TB_ACTIVEUSER." ";
                     $result = mysql_query($sql);
                     $row = mysql_fetch_array($result);
-                    $stat_all = $row["ct_count"];  // แสดงสถิติทั้งหมด
+                    $stat_all = $row["ct_count"];  // �ʴ�ʶԵԷ�����
 
 
 
@@ -160,7 +160,7 @@
                     <td width="<?php echo $widthSUM;?>" height="20" colspan=2 align=center>
                         <?php
                         // URL of the folder where script is installed. INCLUDE a trailing "/" !!!
-                        $base_url = WEB_URL;
+                        $base_url = ''.WEB_URL.'';
                         // Default image style (font)
                         $default_style = '57chevy';
                         // Default counter image extension
@@ -205,11 +205,11 @@
 
 
                         /* This functin handles input parameters making sure nothing dangerous is passed in */
-                        function input($in) {
-                            $out = htmlentities(stripslashes($in));
-                            $out = str_replace(array('/','\\'), '', $out);
-                            return $out;
-                        }
+                        // function input($in) {
+                        //     $out = htmlentities(stripslashes($in));
+                        //     $out = str_replace(array('/','\\'), '', $out);
+                        //     return $out;
+                        // }
                         ?>
                     </td>
                 </tr>
