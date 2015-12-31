@@ -5,8 +5,10 @@ session_start();
 include 'mainfile.php';
 
 $PHP_SELF = "index.php";
-GETMODULE($_GET['name'], $_GET['file']);
-include 'editor.php';
+$name = input('name', 'index');
+$file = input('file', 'index');
+GETMODULE($name, $file);
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
@@ -19,17 +21,18 @@ include 'editor.php';
 <link href="css/template_css.css" rel="stylesheet" type="text/css">
 <link href="templates/<?=WEB_TEMPLATES;?>/css/<?=WEB_TEMPLATES;?>.css" rel="stylesheet" type="text/css">
 
+<?php include 'editor.php'; ?>
+
 <script type="text/javascript" src="highslide/highslide.js"></script>
 <script type="text/javascript" src="highslide/highslide-html.js"></script>
-<script language="JavaScript1.2">
+<script type="text/javascript">
 function makevisible(cur,which){
   if (which==0)
     cur.filters.alpha.opacity=100
   else
     cur.filters.alpha.opacity=40
 }
-</script> 
-<script type="text/javascript">    
+
     hs.graphicsDir = 'highslide/graphics/';
     hs.outlineType = 'rounded-white';
     hs.outlineWhileAnimating = true;
@@ -45,14 +48,7 @@ function makevisible(cur,which){
 	</div>
 </div>
 <script type="text/javascript" src="js/java.js"></script>
-<script language="JavaScript1.2">
-function makevisible(cur,which){
-  if (which==0)
-    cur.filters.alpha.opacity=100
-  else
-    cur.filters.alpha.opacity=40
-}
-</script>
+
 <script type="text/JavaScript">
 <!--
 function MM_swapImgRestore() { //v3.0
@@ -78,16 +74,14 @@ function MM_swapImage() { //v3.0
    if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
 }
 //-->
-</script>
-<script language="JavaScript">
+
 <!--
 function MM_displayStatusMsg(msgStr) { //v1.0
   status=msgStr;
   document.MM_returnValue = true;
 }
 //-->
-</script>
-<script type="text/JavaScript">
+
 <!--
 function MM_jumpMenu(targ,selObj,restore){ //v3.0
   eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
@@ -113,7 +107,6 @@ function MM_jumpMenuGo(selName,targ,restore){ //v3.0
 <body bgcolor="#ffffff">
 <div id="dhtmltooltip"></div>
 
-
 <TABLE width="920" height="100%" border="0" align="center" cellPadding="0" cellSpacing="0" >
 <TBODY>
 <TR valign="top">
@@ -128,9 +121,10 @@ function MM_jumpMenuGo(selName,targ,restore){ //v3.0
 			  <td width="11" align="center"  height="100%"  background="images/pic/block04.jpg"></td>
                 <td  valign="top" align="center">
 <?php
-if($_GET['name'] != '') { 
-	include ($MODPATHFILE);
-} ?>
+if(isset($_GET['name']) && $_GET['name'] != '') { 
+	require_once $MODPATHFILE;
+}
+?>
 				</td>
 				<td width="12" align="center"  height="100%"  background="images/pic/block05.jpg"></td>
               </tr>
