@@ -209,7 +209,7 @@ $config = $db->fetch($query);
 ?>
 <TABLE width="<?=$config['width'];?>" align=right cellSpacing=0 cellPadding=0 border=0>
 <TR>
-<TD valign="top" width="<?=$config['width'];?>" background="templates/<?echo WEB_TEMPLATES;?>/images/config/<?=$config['picname'];?>"  width="<?=$config['width'];?>" height="<?=$config['height'];?>" border="0" valign="top" colspan="6" style="background-repeat: no-repeat;">
+<TD valign="top" width="<?=$config['width'];?>" background="templates/<?php echo WEB_TEMPLATES;?>/images/config/<?=$config['picname'];?>"  width="<?=$config['width'];?>" height="<?=$config['height'];?>" border="0" valign="top" colspan="6" style="background-repeat: no-repeat;">
 <table align=right cellSpacing=0 cellPadding=0 border="0">
 <tr>
 <td colspan="6" align="right" >
@@ -237,24 +237,23 @@ echo "<font color=#CFCFCF><b>"._TEM_WEL." </font><font color=#CC0000>"._TEM_WEL_
 </tr>
 <?php } ?>
 					<tr>
-						<td background="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_01.png" width="95" height="37" border="0">
-			<a href="index.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('home','','templates/<?echo WEB_TEMPLATES;?>/images/menu/menu1_01.png',1)"><img src="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_01.png" width="95" height="37" alt="" name="home"></a></td>
-						<td  background="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_02.png" width="83" height="37" border="0" >
-			<a href="?name=news" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('news','','templates/<?echo WEB_TEMPLATES;?>/images/menu/menu1_02.png',1)"><img src="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_02.png" width="83" height="37" alt="" name="news"></a></td>
-						<td background="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_03.png" border="0" width="96" height="37">
-			<a href="?name=webboard" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('webboard','','templates/<?echo WEB_TEMPLATES;?>/images/menu/menu1_03.png',1)"><img src="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_03.png" width="96" height="37" name="webboard" alt=""></a></td>
-						<td background="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_04.png" border="0" width="102" height="37">
-			<a href="?name=gallery" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('gallery','','templates/<?echo WEB_TEMPLATES;?>/images/menu/menu1_04.png',1)"><img src="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_04.png" width="102" height="37" alt="" name="gallery"></a></td>
-						<td background="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_05.png" border="0" width="93" height="37">
-				<a href="?name=gbook" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('gbook','','templates/<?echo WEB_TEMPLATES;?>/images/menu/menu1_05.png',1)"><img src="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_05.png" width="93" height="37" alt="" name="gbook"></a></td>
-						<td background="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_06.png" border="0" width="91" height="37"><a href="?name=admin" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('admin','','templates/<?echo WEB_TEMPLATES;?>/images/menu/menu1_06.png',1)"><img src="templates/<?echo WEB_TEMPLATES;?>/images/menu/menu_06.png" width="91" height="37" alt="" name="admin"></a></td>
+						<td background="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_01.png" width="95" height="37" border="0">
+			<a href="index.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('home','','templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu1_01.png',1)"><img src="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_01.png" width="95" height="37" alt="" name="home"></a></td>
+						<td  background="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_02.png" width="83" height="37" border="0" >
+			<a href="?name=news" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('news','','templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu1_02.png',1)"><img src="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_02.png" width="83" height="37" alt="" name="news"></a></td>
+						<td background="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_03.png" border="0" width="96" height="37">
+			<a href="?name=webboard" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('webboard','','templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu1_03.png',1)"><img src="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_03.png" width="96" height="37" name="webboard" alt=""></a></td>
+						<td background="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_04.png" border="0" width="102" height="37">
+			<a href="?name=gallery" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('gallery','','templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu1_04.png',1)"><img src="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_04.png" width="102" height="37" alt="" name="gallery"></a></td>
+						<td background="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_05.png" border="0" width="93" height="37">
+				<a href="?name=gbook" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('gbook','','templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu1_05.png',1)"><img src="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_05.png" width="93" height="37" alt="" name="gbook"></a></td>
+						<td background="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_06.png" border="0" width="91" height="37"><a href="?name=admin" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('admin','','templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu1_06.png',1)"><img src="templates/<?php echo WEB_TEMPLATES;?>/images/menu/menu_06.png" width="91" height="37" alt="" name="admin"></a></td>
 					</tr>
 </table>
 </td>
 </tr>
 </table>
-<?
-	} else {
+<?php 	} else {
 		  ?>
 
 <TABLE width="<?=$config['width'];?>" align=center cellSpacing=0 cellPadding=0 border=0>
@@ -429,7 +428,7 @@ require_once ("".$MODPATHFILE."");
 
 	  <table border="0" align="center" cellpadding="0" cellspacing="0" width="<?=_TEMPLATES_WIDTH_CONFIG;?>">
         <tr>
-          <td valign="top" class="footer" bgcolor="#1B6AE0"><?include "modules/config/top3.php";?>
+          <td valign="top" class="footer" bgcolor="#1B6AE0"><?php include "modules/config/top3.php";?>
 		  </td>
 	    </tr>
 		  <tr>
@@ -437,7 +436,7 @@ require_once ("".$MODPATHFILE."");
 		  <div align="center" ><strong><b><?=WEB_FOOTER1;?></b></strong><br><?=WEB_FOOTER2;?>
 <br>
 <SCRIPT>
- document.write(" : <?echo _TEM_LOAD_PAGE;?>" +loadtime+ " <? echo _TEM_LOAD_PAGE_TIME;?> : ");
+ document.write(" : <?php echo _TEM_LOAD_PAGE;?>" +loadtime+ " <?php echo _TEM_LOAD_PAGE_TIME;?> : ");
 </SCRIPT>
 <br>
 

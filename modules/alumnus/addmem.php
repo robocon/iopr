@@ -1,5 +1,4 @@
-<?
-
+<?php 
 $year=date('Y');
 $yearlast=$year+488;
 	$Year = date("Y")+544;
@@ -25,8 +24,7 @@ include "modules/alumnus/config.inc.php";
 <TR vAlign=top>
 <TD vAlign=center align=right width=108><?=_ALUM_MOD_FORM_YEAR_END;?> :</TD>
 <TD width=345>
-<?
-echo "<select  name=yearfin size=1>
+<?php echo "<select  name=yearfin size=1>
 		<option >------</option>";
 for($a=$yearlast;$a<$Year;$a++){
 echo 	"<option value=$a>$a</option>";
@@ -88,8 +86,7 @@ echo "</select>";
 <TD><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="33%"><select name="icon" onChange="showimage()" class="text_box">
-<?
-								$handle=opendir('modules/alumnus/avartar/');
+<?php 								$handle=opendir('modules/alumnus/avartar/');
 								while (false!==($file = readdir($handle))) { 
 								 if ($file != "." && $file != ".." && $file != "Thumbs.db" && $file != "guest.gif") { 
 								 echo "<option value=".$file.">$file</option>\n";

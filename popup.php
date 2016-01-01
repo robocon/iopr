@@ -39,10 +39,10 @@ function Confirm(link,text)
 		}
 	}
 	if(status==false){
-		alert('<? echo _ADMIN_JAVA_CONFIRM_SELECT_DEL;?>');
+		alert('<?php echo _ADMIN_JAVA_CONFIRM_SELECT_DEL;?>');
 		return false;
 	}else{
-		if(confirm('<? echo _ADMIN_JAVA_CONFIRM_DEL;?>')){
+		if(confirm('<?php echo _ADMIN_JAVA_CONFIRM_DEL;?>')){
 			return true;
 		}else{
 			return false;
@@ -55,7 +55,7 @@ function Confirm(link,text)
 <body style="background-image: none;">
 
 <!-- Content -->
-<?include ("".$MODPATHFILE."");?>
+<?php include ("".$MODPATHFILE."");?>
 <!-- End Content -->
 
 </body>

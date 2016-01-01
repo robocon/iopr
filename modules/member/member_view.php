@@ -28,58 +28,58 @@ src.bgColor = clrIn;
 <tr>
 <td valign="top" bgcolor="#FFFFFF" align="center"><table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCE9FD" class="style">
 <tr valign="top">
-<td width="20%" rowspan="14" bgcolor="#FFFFFF"><div align="center"><? if ($arr[20]=="") { echo "<img src=modules/alumnus/photo/nopic.gif>"; } else { echo "<img src=icon/$arr[20]>"; } ?>
+<td width="20%" rowspan="14" bgcolor="#FFFFFF"><div align="center"><?php if ($arr[20]=="") { echo "<img src=modules/alumnus/photo/nopic.gif>"; } else { echo "<img src=icon/$arr[20]>"; } ?>
     <br>
-    <? echo "[ $arr[17] ]"; ?><br>
+    <?php echo "[ $arr[17] ]"; ?><br>
 </div></td>
-<td width="23%" bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><? echo _MEMBER_MOD_MEMDETAIL_NAME;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td width="57%" bgcolor="#FFFFFF"><? echo "$arr[2]"; ?></td>
+<td width="23%" bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?php echo _MEMBER_MOD_MEMDETAIL_NAME;?>&nbsp;:&nbsp;</strong></font></div></td>
+<td width="57%" bgcolor="#FFFFFF"><?php echo "$arr[2]"; ?></td>
 </tr>
 <tr valign="top">
 <td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?=_MEMBER_MOD_FORM_USER_NICK;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "$arr[3]"; ?></td>
+<td bgcolor="#FFFFFF"><?php echo "$arr[3]"; ?></td>
 </tr>
 <tr valign="top">
-<td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><? echo _MEMBER_MOD_MEMDETAIL_BIRTDAY;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "$arr[4]/$arr[5]/$arr[6]"; ?></td>
+<td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?php echo _MEMBER_MOD_MEMDETAIL_BIRTDAY;?>&nbsp;:&nbsp;</strong></font></div></td>
+<td bgcolor="#FFFFFF"><?php echo "$arr[4]/$arr[5]/$arr[6]"; ?></td>
 </tr>
 <tr valign="top">
 <td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?=_MEMBER_MOD_MEMDETAIL_AGE;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "$arr[7]"; ?></td>
+<td bgcolor="#FFFFFF"><?php echo "$arr[7]"; ?></td>
 </tr>
 <tr valign="top">
-<td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><? echo _MEMBER_MOD_MEMDETAIL_SEX;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "$arr[8]"; ?></td>
+<td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?php echo _MEMBER_MOD_MEMDETAIL_SEX;?>&nbsp;:&nbsp;</strong></font></div></td>
+<td bgcolor="#FFFFFF"><?php echo "$arr[8]"; ?></td>
 </tr>
 <tr valign="top">
 <td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong>E-mail&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "<a href=mailto:$arr[19]>$arr[19]&nbsp;&nbsp;<img src=\"images/icon/email.gif\" border=\"0\" title=\"".$arr[19]."\" /></a>"; ?></td>
+<td bgcolor="#FFFFFF"><?php echo "<a href=mailto:$arr[19]>$arr[19]&nbsp;&nbsp;<img src=\"images/icon/email.gif\" border=\"0\" title=\"".$arr[19]."\" /></a>"; ?></td>
 </tr>
 <tr valign="top">
 <td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?=_MEMBER_MOD_MEMDETAIL_ADDRESS;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "$arr[9]"; ?></td>
+<td bgcolor="#FFFFFF"><?php echo "$arr[9]"; ?></td>
 <tr valign="top">
 <td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?=_MEMBER_MOD_MEMDETAIL_AMP;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "$arr[10]"; ?></td>
+<td bgcolor="#FFFFFF"><?php echo "$arr[10]"; ?></td>
 <tr valign="top">
 <td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?=_MEMBER_MOD_MEMDETAIL_PROV;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "$arr[11]"; ?></td>
+<td bgcolor="#FFFFFF"><?php echo "$arr[11]"; ?></td>
 </tr>
 <tr valign="top">
 <td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?=_MEMBER_MOD_MEMDETAIL_POST;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "$arr[12]"; ?></td>
+<td bgcolor="#FFFFFF"><?php echo "$arr[12]"; ?></td>
 </tr>
 <tr valign="top">
 <td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?=_MEMBER_MOD_MEMDETAIL_PHONE;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "$arr[13]"; ?></td>
+<td bgcolor="#FFFFFF"><?php echo "$arr[13]"; ?></td>
 </tr>
 <tr valign="top">
 <td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?=_MEMBER_MOD_FORM_WORK;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "$arr[15]"; ?></td>
+<td bgcolor="#FFFFFF"><?php echo "$arr[15]"; ?></td>
 </tr>
 <tr valign="top">
-<td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><? echo _MEMBER_MOD_FORM_EDUCATION;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td bgcolor="#FFFFFF"><? echo "$arr[14]"; ?></td>
+<td bgcolor="#FFFFFF"><div align="right"><font color="#990000"><strong><?php echo _MEMBER_MOD_FORM_EDUCATION;?>&nbsp;:&nbsp;</strong></font></div></td>
+<td bgcolor="#FFFFFF"><?php echo "$arr[14]"; ?></td>
 </tr>
 
 </table></td>

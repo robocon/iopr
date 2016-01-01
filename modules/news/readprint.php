@@ -14,10 +14,9 @@ function emoticon(theSmilie) {
 	document.form2.COMMENT.focus();
 }
 </script>
-<? OpenTablecom();?>
+<?php OpenTablecom();?>
 				<TABLE width="730" align=center cellSpacing=0 cellPadding=0 border=0 >
-<?
-$_GET['id'] = intval($_GET['id']);
+<?php $_GET['id'] = intval($_GET['id']);
 //แสดงข่าวสาร/ประชาสัมพันธ์ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['news'] = $db->select_query("SELECT * FROM ".TB_NEWS." WHERE id='".$_GET['id']."' ");
@@ -47,7 +46,7 @@ if(!$arr['news']['id']){
 				</tr>
 				<TR>
 					<TD valign="top" >
-					<?if ($arr['news']['pic']==1){echo "<img  src=icon/news_".$arr['news']['post_date'].".jpg class=mysborder border=0 align=left>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=left>";} ?>
+					<?php if ($arr['news']['pic']==1){echo "<img  src=icon/news_".$arr['news']['post_date'].".jpg class=mysborder border=0 align=left>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=left>";} ?>
 					</td>
 					<td valign="top">
 
@@ -70,11 +69,10 @@ if(!$arr['news']['id']){
 					<td>
 					<?= ThaiTimeConvert($arr['news']['post_date'],"1","");?>
 					
-					<?
-					if($arr['news']['attach']){
+					<?php 					if($arr['news']['attach']){
 					?>
-					<a href="attach/news_<? echo $arr['news']['attach'];?>"><font color="#0066CC"><b>[ <?=_FORM_MOD_DOWLOAD_ATT;?> ]</a>
-					<?}?>
+					<a href="attach/news_<?php echo $arr['news']['attach'];?>"><font color="#0066CC"><b>[ <?=_FORM_MOD_DOWLOAD_ATT;?> ]</a>
+					<?php }?>
 					</td>
 					</tr>
 					</table>
@@ -95,7 +93,6 @@ if(!$arr['news']['id']){
 					</TD>
 				</TR>
 </table>
-<?
-}
+<?php }
 ?>
-<?CloseTablecom();?>
+<?php CloseTablecom();?>

@@ -113,8 +113,7 @@ $before_p=($chk_page*$e_page)+1;
 					&nbsp;&nbsp;<?=_ADMIN_MEMBER_FORM_MAIL_SEARCH_DATE;?>
                         <form action="?name=admin&file=member" method="post" name="checkForm" onsubmit="return check();">
                           &nbsp;&nbsp;<?=_ADMIN_MEMBER_FORM_MAIL_SEARCH_SELECT_DATE;?>
-<?
-echo "<SELECT name=date>
+<?php echo "<SELECT name=date>
 		<option >--</option>";
 for($i=1;$i<32;$i++){
 echo 	"<option value=$i>$i</option>";
@@ -142,7 +141,7 @@ echo "</select>";
               <script language="javascript">
 function check() {
 if(isNaN(document.checkForm.year.value)) {
-alert("<?echo _ADMIN_MEMBER_FORM_JAVA_CHECK_NUM;?>") ;
+alert("<?php echo _ADMIN_MEMBER_FORM_JAVA_CHECK_NUM;?>") ;
 document.checkForm.year.focus() ;
 return false ;
 }
@@ -238,8 +237,7 @@ echo "<br>" ;
 
 				<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" >
                   
-<?
-if($rows  >=1){   
+<?php if($rows  >=1){   
 	$plus_p=($chk_page*$e_page)+$rows ;   
 }else{   
 	$plus_p=($chk_page*$e_page);       
@@ -261,7 +259,7 @@ $ColorFill = 'class="odd"';
                                 <td colspan="6"><font color="#000000" ><strong><?=_MEMBER_MOD_MEMDETAIL_MEMID;?> <?php echo $dbarr['member_id'] ; ?> &nbsp;</strong></font>
                               </tr>
                               <tr <?php echo $ColorFill; ?>>
-                                <td colspan="6"> <strong><?=_MEMBER_MOD_MEMDETAIL_NAME;?>&nbsp;: </strong>&nbsp;<?php echo $dbarr['name'] ; ?> &nbsp;&nbsp;( <? echo $dbarr['nic_name'];?> )</font></td>
+                                <td colspan="6"> <strong><?=_MEMBER_MOD_MEMDETAIL_NAME;?>&nbsp;: </strong>&nbsp;<?php echo $dbarr['name'] ; ?> &nbsp;&nbsp;( <?php echo $dbarr['nic_name'];?> )</font></td>
                               </tr>
                               <tr <?php echo $ColorFill; ?>>
                                 <td align="right"><strong>user :</font></strong></td>
@@ -269,8 +267,7 @@ $ColorFill = 'class="odd"';
                                 <td width="5">&nbsp;</td>
                                 <td width="123" align="right"><strong><?=_MEMBER_MOD_MEMDETAIL_MEMPIC;?> : </font></strong></td>
                                 <td width="197" colspan="2" rowspan="6" valign="top"><div align="left">
-                                  <?
-					//Show Picture
+                                  <?php 					//Show Picture
 					if($dbarr['member_pic']){
 						$postpicupload = @getimagesize ("icon/".$dbarr['member_pic']."");
 						if ( $postpicupload['0'] > _MEMBER_LIMIT_PICWIDTH ) {
@@ -341,8 +338,8 @@ $ColorFill = 'class="odd"';
                                 <td><?php echo $dbarr['phone'] ; ?></font></td>
                                 <td>&nbsp;</td>
                                 <td align="right"><strong><?=_ADMIN_MEMBER_FORM_DEL_MEM;?> :</strong></font></td>
-                                <td colspan="2"><? echo " <A HREF=\"javascript:Confirm('?name=admin&file=member_delete&member_id=".$dbarr['member_id']."','"._ADMIN_MEMBER_JAVA_DEL_MEM_CON." Username: ".$dbarr['user']."  ?');\"><IMG SRC=\"images/admin/trash.gif\" WIDTH=\"20\" HEIGHT=\"20\" BORDER=\"0\" ALIGN=\"absmiddle\"> <font color='red'>"._ADMIN_MEMBER_JAVA_DEL_MEM_CON_OK."</font></A>"; ?>
-                                    <? $member_id=$dbarr['member_id']; ?></A><a href="?name=admin&file=member_edit&member_id=<?=$dbarr['member_id'];?>"><IMG SRC="images/admin/7_40.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALIGN="absmiddle"><font color='#0066FF'><?=_ADMIN_BUTTON_EDIT;?></a>
+                                <td colspan="2"><?php echo " <A HREF=\"javascript:Confirm('?name=admin&file=member_delete&member_id=".$dbarr['member_id']."','"._ADMIN_MEMBER_JAVA_DEL_MEM_CON." Username: ".$dbarr['user']."  ?');\"><IMG SRC=\"images/admin/trash.gif\" WIDTH=\"20\" HEIGHT=\"20\" BORDER=\"0\" ALIGN=\"absmiddle\"> <font color='red'>"._ADMIN_MEMBER_JAVA_DEL_MEM_CON_OK."</font></A>"; ?>
+                                    <?php $member_id=$dbarr['member_id']; ?></A><a href="?name=admin&file=member_edit&member_id=<?=$dbarr['member_id'];?>"><IMG SRC="images/admin/7_40.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALIGN="absmiddle"><font color='#0066FF'><?=_ADMIN_BUTTON_EDIT;?></a>
                                     <input name="member_id" type="hidden" id="member_id" value="<?php echo $member_id ; ?>">
                                     <input name="delete" type="hidden" id="delete" value="delete">
                                 </font></td>
@@ -353,7 +350,7 @@ $ColorFill = 'class="odd"';
                                 <td>&nbsp;</td>
                                 <td align="right" valign="middle"><strong><?=_ADMIN_MEMBER_FORM_ADD_BLOG;?> :</font></strong></td>
                                 <td colspan="2"><div align="left">
-												  <? if($dbarr['blog']==0) { echo "<a HREF=?name=admin&file=member&op=member_update&action=update&id=".$dbarr['id']."&status=1><img src=images/publish_x.png alt='"._ADMIN_MEMBER_FORM_ADD_BLOG_OFF."'><font color=#FF0000><b>  "._ADMIN_MEMBER_FORM_ADD_BLOG_OFF."</b></font></a>"; } else { echo "<a HREF=?name=admin&file=member&op=member_update&action=update&id=".$dbarr['id']."&status=0><img src=images/tick.png alt='è"._ADMIN_MEMBER_FORM_ADD_BLOG_OK."'><font color=#00CC00><b>  "._ADMIN_MEMBER_FORM_ADD_BLOG_OK."</b></font></a>"; };?></div></td>
+												  <?php if($dbarr['blog']==0) { echo "<a HREF=?name=admin&file=member&op=member_update&action=update&id=".$dbarr['id']."&status=1><img src=images/publish_x.png alt='"._ADMIN_MEMBER_FORM_ADD_BLOG_OFF."'><font color=#FF0000><b>  "._ADMIN_MEMBER_FORM_ADD_BLOG_OFF."</b></font></a>"; } else { echo "<a HREF=?name=admin&file=member&op=member_update&action=update&id=".$dbarr['id']."&status=0><img src=images/tick.png alt='è"._ADMIN_MEMBER_FORM_ADD_BLOG_OK."'><font color=#00CC00><b>  "._ADMIN_MEMBER_FORM_ADD_BLOG_OK."</b></font></a>"; };?></div></td>
                               </tr>
                               <tr <?php echo $ColorFill; ?>>
                                 <td align="right" valign="top"><strong><?=_MEMBER_MOD_FORM_WORK;?> : </font></strong></td>
@@ -393,8 +390,7 @@ echo "</td></tr></table></center>";
 
 			</TABLE>
 
-<?
- if($op == "member_update" AND $action == "update"){
+<?php  if($op == "member_update" AND $action == "update"){
 
 		$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 		$db->update_db(TB_MEMBER,array(

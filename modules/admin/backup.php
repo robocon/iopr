@@ -5231,8 +5231,7 @@ die("Error : ".$new_zip->errorInfo(true));
 					<TD>
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<BR><BR>
  <br>
- <?
-echo "<center><h4>"._ADMIN_BACKUP_MESSAGE_ACCESS."<a href=\"".WEB_URL."/backup/$files\" target=\"_blank\">&nbsp;&nbsp;$files</a></h4><br><br><font color=red><h4>"._ADMIN_BACKUP_MESSAGE_DEL." $files "._ADMIN_BACKUP_MESSAGE_DEL2."</font></h4>";
+ <?php echo "<center><h4>"._ADMIN_BACKUP_MESSAGE_ACCESS."<a href=\"".WEB_URL."/backup/$files\" target=\"_blank\">&nbsp;&nbsp;$files</a></h4><br><br><font color=red><h4>"._ADMIN_BACKUP_MESSAGE_DEL." $files "._ADMIN_BACKUP_MESSAGE_DEL2."</font></h4>";
 ?>
 <h4><a href="index.php?name=admin&file=filemanager&u=admin&copt=1&sortKey=0&pathext=backup/" target="_blank"><<  <?=_ADMIN_BACKUP_MESSAGE_DEL;?> >></a></h4>
 </p>

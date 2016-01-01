@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 include ("editor.php");
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=820 border=0>
@@ -20,8 +19,7 @@ include ("editor.php");
 <A HREF="?name=admin&file=personnel"><IMG SRC="images/admin/admins.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_PERSONNEL_MENU_LIST;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=personnel&op=admin_add"><IMG SRC="images/admin/user.gif"  BORDER="0" align="absmiddle"><?=_ADMIN_PERSONNEL_MENU_ADD_NEW;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=pgroup"><IMG SRC="images/admin/keys.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_PERSONNEL_MENU_LIST_GROUP;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=pgroup&op=group_add"><IMG SRC="images/admin/share.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_PERSONNEL_MENU_NEW_GROUP;?></A>
 <BR><BR>
 <!-- แสดงผลรายการบุคลากร -->
-<?
-//////////////////////////////////////////// แสดงรายชื่อบุคลากร
+<?php //////////////////////////////////////////// แสดงรายชื่อบุคลากร
 if($op == ""){
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $limit = 20 ;
@@ -45,8 +43,7 @@ $goto = ($page-1)*$limit ;
 	    <td><B><CENTER><?=_ADMIN_FORM_CAT_ORDER;?></CENTER></B></td>
    <td><B><CENTER>Check</CENTER></B></td>
   </tr>  
-<?
-$res['user'] = $db->select_query("SELECT * FROM ".TB_personnel." ORDER BY sort  LIMIT $goto, $limit ");
+<?php $res['user'] = $db->select_query("SELECT * FROM ".TB_personnel." ORDER BY sort  LIMIT $goto, $limit ");
 $rows['user'] = $db->rows($res['user']);
 $CATCOUNT = 0 ;
 $count=0;
@@ -73,22 +70,21 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=personnel&op=admin_edit&id=<? echo $arr['user']['id'];?>"><img src="images/icon/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=personnel&op=admin_del&id=<? echo $arr['user']['id'];?>','<?=_ADMIN_PERSONNEL_CON_DEL_MEM;?> : <?echo $arr['user']['p_name'];?>');"><img src="images/icon/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=personnel&op=admin_edit&id=<?php echo $arr['user']['id'];?>"><img src="images/icon/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=personnel&op=admin_del&id=<?php echo $arr['user']['id'];?>','<?=_ADMIN_PERSONNEL_CON_DEL_MEM;?> : <?php echo $arr['user']['p_name'];?>');"><img src="images/icon/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-     <td><A HREF="popup.php?name=personnel&file=popdetail&pid=<? echo $arr['user']['id'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 250} )" class="highslide">
-	 <?echo $arr['user']['p_name'];?>
+     <td><A HREF="popup.php?name=personnel&file=popdetail&pid=<?php echo $arr['user']['id'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 250} )" class="highslide">
+	 <?php echo $arr['user']['p_name'];?>
 	 </a></td>
-	      <td ><? echo $arr['user']['p_position'];?></td>
-     <td ><? echo $arr['user']['p_mail'];?></td>
-     <td ><? echo $arr['user']['p_tel'];?></td>
+	      <td ><?php echo $arr['user']['p_position'];?></td>
+     <td ><?php echo $arr['user']['p_mail'];?></td>
+     <td ><?php echo $arr['user']['p_tel'];?></td>
   
-	 <td align="center" width="50"><A HREF="?name=admin&file=personnel&op=admin_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['user']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=personnel&op=admin_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['user']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
-     <td  align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr['user']['id'];?>"></td>
+	 <td align="center" width="50"><A HREF="?name=admin&file=personnel&op=admin_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['user']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=personnel&op=admin_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['user']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
+     <td  align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr['user']['id'];?>"></td>
     </tr>
 
-<?
-	$count++;
+<?php 	$count++;
  } 
 ?>
  </table>
@@ -98,8 +94,7 @@ $ColorFill = 'class="odd"';
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-	SplitPage($page,$totalpage,"?name=admin&file=personnel");
+<?php 	SplitPage($page,$totalpage,"?name=admin&file=personnel");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -305,8 +300,7 @@ else if($op == "admin_add"){
 <B>Email :</B><BR>
 <INPUT TYPE="text" NAME="EMAIL" size="20"><BR>
 <B><?=_PERSONNEL_MOD_DETAIL_CAT;?> :</B><BR>
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $i=1;
 	$res['groups'] = $db->select_query("SELECT * FROM ".TB_personnel_group." order by gp_id ");
    while ($arr['groups'] = $db->fetch($res['groups']))
@@ -316,8 +310,7 @@ $i=1;
 		echo "<INPUT TYPE=hidden NAME=LEVEL".$i." value=\"".$arr['groups']['gp_id']."\" >";
 ?>
  <?=_PERSONNEL_MOD_DETAIL_DATAX_CAT;?> <INPUT TYPE="text" NAME="DATA<?=$i;?>" size="50" value=<?=$arr['x']['p_detail'];?>> <?=_ADMIN_PERSONNEL_FORM_ROW;?><INPUT TYPE="text" NAME="ORDER<?=$i;?>" size="10" value=<?=$arr['x']['p_order'];?>> <br>
- <?
-	$i++;
+ <?php 	$i++;
    }
 
 
@@ -329,8 +322,7 @@ $i=1;
 <BR><BR>
 <INPUT TYPE="submit" value="<?=_ADMIN_PERSONNEL_BUTTON_NEW_ADD;?>">
 </FORM>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -579,8 +571,7 @@ else if($op == "admin_edit"){
 <B>Email :</B><BR>
 <INPUT TYPE="text" NAME="EMAIL" size="20" VALUE="<?=$arr['admin']['p_mail'];?>"><BR>
 <B><?=_PERSONNEL_MOD_DETAIL_CAT;?> :</B><BR>
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $i=1;
 	$res['groups'] = $db->select_query("SELECT * FROM ".TB_personnel_group." order by gp_id ");
    while ($arr['groups'] = $db->fetch($res['groups']))
@@ -593,13 +584,12 @@ $i=1;
 		echo "<INPUT TYPE=hidden NAME=LEVEL".$i." value=\"".$arr['groups']['gp_id']."\" >";
 ?>
  <?=_PERSONNEL_MOD_DETAIL_DATAX_CAT;?> <INPUT TYPE="text" NAME="DATA<?=$i;?>" size="50" value=<?=$arr['x']['p_detail'];?>> <?=_ADMIN_PERSONNEL_FORM_ROW;?> <INPUT TYPE="text" NAME="ORDER<?=$i;?>" size="10" value=<?=$arr['x']['p_order'];?>> <br>
- <?
-$i++;
+ <?php $i++;
 
 }
 ?>
 <BR>
-<?=_ADMIN_PERSONNEL_FORM_POSISION;?><input type=radio name=BOSS VALUE=1 <? if ($arr['admin']['boss']==1) { echo "checked"; } ?>><B><?=_ADMIN_PERSONNEL_FORM_POSISION_BOSS;?></B><input type=radio name=BOSS value=0 <? if ($arr['admin']['boss']==0) { echo "checked"; } ?>><B><?=_ADMIN_PERSONNEL_FORM_POSISION_GELNERAL;?></B><br>
+<?=_ADMIN_PERSONNEL_FORM_POSISION;?><input type=radio name=BOSS VALUE=1 <?php if ($arr['admin']['boss']==1) { echo "checked"; } ?>><B><?=_ADMIN_PERSONNEL_FORM_POSISION_BOSS;?></B><input type=radio name=BOSS value=0 <?php if ($arr['admin']['boss']==0) { echo "checked"; } ?>><B><?=_ADMIN_PERSONNEL_FORM_POSISION_GELNERAL;?></B><br>
 <B><?=_ADMIN_PERSONNEL_FORM_PIC;?> :</B><BR>
 <INPUT TYPE="file" name="FILE" onpropertychange="view01.src=FILE.value;" size="40"><BR>
 <BR><BR>
@@ -608,8 +598,7 @@ $i++;
 <INPUT TYPE="hidden" NAME="NAME_OLD" size="40" VALUE="<?=$arr['admin']['name'];?>">
 <INPUT TYPE="submit" value="<?=_ADMIN_PERSONNEL_FORM_BUTTON_EDIT;?>">
 </FORM>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

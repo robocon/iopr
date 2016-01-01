@@ -1,15 +1,12 @@
-<?
-include ("editor.php");
+<?php include ("editor.php");
 if (!empty($_SESSION['admin_user'])){
 if (ISO=='utf-8'){
 ?>
 <SCRIPT src="modules/alumnus/check_utf8.js"></SCRIPT>
-<?
-} else {
+<?php } else {
 	?>
 <SCRIPT src="modules/alumnus/check.js"></SCRIPT>
-<?
-}
+<?php }
 	?>
 <script language="javascript"> 
 <!-- 
@@ -39,8 +36,7 @@ hza.style.display = state;
  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_alumnus.png" BORDER="0">
  <table width="750" align=center cellSpacing=0 cellPadding=0 border=0><tr><TD height="1" class="dotline" colspan="4"></TD></tr></table>
  <br>
-<?
-include("modules/alumnus/config.inc.php");
+<?php include("modules/alumnus/config.inc.php");
 $year=date('Y');
 $yearlast=$year+484;
 $Year = date("Y")+544;
@@ -101,8 +97,7 @@ $arr = $db->fetch($qr);
 </TR>
 <TR vAlign=top>
 <TD WIDTH="30%" ALIGN="right" BGCOLOR="#FFFFFF"><b><?=_ALUM_MOD_FORM_BIRTHDAY;?> :</b></TD>
-<?
-$dt=date('d');
+<?php $dt=date('d');
 $mt=date('m');
 $yy=date('Y');
 $yt=$yy+543;
@@ -142,11 +137,11 @@ echo "</select>";
 </TR>
 <TR vAlign=top>
 <TD WIDTH="30%" ALIGN="right" BGCOLOR="#FFFFFF"><FONT SIZE="2"><b><?=_ALUM_MOD_FORM_SEX;?> :</b></TD>
-<TD width=345><INPUT name=sex type=radio value=1 <?if($arr['sex']=="1"){ echo "checked" ; }?>>
+<TD width=345><INPUT name=sex type=radio value=1 <?php if($arr['sex']=="1"){ echo "checked" ; }?>>
 <img src="modules/alumnus/img/male.gif" > <?=_ALUM_MOD_FORM_SEX_MAN;?>
-<INPUT type=radio value=2 name=sex <?if($arr['sex']=="2"){ echo "checked" ; }?>>
+<INPUT type=radio value=2 name=sex <?php if($arr['sex']=="2"){ echo "checked" ; }?>>
 <img src="modules/alumnus/img/female.gif"> <?=_ALUM_MOD_FORM_SEX_GIRL;?>
-<INPUT type=radio value=3 name=sex <?if($arr['sex']=="3"){ echo "checked" ; }?>>
+<INPUT type=radio value=3 name=sex <?php if($arr['sex']=="3"){ echo "checked" ; }?>>
 <img src="modules/alumnus/img/notsoure.gif"> <?=_ALUM_MOD_FORM_SEX_BI;?><img src="modules/alumnus/img/priority.gif" width="11" height="12"></TD>
 </TR>
 
@@ -163,8 +158,7 @@ echo "</select>";
 <TR vAlign=top>
 <TD WIDTH="30%" ALIGN="right" BGCOLOR="#FFFFFF"><b><?=_ALUM_MOD_FORM_YEAR_END;?> :</b></TD>
 <TD width=345>
-<?
-echo "<select  name=yearfin size=1>
+<?php echo "<select  name=yearfin size=1>
 		<option >------</option>";
 for($a=$yearlast;$a<$Year;$a++){
 echo 	"<option "; if($arr['yearfin']=="".$a.""){ echo "selected" ; } echo " value=".$a.">".$a."</option>";
@@ -188,8 +182,7 @@ echo "</select>";
 <TR vAlign=top>
 <TD WIDTH="30%" ALIGN="right" BGCOLOR="#FFFFFF"><b><?=_ALUM_MOD_FORM_PROV;?> :</b></TD>
 <TD width=345>
-<?
-$vprovince  = array(_PROVINCE_1, _PROVINCE_2, _PROVINCE_3, _PROVINCE_4, _PROVINCE_5, _PROVINCE_6, _PROVINCE_7, _PROVINCE_8, _PROVINCE_9, _PROVINCE_10, _PROVINCE_11, _PROVINCE_12, _PROVINCE_13, _PROVINCE_14, _PROVINCE_15, _PROVINCE_16, _PROVINCE_17, _PROVINCE_18, _PROVINCE_19, _PROVINCE_20, _PROVINCE_21, _PROVINCE_22, _PROVINCE_23, _PROVINCE_24, _PROVINCE_25, _PROVINCE_26, _PROVINCE_27, _PROVINCE_28, _PROVINCE_29, _PROVINCE_30, _PROVINCE_31, _PROVINCE_32, _PROVINCE_33, _PROVINCE_34, _PROVINCE_35, _PROVINCE_36, _PROVINCE_37, _PROVINCE_38, _PROVINCE_39, _PROVINCE_40, _PROVINCE_41, _PROVINCE_42, _PROVINCE_43, _PROVINCE_44, _PROVINCE_45, _PROVINCE_46, _PROVINCE_47, _PROVINCE_48, _PROVINCE_49, _PROVINCE_50, _PROVINCE_51, _PROVINCE_52, _PROVINCE_53, _PROVINCE_54, _PROVINCE_55, _PROVINCE_56, _PROVINCE_57, _PROVINCE_58, _PROVINCE_59, _PROVINCE_60, _PROVINCE_61, _PROVINCE_62, _PROVINCE_63, _PROVINCE_64, _PROVINCE_65, _PROVINCE_66, _PROVINCE_67, _PROVINCE_68, _PROVINCE_69, _PROVINCE_70, _PROVINCE_71, _PROVINCE_72, _PROVINCE_73, _PROVINCE_74, _PROVINCE_75, _PROVINCE_76, _PROVINCE_77);
+<?php $vprovince  = array(_PROVINCE_1, _PROVINCE_2, _PROVINCE_3, _PROVINCE_4, _PROVINCE_5, _PROVINCE_6, _PROVINCE_7, _PROVINCE_8, _PROVINCE_9, _PROVINCE_10, _PROVINCE_11, _PROVINCE_12, _PROVINCE_13, _PROVINCE_14, _PROVINCE_15, _PROVINCE_16, _PROVINCE_17, _PROVINCE_18, _PROVINCE_19, _PROVINCE_20, _PROVINCE_21, _PROVINCE_22, _PROVINCE_23, _PROVINCE_24, _PROVINCE_25, _PROVINCE_26, _PROVINCE_27, _PROVINCE_28, _PROVINCE_29, _PROVINCE_30, _PROVINCE_31, _PROVINCE_32, _PROVINCE_33, _PROVINCE_34, _PROVINCE_35, _PROVINCE_36, _PROVINCE_37, _PROVINCE_38, _PROVINCE_39, _PROVINCE_40, _PROVINCE_41, _PROVINCE_42, _PROVINCE_43, _PROVINCE_44, _PROVINCE_45, _PROVINCE_46, _PROVINCE_47, _PROVINCE_48, _PROVINCE_49, _PROVINCE_50, _PROVINCE_51, _PROVINCE_52, _PROVINCE_53, _PROVINCE_54, _PROVINCE_55, _PROVINCE_56, _PROVINCE_57, _PROVINCE_58, _PROVINCE_59, _PROVINCE_60, _PROVINCE_61, _PROVINCE_62, _PROVINCE_63, _PROVINCE_64, _PROVINCE_65, _PROVINCE_66, _PROVINCE_67, _PROVINCE_68, _PROVINCE_69, _PROVINCE_70, _PROVINCE_71, _PROVINCE_72, _PROVINCE_73, _PROVINCE_74, _PROVINCE_75, _PROVINCE_76, _PROVINCE_77);
 echo "<select  name=province size=1 >
 		<option >------------</option>";
 for($i=0;$i<count($vprovince);$i++){
@@ -246,14 +239,14 @@ echo "</select>";
 <TR vAlign=top>
 <TD WIDTH="30%" ALIGN="right" BGCOLOR="#FFFFFF"><b>Other :</b></TD>
 <TD>
-<input name="cam" type="checkbox" id="cam" value="1" <?if($arr['cam']=="1"){ echo "checked" ; }?>>
+<input name="cam" type="checkbox" id="cam" value="1" <?php if($arr['cam']=="1"){ echo "checked" ; }?>>
 <img src="modules/alumnus/img/webcam.gif" width="23" height="18" align="absmiddle">
-<input name="mic" type="checkbox" id="mic" value="1" <?if($arr['mic']=="1"){ echo "checked" ; }?>>
+<input name="mic" type="checkbox" id="mic" value="1" <?php if($arr['mic']=="1"){ echo "checked" ; }?>>
 <img src="modules/alumnus/img/mic.gif" width="18" height="20" align="absmiddle"></TD>
 </TR>
                   <TR>
                     <TD WIDTH="30%" ALIGN="right" BGCOLOR="#FFFFFF"><b><?=_ALUM_MOD_FORM_MPIC;?> :</b></TD>
-                    <TD BGCOLOR="#FFFFFF"><input type=hidden name=pic value=<?=$arr['picture'];?>><?if($arr['picture'] !=""){ echo "<img src=icon/".$arr['picture']." border=0><br>" ; } else { echo "<img src=images/user_blank.gif border=0><br>";}?>
+                    <TD BGCOLOR="#FFFFFF"><input type=hidden name=pic value=<?=$arr['picture'];?>><?php if($arr['picture'] !=""){ echo "<img src=icon/".$arr['picture']." border=0><br>" ; } else { echo "<img src=images/user_blank.gif border=0><br>";}?>
 					<INPUT TYPE="file" NAME="MPic" STYLE="width:250" CLASS="inputform">
                       <BR>
                       Limit <?=(_ALUMNUS_LIMIT_UPLOAD/1024);?> kB, <?=_ALUM_MOD_FORM_MPIC_LIMIT;?> <?=(_ALUMNUS_LIMIT_PICWIDTH);?> pixels </TD>
@@ -263,8 +256,7 @@ echo "</select>";
 <TD><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="33%"><select name="icon" id="icon" onChange="showimages()" />
-<?
-  if ($handle = opendir("modules/alumnus/avartar")) {
+<?php   if ($handle = opendir("modules/alumnus/avartar")) {
     while (false !== ($item = readdir($handle))) {
       if ($item != "." && $item != ".." && $item != "Thumbs.db" && $item != "guest.gif") {
 	echo "<option "; if($arr['icon']=="".$item.""){ echo "selected" ; } echo " value=modules/alumnus/avartar/".$item.">$item</option>";
@@ -292,29 +284,29 @@ document.images.icons.src=document.webForm.icon.options[document.webForm.icon.se
 </TR>
 <TR vAlign=top>
 <TD WIDTH="30%" ALIGN="right" BGCOLOR="#FFFFFF"><FONT SIZE="2"><STRONG><FONT FACE="MS Sans Serif, Tahoma, sans-serif">Emotion :</TD>
-<TD><input name="emo" type="radio" value="e1" <?if($arr['emo']=="e1"){ echo "checked" ; }?> >
+<TD><input name="emo" type="radio" value="e1" <?php if($arr['emo']=="e1"){ echo "checked" ; }?> >
 <img src="modules/alumnus/emotion/e1.gif" width="19" height="19" align="absmiddle">
-<input name="emo" type="radio" value="e2" <?if($arr['emo']=="e2"){ echo "checked" ; }?>>
+<input name="emo" type="radio" value="e2" <?php if($arr['emo']=="e2"){ echo "checked" ; }?>>
 <img src="modules/alumnus/emotion/e2.gif" width="19" height="19" align="absmiddle">
-<input name="emo" type="radio" value="e3" <?if($arr['emo']=="e3"){ echo "checked" ; }?>>
+<input name="emo" type="radio" value="e3" <?php if($arr['emo']=="e3"){ echo "checked" ; }?>>
 <img src="modules/alumnus/emotion/e3.gif" width="19" height="19" align="absmiddle">
-<input name="emo" type="radio" value="e4" <?if($arr['emo']=="e4"){ echo "checked" ; }?>>
+<input name="emo" type="radio" value="e4" <?php if($arr['emo']=="e4"){ echo "checked" ; }?>>
 <img src="modules/alumnus/emotion/e4.gif" width="19" height="19" align="absmiddle">
-<input name="emo" type="radio" value="e5" <?if($arr['emo']=="e5"){ echo "checked" ; }?>>
+<input name="emo" type="radio" value="e5" <?php if($arr['emo']=="e5"){ echo "checked" ; }?>>
 <img src="modules/alumnus/emotion/e5.gif" width="19" height="19" align="absmiddle">
-<input name="emo" type="radio" value="e6" <?if($arr['emo']=="e6"){ echo "checked" ; }?>>
+<input name="emo" type="radio" value="e6" <?php if($arr['emo']=="e6"){ echo "checked" ; }?>>
 <img src="modules/alumnus/emotion/e6.gif" width="19" height="19" align="absmiddle"><br>
-<input name="emo" type="radio" value="e7" <?if($arr['emo']=="e7"){ echo "checked" ; }?>>
+<input name="emo" type="radio" value="e7" <?php if($arr['emo']=="e7"){ echo "checked" ; }?>>
 <img src="modules/alumnus/emotion/e7.gif" width="19" height="19" align="absmiddle">
-<input name="emo" type="radio" value="e8" <?if($arr['emo']=="e8"){ echo "checked" ; }?>>
+<input name="emo" type="radio" value="e8" <?php if($arr['emo']=="e8"){ echo "checked" ; }?>>
 <img src="modules/alumnus/emotion/e8.gif" width="19" height="19" align="absmiddle">
-<input name="emo" type="radio" value="e9" <?if($arr['emo']=="e9"){ echo "checked" ; }?>>
+<input name="emo" type="radio" value="e9" <?php if($arr['emo']=="e9"){ echo "checked" ; }?>>
 <img src="modules/alumnus/emotion/e9.gif" width="19" height="19" align="absmiddle">
-<input name="emo" type="radio" value="e10" <?if($arr['emo']=="e10"){ echo "checked" ; }?>>
+<input name="emo" type="radio" value="e10" <?php if($arr['emo']=="e10"){ echo "checked" ; }?>>
 <img src="modules/alumnus/emotion/e10.gif" width="19" height="19" align="absmiddle">
-<input name="emo" type="radio" value="e11" <?if($arr['emo']=="e11"){ echo "checked" ; }?>>
+<input name="emo" type="radio" value="e11" <?php if($arr['emo']=="e11"){ echo "checked" ; }?>>
 <img src="modules/alumnus/emotion/e11.gif" width="20" height="20" align="absmiddle">
-<input name="emo" type="radio" value="e12" <?if($arr['emo']=="e12"){ echo "checked" ; }?>>
+<input name="emo" type="radio" value="e12" <?php if($arr['emo']=="e12"){ echo "checked" ; }?>>
 <img src="modules/alumnus/emotion/e12.gif" width="20" height="20" align="absmiddle"></TD>
 </TR>
 <TR vAlign=top>
@@ -329,8 +321,7 @@ document.images.icons.src=document.webForm.icon.options[document.webForm.icon.se
 
 </table>
 
-<?
-} else {
+<?php } else {
 ?>
 <table width="740" border="0" align="center" cellpadding="0" cellspacing="0">
 <tr>
@@ -358,7 +349,6 @@ document.images.icons.src=document.webForm.icon.options[document.webForm.icon.se
 </table></td>
 </tr>
 </table>
-<?
-print "<meta http-equiv=refresh content=0;URL=index.php?name=admin>";
+<?php print "<meta http-equiv=refresh content=0;URL=index.php?name=admin>";
 }
 ?>

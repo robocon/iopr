@@ -31,8 +31,7 @@ var loadtime = ( stopsec - startsec ) / 1000;
 
 <style type="text/css">
 <body { background: #ffffff url(templates/atomy/images/bg.jpg) repeat-y fixed;}--></style>
-<?
-require_once("mainfile.php");
+<?php require_once("mainfile.php");
 $_SERVER['PHP_SELF'] = "index.php";
 if(ISO =='utf-8'){
 require_once("templates/".WEB_TEMPLATES."/lang/tem_thai_utf8.php");
@@ -62,12 +61,11 @@ $arr['config'] = $db->fetch($res['config']);
 ?>
 <TABLE width="<?=$arr['config']['width'];?>" cellSpacing=0 cellPadding=0 border=0>
 	<TR>
-		<TD valign="top" width="<?=$arr['config']['width'];?>" background="templates/<?echo WEB_TEMPLATES;?>/images/config/<?=$arr['config']['picname'];?>"  width="<?=$arr['config']['width'];?>" height="<?=$arr['config']['height'];?>" border="0">
+		<TD valign="top" width="<?=$arr['config']['width'];?>" background="templates/<?php echo WEB_TEMPLATES;?>/images/config/<?=$arr['config']['picname'];?>"  width="<?=$arr['config']['width'];?>" height="<?=$arr['config']['height'];?>" border="0">
 		</td>
 	</tr>
 </table>
-<?
-	} else {
+<?php 	} else {
 		  ?>
 <TABLE width="<?=$arr['config']['width'];?>" align=center cellSpacing=0 cellPadding=0 border=0>
 <TR>
@@ -86,13 +84,12 @@ pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-sh
 </td>
 </tr>
 </table>
-<?
-}
+<?php }
 ?>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="9" align="center"><? include 'modules/config/top2.php'; ?></td>
+						<td colspan="9" align="center"><?php include 'modules/config/top2.php'; ?></td>
 					</tr>
 					<tr  align="center">
 						<td background="templates/atomy/images/menu/atomy_bar1.png" width="196" height="44" border="0">
@@ -119,10 +116,10 @@ pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-sh
 				<TBODY>
 					<TR>
 					<td width="220" valign="top">
-								<? if($name<>"admin" && $name<>"admin/workboard" && $name<>"admin/backup" ) { ?>
+								<?php if($name<>"admin" && $name<>"admin/workboard" && $name<>"admin/backup" ) { ?>
 
 
-								<? //blockleft;?>
+								<?php //blockleft;?>
 
 									<?php if (CountBlock('left')) { ?>
 
@@ -135,12 +132,12 @@ pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-sh
 									<?php } ?>
 
 
-						<?}?>
+						<?php }?>
 						</td>
 						<TD vAlign="top" align="center" width="10" >&nbsp;</TD>
 <TD vAlign="top" align="center" width="100%" align="center">
 
-	<? if($name=="") { ?>
+	<?php if($name=="") { ?>
 
 										<table width="100%" cellspacing="0" cellpadding="0" >
 											<tr>
@@ -148,7 +145,7 @@ pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-sh
           <TD width="530" vAlign=top align=left><IMG src="images/topfader.gif" border=0><BR>
 		  <!-- Admin -->
 		  &nbsp;&nbsp;
-								<? //blockcenter;?>
+								<?php //blockcenter;?>
  									<?php if (CountBlock('user2')) { ?>
 
 										<table width="100%" cellspacing="0" cellpadding="0" >
@@ -192,7 +189,7 @@ pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-sh
 				</td>
 <TD width="10" vAlign=top>&nbsp;&nbsp;</TD>
 
-<? //blockright;?>
+<?php //blockright;?>
 							<?php if (CountBlock('right')) { ?>
 
           <TD width="220" vAlign=top align=left>
@@ -210,7 +207,7 @@ pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-sh
 			</tr>
 			</table>
 
-<?} else {
+<?php } else {
 OpenTable();
 require_once ("".$MODPATHFILE."");
  CloseTable();
@@ -245,7 +242,7 @@ $arr['config'] = $db->fetch($res['config']);
  $types=$arr['config']['type'];
 ?>
 
-	  <table border="0" align="center" cellpadding="5" cellspacing="0" background="templates/<?echo WEB_TEMPLATES;?>/images/config/<?=$arr['config']['picname'];?>"  width="<?=$arr['config']['width'];?>" height="<?=$arr['config']['height'];?>">
+	  <table border="0" align="center" cellpadding="5" cellspacing="0" background="templates/<?php echo WEB_TEMPLATES;?>/images/config/<?=$arr['config']['picname'];?>"  width="<?=$arr['config']['width'];?>" height="<?=$arr['config']['height'];?>">
         <tr height="5">
 		<TD valign="top" width="<?=$arr['config']['width'];?>"  border="0">
 			</td>
@@ -257,7 +254,7 @@ $arr['config'] = $db->fetch($res['config']);
         <tr>
           <td valign="top" class="foottext"><div align="center" ><strong><b><?=WEB_FOOTER1;?></b></strong><br><?=WEB_FOOTER2;?><br>Based on : <a href="http://maxsite.geniuscyber.com" target="_blank" ><font color=#0066FF><b>Maxsite1.10 </font></b></a> Modified to <a href="<?=WEB_URL;?>" target="_blank" ><b><font color=#0066FF><?= _SCRIPT." "._VERSION ;?></b></font></a>
 <SCRIPT>
- document.write(" : <?echo _TEM_LOAD_PAGE;?>" +loadtime+ " <? echo _TEM_LOAD_PAGE_TIME;?> : ");
+ document.write(" : <?php echo _TEM_LOAD_PAGE;?>" +loadtime+ " <?php echo _TEM_LOAD_PAGE_TIME;?> : ");
 </SCRIPT>
 
 

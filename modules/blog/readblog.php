@@ -1,4 +1,4 @@
-<?include ("editor.php");?>
+<?php include ("editor.php");?>
 <script type="text/javascript">
 function showemotion() {
 	emotion1.style.display = 'none';
@@ -15,8 +15,7 @@ function emoticon(theSmilie) {
 	document.form2.COMMENT.focus();
 }
 </script>
-<?
-//���¡ user online �������
+<?php //���¡ user online �������
 			$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 			$res['user2'] = $db->select_query("SELECT * FROM ".TB_useronline." ");
 			$rows['user2'] = $db->rows($res['user2']);
@@ -36,10 +35,9 @@ function emoticon(theSmilie) {
           <TD width="730" vAlign=top>
 		  <!-- News -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_blog.gif" BORDER="0"><BR><BR>
-		  <? OpenTablecom();?>
+		  <?php OpenTablecom();?>
 				<TABLE width="730" align=center cellSpacing=0 cellPadding=0 border=0>
-<?
-
+<?php 
 $_GET['id'] = intval($_GET['id']);
 
 //�ʴ����й�����
@@ -77,7 +75,7 @@ if(!$arr['blog']['id']){
 					<table>
 					<tr>
 					<td valign="top">
-					<? if($arr['blog']['pic']){ echo "<img src=\"icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg\"></td>";
+					<?php if($arr['blog']['pic']){ echo "<img src=\"icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg\"></td>";
 					} else {
 					echo "<img src=\"images/icon/".$arr['category']['icon']."\"></td>";
 					}
@@ -94,7 +92,7 @@ if(!$arr['blog']['id']){
 					</tr>
 					<tr>
 					<td>
-					<b><FONT COLOR="#3333FF"><?=_BLOG_LEVEL;?> </font><FONT COLOR="#FF0000"><?BlogLevel($arr['cblog']['co']);?></FONT>
+					<b><FONT COLOR="#3333FF"><?=_BLOG_LEVEL;?> </font><FONT COLOR="#FF0000"><?php BlogLevel($arr['cblog']['co']);?></FONT>
 					</td>
 					</tr>
 					<tr>
@@ -104,17 +102,15 @@ if(!$arr['blog']['id']){
 					<tr>
 					<td>
 					<?= ThaiTimeConvert($arr['blog']['post_date'],"1","");?>
-<?if ($login_true==$arr['blog']['posted']){echo "<A HREF=\"?name=blog&file=blog&op=article_edit&id=".$arr['blog']['id']."\">&nbsp;&nbsp;<IMG SRC=\"images/mail1[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a><a href=\"index.php?name=blog&file=blog&op=article_del&id=".$arr['blog']['id']."\">&nbsp;<IMG SRC=\"images/trash_16[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>";}?>
+<?php if ($login_true==$arr['blog']['posted']){echo "<A HREF=\"?name=blog&file=blog&op=article_edit&id=".$arr['blog']['id']."\">&nbsp;&nbsp;<IMG SRC=\"images/mail1[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a><a href=\"index.php?name=blog&file=blog&op=article_del&id=".$arr['blog']['id']."\">&nbsp;<IMG SRC=\"images/trash_16[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>";}?>
 
-<?
-if($admin_user){
+<?php if($admin_user){
 	//Admin Login Show Icon
 ?>
-				  <a href="?name=admin&file=blog&op=article_edit&id=<? echo $arr['blog']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a>
-				  <a href="javascript:Confirm('?name=admin&file=blog&op=article_del&id=<? echo $arr['blog']['id'];?>&prefix=<? echo $arr['blog']['post_date'];?>','<?echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
+				  <a href="?name=admin&file=blog&op=article_edit&id=<?php echo $arr['blog']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a>
+				  <a href="javascript:Confirm('?name=admin&file=blog&op=article_del&id=<?php echo $arr['blog']['id'];?>&prefix=<?php echo $arr['blog']['post_date'];?>','<?php echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
 
-<?
-}
+<?php }
 $headertext = "#ffffff";         // �յ���ѡ����ǹ��Ǣͧ˹�ҵ�ҧ popup
 $headerbackground = "#FFCC00";  // �վ�����ǹ��Ǣͧ˹�ҵ�ҧ popup
 $bigbtn = True; // True = ����(�������)��Ҵ�˭�, False =  ����(�������)��Ҵ����
@@ -159,15 +155,14 @@ if ($bigbtn) {
 if($arr['blog']['attach'] && ($admin_user OR $login_true) ){?>
 <tr><td width=100% bgcolor=#F7F7F7 align=center colspan=2><font size=2><b><a href="attach/blog_<?php echo $arr['blog']['attach'];?>">	[ <?=_FROM_DOWNLOAD_ATT;?> ]</a></font></td></tr>
 <tr><td width=100% bgcolor=#ffffff align=center colspan=2>&nbsp;&nbsp;</td></tr>
-<?}
+<?php }
 ?>
 <tr>
 <td>
 <table  width="100%">
 <tr>
 <td colspan=2>
-<?
-$rater_ids=$_GET['id'];
+<?php $rater_ids=$_GET['id'];
 $rater_item_name='blog';
 include("modules/rater/rater.php");
 ?>
@@ -185,14 +180,13 @@ include("modules/rater/rater.php");
 									<TABLE width="730" align=center cellSpacing=1 cellPadding=1 border=0>
 				<TR>
 					<TD width="80">
-					<?
-					$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+					<?php 					$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 					$res['mem'] = $db->select_query("SELECT * FROM ".TB_MEMBER." WHERE user='".$arr['blog']['posted']."' ");
 					$arr['mem'] = $db->fetch($res['mem']);
 					$res['cblog'] = $db->select_query("SELECT *,count(id) as co FROM ".TB_BLOG." WHERE posted='".$arr['blog']['posted']."' group by posted");
 					$arr['cblog'] = $db->fetch($res['cblog']);
 					?>
-					<? if ($arr['mem']['member_pic']){ echo "<img src=\"icon/".$arr['mem']['member_pic']."\">";
+					<?php if ($arr['mem']['member_pic']){ echo "<img src=\"icon/".$arr['mem']['member_pic']."\">";
 					} else {
 						echo "<img src=\"icon/member_nrr.gif\">";
 					}
@@ -209,10 +203,10 @@ include("modules/rater/rater.php");
 					<td valign="top" >
 					<b><font color="#CC0000" size="2"><?=$arr['mem']['user'];?></font><br>
 					<b><font color="#CC0000" size="2"><?=$arr['mem']['name'];?></font><br>
-					<b><font color="#CC0000" size="2"><?echo "".$arr['mem']['work']."";?></font><br>
+					<b><font color="#CC0000" size="2"><?php echo "".$arr['mem']['work']."";?></font><br>
 					<b><font color="#CC0000" size="2">  <?=$arr['mem']['office'];?></font><br>
 					<b><font color="#CC0000" size="2">  <?=$arr['cblog']['co'];?> <?=_BLOG_MOD_NUMS;?> </font><br>
-					<b><font color="#CC0000" size="2"><?BlogLevel($arr['cblog']['co']);?></font>
+					<b><font color="#CC0000" size="2"><?php BlogLevel($arr['cblog']['co']);?></font>
 					</tr>
 
 				</table>
@@ -220,18 +214,16 @@ include("modules/rater/rater.php");
 					</TD>
 				</TR>
 </table>
-<?
-}
+<?php }
 ?>
-<?CloseTablecom();?>
+<?php CloseTablecom();?>
 <table align=center cellSpacing=0 cellPadding=0 border=0 width=730>
 
 				<TR>
 					<TD align=left>
 					<BR>
 					<B><FONT COLOR="#990000"><?=$arr['category']['category_name'];?> <?=_FROM_LINK_FIVECONT;?></B></FONT><BR><BR>
-<?
-//�ʴ��������/��Ъ�����ѹ�� 5 �ѹ�Ѻ����ش�ͧ��Ǵ����
+<?php //�ʴ��������/��Ъ�����ѹ�� 5 �ѹ�Ѻ����ش�ͧ��Ǵ����
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['blg_news'] = $db->select_query("SELECT * FROM ".TB_BLOG." WHERE category='".$arr['category']['id']."' ORDER BY id DESC LIMIT 5 ");
 $rows['blg_news'] = $db->rows($res['blg_news']);
@@ -241,8 +233,7 @@ if(!$rows['blg_news']){
 while($arr['blg_news'] = $db->fetch($res['blg_news'])){
 ?>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/suggest.gif" BORDER="0" ALIGN="absmiddle"> <B><A HREF="?name=blog&file=readblog&id=<?=$arr['blg_news']['id'];?>" target="_blank"><?=$arr['blg_news']['topic'];?></A></B> <?= ThaiTimeConvert($arr['blg_news']['post_date'],"","");?><BR>
-<?
-}
+<?php }
 $db->closedb ();
 ?>
 					</TD>
@@ -250,8 +241,7 @@ $db->closedb ();
 			</TABLE>
 			<BR><BR>
 
-<?
-if($arr['blog']['enable_comment']){
+<?php if($arr['blog']['enable_comment']){
 empty($_GET['page'])?$page="":$page=$_GET['page'];
 
 	//Check Comment
@@ -278,8 +268,7 @@ empty($_GET['page'])?$page="":$page=$_GET['page'];
 <tr>
           <td bgcolor="#FFFFFF" valign="top" align="center" width="100">
 <br>
-<?
-	$Name=$arr['comment']['name'];
+<?php 	$Name=$arr['comment']['name'];
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['admin'] = $db->select_query("SELECT * FROM ".TB_ADMIN." ");
 $arr['admin'] = $db->fetch($res['admin']);
@@ -287,29 +276,28 @@ $arr['admin'] = $db->fetch($res['admin']);
 if ($arr['admin']['username']==$Name) {
  ?>
 <A HREF="?name=admin&file=user&id=<?=$arr['admin']['id']; ?>">
-	<? if($arr['admin']['picture']==""){ ?>
+	<?php if($arr['admin']['picture']==""){ ?>
 	<IMG SRC="icon/member_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 	<IMG SRC="icon/<?=$arr['admin']['picture']; ?>" width='80' BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }
- ?> </a><?
-}else {
+	<?php }
+ ?> </a><?php }else {
 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['member'] = $db->select_query("SELECT * FROM ".TB_MEMBER." where user='".$Name."' ");
 $arr['member'] = $db->fetch($res['member']);
 
 ?>
-	<? if($arr['member']['id']==""){ ?>
+	<?php if($arr['member']['id']==""){ ?>
 		<IMG SRC="icon/guest_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 <A HREF="?name=member&file=member_Message&id=<?=$arr['member']['id']; ?>">
-	<? if($arr['member']['member_pic']==""){ ?>
+	<?php if($arr['member']['member_pic']==""){ ?>
 	<IMG SRC="icon/member_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 	<IMG SRC="icon/<?=$arr['member']['member_pic']; ?>" width='80' BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? };?></a>
-<?  };
+	<?php };?></a>
+<?php  };
 
 	};
 ?>
@@ -332,7 +320,7 @@ $arr['member'] = $db->fetch($res['member']);
 		<td >
 			<img src="images/com/b_04.jpg" width="23" alt=""></td>
 		<td bgcolor="#F5F5F5"  width="100%" alt=""><B><FONT COLOR="#990000"><?=_FROM_COMMENT_NUM;?> <?=$count;?></FONT></B>
-				<?if($admin_user){echo " <A HREF=\"?name=blog&file=delete_comment&id=".$_GET['id']."&comment=".$arr['comment']['id']."\"><IMG SRC=\"images/admin/trash.gif\" height=\"18\"  BORDER=\"0\" ALIGN=\"absmiddle\"></A>";};?>
+				<?php if($admin_user){echo " <A HREF=\"?name=blog&file=delete_comment&id=".$_GET['id']."&comment=".$arr['comment']['id']."\"><IMG SRC=\"images/admin/trash.gif\" height=\"18\"  BORDER=\"0\" ALIGN=\"absmiddle\"></A>";};?>
 				<?= ThaiTimeConvert($arr['comment']['post_date'],"1","1");?>
 		</td>
 		<td background="images/com/b_05.jpg" width="10" alt="" height="100%"></td>
@@ -349,7 +337,7 @@ $arr['member'] = $db->fetch($res['member']);
 	</tr>
 		<tr>
 		<td background="images/com/b_06.jpg" width="23" height="100%" alt=""></td>
-		<td width="100%" alt="" ><hr><FONT COLOR="#990000"><?=_BLOG_AUTH;?> </FONT></B> <?=$arr['comment']['name'];?> &nbsp;&nbsp; <FONT COLOR="#990000"><B><?=_FROM_COMMENT_IP;?> </B></FONT><?echo preg_replace('/([0-9]+\.[0-9]+)\.[0-9]+\.[0-9]+/', '\1<span style="color:red">.xxx.xxx</span>', $arr['comment']['ip']);?>
+		<td width="100%" alt="" ><hr><FONT COLOR="#990000"><?=_BLOG_AUTH;?> </FONT></B> <?=$arr['comment']['name'];?> &nbsp;&nbsp; <FONT COLOR="#990000"><B><?=_FROM_COMMENT_IP;?> </B></FONT><?php echo preg_replace('/([0-9]+\.[0-9]+)\.[0-9]+\.[0-9]+/', '\1<span style="color:red">.xxx.xxx</span>', $arr['comment']['ip']);?>
 			</td>
 		<td background="images/com/b_05.jpg" width="10" height="100%" alt=""></td>
 	</tr>
@@ -364,8 +352,7 @@ $arr['member'] = $db->fetch($res['member']);
 </td>
 </tr>
 </table>
-<?
-			$count  ++;
+<?php 			$count  ++;
 	}
 	echo "<center>";
 	SplitPage($page,$totalpage,"?name=blog&file=readblog&id=".$_GET['id']."");
@@ -387,7 +374,7 @@ $arr['member'] = $db->fetch($res['member']);
 						<TABLE cellSpacing=5 cellPadding=0 width=550 border=0 align="center">
 						<TR>
 							<TD width="80" align="right"><B><?=_FROM_COMMENT_AUTH;?> </B></TD>
-							<TD><INPUT TYPE="text" NAME="NAME" style="width:300" <?if($login_true){echo "value=\"".$login_true."\" readonly style=\"color: #FF0000\" ";};?><?if($admin_user){echo "value=\"".$admin_user."\" readonly style=\"color: #FF0000\" ";};?>></TD>
+							<TD><INPUT TYPE="text" NAME="NAME" style="width:300" <?php if($login_true){echo "value=\"".$login_true."\" readonly style=\"color: #FF0000\" ";};?><?php if($admin_user){echo "value=\"".$admin_user."\" readonly style=\"color: #FF0000\" ";};?>></TD>
 						</TR>
 <?php
  if( !$login_true || !$admin_user){
@@ -396,7 +383,7 @@ $arr['member'] = $db->fetch($res['member']);
 ?>
 						<TR>
 							<TD width="80" align="right">
-							<?if(CAPCHA_TYPE == 1){
+							<?php if(CAPCHA_TYPE == 1){
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -404,8 +391,7 @@ $arr['member'] = $db->fetch($res['member']);
 							</TD>
 							<TD><input name="security_code" type="text" id="security_code" size="20" maxlength="6" style="width:80" > <?=_JAVA_CAPTCHA_ADD;?> </TD>
 						</TR>
-<?
-// }
+<?php // }
 }
 ?>
 						<TR>
@@ -430,8 +416,7 @@ $arr['member'] = $db->fetch($res['member']);
 			<?=_FROM_COMMENT_AGREE;?> <A HREF="mailto:<?=WEB_EMAIL;?>"><?=WEB_EMAIL;?></A> <?=_FROM_COMMENT_AGREE2;?>
 			<BR><BR>
 			<!-- End Enable Comment -->
-<?
-}
+<?php }
 ?>
 
 			<!-- End News -->

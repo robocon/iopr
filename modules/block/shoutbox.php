@@ -1,4 +1,4 @@
-			<? $smiletagURL = 'modules/smiletag/';
+			<?php $smiletagURL = 'modules/smiletag/';
 			?>
 
 <!-- Edit HTML Below to customize the look of your smiletag form and iframe -->
@@ -88,11 +88,10 @@
 			<tr>
 			<td align="right">
   			<form name="smiletagform" method="post" action="<?php echo $smiletagURL; ?>post.php" target="iframetag">
-              <b><?=_SMILE_NAME_ADD;?> </b></td><td ><input type="text" name="name" <?if(!empty($_SESSION['login_true'])){echo "value=\"".$_SESSION['login_true']."\" readonly style=\"color: #FF0000\" ";};?><?if(!empty($_SESSION['admin_user'])){echo "value=\"".$_SESSION['admin_user']."\" readonly style=\"color: #FF0000\" ";};?> size="15" /></td></tr>
+              <b><?=_SMILE_NAME_ADD;?> </b></td><td ><input type="text" name="name" <?php if(!empty($_SESSION['login_true'])){echo "value=\"".$_SESSION['login_true']."\" readonly style=\"color: #FF0000\" ";};?><?php if(!empty($_SESSION['admin_user'])){echo "value=\"".$_SESSION['admin_user']."\" readonly style=\"color: #FF0000\" ";};?> size="15" /></td></tr>
 
 
-<?
- if(!empty($_SESSION['login_true']) || !empty($_SESSION['admin_user'])){
+<?php  if(!empty($_SESSION['login_true']) || !empty($_SESSION['admin_user'])){
 } else {
 if(USE_CAPCHA){
 ?>
@@ -100,7 +99,7 @@ if(USE_CAPCHA){
 	<table width="80%" border="0" cellspacing="5" cellpadding="0">
 						<TR>
 							<TD align=center>
-							<?if(CAPCHA_TYPE == 1){ 
+							<?php if(CAPCHA_TYPE == 1){ 
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){ 
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -110,8 +109,7 @@ if(USE_CAPCHA){
 							<TD align=left><input name="security_code" type="text" id="security_code" size="10" maxlength="5" style="width:60" >  
 </td>
 </tr>
-<?
-}
+<?php }
 }
 ?>
 <tr><td colspan="2">

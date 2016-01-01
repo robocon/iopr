@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 include ("editor.php");
 empty($_POST['ENABLE_COMMENT'])?$ENABLE_COMMENT="":$ENABLE_COMMENT=$_POST['ENABLE_COMMENT'];
 ?>
@@ -20,8 +19,7 @@ empty($_POST['ENABLE_COMMENT'])?$ENABLE_COMMENT="":$ENABLE_COMMENT=$_POST['ENABL
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_KNOWLEDGE_MENU_INDEX;?> </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=knowledge"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_KNOWLEDGE_MENU_LISTALL;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=knowledge&op=article_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_KNOWLEDGE_MENU_ADD_NEW;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=knowledge_category"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_MENU_DTAIL_CAT;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=knowledge_category&op=articlecat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"><?=_ADMIN_MENU_ADD_CAT;?></A><BR><BR>
-<?
-//////////////////////////////////////////// แสดงรายการสาระน่ารู้ 
+<?php //////////////////////////////////////////// แสดงรายการสาระน่ารู้ 
 if($op == ""){
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$limit = 20 ;
@@ -43,8 +41,7 @@ if($op == ""){
    <td width="40"><CENTER><B><?=_ADMIN_TABLE_TITLE_CAT;?></B></CENTER></td>
    <td width="40"><CENTER><B>Check</B></CENTER></td>
   </tr>  
-<?
-$res['knowledge'] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE." ORDER BY id DESC LIMIT $goto, $limit ");
+<?php $res['knowledge'] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE." ORDER BY id DESC LIMIT $goto, $limit ");
 $count=0;
 while($arr['knowledge'] = $db->fetch($res['knowledge'])){
 	$res['category'] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE_CAT." WHERE id='".$arr['knowledge']['category']."' ");
@@ -75,21 +72,20 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=knowledge&op=article_edit&id=<? echo $arr['knowledge']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=knowledge&op=article_del&id=<? echo $arr['knowledge']['id'];?>&pic=<? echo $arr['knowledge']['pic'];?>&prefix=<? echo $arr['knowledge']['post_date'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=knowledge&op=article_edit&id=<?php echo $arr['knowledge']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=knowledge&op=article_del&id=<?php echo $arr['knowledge']['id'];?>&pic=<?php echo $arr['knowledge']['pic'];?>&prefix=<?php echo $arr['knowledge']['post_date'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-     <td><A HREF="?name=knowledge&file=readknowledge&id=<?echo $arr['knowledge']['id'];?>" target="_blank"><?echo $arr['knowledge']['topic'];?></A><?=$CommentIcon;?><?=$PicIcon;?><?=$AttIcon;?><?=NewsIcon(TIMESTAMP, $arr['knowledge']['post_date'], "images/icon_new.gif");?></td>
-     <td ><CENTER><?echo ThaiTimeConvert($arr['knowledge']['post_date'],'','');?></CENTER></td>
+     <td><A HREF="?name=knowledge&file=readknowledge&id=<?php echo $arr['knowledge']['id'];?>" target="_blank"><?php echo $arr['knowledge']['topic'];?></A><?=$CommentIcon;?><?=$PicIcon;?><?=$AttIcon;?><?=NewsIcon(TIMESTAMP, $arr['knowledge']['post_date'], "images/icon_new.gif");?></td>
+     <td ><CENTER><?php echo ThaiTimeConvert($arr['knowledge']['post_date'],'','');?></CENTER></td>
      <td align="center">
-	 <?if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
-	 <A HREF="#"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle" alt="<?echo $arr['category']['category_name'];?>" onMouseOver="MM_displayStatusMsg('<?echo $arr['category']['category_name'];?>');return document.MM_returnValue"></A>
-	 <? } ?>
+	 <?php if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
+	 <A HREF="#"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle" alt="<?php echo $arr['category']['category_name'];?>" onMouseOver="MM_displayStatusMsg('<?php echo $arr['category']['category_name'];?>');return document.MM_returnValue"></A>
+	 <?php } ?>
 	 </td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr['knowledge']['id'];?>"></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr['knowledge']['id'];?>"></td>
     </tr>
 
-<?
-	$count++;
+<?php 	$count++;
  } 
 ?>
  </table>
@@ -100,8 +96,7 @@ $ColorFill = 'class="odd"';
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-	SplitPage($page,$totalpage,"?name=admin&file=knowledge");
+<?php 	SplitPage($page,$totalpage,"?name=admin&file=knowledge");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -199,8 +194,7 @@ else if($op == "article_add"){
 <BR><BR>
 <B><?=_ADMIN_FORM_CAT;?> :</B><BR>
 <SELECT NAME="CATEGORY">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
 	   echo "<option value=\"".$arr['category']['id']."\"";
@@ -211,9 +205,9 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B><?=_ADMIN_FORM_ICON;?> : </B><BR>
-<IMG name="view01" SRC="images/knowledge_blank.gif" <?echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" ><BR>
+<IMG name="view01" SRC="images/knowledge_blank.gif" <?php echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" ><BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-<?=_ADMIN_FORM_ICON_WIDTH;?> <?echo _IKNOW_W." x "._IKNOW_H ;?> <?=_ADMIN_FORM_ICON_WIDTH1;?>
+<?=_ADMIN_FORM_ICON_WIDTH;?> <?php echo _IKNOW_W." x "._IKNOW_H ;?> <?=_ADMIN_FORM_ICON_WIDTH1;?>
 <BR><BR>
 
 <B><?=_ADMIN_FORM_HEADLINE;?> :</B><BR>
@@ -232,8 +226,7 @@ $db->closedb ();
 <input type="submit" value="<?=_ADMIN_KNOWLEDGE_BUTTON_ADD;?>" name="submit"> <input type="reset" value="<?=_ADMIN_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -346,8 +339,7 @@ else if($op == "article_edit"){
 <BR><BR>
 <B><?=_ADMIN_FORM_CAT;?> :</B><BR>
 <SELECT NAME="CATEGORY">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
 	   echo "<option value=\"".$arr['category']['id']."\"";
@@ -359,18 +351,16 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B><?=_ADMIN_FORM_ICON;?> : </B><BR>
-<?
-	if ($arr['knowledge']['pic'] !=0){?>
-<IMG name="view01" SRC="icon/knowledge_<?=$arr['knowledge']['post_date'];?>.jpg" <?echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" >
-<?} else {?>
-<IMG name="view01" SRC="images/news_blank.gif" <?echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" >
-<?
-	}
+<?php 	if ($arr['knowledge']['pic'] !=0){?>
+<IMG name="view01" SRC="icon/knowledge_<?=$arr['knowledge']['post_date'];?>.jpg" <?php echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" >
+<?php } else {?>
+<IMG name="view01" SRC="images/news_blank.gif" <?php echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" >
+<?php 	}
 ?>
 <BR>
 
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-<?=_ADMIN_FORM_ICON_WIDTH;?> <?echo _IKNOW_W." x "._IKNOW_H ;?> <?=_ADMIN_FORM_ICON_WIDTH1;?>
+<?=_ADMIN_FORM_ICON_WIDTH;?> <?php echo _IKNOW_W." x "._IKNOW_H ;?> <?=_ADMIN_FORM_ICON_WIDTH1;?>
 <BR><BR>
 <B><?=_ADMIN_FORM_HEADLINE;?> :</B><BR>
 <textarea cols="100"  rows="10"  name="HEADLINE" ><?=$HEADLINE;?></textarea>
@@ -380,13 +370,12 @@ $db->closedb ();
 <BR>
 <B><?=_ADMIN_FORM_FILE_ATT;?> : </B><BR>
 <input type="file" name="FILESS" onpropertychange="view01.src=FILESS.value;" style="width=250;"><br>
-<INPUT TYPE="checkbox" NAME="ENABLE_COMMENT" VALUE="1" <?if($arr['knowledge']['enable_comment']){echo " Checked";};?>> <?=_ADMIN_FORM_ALLOW_COMMENT;?>
+<INPUT TYPE="checkbox" NAME="ENABLE_COMMENT" VALUE="1" <?php if($arr['knowledge']['enable_comment']){echo " Checked";};?>> <?=_ADMIN_FORM_ALLOW_COMMENT;?>
 <BR>
 <input type="submit" value="<?=_ADMIN_KNOWLEDGE_BUTTON_EDIT;?>" name="submit"> <input type="reset" value="<?=_ADMIN_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

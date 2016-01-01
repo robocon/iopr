@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 
 	if(CheckLevel($admin_user,"member_del")){
 
@@ -19,8 +18,7 @@ CheckAdmin($admin_user, $admin_pwd);
 				<tr>
 				<td align="center">
 				
-            <?
-		$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+            <?php 		$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 		$MemResult = $db->select_query("SELECT * FROM ".TB_MEMBER." WHERE member_id='".$_GET['member_id']."' ");
 		$DelMem= $db->fetch($MemResult);
 

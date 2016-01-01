@@ -1,6 +1,5 @@
 	<table cellspacing="0" cellpadding="0" width="<?=$widthSUM;?>" border="0">
-	<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+	<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['groupstext'] = $db->select_query("SELECT * FROM ".TB_BLOG_CAT." ORDER BY id ");
 while ($arr['groupstext'] = $db->fetch($res['groupstext']))
    {

@@ -1,8 +1,7 @@
  <table width="750" align=center cellSpacing=0 cellPadding=0 border=0><tr><TD ><IMG SRC="images/menu/textmenu_alumnus.png" BORDER="0"></TD></tr>
  <tr><TD height="1" class="dotline" colspan="4"></td></tr></table>
  <br>
-<?
-
+<?php 
 //include "modules/alumnus/form_search1.php";
 include "modules/alumnus/config.inc.php";
 include "modules/alumnus/form_search.php";
@@ -250,16 +249,14 @@ $bgc = "#F0F0F0";
 		<td bgcolor=$bgc align=left vAlign=top class=style>";
 		?>
 		<A HREF="popup.php?name=alumnus&file=view&id=<?=$arr[0];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 450, objectHeight: 350} )" class="highslide">
-		<?
-		echo "$arr[2]  $arr[3] [$arr[4]]</a></td>
+		<?php 		echo "$arr[2]  $arr[3] [$arr[4]]</a></td>
 		<td bgcolor=$bgc align=center vAlign=top class=style>$sex</td>
 		<td bgcolor=$bgc align=left vAlign=top class=style>$arr[20]</td>
 		<td bgcolor=$bgc align=center vAlign=top class=style>$arr[16]</td>
 		<td bgcolor=$bgc align=center class=style>";
 		?>
 		<A HREF="popup.php?name=alumnus&file=view&id=<?=$arr[0];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 450, objectHeight: 350} )" class="highslide"><img src="modules/alumnus/avartar/<?=$arr[21];?>" border="0" alt="<?=_ALUM_MOD_DETAIL_TABLE_CLICKDETAIL;?>"></a>
-		<?
-		echo "</td></tr>";
+		<?php 		echo "</td></tr>";
 
 		$i++;
 $count++;
@@ -269,8 +266,7 @@ $count++;
 //mysql_close();
 
 ?>
-<?
-
+<?php 
 // แสดงหน้า link ไปยังหน้าอื่นๆ
 echo "<table width='98%' border='0' cellspacing='0' cellpadding='0'><tr class=style >";
 echo "<br>";

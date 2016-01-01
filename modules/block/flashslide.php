@@ -4,8 +4,7 @@
 <tr>
 <td align="center">
 <div align="center">
-<?
-		$dir=opendir("images/random");
+<?php 		$dir=opendir("images/random");
 		$file="";
 		$a=0;
 		$i=0;
@@ -23,8 +22,7 @@ var imag=new Array();
 var link=new Array();
 var text=new Array();
 </script>
-<?
-$iNumber = 0;
+<?php $iNumber = 0;
 $aImages = array();
 		while (($file=readdir($dir))==true) {
 //		print $file ."<br>";

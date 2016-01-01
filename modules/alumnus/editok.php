@@ -1,8 +1,7 @@
  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_alumnus.png" BORDER="0">
  <table width="750" align=center cellSpacing=0 cellPadding=0 border=0><tr><TD height="1" class="dotline" colspan="4"></TD></tr></table>
  <br>
-<?
-if (!empty($_SESSION['admin_user'])){
+<?php if (!empty($_SESSION['admin_user'])){
 include("modules/alumnus/config.inc.php");
 
  // รับค่าตัวแปรมา
@@ -247,7 +246,6 @@ $db->closedb ();
 </table></td>
 </tr>
 </table>
-<?
-print "<meta http-equiv=refresh content=0;URL=index.php?name=admin>";
+<?php print "<meta http-equiv=refresh content=0;URL=index.php?name=admin>";
  }
 ?>

@@ -1,5 +1,4 @@
-<?
-
+<?php 
 if(!$login_true) {
 echo "<meta http-equiv=refresh content=2;URL=?name=member>" ; 
 //ระบบสมาชิกเสริม maxsite 1.10 พัฒนาโดย www.narongrit.net
@@ -31,6 +30,6 @@ echo "<meta http-equiv=refresh content=2;URL=?name=member>" ;
     </TABLE></TD>
   </TR>
 </TABLE>
-<? 
+<?php 
 exit();	
 } ?>

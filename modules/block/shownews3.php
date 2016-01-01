@@ -6,8 +6,7 @@
 										<tr>
 										<td >
   													<TABLE width="100%" align=center cellSpacing=0 cellPadding=0 border=0  class="grids">
-  <?
-
+  <?php 
 empty($_GET['category'])?$category="3":$category=$_GET['category'];
 //$_GET['category']=1;
 if(!empty($category)){
@@ -42,8 +41,7 @@ echo "<TR ".$ColorFill.">";
 					<?=NewsIcon(TIMESTAMP, $arr['news']['post_date'], "images/icon_new.gif");?>( <?=$arr['news']['pageview'];?> / <?=$arrs['com']['com'];?> ) <?=_DOWNLOAD_AUTH;?> <?=$arr['news']['posted'];?> 
 													</TD></tr>
 
-<?
-$count++;
+<?php $count++;
 
 }
 $db->closedb ();

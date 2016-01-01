@@ -1,4 +1,4 @@
-<?include ("editor.php");?>
+<?php include ("editor.php");?>
 
 	<TABLE cellSpacing=0 cellPadding=0 width=750 border=0>
       <TBODY>
@@ -13,8 +13,7 @@
 				</TR>
 				<TR>
 					<TD>
-<?
- if($_GET['op'] == "research_add" AND $_GET['action'] == "add"){
+<?php  if($_GET['op'] == "research_add" AND $_GET['action'] == "add"){
 	//////////////////////////////////////////// กรณีเพิ่ม Database
 //	if($admin_user<>"" || $arr['user']<>""){
 
@@ -195,12 +194,11 @@ else if($_GET['op'] == "research_add"){
 <INPUT TYPE="text" NAME="TOPIC" size="110">
 <BR><BR>
 <B><?=_RESEARCH_MOD_FORM_NAME_AUTH;?> :</B><BR>
-<INPUT TYPE="text" NAME="auth" size="50" value=<? if($login_true){echo $login_true;} if($admin_user){echo $admin_user;}  ?>>
+<INPUT TYPE="text" NAME="auth" size="50" value=<?php if($login_true){echo $login_true;} if($admin_user){echo $admin_user;}  ?>>
 <BR><BR>
 <B><?=_RESEARCH_MOD_FORM_CAT;?> :</B><BR>
 <SELECT NAME="CATEGORY">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_RESEARCH_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
 	   echo "<option value=\"".$arr['category']['id']."\"";
@@ -211,9 +209,9 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B><?=_RESEARCH_MOD_FORM_AUTH_PIC;?> : </B><BR>
-<IMG name="view01" SRC="images/news_blank.gif" <?echo " WIDTH=\""._Iresearch_W."\" HEIGHT=\""._Iresearch_H."\" ";?> BORDER="0" ><BR>
+<IMG name="view01" SRC="images/news_blank.gif" <?php echo " WIDTH=\""._Iresearch_W."\" HEIGHT=\""._Iresearch_H."\" ";?> BORDER="0" ><BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-<?=_FORM_ICON_FIX1;?> <?echo _Iresearch_W." x "._Iresearch_H ;?> <?=_FORM_ICON_FIX2;?>
+<?=_FORM_ICON_FIX1;?> <?php echo _Iresearch_W." x "._Iresearch_H ;?> <?=_FORM_ICON_FIX2;?>
 <BR><BR>
 <B><?=_RESEARCH_MOD_FORM_HEADLINE;?> :</B><BR>
 <textarea cols="50" id="editor1" rows="50"  name="HEADLINE" ></textarea>
@@ -239,8 +237,7 @@ $db->closedb ();
 <input type="submit" value="<?=_RESEARCH_MOD_FORM_BUTTON_ADD;?>" name="submit"> <input type="reset" value="<?=_RESEARCH_MOD_FORM_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-$fields=$_REQUEST['fields'];
+<?php $fields=$_REQUEST['fields'];
 }
 ?>
 						<BR><BR>

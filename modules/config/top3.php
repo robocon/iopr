@@ -6,11 +6,10 @@ $arr['config'] = $db->fetch($res['config']);
 <TABLE width="<?=$arr['config']['width'];?>" align=center cellSpacing=0 cellPadding=0 border=0>
 <TR>
 <TD width="<?=$arr['config']['width'];?>">
-<img src="templates/<?echo WEB_TEMPLATES;?>/images/config/<?=$arr['config']['picname'];?>"  width="<?=$arr['config']['width'];?>" height="<?=$arr['config']['height'];?>" border="0">
+<img src="templates/<?php echo WEB_TEMPLATES;?>/images/config/<?=$arr['config']['picname'];?>"  width="<?=$arr['config']['width'];?>" height="<?=$arr['config']['height'];?>" border="0">
 </td>
 </tr>
 </table>
-<?
-$db->closedb ();
+<?php $db->closedb ();
 ?>
 

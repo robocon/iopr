@@ -21,7 +21,7 @@ if (counter==0) {
 document.getElementById("download").value="Download Now"
 document.getElementById("download").disabled=""
 } else {
-document.getElementById("download").value="<?echo _DOWNLOAD_MOD_RATE_WAIT;?>"+counter
+document.getElementById("download").value="<?php echo _DOWNLOAD_MOD_RATE_WAIT;?>"+counter
 document.getElementById("download").disabled="disabled"
 counter--
 setTimeout("countdown()", 1000)
@@ -69,7 +69,7 @@ echo "<BR><BR><BR><BR><CENTER><IMG SRC=\"images/icon/notview.gif\" BORDER=\"0\" 
 if($arr['download']['full_text']){ 	  
 ?>
 <h5><img src="images/header.gif"><br><?=_DOWNLOAD_MOD_RATE_ATT;?></h5>
-<? }
+<?php }
 
 
 $file=$arr['download']['full_text'];

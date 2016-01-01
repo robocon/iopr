@@ -3,8 +3,7 @@
 			<td align=center border=0 >
 
 
-	<?
-		$dir=opendir("images/random");
+	<?php 		$dir=opendir("images/random");
 		$file="";
 		$i=0;
 		$a=0;
@@ -22,10 +21,9 @@
 			$i++;
 	?>
 
-<a href="#" class="show"><img alt="" border="0" src="images/random/<? echo $as[$a]; ?>" alt="Stone" width="<?=$width;?>" height="<?=$height;?>" title="" alt="" rel="<h3>Stone</h3>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."></a>
+<a href="#" class="show"><img alt="" border="0" src="images/random/<?php echo $as[$a]; ?>" alt="Stone" width="<?=$width;?>" height="<?=$height;?>" title="" alt="" rel="<h3>Stone</h3>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."></a>
 
-<?
-$a++;
+<?php $a++;
 					}
 		}
 		?>

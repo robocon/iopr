@@ -67,7 +67,7 @@
 			$originalConfig = $this->parseMainConfigToArray($fileName);
 			
 			
-			$textData = '<?xml version="1.0"?>'."\n".'<smiletag_config>'."\n".'</smiletag_config>';
+			$textData = '<?php xml version="1.0"?>'."\n".'<smiletag_config>'."\n".'</smiletag_config>';
 						
 			$xmlDoc =& new DOMIT_Lite_Document();
 			$xmlDoc->parseXML($textData,false);
@@ -83,7 +83,7 @@
 				$rootElement->appendChild($configElement);
 			}		
 									
-			$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
+			$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
 			
 			//save backs to file
 			$file = @fopen($fileName,'w') or die("Could not open file $fileName or permission denied");       
@@ -232,7 +232,7 @@
 			$textData = trim(implode($buffer));
 			
 			if(empty($textData)){
-				$textData = '<?xml version="1.0"?>'."\n".'<smiletag_message>'."\n".'</smiletag_message>';
+				$textData = '<?php xml version="1.0"?>'."\n".'<smiletag_message>'."\n".'</smiletag_message>';
 			};
 			
 			$xmlDoc =& new DOMIT_Lite_Document();
@@ -275,7 +275,7 @@
 			$rootElement->insertBefore($rowElement,$rootElement->firstChild);	
 						
 			
-			$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
+			$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
 			
 			//save backs to file
 			$file = @fopen($fileName,'w') or die("Could not open file $fileName or permission denied");       
@@ -298,7 +298,7 @@
 			
 			$messageArray = array_reverse($this->parseMessagesToArray($fileName));
 			
-			$textData = '<?xml version="1.0"?>'."\n".'<smiletag_message>'."\n".'</smiletag_message>';
+			$textData = '<?php xml version="1.0"?>'."\n".'<smiletag_message>'."\n".'</smiletag_message>';
 			
 			
 			$xmlDoc =& new DOMIT_Lite_Document();
@@ -337,7 +337,7 @@
 					
 			$rootElement =& $xmlDoc->documentElement;
 			if($rootElement->hasChildNodes()){
-				$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
+				$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
 			}else{
 				$buffer = '';
 			}
@@ -362,7 +362,7 @@
 			
 			$messageArray = array_reverse($this->parseMessagesToArray($fileName));
 			
-			$textData = '<?xml version="1.0"?>'."\n".'<smiletag_message>'."\n".'</smiletag_message>';
+			$textData = '<?php xml version="1.0"?>'."\n".'<smiletag_message>'."\n".'</smiletag_message>';
 			
 			
 			$xmlDoc =& new DOMIT_Lite_Document();
@@ -409,7 +409,7 @@
 					
 			$rootElement =& $xmlDoc->documentElement;
 			if($rootElement->hasChildNodes()){
-				$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
+				$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
 			}else{
 				$buffer = '';
 			}
@@ -444,7 +444,7 @@
 			$textData = trim(implode($buffer));
 			
 			if(empty($textData)){
-				$textData = '<?xml version="1.0"?>'."\n".'<ban_list>'."\n".'</ban_list>';
+				$textData = '<?php xml version="1.0"?>'."\n".'<ban_list>'."\n".'</ban_list>';
 			};
 			
 			$xmlDoc =& new DOMIT_Lite_Document();
@@ -459,7 +459,7 @@
 						
 			$bannedIpAddressElement->appendChild($ipAddressElement);
 						
-			$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
+			$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
 						
 			//save backs to file
 			$file = @fopen($fileName,'w') or die("Could not open file $fileName or permission denied");       
@@ -492,7 +492,7 @@
 			$textData = trim(implode($buffer));
 			
 			if(empty($textData)){
-				$textData = '<?xml version="1.0"?>'."\n".'<ban_list>'."\n".'</ban_list>';
+				$textData = '<?php xml version="1.0"?>'."\n".'<ban_list>'."\n".'</ban_list>';
 			};
 			
 			$xmlDoc =& new DOMIT_Lite_Document();
@@ -507,7 +507,7 @@
 						
 			$bannedNicknameElement->appendChild($nicknameElement);
 						
-			$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
+			$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
 						
 			//save backs to file
 			$file = @fopen($fileName,'w') or die("Could not open file $fileName or permission denied");       
@@ -555,7 +555,7 @@
 			$nickNameElement =& $rootElement->lastChild;
 			
 			//rebuild, excluding the deleted ip address
-			$textData = '<?xml version="1.0"?>'."\n".'<ban_list>'."\n".'</ban_list>';
+			$textData = '<?php xml version="1.0"?>'."\n".'<ban_list>'."\n".'</ban_list>';
 			$xmlDoc2 =& new DOMIT_Lite_Document();
 			$xmlDoc2->parseXML($textData,false);
 			
@@ -574,7 +574,7 @@
 			$rootElement2->appendChild($bannedIpAddressElement);
 			$rootElement2->appendChild($nickNameElement);
 				
-			$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc2->toNormalizedString(false);
+			$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc2->toNormalizedString(false);
 			
 			//save backs to file
 			$file = @fopen($fileName,'w') or die("Could not open file $fileName or permission denied");       
@@ -622,7 +622,7 @@
 			$ipAddressElement =& $rootElement->firstChild;
 			
 			//rebuild, excluding the deleted ip address
-			$textData = '<?xml version="1.0"?>'."\n".'<ban_list>'."\n".'</ban_list>';
+			$textData = '<?php xml version="1.0"?>'."\n".'<ban_list>'."\n".'</ban_list>';
 			$xmlDoc2 =& new DOMIT_Lite_Document();
 			$xmlDoc2->parseXML($textData,false);
 			
@@ -641,7 +641,7 @@
 			$rootElement2->appendChild($ipAddressElement);
 			$rootElement2->appendChild($bannedNickNameElement);
 						
-			$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc2->toNormalizedString(false);
+			$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc2->toNormalizedString(false);
 			
 			//save backs to file
 			$file = @fopen($fileName,'w') or die("Could not open file $fileName or permission denied");       
@@ -766,7 +766,7 @@
 			$textData = trim(implode($buffer));
 			
 			if(empty($textData)){
-				$textData = '<?xml version="1.0"?>'."\n".'<smiley_config>'."\n".'</smiley_config>';
+				$textData = '<?php xml version="1.0"?>'."\n".'<smiley_config>'."\n".'</smiley_config>';
 			};
 			
 			$xmlDoc =& new DOMIT_Lite_Document();
@@ -792,7 +792,7 @@
 			$rootElement->insertBefore($smileyElement,$rootElement->firstChild);	
 						
 			
-			$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
+			$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
 						
 			//save backs to file
 			$file = @fopen($fileName,'w') or die("Could not open file $fileName or permission denied");       
@@ -816,7 +816,7 @@
 			
 			$smiliesArray = $this->parseSmiliesToArray($fileName);
 			
-			$textData = '<?xml version="1.0"?>'."\n".'<smiley_config>'."\n".'</smiley_config>';
+			$textData = '<?php xml version="1.0"?>'."\n".'<smiley_config>'."\n".'</smiley_config>';
 						
 			$xmlDoc =& new DOMIT_Lite_Document();
 			$xmlDoc->parseXML($textData,false);
@@ -844,7 +844,7 @@
 			}
 			
 			if($rootElement->hasChildNodes()){
-				$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
+				$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
 			}else{
 				$buffer = '';
 			}
@@ -881,7 +881,7 @@
 			$textData = trim(implode($buffer));
 			
 			if(empty($textData)){
-				$textData = '<?xml version="1.0"?>'."\n".'<badword_config><replacement>*beep*</replacement>'."\n".'</badword_config>';
+				$textData = '<?php xml version="1.0"?>'."\n".'<badword_config><replacement>*beep*</replacement>'."\n".'</badword_config>';
 			};
 			
 			$xmlDoc =& new DOMIT_Lite_Document();
@@ -899,7 +899,7 @@
 				
 					
 			
-			$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
+			$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc->toNormalizedString(false);
 						
 			//save backs to file
 			$file = @fopen($fileName,'w') or die("Could not open file $fileName or permission denied");       
@@ -942,7 +942,7 @@
 
 			
 			//rebuild		
-			$textData = '<?xml version="1.0"?>'."\n".'<badword_config>'."\n".'</badword_config>';
+			$textData = '<?php xml version="1.0"?>'."\n".'<badword_config>'."\n".'</badword_config>';
 						
 			$xmlDoc2 =& new DOMIT_Lite_Document();
 			$xmlDoc2->parseXML($textData,false);
@@ -964,7 +964,7 @@
 			$rootElement2->appendChild($replacementElement);
 			$rootElement2->appendChild($badwordsElement);
 			
-			$buffer = '<?xml version="1.0"?>'."\n".$xmlDoc2->toNormalizedString(false);
+			$buffer = '<?php xml version="1.0"?>'."\n".$xmlDoc2->toNormalizedString(false);
 						
 			//save backs to file
 			$file = @fopen($fileName,'w') or die("Could not open file $fileName or permission denied");       

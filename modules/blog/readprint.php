@@ -15,10 +15,9 @@ function emoticon(theSmilie) {
 }
 </script>
 
-		  <? OpenTablecom();?>
+		  <?php OpenTablecom();?>
 				<TABLE width="730" align=center cellSpacing=0 cellPadding=0 border=0>
-<?
-
+<?php 
 $_GET['id'] = intval($_GET['id']);
 
 //แสดงสาระน่ารู้ 
@@ -54,7 +53,7 @@ if(!$arr['blog']['id']){
 
 				<TR>
 					<TD valign="top">
-					<? if($arr['blog']['pic']){ echo "<img src=\"icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg\"></td>";
+					<?php if($arr['blog']['pic']){ echo "<img src=\"icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg\"></td>";
 					} else {
 					echo "<img src=\"images/icon/".$arr['category']['icon']."\"></td>";
 					}
@@ -73,7 +72,7 @@ if(!$arr['blog']['id']){
 					</tr>
 					<tr>
 					<td>
-					<b><FONT COLOR="#3333FF"><?=_BLOG_LEVEL;?> </font><FONT COLOR="#FF0000"><?BlogLevel($arr['cblog']['co']);?></FONT>
+					<b><FONT COLOR="#3333FF"><?=_BLOG_LEVEL;?> </font><FONT COLOR="#FF0000"><?php BlogLevel($arr['cblog']['co']);?></FONT>
 					</td>
 					</tr>
 					<tr>
@@ -108,14 +107,13 @@ if(!$arr['blog']['id']){
 									<TABLE width="730" align=center cellSpacing=1 cellPadding=1 border=0>
 				<TR>
 					<TD width="80">
-					<?
-					$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+					<?php 					$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 					$res['mem'] = $db->select_query("SELECT * FROM ".TB_MEMBER." WHERE user='".$arr['blog']['posted']."' ");
 					$arr['mem'] = $db->fetch($res['mem']);
 					$res['cblog'] = $db->select_query("SELECT *,count(id) as co FROM ".TB_BLOG." WHERE posted='".$arr['blog']['posted']."' group by posted");
 					$arr['cblog'] = $db->fetch($res['cblog']);					
 					?>
-					<? if ($arr['mem']['member_pic']){ echo "<img src=\"icon/".$arr['mem']['member_pic']."\">";
+					<?php if ($arr['mem']['member_pic']){ echo "<img src=\"icon/".$arr['mem']['member_pic']."\">";
 					} else {
 						echo "<img src=\"icon/member_nrr.gif\">";
 					}
@@ -132,10 +130,10 @@ if(!$arr['blog']['id']){
 					<td valign="top" >
 					<b><font color="#CC0000" size="2"><?=$arr['mem']['user'];?></font><br>
 					<b><font color="#CC0000" size="2"><?=$arr['mem']['name'];?></font><br>
-					<b><font color="#CC0000" size="2"><?echo "".$arr['mem']['date']."/".$arr['mem']['month']."/".$arr['mem']['year']."";?></font><br>
+					<b><font color="#CC0000" size="2"><?php echo "".$arr['mem']['date']."/".$arr['mem']['month']."/".$arr['mem']['year']."";?></font><br>
 					<b><font color="#CC0000" size="2">  <?=$arr['mem']['office'];?></font><br>
 					<b><font color="#CC0000" size="2">  <?=$arr['cblog']['co'];?> <?=_BLOG_MOD_NUMS;?> </font><br>
-					<b><font color="#CC0000" size="2"><?BlogLevel($arr['cblog']['co']);?></font>
+					<b><font color="#CC0000" size="2"><?php BlogLevel($arr['cblog']['co']);?></font>
 					</tr>
 
 				</table>
@@ -143,8 +141,7 @@ if(!$arr['blog']['id']){
 					</TD>
 				</TR>
 </table>
-<?
-}
+<?php }
 ?>
-<?CloseTablecom();?>
+<?php CloseTablecom();?>
 

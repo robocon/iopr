@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 ?>
 
 	<TABLE cellSpacing=0 cellPadding=0 width=820 border=0>
@@ -18,8 +17,7 @@ CheckAdmin($admin_user, $admin_pwd);
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_NEW_MENU_TITLE;?></B>
 					<BR><BR>
 					<A HREF="?name=admin&file=news"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_NEW_MENU_TITLE_ALL;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=news&op=news_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_NEW_MENU_TITLE_ADD_NEW;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=news_category"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"><?=_ADMIN_MENU_DTAIL_CAT;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=news_category&op=newscat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"><?=_ADMIN_MENU_ADD_CAT;?></A><BR><BR>
-<?
-//////////////////////////////////////////// แสดงรายการ
+<?php //////////////////////////////////////////// แสดงรายการ
 if($op == ""){
 ?>
 <form action="?name=admin&file=news_category&op=newscat_del&action=multidel" name="myform" method="post">
@@ -32,8 +30,7 @@ if($op == ""){
    <td align="center" width="50"><B><?=_ADMIN_FORM_CAT_ORDER;?></B></td>
    <td><B><CENTER>Check</CENTER></B></td>
   </tr>  
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['newscat'] = $db->select_query("SELECT * FROM ".TB_NEWS_CAT." ORDER BY sort ");
 $rows['newscat'] = $db->rows($res['newscat']);
 $CATCOUNT = 0 ;
@@ -62,18 +59,17 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=news_category&op=newscat_edit&id=<? echo $arr['newscat']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=news_category&op=newscat_del&id=<? echo $arr['newscat']['id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE_CAT;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=news_category&op=newscat_edit&id=<?php echo $arr['newscat']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=news_category&op=newscat_del&id=<?php echo $arr['newscat']['id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE_CAT;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-     <td><?echo $arr['newscat']['category_name'];?></td>
-	 <td align="center" width="50" ><img src="images/icon/<?echo  $arr['newscat']['icon'] ;?>" border="0" width="40" height="30"></td>
-	 <td align="center" width="50" ><?echo $row['sumnews'] ;?></td>
-     <td align="center" width="50"><A HREF="?name=admin&file=news_category&op=newscat_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['newscat']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=news_category&op=newscat_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['newscat']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<? echo $arr['newscat']['id'];?>"></td>
+     <td><?php echo $arr['newscat']['category_name'];?></td>
+	 <td align="center" width="50" ><img src="images/icon/<?php echo  $arr['newscat']['icon'] ;?>" border="0" width="40" height="30"></td>
+	 <td align="center" width="50" ><?php echo $row['sumnews'] ;?></td>
+     <td align="center" width="50"><A HREF="?name=admin&file=news_category&op=newscat_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['newscat']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=news_category&op=newscat_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['newscat']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<?php echo $arr['newscat']['id'];?>"></td>
     </tr>
 
-<?
-	$count++;
+<?php 	$count++;
  }
 $db->closedb ();
 ?>
@@ -85,8 +81,7 @@ $db->closedb ();
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form>
-<?
-}
+<?php }
 else if($op == "newscat_add" AND $action == "add"){
 	//////////////////////////////////////////// กรณีเพิ่ม Database
 	if(CheckLevel($admin_user,$op)){
@@ -151,12 +146,11 @@ else if($op == "newscat_add"){
 <BR><BR>
 <B><?=_ADMIN_FORM_CAT_ICON;?> :</B><BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-<?=_ADMIN_FORM_ICON_WIDTH;?> <?echo _INEWS_W." x "._INEWS_H ;?> <?=_ADMIN_FORM_CAT_ICON_WIDTH;?>
+<?=_ADMIN_FORM_ICON_WIDTH;?> <?php echo _INEWS_W." x "._INEWS_H ;?> <?=_ADMIN_FORM_CAT_ICON_WIDTH;?>
 <BR><BR>
 <INPUT TYPE="submit" value=" <?=_ADMIN_NEW_BUTTON_CAT_ADD;?> ">
 </FORM>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -269,14 +263,13 @@ else if($op == "newscat_edit"){
 <INPUT TYPE="text" NAME="CATEGORY" size="40" value="<?=$arr['newscat']['category_name'];?>">
 <BR><BR>
 <B><?=_ADMIN_FORM_CAT_ICON;?> :</B><BR>
-<IMG name="view01" SRC="images/icon/<? echo $arr['newscat']['icon'];?>" <?echo " WIDTH=\""._INEWS_W."\" HEIGHT=\""._INEWS_H."\" ";?> BORDER="0" ><BR>
+<IMG name="view01" SRC="images/icon/<?php echo $arr['newscat']['icon'];?>" <?php echo " WIDTH=\""._INEWS_W."\" HEIGHT=\""._INEWS_H."\" ";?> BORDER="0" ><BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=350;"><BR>
-<?=_ADMIN_FORM_ICON_WIDTH;?> <?echo _INEWS_W." x "._INEWS_H ;?> <?=_ADMIN_FORM_CAT_ICON_WIDTH;?>
+<?=_ADMIN_FORM_ICON_WIDTH;?> <?php echo _INEWS_W." x "._INEWS_H ;?> <?=_ADMIN_FORM_CAT_ICON_WIDTH;?>
 <BR><BR>
 <INPUT TYPE="submit" value="<?=_ADMIN_NEW_BUTTON_CAT_EDIT;?>">
 </FORM>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

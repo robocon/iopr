@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 include ("editor.php");
 ?>
 
@@ -19,8 +18,7 @@ include ("editor.php");
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_BLOCK_MENU_NAME;?> </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=block"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_BLOCK_MENU_ALL_TOPIC;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_BLOCK_MENU_ADD_TOPIC;?></A> &nbsp;&nbsp;&nbsp;
-<?
-//////////////////////////////////////////// แสดงรายการข่าวสาร / ประชาสัมพันธ์ 
+<?php //////////////////////////////////////////// แสดงรายการข่าวสาร / ประชาสัมพันธ์ 
 if($op == ""){
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$limit = 30 ;
@@ -93,12 +91,12 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=block&op=block_edit&id=<? echo $arr['block']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=block&op=block_del&id=<? echo $arr['block']['id'];?>&prefix=<? echo $arr['block']['post_date'];?>', '<? echo _ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=block&op=block_edit&id=<?php echo $arr['block']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=block&op=block_del&id=<?php echo $arr['block']['id'];?>&prefix=<?php echo $arr['block']['post_date'];?>', '<?php echo _ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-	      <td><?if($code==''){?><A HREF="index2.php?name=block&file=<?echo $arr['block']['filename'];?>&op=show" target="_blank"><?echo $arr['block']['name'];?></A><?} else {?><A HREF="index2.php?name=block&file=codeblock&id=<?echo $arr['block']['id'];?>" target="_blank"><?echo $arr['block']['name'];?></A><?}?></td>
-     <td><?if($code==''){?><A HREF="index2.php?name=block&file=<?echo $arr['block']['filename'];?>&op=show" target="_blank"><?echo $arr['block']['blockname'];?></A><?} else {?><A HREF="index2.php?name=block&file=codeblock&id=<?echo $arr['block']['id'];?>" target="_blank"><?echo $arr['block']['name'];?></A><?}?></td>
-     <td ><CENTER><? if ($arr['block']['pblock']=='0'){ echo "<font color=#CC0000><b>"._ADMIN_BLOCK_STATUS_HIDE."</font>"; } else if ($arr['block']['pblock']=='center'){ echo "<font color=#CC0000><b>"._ADMIN_BLOCK_STATUS_CENTER."</font>"; }  else if ($arr['block']['pblock']=='left'){ echo "<font color=#9900CC><b>"._ADMIN_BLOCK_STATUS_LEFT."</font>"; }  else if ($arr['block']['pblock']=='right'){ echo "<font color=#33FF00><b>"._ADMIN_BLOCK_STATUS_RIGHT."</font>"; }else if ($arr['block']['pblock']=='user1'){ echo "<font color=#33FF00><b>user1</font>"; }else if ($arr['block']['pblock']=='user2'){ echo "<font color=#33FF00><b>user2</font>"; }else if ($arr['block']['pblock']=='bottom'){ echo "<font color=#33FF00><b>bottom</font>"; }else if ($arr['block']['pblock']=='header'){ echo "<font color=#33FF00><b>header</font>"; }else if ($arr['block']['pblock']=='pathway'){ echo "<font color=#33FF00><b>pathway</font>"; }?></CENTER></td>
+	      <td><?php if($code==''){?><A HREF="index2.php?name=block&file=<?php echo $arr['block']['filename'];?>&op=show" target="_blank"><?php echo $arr['block']['name'];?></A><?php } else {?><A HREF="index2.php?name=block&file=codeblock&id=<?php echo $arr['block']['id'];?>" target="_blank"><?php echo $arr['block']['name'];?></A><?php }?></td>
+     <td><?php if($code==''){?><A HREF="index2.php?name=block&file=<?php echo $arr['block']['filename'];?>&op=show" target="_blank"><?php echo $arr['block']['blockname'];?></A><?php } else {?><A HREF="index2.php?name=block&file=codeblock&id=<?php echo $arr['block']['id'];?>" target="_blank"><?php echo $arr['block']['name'];?></A><?php }?></td>
+     <td ><CENTER><?php if ($arr['block']['pblock']=='0'){ echo "<font color=#CC0000><b>"._ADMIN_BLOCK_STATUS_HIDE."</font>"; } else if ($arr['block']['pblock']=='center'){ echo "<font color=#CC0000><b>"._ADMIN_BLOCK_STATUS_CENTER."</font>"; }  else if ($arr['block']['pblock']=='left'){ echo "<font color=#9900CC><b>"._ADMIN_BLOCK_STATUS_LEFT."</font>"; }  else if ($arr['block']['pblock']=='right'){ echo "<font color=#33FF00><b>"._ADMIN_BLOCK_STATUS_RIGHT."</font>"; }else if ($arr['block']['pblock']=='user1'){ echo "<font color=#33FF00><b>user1</font>"; }else if ($arr['block']['pblock']=='user2'){ echo "<font color=#33FF00><b>user2</font>"; }else if ($arr['block']['pblock']=='bottom'){ echo "<font color=#33FF00><b>bottom</font>"; }else if ($arr['block']['pblock']=='header'){ echo "<font color=#33FF00><b>header</font>"; }else if ($arr['block']['pblock']=='pathway'){ echo "<font color=#33FF00><b>pathway</font>"; }?></CENTER></td>
 
      <td align="center" width="50">
 	 
@@ -106,60 +104,60 @@ $ColorFill = 'class="odd"';
 		
 		if ($arr['block']['pblock']=='left' ){ 
 			 if ($arr['block']['sort']==1){?>
-		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
-		<?} else if ($arr['block']['sort']==$rows['left'] ){?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
-		 <?}else{?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?}
+		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
+		<?php } else if ($arr['block']['sort']==$rows['left'] ){?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
+		 <?php }else{?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?php }
 		} else if ($arr['block']['pblock']=='center' ){ 
 			 if ($arr['block']['sort']==1){?>
-		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
-		<?} else if ($arr['block']['sort']==$rows['center'] ){?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
-		 <?}else{?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?}
+		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
+		<?php } else if ($arr['block']['sort']==$rows['center'] ){?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
+		 <?php }else{?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?php }
 		} else	if ($arr['block']['pblock']=='header' ){ 
 			 if ($arr['block']['sort']==1){?>
-		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
-		<?} else if ($arr['block']['sort']==$rows['header'] ){?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
-		 <?}else{?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?}
+		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
+		<?php } else if ($arr['block']['sort']==$rows['header'] ){?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
+		 <?php }else{?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?php }
 		} else	if ($arr['block']['pblock']=='right' ){ 
 			 if ($arr['block']['sort']==1){?>
-		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
-		<?} else if ($arr['block']['sort']==$rows['right'] ){?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
-		 <?}else{?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?}
+		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
+		<?php } else if ($arr['block']['sort']==$rows['right'] ){?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
+		 <?php }else{?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?php }
 		} else  if ($arr['block']['pblock']=='user1' ){ 
 			 if ($arr['block']['sort']==1){?>
-		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
-		<?} else if ($arr['block']['sort']==$rows['user1'] ){?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
-		 <?}else{?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?}
+		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
+		<?php } else if ($arr['block']['sort']==$rows['user1'] ){?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
+		 <?php }else{?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?php }
 		} else if ($arr['block']['pblock']=='user2' ){ 
 			 if ($arr['block']['sort']==1){?>
-		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
-		<?} else if ($arr['block']['sort']==$rows['user2'] ){?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
-		 <?}else{?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?}
+		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
+		<?php } else if ($arr['block']['sort']==$rows['user2'] ){?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
+		 <?php }else{?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?php }
 		} else if ($arr['block']['pblock']=='bottom' ){ 
 			 if ($arr['block']['sort']==1){?>
-		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
-		<?} else if ($arr['block']['sort']==$rows['bottom'] ){?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
-		 <?}else{?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?}
+		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
+		<?php } else if ($arr['block']['sort']==$rows['bottom'] ){?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
+		 <?php }else{?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?php }
 		} else if ($arr['block']['pblock']=='pathway' ){ 
 			 if ($arr['block']['sort']==1){?>
-		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
-		<?} else if ($arr['block']['sort']==$rows['pathway'] ){?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
-		 <?}else{?>
-		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['block']['id'];?>&pblock=<?echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?}
+		 <A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A>
+		<?php } else if ($arr['block']['sort']==$rows['pathway'] ){?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>
+		 <?php }else{?>
+		<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=block&op=block_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['block']['id'];?>&pblock=<?php echo $arr['block']['pblock'];?>""><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_BLOCK_ORDER_DOWN;?>"></A><?php }
 		} else{echo "";}
 		
 		
@@ -168,14 +166,13 @@ $ColorFill = 'class="odd"';
 
 	 </td>
 	<td align="center"  valign="top">
-				  <? if($arr['block']['status']=='0') { echo "<a HREF=?name=admin&file=block&op=block_update&action=update&id=".$arr['block']['id']."&status=1><img src=images/publish_x.png alt='"._ADMIN_BLOCK_ORDER_PUBLISH_OFF."'></a>"; } else { echo "<a HREF=?name=admin&file=block&op=block_update&action=update&id=".$arr['block']['id']."&status=0><img src=images/tick.png alt='่"._ADMIN_BLOCK_ORDER_PUBLISH_ON."'></a>"; };?>
+				  <?php if($arr['block']['status']=='0') { echo "<a HREF=?name=admin&file=block&op=block_update&action=update&id=".$arr['block']['id']."&status=1><img src=images/publish_x.png alt='"._ADMIN_BLOCK_ORDER_PUBLISH_OFF."'></a>"; } else { echo "<a HREF=?name=admin&file=block&op=block_update&action=update&id=".$arr['block']['id']."&status=0><img src=images/tick.png alt='่"._ADMIN_BLOCK_ORDER_PUBLISH_ON."'></a>"; };?>
 				  </td>
 
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr['block']['id'];?>"></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr['block']['id'];?>"></td>
     </tr>
 
-<?
-		 $count++;
+<?php 		 $count++;
  } 
 ?>
  </table>
@@ -186,8 +183,7 @@ $ColorFill = 'class="odd"';
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-		SplitPage($page,$totalpage,"?name=admin&file=block");
+<?php 		SplitPage($page,$totalpage,"?name=admin&file=block");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -260,8 +256,7 @@ else if($op == "block_add"){
 <input type="submit" value=" <?=_ADMIN_BLOCK_FORM_BUTTON_ADD;?> " name="submit"> <input type="reset" value="<?=_ADMIN_BLOCK_FORM_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -434,30 +429,28 @@ else if($op == "block_edit" ){
 <B><?=_ADMIN_BLOCK_FORM_BLOCKNAME;?> :</B><BR>
 <INPUT TYPE="text" NAME="BLOCKNAME" size="50" value="<?=$arr['block']['blockname'];?>">
 <BR><BR>
-<?if($arr['block']['filename'] !=''){?>
+<?php if($arr['block']['filename'] !=''){?>
 <B><?=_ADMIN_BLOCK_FORM_FILENAME;?> :</B><BR>
 <INPUT TYPE="text" NAME="FILENAME" size="20" value="<?=$arr['block']['filename'];?>">
 <BR><BR>
 <B><?=_ADMIN_BLOCK_FORM_FILE_SNAME;?> :</B><BR>
 <INPUT TYPE="text" NAME="SFILE" size="20" value="<?=$arr['block']['sfile'];?>">
-<?}?>
+<?php }?>
 <BR>
 <BR>
 <input type="hidden" name=pblock_old value="<?=$arr['block']['pblock'];?>">
-<?
-		echo "<B>"._ADMIN_BLOCK_TABLE_HEADER_STATUS." / "._ADMIN_BLOCK_STATUS_PBLOCK."</B>&nbsp;&nbsp;<input type=Radio "; ?><? if ($arr['block']['status']==0) { echo "checked"; } ?> <?  echo " name=STATUS  value=0>"._ADMIN_BLOCK_STATUS_HIDE."&nbsp;&nbsp;<input type=Radio ";?><? if ($arr['block']['status']==1) { echo "checked"; } ?> <?  echo " name=STATUS value=1>"._ADMIN_BLOCK_STATUS_SHOW."&nbsp;&nbsp;<br><b>"._ADMIN_BLOCK_STATUS_PBLOCK."</b><input type=Radio "; ?><? if ($arr['block']['pblock']==center) { echo "checked"; } ?> <?  echo " name=PBLOCK  value=center>"._ADMIN_BLOCK_STATUS_CENTER."&nbsp;&nbsp;<input type=Radio "; ?><? if ($arr['block']['pblock']==left) { echo "checked"; } ?> <?  echo " name=PBLOCK  value=left>"._ADMIN_BLOCK_STATUS_LEFT."&nbsp;&nbsp;<input type=Radio "; ?><? if ($arr['block']['pblock']==right) { echo "checked"; } ?> <?  echo " name=PBLOCK  value=right>"._ADMIN_BLOCK_STATUS_RIGHT."&nbsp;&nbsp;<input type=Radio "; ?><? if ($arr['block']['pblock']==user1) { echo "checked"; } ?> <?  echo " name=PBLOCK  value=user1>user1&nbsp;&nbsp;<input type=Radio "; ?><? if ($arr['block']['pblock']==user2) { echo "checked"; } ?> <?  echo " name=PBLOCK  value=user2>user2&nbsp;&nbsp;<input type=Radio "; ?><? if ($arr['block']['pblock']==bottom) { echo "checked"; } ?> <?  echo " name=PBLOCK  value=bottom>bottom&nbsp;&nbsp;<input type=Radio "; ?><? if ($arr['block']['pblock']==pathway) { echo "checked"; } ?> <?  echo " name=PBLOCK  value=pathway>pathway&nbsp;&nbsp;<input type=Radio "; ?><? if ($arr['block']['pblock']==header) { echo "checked"; } ?> <?  echo " name=PBLOCK  value=header>header<BR>";
+<?php 		echo "<B>"._ADMIN_BLOCK_TABLE_HEADER_STATUS." / "._ADMIN_BLOCK_STATUS_PBLOCK."</B>&nbsp;&nbsp;<input type=Radio "; ?><?php if ($arr['block']['status']==0) { echo "checked"; } ?> <?php  echo " name=STATUS  value=0>"._ADMIN_BLOCK_STATUS_HIDE."&nbsp;&nbsp;<input type=Radio ";?><?php if ($arr['block']['status']==1) { echo "checked"; } ?> <?php  echo " name=STATUS value=1>"._ADMIN_BLOCK_STATUS_SHOW."&nbsp;&nbsp;<br><b>"._ADMIN_BLOCK_STATUS_PBLOCK."</b><input type=Radio "; ?><?php if ($arr['block']['pblock']==center) { echo "checked"; } ?> <?php  echo " name=PBLOCK  value=center>"._ADMIN_BLOCK_STATUS_CENTER."&nbsp;&nbsp;<input type=Radio "; ?><?php if ($arr['block']['pblock']==left) { echo "checked"; } ?> <?php  echo " name=PBLOCK  value=left>"._ADMIN_BLOCK_STATUS_LEFT."&nbsp;&nbsp;<input type=Radio "; ?><?php if ($arr['block']['pblock']==right) { echo "checked"; } ?> <?php  echo " name=PBLOCK  value=right>"._ADMIN_BLOCK_STATUS_RIGHT."&nbsp;&nbsp;<input type=Radio "; ?><?php if ($arr['block']['pblock']==user1) { echo "checked"; } ?> <?php  echo " name=PBLOCK  value=user1>user1&nbsp;&nbsp;<input type=Radio "; ?><?php if ($arr['block']['pblock']==user2) { echo "checked"; } ?> <?php  echo " name=PBLOCK  value=user2>user2&nbsp;&nbsp;<input type=Radio "; ?><?php if ($arr['block']['pblock']==bottom) { echo "checked"; } ?> <?php  echo " name=PBLOCK  value=bottom>bottom&nbsp;&nbsp;<input type=Radio "; ?><?php if ($arr['block']['pblock']==pathway) { echo "checked"; } ?> <?php  echo " name=PBLOCK  value=pathway>pathway&nbsp;&nbsp;<input type=Radio "; ?><?php if ($arr['block']['pblock']==header) { echo "checked"; } ?> <?php  echo " name=PBLOCK  value=header>header<BR>";
 ?>
 <BR>
 <B><?=_ADMIN_BLOCK_FORM_DETAIL;?> :</B><BR>
-<? if ($arr['block']['filename']){?><textarea cols="150"  rows="30" id="DETAIL"  name="DETAIL" ><?=$TextContent;?></textarea>
-<?} else{?>
+<?php if ($arr['block']['filename']){?><textarea cols="150"  rows="30" id="DETAIL"  name="DETAIL" ><?=$TextContent;?></textarea>
+<?php } else{?>
 <textarea cols="100" id="DETAIL" rows="50" class="ckeditor"  name="DETAIL" ><?=$TextContent;?></textarea>
-<?}?>
+<?php }?>
 <br><input type="submit" value="<?=_ADMIN_BLOCK_FORM_BUTTON_EDIT;?>" name="submit"> <input type="reset" value="<?=_ADMIN_BLOCK_FORM_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

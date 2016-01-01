@@ -4,8 +4,7 @@
 										<tr>
 										<td class='imageframe'>
   													<TABLE width="<?=$widthSUMC;?>" align=center cellSpacing=0 cellPadding=0 border=0>
-  <?
-//empty($_GET['category'])?$category="1":$category=$_GET['category'];
+  <?php //empty($_GET['category'])?$category="1":$category=$_GET['category'];
 $category=$_GET['category'];
 if(!empty($category)){
 	$SQLwhere = " category='".$category."' ";
@@ -45,27 +44,26 @@ if ($i <=_KNOW_COL){
 					<TD class="timemini"><font size="4"><b><?= ThaiTimeMini($arr['knowledge']['post_date'],"");?></b></font></td>
 					<td ><?=_BLOG_AUTH;?> <FONT COLOR="#990000"><B><?=$arr['knowledge']['posted'];?></font><br><font color=#C3C3C3> 
 					<?= ThaiTimeConvert($arr['knowledge']['post_date'],"","");?> </font>  <a href="createpdf.php?mo=knowledge&id=<?=$arr['knowledge']['id'];?>" target="_blank"><img src="images/pdf_button.png" border="0"></a> <a href="print.php?name=knowledge&file=readprint&id=<?=$arr['knowledge']['id'];?>" title="<?=_FORM_BUTTON_PRINT;?>" onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=770,height=580,directories=no,location=no'); return false;" rel="nofollow"><img src="images/printButton.png" border="0"></a> <A HREF="popup.php?name=sendmail&mo=knowledge&id=<?=$arr['knowledge']['id'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 200} )" class="highslide"><img src="images/emailButton.png" border="0"></a></td></tr>
-					<tr><td colspan="2"><?$rater_ids=$arr['knowledge']['id'];$rater_item_name='knowledge';include("modules/rater/raterss.php");?>
+					<tr><td colspan="2"><?php $rater_ids=$arr['knowledge']['id'];$rater_item_name='knowledge';include("modules/rater/raterss.php");?>
 					</B></FONT></TD>
 				</TR>
 								<TR>
 					<TD colspan="2" valign="top" align="center">
 					<A HREF="?name=knowledge&file=readknowledge&id=<?=$arr['knowledge']['id'];?>" target="_blank">
-					<?if ($arr['knowledge']['pic']==1){echo "<img  src=icon/knowledge_".$arr['knowledge']['post_date'].".jpg  class=mysborder border=0 align=center>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=center>";} ?></a>
+					<?php if ($arr['knowledge']['pic']==1){echo "<img  src=icon/knowledge_".$arr['knowledge']['post_date'].".jpg  class=mysborder border=0 align=center>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=center>";} ?></a>
 					</td>
 					</tr>
 				<TR>
 					<TD colspan="2"><img src="images/a.gif">
 					<A HREF="?name=knowledge&file=readknowledge&id=<?=$arr['knowledge']['id'];?>" target="_blank"><B><?=$arr['knowledge']['topic'];?></A></B>
 					<?=NewsIcon(TIMESTAMP, $arr['knowledge']['post_date'], "images/icon_new.gif");?>
-					<BR><?=$Detail;?> <A HREF="?name=knowledge&file=readknowledge&id=<?=$arr['knowledge']['id'];?>" ><font color="#0066FF"><?_BLOG_NEXT;?></font></a>
+					<BR><?=$Detail;?> <A HREF="?name=knowledge&file=readknowledge&id=<?=$arr['knowledge']['id'];?>" ><font color="#0066FF"><?php _BLOG_NEXT;?></font></a>
 					</TD>
 				</TR>
 				<TR><TD height="3" ></TD></TR>
 				</TABLE>
 			</TD>
-<?
-$count++;
+<?php $count++;
 if (($count%_KNOW_COL) == 0) { echo "</TR><TR><TD colspan=2 height=\"1\" bgcolor=\"$ColorFill\"></TD></TR>"; $count=0;
 } else{
 	echo "</TD>";
@@ -77,13 +75,12 @@ echo "<TR onmouseover=\"this.style.backgroundColor='#FFF0DF'\" onmouseout=\"this
 												<TD width="100%" valign=top height="20" align="left" colspan="<?=_KNOW_COL;?>">
 												<div class="">
 															<IMG SRC="images/17.png" BORDER="0" ALIGN="absmiddle">
-															<A HREF="<? WEB_URL;?>index.php?name=knowledge&file=readknowledge&id=<?=$arr['knowledge']['id'];?>" target="_blank" name="<?=$arr['knowledge']['topic'];?>" ><font color="#990066">(<?= ThaiTimeConvert($arr['knowledge']['post_date'],"","");?>)</font><B><?=$arr['knowledge']['topic'];?></A></B>
-					<?=NewsIcon(TIMESTAMP, $arr['knowledge']['post_date'], "images/icon_new.gif");?>( <?=$arr['knowledge']['pageview'];?> / <?=$arrs['com']['com'];?> ) <?_DOWNLOAD_AUTH;?> <?=$arr['knowledge']['posted'];?> 
+															<A HREF="<?php WEB_URL;?>index.php?name=knowledge&file=readknowledge&id=<?=$arr['knowledge']['id'];?>" target="_blank" name="<?=$arr['knowledge']['topic'];?>" ><font color="#990066">(<?= ThaiTimeConvert($arr['knowledge']['post_date'],"","");?>)</font><B><?=$arr['knowledge']['topic'];?></A></B>
+					<?=NewsIcon(TIMESTAMP, $arr['knowledge']['post_date'], "images/icon_new.gif");?>( <?=$arr['knowledge']['pageview'];?> / <?=$arrs['com']['com'];?> ) <?php _DOWNLOAD_AUTH;?> <?=$arr['knowledge']['posted'];?> 
 					</div>
 													</TD></tr>
 
-<?
-}
+<?php }
 $i++;
 }
 $db->closedb ();

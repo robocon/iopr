@@ -1,8 +1,7 @@
  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_alumnus.png" BORDER="0">
  <table width="750" align=center cellSpacing=0 cellPadding=0 border=0><tr><TD height="1" class="dotline" colspan="4"></TD></tr></table>
  <br>
-<?
-
+<?php 
 include("modules/alumnus/config.inc.php");
 
  // รับค่าตัวแปรมา

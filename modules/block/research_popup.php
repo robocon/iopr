@@ -6,8 +6,7 @@
 			<tr><td><BR>
 <div align="right"><B><IMG SRC="images/icon/icon_folder.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=research"><?=_RESEARCH_ALL;?></A> &nbsp;&nbsp;&nbsp; <IMG SRC="images/icon/icon_add.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=research&file=add&op=research_add"><?=_RESEARCH_ADD;?> </A></B>&nbsp;&nbsp;</div>
 <BR></td></tr>
-  <?
-
+  <?php 
 //$_GET[category]=1;
 if($_GET[category]){
 	$SQLwhere = " category='".$_GET[category]."' ";
@@ -50,8 +49,7 @@ echo "<TR>";
 					<?=NewsIcon(TIMESTAMP, $arr[research][post_date], "images/icon_new.gif");?><font color="#CC3300">( <?=_RESEARCH_READ;?> <?=$arr[research][pageview];?> )</font> <?=_RESEARCH_AUTH;?> <font color="#CC3300"><?=$arr[research][auth];?>
 													</TD>
 
-<?
-$count++;
+<?php $count++;
 
 echo "</Tr><TR><TD colspan=2 height=\"1\" class=\"dotline\"></TD></TR>";
 if (($count%_RESEARCH_COL) == 0) { echo "</TR><TR><TD colspan=2 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; 

@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 ?>
 
 	<TABLE cellSpacing=0 cellPadding=0 width=820 border=0>
@@ -18,8 +17,7 @@ CheckAdmin($admin_user, $admin_pwd);
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_POLL_MENU_TITLE;?> </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=poll"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_POLL_MENU_LIST;?> </A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=poll&op=poll_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_POLL_MENU_ADD_NEW;?></A> <BR><BR>
-<?
-//////////////////////////////////////////// แสดงรายการแบบสำรวจ 
+<?php //////////////////////////////////////////// แสดงรายการแบบสำรวจ 
 if($op == ""){
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$limit = 20 ;
@@ -41,8 +39,7 @@ if($op == ""){
    <td width="40"><CENTER><B><?=_ADMIN_POLL_TABLE_HEADER_STATUS;?></B></CENTER></td>
    <td width="40"><CENTER><B>Check</B></CENTER></td>
   </tr>  
-<?
-$res['poll'] = $db->select_query("SELECT * FROM ".TB_POLL." ORDER BY id DESC LIMIT $goto, $limit ");
+<?php $res['poll'] = $db->select_query("SELECT * FROM ".TB_POLL." ORDER BY id DESC LIMIT $goto, $limit ");
 $count=0;
 while($arr['poll'] = $db->fetch($res['poll'])){
 if($count%2==0) { //ส่วนของการ สลับสี 
@@ -53,19 +50,18 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=poll&op=poll_edit&id=<? echo $arr['poll']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=poll&op=poll_del&id=<? echo $arr['poll']['id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=poll&op=poll_edit&id=<?php echo $arr['poll']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=poll&op=poll_del&id=<?php echo $arr['poll']['id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-     <td><A HREF="popup.php?name=ajoxpoll&file=readpoll&poll_id=<?echo $arr['poll']['id'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 400} )" class="highslide"><?echo $arr['poll']['poll_question'];?></A></td>
-     <td ><?echo $arr['poll']['poll_options'];?></td>
+     <td><A HREF="popup.php?name=ajoxpoll&file=readpoll&poll_id=<?php echo $arr['poll']['id'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 400} )" class="highslide"><?php echo $arr['poll']['poll_question'];?></A></td>
+     <td ><?php echo $arr['poll']['poll_options'];?></td>
      <td align="center">
-	 				  <? if($arr['poll']['status']=='0') { echo "<a HREF=?name=admin&file=poll&op=poll_update&action=update&id=".$arr['poll']['id']."&status=1><img src=images/publish_x.png alt='"._ADMIN_ORDER_PUBLISH_OFF."'></a>"; } else { echo "<a HREF=?name=admin&file=poll&op=poll_update&action=update&id=".$arr['poll']['id']."&status=0><img src=images/tick.png alt='่"._ADMIN_ORDER_PUBLISH_ON."'></a>"; };?>
+	 				  <?php if($arr['poll']['status']=='0') { echo "<a HREF=?name=admin&file=poll&op=poll_update&action=update&id=".$arr['poll']['id']."&status=1><img src=images/publish_x.png alt='"._ADMIN_ORDER_PUBLISH_OFF."'></a>"; } else { echo "<a HREF=?name=admin&file=poll&op=poll_update&action=update&id=".$arr['poll']['id']."&status=0><img src=images/tick.png alt='่"._ADMIN_ORDER_PUBLISH_ON."'></a>"; };?>
 	 </td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<? echo $arr['poll']['id'];?>"></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<?php echo $arr['poll']['id'];?>"></td>
     </tr>
 
-<?
-$count++;
+<?php $count++;
 					  } 
 ?>
  </table>
@@ -76,8 +72,7 @@ $count++;
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-	SplitPage($page,$totalpage,"?name=admin&file=poll");
+<?php 	SplitPage($page,$totalpage,"?name=admin&file=poll");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -211,8 +206,7 @@ alert('Max limit reach');
 </div>
 </body>
 </html>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -326,9 +320,9 @@ alert('Max limit reach');
                         <td class="domande" width="40%"><?=_ADMIN_POLL_FORM_CAT;?></td>
                         <td width="40%">
 								<select name="PAGE" id="page">
-								<option value="education" <? if($arr['poll']['page']=='education'){echo 'selected="selected"';} ?>><?=_ADMIN_POLL_FORM_CAT_EDU;?></option>
-								<option value="technology" <? if($arr['poll']['page']=='technology'){echo 'selected="selected"';} ?>><?=_ADMIN_POLL_FORM_CAT_TECHNO;?></option>
-								<option value="" <? if($arr['poll']['page']==''){echo 'selected="selected"';} ?>><?=_ADMIN_POLL_FORM_CAT_ETC;?></option>
+								<option value="education" <?php if($arr['poll']['page']=='education'){echo 'selected="selected"';} ?>><?=_ADMIN_POLL_FORM_CAT_EDU;?></option>
+								<option value="technology" <?php if($arr['poll']['page']=='technology'){echo 'selected="selected"';} ?>><?=_ADMIN_POLL_FORM_CAT_TECHNO;?></option>
+								<option value="" <?php if($arr['poll']['page']==''){echo 'selected="selected"';} ?>><?=_ADMIN_POLL_FORM_CAT_ETC;?></option>
 								</select>
                         </td>
                       </tr>
@@ -350,8 +344,8 @@ function addTextbox(){
     <tr>
       <td height="30" valign="top"><input type="button" value="Add Option" onclick="addTextbox()" /></td>
       <td>
-      <? for($xx=0;$xx<=$octr;$xx++){ ?><input name="opt<?=$xx; ?>" type="text" value="<?=$op[$xx]; ?>" size="40"/><br /><? } ?>     
-      <? for($xx=$octr+1;$xx<10;$xx++){ ?><input id="opt<?=$xx; ?>" name="opt<?=$xx; ?>" type="text" value="" size="40" style="display:none" /><? } ?>           
+      <?php for($xx=0;$xx<=$octr;$xx++){ ?><input name="opt<?=$xx; ?>" type="text" value="<?=$op[$xx]; ?>" size="40"/><br /><?php } ?>     
+      <?php for($xx=$octr+1;$xx<10;$xx++){ ?><input id="opt<?=$xx; ?>" name="opt<?=$xx; ?>" type="text" value="" size="40" style="display:none" /><?php } ?>           
       <div id="createTextbox" style="width:300px;"></div></td>
     </tr>
     <tr> 
@@ -372,8 +366,7 @@ function addTextbox(){
 </div>
 </body>
 </html>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

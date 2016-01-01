@@ -1,5 +1,4 @@
-<?
-
+<?php 
 require_once("mainfile.php");
 
 $PHP_SELF = "index.php";
@@ -11,7 +10,7 @@ include ("editor.php");
 <HTML>
 <HEAD>
 <TITLE><?=WEB_TITILE;?></TITLE>
-<meta http-equiv="Content-Type" content="text/html; charset=<?echo ISO;?>">
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo ISO;?>">
 
 <meta name="keywords" content="<?=WEB_TITILE;?>">
 <meta name="description" content="<?=WEB_TITILE;?>">
@@ -126,8 +125,7 @@ function MM_jumpMenuGo(selName,targ,restore){ //v3.0
               <tr>
 			  <td width="11" align="center"  height="100%"  background="images/pic/block04.jpg"></td>
                 <td  valign="top" align="center">
-<?
-if($name!="") { 
+<?php if($name!="") { 
 	include ("".$MODPATHFILE."");
 } ?>
 				</td>

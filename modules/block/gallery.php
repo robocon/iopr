@@ -6,8 +6,7 @@
  <table width="<?=$widthSUM;?>" cellspacing="0" cellpadding="0" border="0">
 <tr>
 <td width="<?=$widthSUM;?>" align="center">
-<?
-echo "<MARQUEE scrollamount='3' scrolldelay='30' align='center' direction='up' width='200' height='350'  onmouseover='this.stop()' onmouseout='this.start()'>";
+<?php echo "<MARQUEE scrollamount='3' scrolldelay='30' align='center' direction='up' width='200' height='350'  onmouseover='this.stop()' onmouseout='this.start()'>";
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 
 $res['gallerys'] = $db->select_query("SELECT * FROM ".TB_GALLERY." ORDER BY id DESC LIMIT 15");
@@ -26,7 +25,7 @@ $CAT=$arr['cat']['post_date'];
 	 <tr>
 	 <td colspan="2" align="center">
 	 <table cellspacing=0 cellpadding=0 border=0 class='iconframe' ><tr><td  border=0  align="center"><a HREF="index.php?name=gallery&file=readgal&id=<?=$arr['gallerys']['id'];?>" >
-                <img class="highslide-display-block" border=0 src="images/gallery/gal_<? echo "".$CAT."/thb_".$arr['gallerys']['pic'];?>" style="filter:alpha(opacity=50)" onMouseover="makevisible(this,0)" onMouseout="makevisible(this,1)" />
+                <img class="highslide-display-block" border=0 src="images/gallery/gal_<?php echo "".$CAT."/thb_".$arr['gallerys']['pic'];?>" style="filter:alpha(opacity=50)" onMouseover="makevisible(this,0)" onMouseout="makevisible(this,1)" />
               </a></td><td class='shadow_right'><div class='shadow_top_right'></div></td>
 </tr>
 <tr>
@@ -38,8 +37,7 @@ $CAT=$arr['cat']['post_date'];
   </tr>
 
   </table>
-<?
-}
+<?php }
 echo "</MARQUEE>";
 ?>
 

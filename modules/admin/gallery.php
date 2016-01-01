@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 include ("editor.php");
 ?>
 <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
@@ -53,8 +52,7 @@ include ("editor.php");
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; GALLERY </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=gallery"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_GALLERY_MENU_LIST;?> </A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=gallery&op=gallery_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_GALLERY_MENU_ADD_NEW;?> </A>  &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=gallery_category&op=gallerycat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_GALLERY_MENU_ADD_CAT;?></A><BR><BR>
-<?
-//////////////////////////////////////////// áÊ´§ÃÒÂ¡ÒÃGALLERY 
+<?php //////////////////////////////////////////// áÊ´§ÃÒÂ¡ÒÃGALLERY 
 if($op == ""){
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$limit = 10 ;
@@ -69,8 +67,7 @@ if($op == ""){
 ?>
  <table width="100%" cellspacing="2" cellpadding="1" >
 
-<?
-$count=0;
+<?php $count=0;
 $res['gallery'] = $db->select_query("SELECT * FROM ".TB_GALLERY_CAT." ORDER BY id DESC LIMIT $goto, $limit ");
 while($arr['gallery'] = $db->fetch($res['gallery'])){
 	if ($count==0) { echo "<TR>"; }
@@ -83,22 +80,21 @@ while($arr['gallery'] = $db->fetch($res['gallery'])){
 	 <tr>
 	 <td width="<?=_IGALLERYT_W;?>" valign="top">
 	 			  						<table cellspacing=0 cellpadding=0 border=0 ><tr><td  height=14 border=0 background= "images/border/TL.gif"></td><td  height=14 border=0 background="images/border/TT.gif"></td><td height=14  border=0 background= "images/border/TR.gif"></td></tr>
-<tr><td width=30 border=0 background= "images/border/LL.gif"></td><td  border=0><a href="?name=admin&file=gallery&op=gallery_detail&id=<? echo $arr['gallery']['id'];?>">
-                <img class="highslide-display-block" width="<?=(_IGALLERYT_W-35);?>" src="<?if($arr['category']['id']){ echo "images/gallery/gal_".$arr['gallery']['post_date']."/thb_".$arr['category']['pic'].""; } else { echo "images/news_blank.gif";}?>" />
+<tr><td width=30 border=0 background= "images/border/LL.gif"></td><td  border=0><a href="?name=admin&file=gallery&op=gallery_detail&id=<?php echo $arr['gallery']['id'];?>">
+                <img class="highslide-display-block" width="<?=(_IGALLERYT_W-35);?>" src="<?php if($arr['category']['id']){ echo "images/gallery/gal_".$arr['gallery']['post_date']."/thb_".$arr['category']['pic'].""; } else { echo "images/news_blank.gif";}?>" />
               </a></td><td width=14 border=0 background= "images/border/RR.gif"></td></tr>
 			  <tr><td  height=15 border=0 background= images/border/BL.gif></td><td  height=15 border=0 background= "images/border/BB.gif"></td><td height=15 border=0 background= "images/border/BR.gif"></td></tr></table><br>
-      <a href="?name=admin&file=gallery_category&op=gallerycat_edit&id=<? echo $arr['gallery']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=gallery_category&op=gallerycat_del&id=<? echo $arr['gallery']['id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=gallery_category&op=gallerycat_edit&id=<?php echo $arr['gallery']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=gallery_category&op=gallerycat_del&id=<?php echo $arr['gallery']['id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
 </td>
 <td valign="top">
-<font color="#990000"><b><a href="?name=admin&file=gallery&op=gallery_detail&id=<? echo $arr['gallery']['id'];?>"><? echo $arr['gallery']['category_name'];?></b></font></a>  <?=NewsIcon(TIMESTAMP, $arr['gallery']['post_date'], "images/icon_new.gif");?><br> ( <?echo ThaiTimeConvert($arr['gallery']['post_date'],'','');?> )<br><? echo $arr['gallery']['category_detail'];?>
+<font color="#990000"><b><a href="?name=admin&file=gallery&op=gallery_detail&id=<?php echo $arr['gallery']['id'];?>"><?php echo $arr['gallery']['category_name'];?></b></font></a>  <?=NewsIcon(TIMESTAMP, $arr['gallery']['post_date'], "images/icon_new.gif");?><br> ( <?php echo ThaiTimeConvert($arr['gallery']['post_date'],'','');?> )<br><?php echo $arr['gallery']['category_detail'];?>
 </td>
 </tr>
 </table>
 </td>
 
-<?
-$count++;
+<?php $count++;
 if (($count%_GALLERYCAT_ADMIN_COL) == 0) { echo "</TR><TR><TD colspan=3 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; }
  else{
 	echo "</TD>";
@@ -107,8 +103,7 @@ if (($count%_GALLERYCAT_ADMIN_COL) == 0) { echo "</TR><TR><TD colspan=3 height=\
 ?>
 
  </table>
-<?
-	SplitPage($page,$totalpage,"?name=admin&file=gallery");
+<?php 	SplitPage($page,$totalpage,"?name=admin&file=gallery");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -277,8 +272,7 @@ else if($op == "gallery_add"){
 <FORM NAME="myform" METHOD=POST ACTION="?name=admin&file=gallery&op=gallery_add&action=add" enctype="multipart/form-data">
 <center><table border=1 bgcolor=#F7F7F7 bordercolor=#FFFFFF width=450 class="grids"><tr class="odd"><td  align=center><?=_ADMIN_GALLERY_FORM_SELECT_CAT;?></td><td>
 <SELECT NAME="CATEGORY">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_GALLERY_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
 	   echo "<option value=\"".$arr['category']['id']."\"";
@@ -300,8 +294,7 @@ $db->closedb ();
 </table>
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//¡Ã³ÕäÁè¼èÒ¹
 		echo  $PermissionFalse ;
 	}
@@ -357,15 +350,14 @@ $CAT=$arr['cat']['post_date'];
 ?>
  <table width="100%" cellspacing="2" cellpadding="1" >
 <tr>
-<td bgcolor="#F7F7F7" colspan="<?=_GALLERY_ADMIN_COL;?>"><font color="#990000" size="4"><b> >> <? echo $arr['cat']['category_name'];?></b></font></a>  <?=NewsIcon(TIMESTAMP, $arr['cat']['post_date'], "images/icon_new.gif");?> ( <?echo ThaiTimeConvert($arr['cat']['post_date'],'','');?> ) <br><font size="3" color="#0066CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <?=_ADMIN_GALLERY_SHOW_TOTAL_PIC;?> <font color="#990000" size="3"><?=$SUMPAGE;?></font> <?=_ADMIN_GALLERY_SHOW_TOTAL_NUM;?> ] <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font size="2"><? echo $arr['cat']['category_detail'];?>
+<td bgcolor="#F7F7F7" colspan="<?=_GALLERY_ADMIN_COL;?>"><font color="#990000" size="4"><b> >> <?php echo $arr['cat']['category_name'];?></b></font></a>  <?=NewsIcon(TIMESTAMP, $arr['cat']['post_date'], "images/icon_new.gif");?> ( <?php echo ThaiTimeConvert($arr['cat']['post_date'],'','');?> ) <br><font size="3" color="#0066CC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <?=_ADMIN_GALLERY_SHOW_TOTAL_PIC;?> <font color="#990000" size="3"><?=$SUMPAGE;?></font> <?=_ADMIN_GALLERY_SHOW_TOTAL_NUM;?> ] <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font size="2"><?php echo $arr['cat']['category_detail'];?>
 </font></td>
 </tr>
 <tr>
 <td colspan="<?=_GALLERY_ADMIN_COL;?>">&nbsp;&nbsp;<td>
 </tr>
 
-<?
-
+<?php 
 $count=0;
 $res['gallery'] = $db->select_query("SELECT * FROM ".TB_GALLERY." WHERE category='".$arr['cat']['id']."' ORDER BY id DESC LIMIT $goto, $limit");
 while($arr['gallery'] = $db->fetch($res['gallery'])){
@@ -375,8 +367,8 @@ while($arr['gallery'] = $db->fetch($res['gallery'])){
 	 <table cellpadding="0" cellspacing="0" border="0">
 	 <tr>
 	 <td width="<?=_IGALLERYT_W+35;?>" colspan="2" >
-	 			  						<table cellspacing=0 cellpadding=0 border=0 class='iconframe' ><tr><td  border=0  align="center"><a HREF="images/gallery/<? echo "gal_".$CAT."/".$arr['gallery']['pic'];?>" rel="lightbox">
-                <img class="highslide-display-block" border=0 src="<?if($arr['gallery']['id']){ echo "images/gallery/gal_".$CAT."/thb_".$arr['gallery']['pic'].""; } else { echo "images/news_blank.gif";}?>" />
+	 			  						<table cellspacing=0 cellpadding=0 border=0 class='iconframe' ><tr><td  border=0  align="center"><a HREF="images/gallery/<?php echo "gal_".$CAT."/".$arr['gallery']['pic'];?>" rel="lightbox">
+                <img class="highslide-display-block" border=0 src="<?php if($arr['gallery']['id']){ echo "images/gallery/gal_".$CAT."/thb_".$arr['gallery']['pic'].""; } else { echo "images/news_blank.gif";}?>" />
               </a></td><td class='shadow_right'><div class='shadow_top_right'></div></td>
 </tr>
 <tr>
@@ -388,7 +380,7 @@ while($arr['gallery'] = $db->fetch($res['gallery'])){
 </tr>
 <tr>
 <td align="right">
-<a HREF="index.php?name=gallery&file=readgal&id=<?=$arr['gallery']['id'];?>" ><img src="images/icon-view.gif" border="0"></a> <? if($admin_user){?><a href="javascript:Confirm('?name=admin&file=gallery&op=gallery_del&cat=<? echo $CAT;?>&id=<? echo $arr['gallery']['id'];?>&pic=<? echo $arr['gallery']['pic'];?>&cats=<? echo $arr['cat']['id'];?>&prefix=<? echo $arr['gallery']['post_date'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a><?}?>
+<a HREF="index.php?name=gallery&file=readgal&id=<?=$arr['gallery']['id'];?>" ><img src="images/icon-view.gif" border="0"></a> <?php if($admin_user){?><a href="javascript:Confirm('?name=admin&file=gallery&op=gallery_del&cat=<?php echo $CAT;?>&id=<?php echo $arr['gallery']['id'];?>&pic=<?php echo $arr['gallery']['pic'];?>&cats=<?php echo $arr['cat']['id'];?>&prefix=<?php echo $arr['gallery']['post_date'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a><?php }?>
 </td>
 </tr>
 <tr>
@@ -397,8 +389,7 @@ while($arr['gallery'] = $db->fetch($res['gallery'])){
 </tr>
 </table>
 </td>
-<?
-$count++;
+<?php $count++;
 if (($count%_GALLERY_ADMIN_COL) == 0) { echo "</TR><TR><TD colspan=5 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; }
  
 }

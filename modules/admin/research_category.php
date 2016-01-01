@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 ?>
 
 	<TABLE cellSpacing=0 cellPadding=0 width=820 border=0>
@@ -18,8 +17,7 @@ CheckAdmin($admin_user, $admin_pwd);
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_RESEARCH_MENU_TITLE;?> </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=research"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_RESEARCH_MENU_LIST;?> </A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=research&op=research_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_RESEARCH_MENU_ADD_NEW;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=research_category"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"><?=_ADMIN_MENU_DTAIL_CAT;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=research_category&op=researchcat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"><?=_ADMIN_MENU_ADD_CAT;?></A><BR><BR>
-<?
-//////////////////////////////////////////// แสดงรายการ
+<?php //////////////////////////////////////////// แสดงรายการ
 if($op == ""){
 ?>
 <form action="?name=admin&file=research_category&op=researchcat_del&action=multidel" name="myform" method="post">
@@ -31,8 +29,7 @@ if($op == ""){
    <td align="center" width="50"><B><?=_ADMIN_FORM_CAT_ORDER;?></B></td>
    <td><B><CENTER>Check</CENTER></B></td>
   </tr>  
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['researchcat'] = $db->select_query("SELECT * FROM ".TB_RESEARCH_CAT." ORDER BY sort ");
 $rows['researchcat'] = $db->rows($res['researchcat']);
 $CATCOUNT = 0 ;
@@ -61,17 +58,16 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=research_category&op=researchcat_edit&id=<? echo $arr['researchcat']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=research_category&op=researchcat_del&id=<? echo $arr['researchcat']['id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE_CAT;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=research_category&op=researchcat_edit&id=<?php echo $arr['researchcat']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=research_category&op=researchcat_del&id=<?php echo $arr['researchcat']['id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE_CAT;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-     <td><?echo $arr['researchcat']['category_name'];?></td>
-	 <td align="center" width="50" ><?echo $row['sumresearch'] ;?></td>
-     <td align="center" width="50"><A HREF="?name=admin&file=research_category&op=researchcat_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['researchcat']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=research_category&op=researchcat_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['researchcat']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<? echo $arr['researchcat']['id'];?>"></td>
+     <td><?php echo $arr['researchcat']['category_name'];?></td>
+	 <td align="center" width="50" ><?php echo $row['sumresearch'] ;?></td>
+     <td align="center" width="50"><A HREF="?name=admin&file=research_category&op=researchcat_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['researchcat']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=research_category&op=researchcat_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['researchcat']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<?php echo $arr['researchcat']['id'];?>"></td>
     </tr>
 
-<?
-		 $count++;
+<?php 		 $count++;
  }
 $db->closedb ();
 ?>
@@ -83,8 +79,7 @@ $db->closedb ();
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form>
-<?
-}
+<?php }
 else if($op == "researchcat_add" AND $action == "add"){
 	//////////////////////////////////////////// กรณีเพิ่ม Database
 	if(CheckLevel($admin_user,$op)){
@@ -121,8 +116,7 @@ else if($op == "researchcat_add"){
 <BR><BR>
 <INPUT TYPE="submit" value="<?=_ADMIN_RESEARCH_BUTTON_CAT_ADD;?>">
 </FORM>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -200,8 +194,7 @@ else if($op == "researchcat_edit"){
 <BR><BR>
 <INPUT TYPE="submit" value="<?=_ADMIN_RESEARCH_BUTTON_CAT_EDIT;?>">
 </FORM>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

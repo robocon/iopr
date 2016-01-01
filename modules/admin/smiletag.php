@@ -1,10 +1,8 @@
-<?
-//require_once("mainfile.php");
+<?php //require_once("mainfile.php");
 CheckAdmin($admin_user, $admin_pwd);
 ?>
 <link href="css/template_css.css" rel="stylesheet" type="text/css" />
-<?
-if ($_GET['file']=="smiletag" ){
+<?php if ($_GET['file']=="smiletag" ){
 
 		include('modules/smiletag/admin/admin.php');
 }

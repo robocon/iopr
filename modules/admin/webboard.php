@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 include ("editor.php");
 empty($_POST['ENABLE_COMMENT'])?$ENABLE_COMMENT="":$ENABLE_COMMENT=$_POST['ENABLE_COMMENT'];
 ?>
@@ -19,8 +18,7 @@ empty($_POST['ENABLE_COMMENT'])?$ENABLE_COMMENT="":$ENABLE_COMMENT=$_POST['ENABL
 					<TD>
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_WEBBOARD_MENU_TITLE;?> </B>
 					<BR><BR><A HREF="?name=admin&file=webboard"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_WEBBOARD_MENU_TITLE_LIST;?></A> &nbsp;&nbsp;&nbsp;	<A HREF="?name=admin&file=webboard_category"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_MENU_DTAIL_CAT;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=webboard_category&op=webboard_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_MENU_ADD_CAT;?></A><BR><BR>
-<?
-//////////////////////////////////////////// แสดงรายการกระดานถามตอบ 
+<?php //////////////////////////////////////////// แสดงรายการกระดานถามตอบ 
 if($op == ""){
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$limit = 20 ;
@@ -57,8 +55,7 @@ if($op == ""){
               <td width="16%" align="center"  height="26"><b>IP</b></td>
               <td width="5%" align="center"  height="26"><b>Check</b></td>
             </tr>
-            <?
-if(!empty($category)){
+            <?php if(!empty($category)){
 	$SQLwhere = " pin_date='' AND category='".$category."' ";
 	$SQLwhere2 = " WHERE pin_date='' AND category='".$category."' ";
 	$SQLwherePin = " WHERE pin_date!='' AND category='".$category."' ";
@@ -203,8 +200,7 @@ $ColorFill = 'class="odd"';
 	echo "<td width=\"19%\"><CENTER>".$WebBoard['ip_address']."</center></td>";
 ?>
 	<td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<?=$WebBoard['id'];?>"></td></tr>
-	<?
-
+	<?php 
 
 	$count++;
 	}
@@ -220,8 +216,7 @@ $db->closedb();
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-	SplitPage($page,$totalpage,"?name=admin&file=webboard");
+<?php 	SplitPage($page,$totalpage,"?name=admin&file=webboard");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -319,8 +314,7 @@ else if($op == "article_add"){
 <BR><BR>
 <B><?=_WEBBOARD_FORM_CAT_TITLE;?> :</B><BR>
 <SELECT NAME="CATEGORY">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_WEBBOARD_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
 	   echo "<option value=\"".$arr['category']['id']."\"";
@@ -331,9 +325,9 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B><?=_ADMIN_FORM_ICON;?> : </B><BR>
-<IMG name="view01" SRC="images/webboard_blank.gif" <?echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" ><BR>
+<IMG name="view01" SRC="images/webboard_blank.gif" <?php echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" ><BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-<?=_ADMIN_FORM_ICON_WIDTH;?> <?echo _IKNOW_W." x "._IKNOW_H ;?> <?=_ADMIN_FORM_ICON_WIDTH1;?>
+<?=_ADMIN_FORM_ICON_WIDTH;?> <?php echo _IKNOW_W." x "._IKNOW_H ;?> <?=_ADMIN_FORM_ICON_WIDTH1;?>
 <BR><BR>
 
 <B><?=_ADMIN_FORM_HEADLINE;?> :</B><BR>
@@ -352,8 +346,7 @@ $db->closedb ();
 <input type="submit" value=" <?=_ADMIN_WEBBOARD_BUTTON_ADD_WEB;?> " name="submit"> <input type="reset" value="<?=_ADMIN_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -478,8 +471,7 @@ else if($op == "webboard_edit"){
 	    <TD >
 	      <SELECT NAME="category" value="<?=$arr['webboard']['category']?>">
 	        <OPTION value=""><?=_WEBBOARD_JUM_ALLCAT_SELECT;?></OPTION>
-	        <?
-//ทำาการดึง category มา
+	        <?php //ทำาการดึง category มา
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_WEBBOARD_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
@@ -497,8 +489,7 @@ $db->closedb ();
     </TR>
       <TR>
         <TD  align=right width="150"><B><?=_WEBBOARD_FORM_ATT_PIC_TITLE;?> : </B></TD>
-	    <TD>	<?
-		if ($arr['webboard']['picture'])	{
+	    <TD>	<?php 		if ($arr['webboard']['picture'])	{
 			echo "<input type='checkbox' name='chkdel' value='1'>&nbsp;"._WEBBOARD_FORM_DEL_PIC_TITLE."&nbsp;";
 			echo "<br><img src='webboard_upload/".$arr['webboard']['picture']."' border='0'  align='top'>";
 		}
@@ -512,7 +503,7 @@ $db->closedb ();
 
 <TR>
 	<TD width=150 align=right><B><?=_WEBBOARD_FORM_TOPIC_MEMBER_ONLY;?> : </B></TD>
-	<TD><input type=checkbox name=show  value=1 <?if ($arr['webboard']['enable_show']==1){echo "checked";}?>><?=_WEBBOARD_FORM_TOPIC_MEMBER_ONLY_1;?>&nbsp;&nbsp;<input type=checkbox name=show  value=0 <?if ($arr['webboard']['enable_show']==0){echo "checked";}?>><?=_WEBBOARD_FORM_TOPIC_MEMBER_ONLY_2;?></TD>
+	<TD><input type=checkbox name=show  value=1 <?php if ($arr['webboard']['enable_show']==1){echo "checked";}?>><?=_WEBBOARD_FORM_TOPIC_MEMBER_ONLY_1;?>&nbsp;&nbsp;<input type=checkbox name=show  value=0 <?php if ($arr['webboard']['enable_show']==0){echo "checked";}?>><?=_WEBBOARD_FORM_TOPIC_MEMBER_ONLY_2;?></TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
 
@@ -535,8 +526,7 @@ $db->closedb ();
       </TABLE>
   </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

@@ -50,7 +50,7 @@
 											<tr>
 												<TD align="left" >
 													<img src="images/video_icon.png" border="0">
-													<a HREF="index.php?name=video2&file=readvideo&id=<?=$video['id'];?>" ><b><? echo $video['topic'];?></a>
+													<a HREF="index.php?name=video2&file=readvideo&id=<?=$video['id'];?>" ><b><?php echo $video['topic'];?></a>
 														<?=NewsIcon(TIMESTAMP, $video['post_date'], "images/icon_new.gif");?></b>
 													</td>
 												</tr>

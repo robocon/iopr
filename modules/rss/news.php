@@ -1,9 +1,8 @@
-<?
-  include_once("../../mainfile.php"); //โหลด settings
+<?php   include_once("../../mainfile.php"); //โหลด settings
   include_once("../../includes/function.in.php"); //โหลด ฟังก์ชั่น
   include_once("../../includes/class.mysql.php"); //เรียกใช้ คลาส text database
 
-$data ='<?xml version="1.0" encoding="TIS-620"?>'."\n";
+$data ='<?php xml version="1.0" encoding="TIS-620"?>'."\n";
 $data .='<rss version="2.0">'."\n";
 $data .='<channel>'."\n";
 

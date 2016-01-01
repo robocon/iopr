@@ -57,10 +57,9 @@ function anti_injection( $user, $pass ,$ip) {
 <FONT COLOR="#336600"><B><?=_ADMIN_IPBLOCK_MESSAGE_HACK;?> <?=WEB_EMAIL;?></B></FONT><BR><BR>
 <A HREF="?name=index"><B><?=_ADMIN_IPBLOCK_MESSAGE_HACK1;?></B></A>
 </CENTER>
-<? echo "<meta http-equiv='refresh' content='10; url=?name=index'>" ; ?>
+<?php echo "<meta http-equiv='refresh' content='10; url=?name=index'>" ; ?>
 <BR><BR>
-<?
-*/
+<?php */
             } ELSE {
                     RETURN $array;
             }

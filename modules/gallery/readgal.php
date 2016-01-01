@@ -1,4 +1,4 @@
-<?include ("editor.php");?>
+<?php include ("editor.php");?>
 <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
 <script type="text/javascript" src="js/prototype.js"></script>
 <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
@@ -27,8 +27,7 @@ function emoticon(theSmilie) {
 		  <!-- gallery -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_gallery.gif" BORDER="0"><BR><BR>
 				<TABLE width="740" align=center cellSpacing=2 cellPadding=2 border=0>
-<?
-empty($_GET['id'])?$id="":$id=$_GET['id'];
+<?php empty($_GET['id'])?$id="":$id=$_GET['id'];
 //แสดง Gallery  
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['gallery'] = $db->select_query("SELECT * FROM ".TB_GALLERY." WHERE id='".$id."' ");
@@ -56,7 +55,7 @@ if(!$arr['gallery']['id']){
 	 			<table cellspacing=0 cellpadding=0 border=0 class='iconframe'>
 				<tr>
 				<td  border=0  align="center" class='imageframe'>
-					<a HREF="images/gallery/<? echo "gal_".$CAT."/".$arr['gallery']['pic'];?>" rel="lightbox"><img class="highslide-display-block" border=0 src="<?if($arr['gallery']['id']){ echo "images/gallery/gal_".$CAT."/thb_".$arr['gallery']['pic'].""; } else { echo "images/gallery_blank.gif";}?>" /></a>
+					<a HREF="images/gallery/<?php echo "gal_".$CAT."/".$arr['gallery']['pic'];?>" rel="lightbox"><img class="highslide-display-block" border=0 src="<?php if($arr['gallery']['id']){ echo "images/gallery/gal_".$CAT."/thb_".$arr['gallery']['pic'].""; } else { echo "images/gallery_blank.gif";}?>" /></a>
 				  </td><td class='shadow_right'><div class='shadow_top_right'></div></td>
 </tr>
 <tr>
@@ -84,14 +83,12 @@ if(!$arr['gallery']['id']){
 					<td bgcolor="#F7F7F7" valign="top"><?=_GALLERY_ALBUM_POSTED_DATE;?> </td><td bgcolor="#F7F7F7" valign="top">
 					<?= ThaiTimeConvert($arr['gallery']['post_date'],"1","");?>
 					
-<?
-if($admin_user){
+<?php if($admin_user){
 	//Admin Login Show Icon
 ?>
-				  <a href="?name=admin&file=gallery&op=gallery_edit&id=<? echo $arr['gallery']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
-				  <a href="javascript:Confirm('?name=admin&file=gallery&op=gallery_del&id=<? echo $arr['gallery']['id'];?>&prefix=<? echo $arr['gallery']['post_date'];?>','<?echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
-<?
-}
+				  <a href="?name=admin&file=gallery&op=gallery_edit&id=<?php echo $arr['gallery']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
+				  <a href="javascript:Confirm('?name=admin&file=gallery&op=gallery_del&id=<?php echo $arr['gallery']['id'];?>&prefix=<?php echo $arr['gallery']['post_date'];?>','<?php echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
+<?php }
 ?>
 </td>
 </tr>
@@ -100,8 +97,7 @@ if($admin_user){
 <table  width="100%">
 <tr>
 <td >
-<?
-$rater_ids=$id;
+<?php $rater_ids=$id;
 $rater_item_name='gallery';
 include("modules/rater/rater.php");
 ?>
@@ -122,8 +118,7 @@ include("modules/rater/rater.php");
 				  <tr>
 <tr>
 					<TD colspan=2><B><FONT COLOR="#990099">
-<?
-//แสดง Gallery  5 อันดับล่าสุดของหมวดหมู่ 
+<?php //แสดง Gallery  5 อันดับล่าสุดของหมวดหมู่ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['cat_gallery'] = $db->select_query("SELECT * FROM ".TB_GALLERY." WHERE category='".$arr['category']['id']."' ORDER BY id DESC LIMIT 5 ");
 $rows['cat_gallery'] = $db->rows($res['cat_gallery']); 
@@ -133,14 +128,12 @@ if(!$rows['cat_gallery']){
 while($arr['cat_gallery'] = $db->fetch($res['cat_gallery'])){
 ?>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/suggest.gif" BORDER="0" ALIGN="absmiddle"> <B><A HREF="?name=gallery&file=readgal&id=<?=$arr['cat_gallery']['id'];?>" target="_blank"><?=$arr['cat_gallery']['pic'];?></A></B> <?= ThaiTimeConvert($arr['cat_gallery']['post_date'],"","");?><BR>
-<?
-}
+<?php }
 $db->closedb ();
 ?>
 					</TD>
 				</TR>
-<?
-}
+<?php }
 ?>
 			</TABLE>
 		  </TD>

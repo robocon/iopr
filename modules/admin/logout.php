@@ -1,5 +1,4 @@
-<?
-require_once("mainfile.php");
+<?php require_once("mainfile.php");
 		$classtext = array("", "");
 		$classbox = array("noborder2", "noborder2");
 		$username = "";
@@ -43,18 +42,16 @@ setcookie("admin_user");
 				<input type="text" name="username" id="username" class="<?php echo $classbox[0]; ?>"  value="<?php echo $username; ?>"  onclick="this.value=''" /><br />
 				<?=_ADMIN_MOD_INDEX_PASS;?> : 
 				<input type="password" name="password" id="password" class="<?php echo $classbox[1]; ?>"  value="<?php echo $password; ?>"  onclick="this.value=''" /><br />
-		    	<div><?
-if(USE_CAPCHA){
+		    	<div><?php if(USE_CAPCHA){
 ?>
-						<?if(CAPCHA_TYPE == 1){ 
+						<?php if(CAPCHA_TYPE == 1){ 
 							echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 						}else if(CAPCHA_TYPE == 2){ 
 							echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 						};?>&nbsp;
 						<input name="security_code" type="text" id="security_code" class="<?php echo $classbox[1]; ?>" onclick="this.value=''" maxlength="10" size="10">
 
-<?
-}
+<?php }
 ?></div><br>
 				<input type="hidden" name="action" id="action" value="login"> 
                 <input name="button" type="submit" class="button" id="button" value="<?=_ADMIN_MOD_BUTTON_ADD;?>"   />

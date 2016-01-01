@@ -15,7 +15,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <script language='JavaScript'>
 					function checkboard() {
 						if(document.formboard.keyword.value=='') {
-						alert('<?echo _FORM_SEARCH_NULL;?>') ;
+						alert('<?php echo _FORM_SEARCH_NULL;?>') ;
 						document.formboard.keyword.focus() ;
 						return false ;
 						}
@@ -37,24 +37,22 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 <td height="50" bgcolor="#F8F8F8"><form name="formsearch" method="post" action="?name=download&file=download_search">
                     <div align="left">
 &nbsp;&nbsp;<strong><font color="#009933"><?=_FROM_SEARCH_WORD;?></font></strong>&nbsp;
-            <input type="text" name="keyword" value="<? echo"$keyword"; ?>">
+            <input type="text" name="keyword" value="<?php echo"$keyword"; ?>">
 &nbsp;&nbsp;&nbsp;<strong> <?=_FROM_SEARCH_FIELD;?></strong>
             <select name="fields">
-              <option value="id" <? if($_POST['fields']=='id'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_ID;?> </option>
-              <option value="topic" <? if($_POST['fields']=='topic'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_TOPIC;?> </option>
-              <option value="headline" <? if($_POST['fields']=='headline'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_HEADLINE;?></option>
+              <option value="id" <?php if($_POST['fields']=='id'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_ID;?> </option>
+              <option value="topic" <?php if($_POST['fields']=='topic'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_TOPIC;?> </option>
+              <option value="headline" <?php if($_POST['fields']=='headline'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_HEADLINE;?></option>
             </select>
 &nbsp;&nbsp;&nbsp;
             <input type="hidden" name="category" value="<?=$category;?>">
             <input type="submit" name="Submit" value="<?=_FROM_SEARCH_BUTTON;?>">
 &nbsp;<b><img src="images/admin/opendir.gif" align="absmiddle"> <a href="?name=download"><?=_FROM_SEARCH_ALL;?></a>
-<?
-if($admin_user){
+<?php if($admin_user){
 	//Admin Login Show Icon
 ?>
 				  &nbsp;&nbsp;&nbsp;&nbsp;<a href="?name=admin&file=download&op=article_add"><img src="images/admin/i-editor.png" align="absmiddle"> </a>
-<?
-}
+<?php }
 ?>
 <br>
           </b></div>
@@ -65,8 +63,7 @@ if($admin_user){
                   <td bgcolor="#F8F8F8"><div align="left"> &nbsp;&nbsp;<strong><font color="#009933"><?=_FROM_SEARCH_CAT;?></font></strong>&nbsp;
                           <select name="category" onchange="if(options[selectedIndex].value){location = options[selectedIndex].value};  MM_jumpMenu('parent',this,0)">
                             <option value="?name=download"><?=_FROM_SEARCH_CAT_ALL;?></option>
-                            <?
-
+                            <?php 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_DOWNLOAD_CAT." ORDER BY sort  ");
 while($arr['category'] = $db->fetch($res['category'])){
@@ -87,7 +84,7 @@ empty($_POST['keyword'])?$keyword="":$keyword=$_POST['keyword'];
             </form>
 </tr>
             </table>
-            <? 
+            <?php 
 	empty($_GET['page'])?$page="":$page=$_GET['page'];
 function highlight($word, $subject) {
   $pattern = '/(>[^<]*)('.$word.')/i';
@@ -138,8 +135,7 @@ $goto = ($page-1)*$limit ;
    <td width="100"><CENTER><B><?=_DOWNLOAD_T_CAT;?></B></CENTER></td>
    <td width="50"><CENTER><B><?=_DOWNLOAD_T_FILE_ATT;?></B></CENTER></td>
   </tr>  
-<?
-// ระบบค้นหา download ของ maxsite 1.10 พัฒนาโดย www.narongrit.net
+<?php // ระบบค้นหา download ของ maxsite 1.10 พัฒนาโดย www.narongrit.net
 $res['download'] = $db->select_query("SELECT * FROM ".TB_DOWNLOAD." ".$SQLwhere2." ORDER BY id DESC LIMIT $goto, $limit ");
 $rank=1;
 $count=0;
@@ -175,24 +171,22 @@ echo "<tr ".$ColorFill.">";
 ?>
     
      <td  valign="top" width="60" align="center" >
-	 <?
-if($admin_user){
+	 <?php if($admin_user){
 	//Admin Login Show Icon
 ?>
-      <a href="?name=admin&file=download&op=download_edit&id=<? echo $arr['download']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=download&op=download_del&id=<? echo $arr['download']['id'];?>&prefix=<? echo $arr['download']['post_date'];?>','<?echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
+      <a href="?name=admin&file=download&op=download_edit&id=<?php echo $arr['download']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=download&op=download_del&id=<?php echo $arr['download']['id'];?>&prefix=<?php echo $arr['download']['post_date'];?>','<?php echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
 	  
-	  <?
-//		  echo "$rank";
+	  <?php //		  echo "$rank";
 } else {
 echo "$ranks";
 }
 	  ?>
 
-     <? //echo "$rank"; ?></td> 
-     <td valign="top"><A HREF="?name=download&file=readdownload&id=<?echo $arr['download']['id'];?>" target="_blank"><?echo $topics;?></A><?=$CommentIcon;?><?=NewsIcon(TIMESTAMP, $arr['download']['post_date'], "images/icon_new.gif");?><font color="#CC3300">( <?=_FORM_MOD_POSTDATE;?> <?echo ThaiTimeConvert($arr['download']['post_date'],'','');?> || <?=_FORM_MOD_READ;?> <?=$arr['download']['pageview'];?>  ) <?=_DOWNLOAD_AUTH;?> <?=$arr['download']['posted'];?></font></td>
+     <?php //echo "$rank"; ?></td> 
+     <td valign="top"><A HREF="?name=download&file=readdownload&id=<?php echo $arr['download']['id'];?>" target="_blank"><?php echo $topics;?></A><?=$CommentIcon;?><?=NewsIcon(TIMESTAMP, $arr['download']['post_date'], "images/icon_new.gif");?><font color="#CC3300">( <?=_FORM_MOD_POSTDATE;?> <?php echo ThaiTimeConvert($arr['download']['post_date'],'','');?> || <?=_FORM_MOD_READ;?> <?=$arr['download']['pageview'];?>  ) <?=_DOWNLOAD_AUTH;?> <?=$arr['download']['posted'];?></font></td>
 	      <td align="center" valign="top">
-<?	
+<?php 
 	$bytes=$arr['download']['size'];
 	echo getfilesize($bytes) ;?>
 		  </td>
@@ -200,42 +194,35 @@ echo "$ranks";
 				  <?=$arr['download']['rate'];?>
 				  </td>
      <td align="center"  valign="top">
-	 <?if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
-	 <A HREF="#"><?echo $arr['category']['category_name'];?></A>
-	 <? } ?>
+	 <?php if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
+	 <A HREF="#"><?php echo $arr['category']['category_name'];?></A>
+	 <?php } ?>
 	 </td>
      <td align="center"  valign="top">
 		  <A HREF="popup.php?name=download&file=rate&id=<?=$arr['download']['id']; ?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 300} )" class="highslide">
-		  <? 
+		  <?php 
 	 if ($arr['download']['type']=="application/pdf") {
 		 ?>
 		  <img src="modules/download/images/pdf.gif" border="0" >
-		  <?
-	 } else if ($arr['download']['type']=="application/msword") {
+		  <?php 	 } else if ($arr['download']['type']=="application/msword") {
 		 ?>
 		  <img src="modules/download/images/word.gif" border="0" >
-		  <?
-		 } else if ($arr['download']['type']=="application/vnd.ms-excel") {
+		  <?php 		 } else if ($arr['download']['type']=="application/vnd.ms-excel") {
 		 ?>
 		  <img src="modules/download/images/excel.gif" border="0" >
-		  <?
-		 }else if ($arr['download']['type']=="application/vnd.ms-powerpoint") {
+		  <?php 		 }else if ($arr['download']['type']=="application/vnd.ms-powerpoint") {
 		 ?>
 		  <img src="modules/download/images/powerpoint.gif" border="0" >
-		  <?
-		 }else if ($arr['download']['type']=="image/gif" || $arr['download']['type']=="image/jpg"|| $arr['download']['type']=="image/jpeg"|| $arr['download']['type']=="image/png" ) {
+		  <?php 		 }else if ($arr['download']['type']=="image/gif" || $arr['download']['type']=="image/jpg"|| $arr['download']['type']=="image/jpeg"|| $arr['download']['type']=="image/png" ) {
 		 ?>
 		  <img src="modules/download/images/pics.gif" border="0" >
-		  <?
-		 }else if ($arr['download']['type']=="application/x-zip-compressed" ) {
+		  <?php 		 }else if ($arr['download']['type']=="application/x-zip-compressed" ) {
 		 ?>
 		  <img src="modules/download/images/zip.gif" border="0" >
-		  <?
-		 }else {
+		  <?php 		 }else {
 		 ?>
 		  <img src="modules/download/images/stuff3.gif" border="0" >
-		  <?
-		 }
+		  <?php 		 }
 
 		 ?>
 
@@ -244,8 +231,7 @@ echo "$ranks";
 
     </tr>
 
-<?
-		  $rank++;
+<?php 		  $rank++;
 	 $count++;
  } 
 ?>
@@ -253,8 +239,7 @@ echo "$ranks";
 		  <BR>
           <table border="0" cellpadding="0" cellspacing="1" width="650" align=center>
             <tr>
-              <td><?
-				SplitPage($page,$totalpage,"?name=download&category=".$category."");
+              <td><?php 				SplitPage($page,$totalpage,"?name=download&category=".$category."");
 				echo $ShowSumPages ;
 				echo "<BR>";
 				echo $ShowPages ;
@@ -267,8 +252,7 @@ echo "$ranks";
           </table>
 
           </div>
-<?
-}
+<?php }
 
 }
 } else {

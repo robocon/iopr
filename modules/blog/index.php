@@ -16,7 +16,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <script language='JavaScript'>
 					function checkboard() {
 						if(document.formboard.keyword.value=='') {
-						alert('<?echo _FROM_SEARCH_NULL;?>') ;
+						alert('<?php echo _FROM_SEARCH_NULL;?>') ;
 						document.formboard.keyword.focus() ;
 						return false ;
 						}
@@ -38,24 +38,22 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 <td height="50" bgcolor="#F8F8F8"><form name="formsearch" method="post" action="?name=blog&file=blog_search">
                     <div align="left">
 &nbsp;&nbsp;<strong><font color="#009933"><?=_FROM_SEARCH_WORD;?></font></strong>&nbsp;
-            <input type="text" name="keyword" value="<? echo"$keyword"; ?>">
+            <input type="text" name="keyword" value="<?php echo"$keyword"; ?>">
 &nbsp;&nbsp;&nbsp;<strong> <?=_FROM_SEARCH_FIELD;?></strong>
             <select name="fields">
-              <option value="id" <? if($_POST['fields']=='id'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_ID;?> </option>
-              <option value="topic" <? if($_POST['fields']=='topic'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_TOPIC;?> </option>
-              <option value="headline" <? if($_POST['fields']=='headline'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_HEADLINE;?></option>
+              <option value="id" <?php if($_POST['fields']=='id'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_ID;?> </option>
+              <option value="topic" <?php if($_POST['fields']=='topic'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_TOPIC;?> </option>
+              <option value="headline" <?php if($_POST['fields']=='headline'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_HEADLINE;?></option>
             </select>
 &nbsp;&nbsp;&nbsp;
             <input type="hidden" name="category" value="<?=$category;?>">
             <input type="submit" name="Submit" value="<?=_FROM_SEARCH_BUTTON;?>">
 &nbsp;<b><img src="images/admin/opendir.gif" align="absmiddle"> <a href="?name=blog"><?=_FROM_SEARCH_ALL;?></a>
-<?
-if($admin_user){
+<?php if($admin_user){
 	//Admin Login Show Icon
 ?>
 				  &nbsp;&nbsp;&nbsp;&nbsp;<a href="?name=admin&file=blog&op=article_add"><img src="images/admin/i-editor.png" align="absmiddle"> </a>
-<?
-}
+<?php }
 ?>
 <br>
           </b></div>
@@ -66,8 +64,7 @@ if($admin_user){
                   <td bgcolor="#F8F8F8"><div align="left"> &nbsp;&nbsp;<strong><font color="#009933"><?=_FROM_SEARCH_CAT;?></font></strong>&nbsp;
                           <select name="category" onchange="if(options[selectedIndex].value){location = options[selectedIndex].value};  MM_jumpMenu('parent',this,0)">
                             <option value="?name=blog"><?=_FROM_SEARCH_CAT_ALL;?></option>
-                            <?
-
+                            <?php 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_BLOG_CAT." ORDER BY sort  ");
 while($arr['category'] = $db->fetch($res['category'])){
@@ -88,7 +85,7 @@ empty($_POST['keyword'])?$keyword="":$keyword=$_POST['keyword'];
             </form>
 </tr>
             </table>
-            <? 
+            <?php 
 
 
 
@@ -96,8 +93,7 @@ if (empty($keyword) or empty($fields))
 {
 ?>
 				<TABLE width="740" align=center cellSpacing=0 cellPadding=0 border=0>
-<?
-	empty($_GET['page'])?$page="":$page=$_GET['page'];
+<?php 	empty($_GET['page'])?$page="":$page=$_GET['page'];
 empty($_GET['category'])?$category="":$category=$_GET['category'];
 //แสดงข่าวสาร/ประชาสัมพันธ์ 
 if($category){
@@ -136,27 +132,26 @@ while($arr['blog'] = $db->fetch($res['blog'])){
 				<TR>
 					<TD><FONT COLOR="#990000"><B><?=_BLOG_MOD_CAT;?>
 					 </font><b><FONT COLOR="#0066FF"><?=$arr['category']['category_name'];?>
-					</B></FONT><br><FONT COLOR="#990000">Blog name : </font><FONT COLOR="#0066FF"><?=$arr['cblog']['posted'];?> </font><FONT COLOR="#CC33CC"><?BlogLevel($arr['cblog']['co']);?></font><br><b><FONT COLOR="#990000"><?=_BLOG_MOD_DATE_ACC;?> </font><FONT COLOR="#0066FF"><?= ThaiTimeConvert($arr['blog']['post_date'],"","");?></font><FONT COLOR="#CC33CC"> [<?=_BLOG_MOD_PRIVIEW;?>  <?=$arr['blog']['pageview'];?>]</font></TD>
+					</B></FONT><br><FONT COLOR="#990000">Blog name : </font><FONT COLOR="#0066FF"><?=$arr['cblog']['posted'];?> </font><FONT COLOR="#CC33CC"><?php BlogLevel($arr['cblog']['co']);?></font><br><b><FONT COLOR="#990000"><?=_BLOG_MOD_DATE_ACC;?> </font><FONT COLOR="#0066FF"><?= ThaiTimeConvert($arr['blog']['post_date'],"","");?></font><FONT COLOR="#CC33CC"> [<?=_BLOG_MOD_PRIVIEW;?>  <?=$arr['blog']['pageview'];?>]</font></TD>
 				</TR>
 				<TR><TD height="3" ></TD></TR>
 				<TR>
 					<TD valign="top" align="center">
 					<A HREF="?name=blog&file=readblog&id=<?=$arr['blog']['id'];?>" target="_blank">
-					<?if ($arr['blog']['pic']){echo "<img  src=icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg class=mysborder border=0 align=center>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=center>";} ?></a>
+					<?php if ($arr['blog']['pic']){echo "<img  src=icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg class=mysborder border=0 align=center>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=center>";} ?></a>
 					</td>
 					</tr>
 					<tr>
 					<td colspan="2" ><img src="images/a.gif"><A HREF="?name=blog&file=readblog&id=<?=$arr['blog']['id'];?>" target="_blank">
-					<B><?=$arr['blog']['topic'];?></A><?if ($login_true==$arr['blog']['posted']){echo "<A HREF=\"?name=blog&file=blog&op=article_edit&id=".$arr['blog']['id']."\">&nbsp;&nbsp;<IMG SRC=\"images/mail1[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a><a href=\"index.php?name=blog&file=blog&op=article_del&id=".$arr['blog']['id']."\">&nbsp;<IMG SRC=\"images/trash_16[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>";}?></b>
-					<?NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?>( <?=$arr['blog']['pageview'];?> / <?=$arrs['com']['com'];?> )
-					<BR>&nbsp;&nbsp;&nbsp;&nbsp;<?=$arr['blog']['headline'];?><br><?$rater_ids=$arr['blog']['id'];$rater_item_name='blog';include("modules/rater/raters.php");?>
+					<B><?=$arr['blog']['topic'];?></A><?php if ($login_true==$arr['blog']['posted']){echo "<A HREF=\"?name=blog&file=blog&op=article_edit&id=".$arr['blog']['id']."\">&nbsp;&nbsp;<IMG SRC=\"images/mail1[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a><a href=\"index.php?name=blog&file=blog&op=article_del&id=".$arr['blog']['id']."\">&nbsp;<IMG SRC=\"images/trash_16[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>";}?></b>
+					<?php NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?>( <?=$arr['blog']['pageview'];?> / <?=$arrs['com']['com'];?> )
+					<BR>&nbsp;&nbsp;&nbsp;&nbsp;<?=$arr['blog']['headline'];?><br><?php $rater_ids=$arr['blog']['id'];$rater_item_name='blog';include("modules/rater/raters.php");?>
 					</TD>
 				</TR>
 				<TR><TD height="3" ></TD></TR>
 				</TABLE>
 			</TD>
-<?
-$count++;
+<?php $count++;
 if (($count%_KNOW_COL) == 0) { echo "</TR><TR><TD colspan=2 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; }
 }
 $db->closedb ();
@@ -167,8 +162,7 @@ $db->closedb ();
 				<table border="0" cellpadding="0" cellspacing="1" width="740" align=center>
 					<tr>
 						<td>
-				<?
-				SplitPage($page,$totalpage,"?name=blog&category=".$category."");
+				<?php 				SplitPage($page,$totalpage,"?name=blog&category=".$category."");
 				echo $ShowSumPages ;
 				echo "<BR>";
 				echo $ShowPages ;
@@ -177,8 +171,7 @@ $db->closedb ();
 					</tr>
 				</table>
 				<BR><BR>
-<?
-
+<?php 
 
 } else { 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -210,8 +203,7 @@ echo"<center><br><br>"._FROM_SEARCH_NULL."</b> </center><br><br><br><br><br>";
 ?>
           </div>
 		  <TABLE width="740" align=center cellSpacing=0 cellPadding=0 border=0>
-            <?
-
+            <?php 
 //แสดงสาระ blog  
 if($_GET['category']){
 	$SQLwhere = " category='".$_GET['category']."' ";
@@ -256,7 +248,7 @@ while($arr['blog'] = $db->fetch($res['blog'])){
           <TD width="320"><A HREF="?name=blog&file=readblog&id=<?=$arr['blog']['id'];?>"> <IMG SRC="NewsIcon/<?=$arr['blog']['post_date'];?>.jpg" WIDTH="80" HEIGHT="60" BORDER="0" ALIGN="left" class="topicicon"><B>
             <?=$arr['blog']['topic'];?>
             </b></A>
-              <?NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?>
+              <?php NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?>
               <BR>
               <?=$arr['blog']['headline'];?>
           </TD>
@@ -265,8 +257,7 @@ while($arr['blog'] = $db->fetch($res['blog'])){
           <TD height="3" ></TD>
         </TR>
     </TABLE></TD>
-      <?
-$count++;
+      <?php $count++;
 if (($count%_KNOW_COL) == 0) { echo "</TR><TR><TD colspan=2 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; }
 }
 $db->closedb ();
@@ -277,15 +268,14 @@ $db->closedb ();
 		  <BR>
           <table border="0" cellpadding="0" cellspacing="1" width="740" align=center>
             <tr>
-              <td><?
-				SplitPage($page,$totalpage,"?name=blog&category=".$_GET['category']."");
+              <td><?php 				SplitPage($page,$totalpage,"?name=blog&category=".$_GET['category']."");
 				echo $ShowSumPages ;
 				echo "<BR>";
 				echo $ShowPages ;
 				?>
               </td>
             </tr>
-          </table> <? } ?>
+          </table> <?php } ?>
 		  </TD>
         </TR>
       </TBODY>

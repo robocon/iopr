@@ -5,8 +5,7 @@
 <script type="text/javascript" src="modules/randomimg/contentslider.js"></script>
 <link href="modules/randomimg/contentslider.css" type="text/css" rel="stylesheet"><!-- start slider-->
 <div class="sliderwrapper" id="slider1" align="center">
-	<?
-		$dir=opendir("images/random");
+	<?php 		$dir=opendir("images/random");
 		$file="";
 		$i=0;
 		$a=0;
@@ -21,9 +20,8 @@
 	?>	
 
 
-<div class="contentdiv"><a href="index.php"><img alt="" border="0" src="images/random/<? echo $as[$a]; ?>"></a></div>
-<?
-					}
+<div class="contentdiv"><a href="index.php"><img alt="" border="0" src="images/random/<?php echo $as[$a]; ?>"></a></div>
+<?php 					}
 		}
 		?>
 </div>

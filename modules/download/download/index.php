@@ -181,8 +181,8 @@ $CommentIcon = "";
 if($admin_user){
 //Admin Login Show Icon
 ?>
-<a href="?name=admin&file=download&op=download_edit&id=<? echo $arr['download']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
-<a href="javascript:Confirm('?name=admin&file=download&op=download_del&id=<? echo $arr['download']['id'];?>&prefix=<? echo $arr['download']['post_date'];?>','<?=_FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
+<a href="?name=admin&file=download&op=download_edit&id=<?php echo $arr['download']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
+<a href="javascript:Confirm('?name=admin&file=download&op=download_del&id=<?php echo $arr['download']['id'];?>&prefix=<?php echo $arr['download']['post_date'];?>','<?=_FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
 
 <?php
 //		  echo "$rank";
@@ -191,10 +191,10 @@ echo "$ranks";
 }
 ?>
 
-<? //echo "$rank"; ?></td> 
+<?php //echo "$rank"; ?></td> 
 <td valign="top"><A HREF="?name=download&file=readdownload&id=<?php echo $arr['download']['id'];?>" target="_blank"><?php echo $arr['download']['topic'];?></A><?=$CommentIcon;?><?=NewsIcon(TIMESTAMP, $arr['download']['post_date'], "images/icon_new.gif");?><font color="#CC3300">( <?=_FORM_MOD_POSTDATE;?> <?php echo ThaiTimeConvert($arr['download']['post_date'],'','');?> || <?=_FORM_MOD_READ;?> <?=$arr['download']['pageview'];?>  ) <?=_FORM_MOD_POSTED;?> <?=$arr['download']['posted'];?></font></td>
 <td align="center" valign="top">
-<?	
+<?php 
 $bytes=$arr['download']['size'];
 echo getfilesize($bytes) ;?>
 </td>
@@ -202,13 +202,13 @@ echo getfilesize($bytes) ;?>
 <?=$arr['download']['rate'];?>
 </td>
 <td align="center"  valign="top">
-<?if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
+<?php if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
 <A HREF="#"><?php echo $arr['category']['category_name'];?></A>
-<? } ?>
+<?php } ?>
 </td>
 <td align="center"  valign="top">
 <A HREF="popup.php?name=download&file=rate&id=<?=$arr['download']['id']; ?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 300} )" class="highslide">
-<? 
+<?php 
 if ($arr['download']['type']=="application/pdf") {
 ?>
 <img src="modules/download/images/pdf.gif" border="0" >
@@ -343,8 +343,8 @@ $CommentIcon = "";
 if($admin_user){
 //Admin Login Show Icon
 ?>
-<a href="?name=admin&file=download&op=download_edit&id=<? echo $arr['download']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
-<a href="javascript:Confirm('?name=admin&file=download&op=download_del&id=<? echo $arr['download']['id'];?>&prefix=<? echo $arr['download']['post_date'];?>','<?=_FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
+<a href="?name=admin&file=download&op=download_edit&id=<?php echo $arr['download']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
+<a href="javascript:Confirm('?name=admin&file=download&op=download_del&id=<?php echo $arr['download']['id'];?>&prefix=<?php echo $arr['download']['post_date'];?>','<?=_FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
 
 <?php
 //		  echo "$rank";
@@ -353,10 +353,10 @@ echo "$ranks";
 }
 ?>
 
-<? //echo "$rank"; ?></td> 
+<?php //echo "$rank"; ?></td> 
 <td valign="top"><A HREF="?name=download&file=readdownload&id=<?php echo $arr['download']['id'];?>" target="_blank"><?php echo $arr['download']['topic'];?></A><?=$CommentIcon;?><?=NewsIcon(TIMESTAMP, $arr['download']['post_date'], "images/icon_new.gif");?><font color="#CC3300">( <?=_FORM_MOD_POSTDATE;?> <?php echo ThaiTimeConvert($arr['download']['post_date'],'','');?> || <?=_FORM_MOD_READ;?> <?=$arr['download']['pageview'];?>  ) <?=_FORM_MOD_POSTED;?> <?=$arr['download']['posted'];?></font></td>
 <td align="center" valign="top">
-<?	
+<?php 
 $bytes=$arr['download']['size'];
 echo getfilesize($bytes) ;?>
 </td>
@@ -364,13 +364,13 @@ echo getfilesize($bytes) ;?>
 <?=$arr['download']['rate'];?>
 </td>
 <td align="center"  valign="top">
-<?if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
+<?php if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
 <A HREF="#"><?php echo $arr['category']['category_name'];?></A>
-<? } ?>
+<?php } ?>
 </td>
 <td align="center"  valign="top">
 <A HREF="popup.php?name=download&file=rate&id=<?=$arr['download']['id']; ?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 300} )" class="highslide">
-<? 
+<?php 
 if ($arr['download']['type']=="application/pdf") {
 ?>
 <img src="modules/download/images/pdf.gif" border="0" >
@@ -425,7 +425,7 @@ echo $ShowPages ;
 ?>
 </td>
 </tr>
-</table> <? } ?>
+</table> <?php } ?>
 <BR><BR>
 </TD>
 </TR>

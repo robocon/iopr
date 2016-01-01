@@ -1,5 +1,4 @@
-<?
-//แรียก user online ทั้งหมด
+<?php //แรียก user online ทั้งหมด
 include ("editor.php");
 			$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 			$res['user2'] = $db->select_query("SELECT * FROM ".TB_useronline." ");			
@@ -25,8 +24,7 @@ include ("editor.php");
 				</TR>
 				<TR>
 					<TD>
-<?
- if($_GET['op'] == "download_add" AND $_GET['action'] == "add"){
+<?php  if($_GET['op'] == "download_add" AND $_GET['action'] == "add"){
 	//////////////////////////////////////////// กรณีเพิ่ม Database
 	if($admin_user<>"" || $login_true<>""){
 
@@ -137,8 +135,7 @@ if($admin_user<>"" || $login_true<>""){
 
 <B><?=_FORM_CAT;?></B><BR>
 <SELECT NAME="CATEGORY">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_DOWNLOAD_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
 	   echo "<option value=\"".$arr['category']['id']."\"";
@@ -149,9 +146,9 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B><?=_DOWNLOAD_IMG_TITLE;?> </B><BR>
-<IMG name="view01" SRC="images/news_blank.gif" <?echo " WIDTH=\""._Idownload_W."\" HEIGHT=\""._Idownload_H."\" ";?> BORDER="0" ><BR>
+<IMG name="view01" SRC="images/news_blank.gif" <?php echo " WIDTH=\""._Idownload_W."\" HEIGHT=\""._Idownload_H."\" ";?> BORDER="0" ><BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-<?=_FORM_ICON_FIX1;?> <?echo _Idownload_W." x "._Idownload_H ;?> <?=_FORM_ICON_FIX2;?>
+<?=_FORM_ICON_FIX1;?> <?php echo _Idownload_W." x "._Idownload_H ;?> <?=_FORM_ICON_FIX2;?>
 <BR><BR>
 <B><?=_FORM_HEADLINE;?></B><BR>
 <textarea cols="50" id="editor1" rows="50"  name="HEADLINE" ><?=$HEADLINE;?></textarea>
@@ -186,8 +183,7 @@ $db->closedb ();
 <input type="submit" value=" <?=_DOWNLOAD_BUTTON_ADD;?>" name="submit"> <input type="reset" value="<?=_FORM_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -203,8 +199,7 @@ $db->closedb ();
         </TR>
       </TBODY>
     </TABLE>
-			<?
-			} else {
+			<?php 			} else {
 include 'modules/user/danger.php';
 		  }
 		  ?>

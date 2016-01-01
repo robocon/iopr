@@ -1,5 +1,4 @@
-<?
-CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
+<?php CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 include ("editor.php");
 if($_GET[op] == "calendar_edit"){
 	if(CheckLevel($_SESSION['admin_user'],$_GET[op])){
@@ -70,8 +69,7 @@ if($_GET[op] == "calendar_edit"){
 					<TD>
 					<BR><B>&nbsp;&nbsp;<IMG SRC="images/icon/calendar.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_CALENDAR_FORM_TITLE_EDIT;?></B>
 					<BR><BR>
-<?
-if(!$ProcessOutput){
+<?php if(!$ProcessOutput){
 ?>
 <form NAME="myform" METHOD=POST ACTION="?name=admin&file=editevent&op=calendar_edit&id=<?=$_GET[id];?>">
 <br>
@@ -93,8 +91,7 @@ if(!$ProcessOutput){
 
 <input type="submit" value=" <?=_ADMIN_CALENDAR_FORM_BUTTON_ADD;?> " name="submit"> <input type="reset" value="<?=_ADMIN_BUTTON_CLEAR;?>" name="reset">
 </form>
-<?
-}else{
+<?php }else{
 	echo $ProcessOutput ;
 }
 ?>

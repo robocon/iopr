@@ -1,7 +1,6 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 ?>
-<?include ("editor.php");?>
+<?php include ("editor.php");?>
 	<TABLE cellSpacing=0 cellPadding=0 width=820 border=0>
       <TBODY>
         <TR>
@@ -18,8 +17,7 @@ CheckAdmin($admin_user, $admin_pwd);
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; GALLERY </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=gallery"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_GALLERY_MENU_LIST;?> </A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=gallery&op=gallery_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_GALLERY_MENU_ADD_NEW;?> </A>  &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=gallery_category&op=gallerycat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_GALLERY_MENU_ADD_CAT;?></A><BR><BR>
-<?
-//////////////////////////////////////////// แสดงรายการ
+<?php //////////////////////////////////////////// แสดงรายการ
  if($op == "gallerycat_add" AND $action == "add"){
 	//////////////////////////////////////////// กรณีเพิ่ม Database
 	if(CheckLevel($admin_user,$op)){
@@ -66,8 +64,7 @@ else if($op == "gallerycat_add"){
 <BR><BR>
 <INPUT TYPE="submit" value="<?=_ADMIN_GALLERY_BUTTON_ADD_CAT;?>">
 </FORM>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -155,8 +152,7 @@ else if($op == "gallerycat_edit"){
 <BR><BR>
 <INPUT TYPE="submit" value="<?=_ADMIN_GALLERY_BUTTON_EDIT_CAT;?>">
 </FORM>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

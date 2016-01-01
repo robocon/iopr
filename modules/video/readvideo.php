@@ -1,4 +1,4 @@
-<?include ("editor.php");?>
+<?php include ("editor.php");?>
 <script src="js/jquery.min.js"></script>
 <script src="js/flowplayer-3.2.6.min.js"></script>
 <script src="js/flowplayer.playlist-3.0.8.min.js"></script> 
@@ -36,10 +36,10 @@ a.player img {
 	}
 </style>
 <script> 
-var urlx = '<?echo WEB_URL;?>';
+var urlx = '<?php echo WEB_URL;?>';
 $(function() {
 	// setup player without "internal" playlists
-	$f('player', '<?echo WEB_URL;?>/video/flowplayer-3.2.7.swf', {
+	$f('player', '<?php echo WEB_URL;?>/video/flowplayer-3.2.7.swf', {
 		clip: { 
 			baseUrl: ''+urlx+'' ,
 			autoPlay: true,
@@ -66,8 +66,7 @@ $(function() {
 		  <!-- video -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_video.gif" BORDER="0"><br>
 				<TABLE width="740" align=center cellSpacing=2 cellPadding=2 border=0 class="tablex">
-<?
-empty($_GET['id'])?$id="":$id=$_GET['id'];
+<?php empty($_GET['id'])?$id="":$id=$_GET['id'];
 //แสดง video  
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['video'] = $db->select_query("SELECT * FROM ".TB_VIDEO." WHERE id='".$id."' ");
@@ -94,7 +93,7 @@ if(!$arr['video']['id']){
 				<tr>
 				<td  border=0  align="center" class='imageframe'>
 <!-- player container without nested content -->
-<?if ($arr['video']['youtube'] ==0){echo "<a href=\""._VIDEOS_DIR_PATH."/".$arr['video']['video']."\" class=\"player\" id=\"player\"  style=\"float:left\" ></a>";} else {
+<?php if ($arr['video']['youtube'] ==0){echo "<a href=\""._VIDEOS_DIR_PATH."/".$arr['video']['video']."\" class=\"player\" id=\"player\"  style=\"float:left\" ></a>";} else {
 	echo "<object height=\"408\" width=\"600\"><param name=\"movie\" value=\"http://www.youtube.com/v/".$arr['video']['video']."&amp;hl=en_US&amp;fs=1&amp;\"><param name=\"allowFullScreen\" value=\"true\"><param name=\"allowscriptaccess\" value=\"always\"><embed allowfullscreen=\"true\" allowscriptaccess=\"always\" height=\"408\" src=\"http://www.youtube.com/v/".$arr['video']['video']."&amp;hl=en_US&amp;fs=1&amp;\"  type=\"application/x-shockwave-flash\" width=\"600\"></embed></object>";}?>
  <!-- let rest of the page float normally -->
 <br clear="all"/>
@@ -117,15 +116,14 @@ if(!$arr['video']['id']){
 					<td bgcolor="#E2E2E2" valign="top" align="right"> <?=_FORM_DETAIL;?> </td><td bgcolor="#E2E2E2" valign="top"><?=$arr['video']['detail'];?></B>
 					</td>
 					</tr>
-<?
-if($arr['video']['youtube']==1){
+<?php if($arr['video']['youtube']==1){
 $durationx=timeyoutube($arr['video']['times']);
 } else {
 $durationx = $arr['video']['times'];
 }
 ?>
 					<tr >
-					<td bgcolor="#E2E2E2" valign="top" align="right"> Duration : </td><td bgcolor="#E2E2E2" valign="top"><? echo "".$durationx."";?></B>
+					<td bgcolor="#E2E2E2" valign="top" align="right"> Duration : </td><td bgcolor="#E2E2E2" valign="top"><?php echo "".$durationx."";?></B>
 </td>
 </tr>
 					<tr>
@@ -134,8 +132,7 @@ $durationx = $arr['video']['times'];
 					</tr>
 					<tr>
 					<td bgcolor="#E2E2E2" valign="top" align="right"><?=_DETAIL_PRIVIEW;?> : </td><td bgcolor="#E2E2E2" valign="top">
-					<?
-if ($arr['video']['youtube']==1){
+					<?php if ($arr['video']['youtube']==1){
 $json = json_decode(file_get_contents("http://gdata.youtube.com/feeds/api/videos/".$arr['video']['video']."?v=2&alt=jsonc"));	  
 echo $json->data->viewCount;
   } else {
@@ -148,14 +145,12 @@ echo $json->data->viewCount;
 					<td bgcolor="#E2E2E2" valign="top" align="right"><?=_FORM_MOD_POSTDATE;?> </td><td bgcolor="#E2E2E2" valign="top">
 					<?= ThaiTimeConvert($arr['video']['post_date'],"1","");?>
 					
-<?
-if($admin_user){
+<?php if($admin_user){
 	//Admin Login Show Icon
 ?>
-				  <a href="?name=admin&file=video&op=video_edit&id=<? echo $arr['video']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
-				  <a href="javascript:Confirm('?name=admin&file=video&op=video_del&id=<? echo $arr['video']['id'];?>&prefix=<? echo $arr['video']['post_date'];?>','<?=_FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
-<?
-}
+				  <a href="?name=admin&file=video&op=video_edit&id=<?php echo $arr['video']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
+				  <a href="javascript:Confirm('?name=admin&file=video&op=video_del&id=<?php echo $arr['video']['id'];?>&prefix=<?php echo $arr['video']['post_date'];?>','<?=_FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
+<?php }
 ?>
 </td>
 </tr>
@@ -164,8 +159,7 @@ if($admin_user){
 <table  width="100%">
 <tr>
 <td >
-<?
-$rater_ids=$id;
+<?php $rater_ids=$id;
 $rater_item_name='video';
 include("modules/rater/rater.php");
 ?>
@@ -183,8 +177,7 @@ include("modules/rater/rater.php");
 					<tr>
 <tr>
 					<TD colspan=2><B><FONT COLOR="#990099">
-<?
-//แสดง video  5 อันดับล่าสุดของหมวดหมู่ 
+<?php //แสดง video  5 อันดับล่าสุดของหมวดหมู่ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['cat_video'] = $db->select_query("SELECT * FROM ".TB_VIDEO." WHERE category='".$arr['category']['id']."' ORDER BY id DESC LIMIT 5 ");
 $rows['cat_video'] = $db->rows($res['cat_video']); 
@@ -194,20 +187,17 @@ if(!$rows['cat_video']){
 while($arr['cat_video'] = $db->fetch($res['cat_video'])){
 ?>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/suggest.gif" BORDER="0" ALIGN="absmiddle"> <B><A HREF="?name=video&file=readvideo&id=<?=$arr['cat_video']['id'];?>" target="_blank"><?=$arr['cat_video']['topic'];?></A></B> <?= ThaiTimeConvert($arr['cat_video']['post_date'],"","");?><BR>
-<?
-}
+<?php }
 $db->closedb ();
 ?>
 					</TD>
 				</TR>
-<?
-}
+<?php }
 ?>
 			</TABLE>
 			<BR><BR>
 			
-<?
-if($arr['video']['enable_comment']){
+<?php if($arr['video']['enable_comment']){
 
 	//Check Comment
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -233,8 +223,7 @@ if($arr['video']['enable_comment']){
 <tr>
           <td bgcolor="#FFFFFF" valign="top" align="center" width="100"> 
 <br>
-<?
-	$Name=$arr['comment']['name'];
+<?php 	$Name=$arr['comment']['name'];
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['admin'] = $db->select_query("SELECT * FROM ".TB_ADMIN." ");
 $arr['admin'] = $db->fetch($res['admin']);
@@ -242,29 +231,28 @@ $arr['admin'] = $db->fetch($res['admin']);
 if ($arr['admin']['username']==$Name) {
  ?>
 <A HREF="?name=admin&file=user&id=<?=$arr['admin']['id']; ?>">
-	<? if($arr['admin']['picture']==""){ ?>
+	<?php if($arr['admin']['picture']==""){ ?>
 	<IMG SRC="icon/member_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 	<IMG SRC="icon/<?=$arr['admin']['picture']; ?>" width='80' BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? } 
- ?> </a><?
-}else {
+	<?php } 
+ ?> </a><?php }else {
 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['member'] = $db->select_query("SELECT * FROM ".TB_MEMBER." where user='".$Name."' ");
 $arr['member'] = $db->fetch($res['member']);
 
 ?>
-	<? if($arr['member']['id']==""){ ?>
+	<?php if($arr['member']['id']==""){ ?>
 		<IMG SRC="icon/guest_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 <A HREF="?name=member&file=member_Message&id=<?=$arr['member']['id']; ?>">
-	<? if($arr['member']['member_pic']==""){ ?>
+	<?php if($arr['member']['member_pic']==""){ ?>
 	<IMG SRC="icon/member_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 	<IMG SRC="icon/<?=$arr['member']['member_pic']; ?>" width='80' BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? };?></a>
-<?  }; 
+	<?php };?></a>
+<?php  }; 
 
 	};
 ?>
@@ -287,7 +275,7 @@ $arr['member'] = $db->fetch($res['member']);
 		<td >
 			<img src="images/com/b_04.jpg" width="23" alt=""></td>
 		<td bgcolor="#F5F5F5"  width="100%" alt=""><B><FONT COLOR="#990000"><?=_FROM_COMMENT_NUM;?> <?=$count;?></FONT></B>
-				<?if($admin_user){echo " <A HREF=\"?name=video&file=delete_comment&id=".$id."&comment=".$arr['comment']['id']."\"><IMG SRC=\"images/admin/trash.gif\" height=\"18\"  BORDER=\"0\" ALIGN=\"absmiddle\"></A>";};?>
+				<?php if($admin_user){echo " <A HREF=\"?name=video&file=delete_comment&id=".$id."&comment=".$arr['comment']['id']."\"><IMG SRC=\"images/admin/trash.gif\" height=\"18\"  BORDER=\"0\" ALIGN=\"absmiddle\"></A>";};?>
 				<?= ThaiTimeConvert($arr['comment']['post_date'],"1","1");?>
 		</td>
 		<td background="images/com/b_05.jpg" width="10" alt="" height="100%"></td>
@@ -296,7 +284,7 @@ $arr['member'] = $db->fetch($res['member']);
 		<td background="images/com/b_06.jpg" width="23" height="100%" alt=""></td>
 		<td alt=""><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<?		if (substr_count($arr['comment']['comment'],'<p>') == 1) {   
+			<?php 	if (substr_count($arr['comment']['comment'],'<p>') == 1) {   
 		$temp = preg_replace("/<p>/i","",$arr['comment']['comment']);   
 		$temp = preg_replace("/<\/p>/i","",$temp);   
 		$arr['comment']['comment'] = $temp; 
@@ -307,7 +295,7 @@ $arr['member'] = $db->fetch($res['member']);
 	</tr>
 		<tr>
 		<td background="images/com/b_06.jpg" width="23" height="100%" alt=""></td>
-		<td width="100%" alt="" ><hr><FONT COLOR="#990000"><?=_FORM_MOD_POSTED;?> : </FONT></B> <?=$arr['comment']['name'];?> &nbsp;&nbsp; <FONT COLOR="#990000"><B>IP : </B></FONT><?echo preg_replace('/([0-9]+\.[0-9]+)\.[0-9]+\.[0-9]+/', '\1<span style="color:red">.xxx.xxx</span>', $arr['comment']['ip']);?>
+		<td width="100%" alt="" ><hr><FONT COLOR="#990000"><?=_FORM_MOD_POSTED;?> : </FONT></B> <?=$arr['comment']['name'];?> &nbsp;&nbsp; <FONT COLOR="#990000"><B>IP : </B></FONT><?php echo preg_replace('/([0-9]+\.[0-9]+)\.[0-9]+\.[0-9]+/', '\1<span style="color:red">.xxx.xxx</span>', $arr['comment']['ip']);?>
 			</td>
 		<td background="images/com/b_05.jpg" width="10" height="100%" alt=""></td>
 	</tr>
@@ -322,8 +310,7 @@ $arr['member'] = $db->fetch($res['member']);
 </td>
 </tr>
 </table>
-<?
-			$count  ++;
+<?php 			$count  ++;
 	}
 	echo "<center>";
 	SplitPage($page,$totalpage,"?name=video&file=readvideo&id=".$id."");
@@ -345,16 +332,15 @@ $arr['member'] = $db->fetch($res['member']);
 						<TABLE cellSpacing=5 cellPadding=0 width=550 border=0 align="center">
 						<TR>
 							<TD width="80" align="right"><B><?=_FROM_COMMENT_AUTH;?> : </B></TD>
-							<TD><INPUT TYPE="text" NAME="NAME" style="width:300" <?if($login_true){echo "value=\"".$login_true."\" readonly style=\"color: #FF0000\" ";};?><?if($admin_user){echo "value=\"".$admin_user."\" readonly style=\"color: #FF0000\" ";};?>></TD>
+							<TD><INPUT TYPE="text" NAME="NAME" style="width:300" <?php if($login_true){echo "value=\"".$login_true."\" readonly style=\"color: #FF0000\" ";};?><?php if($admin_user){echo "value=\"".$admin_user."\" readonly style=\"color: #FF0000\" ";};?>></TD>
 						</TR>
-<?
- if($login_true || $admin_user){
+<?php  if($login_true || $admin_user){
 } else {
 if(USE_CAPCHA){
 ?>
 						<TR>
 							<TD width="80" align="right">
-							<?if(CAPCHA_TYPE == 1){ 
+							<?php if(CAPCHA_TYPE == 1){ 
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){ 
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -362,8 +348,7 @@ if(USE_CAPCHA){
 							</TD>
 							<TD><input name="security_code" type="text" id="security_code" size="20" maxlength="6" style="width:80" > <?=_JAVA_CAPTCHA_ADD;?></TD>
 						</TR>
-<?
-}
+<?php }
 }
 ?>
 						<TR>
@@ -388,8 +373,7 @@ if(USE_CAPCHA){
 <?=_FROM_COMMENT_AGREE;?><A HREF="mailto:<?=WEB_EMAIL;?>"><?=WEB_EMAIL;?></A> <?=_FROM_COMMENT_AGREE2;?>
 			<BR><BR>
 			<!-- End Enable Comment -->
-<?
-}
+<?php }
 ?>
 
 			<!-- End video -->

@@ -1,5 +1,4 @@
-<?
-//////////////////////		 เพิ่ม  สมาชิกออนไลน์   ////////////////////////////
+<?php //////////////////////		 เพิ่ม  สมาชิกออนไลน์   ////////////////////////////
 			$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 			$db->del(TB_useronline," useronline='".$login_true."' "); 
 			$db->closedb ();

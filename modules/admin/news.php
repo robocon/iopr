@@ -195,7 +195,7 @@ if (!empty($FILER['name'])){
 	}
 $ran='1';
 
-$xml_bns = '<?xml version="1.0" encoding="utf-8"?>
+$xml_bns = '<?php xml version="1.0" encoding="utf-8"?>
 <!-- Configuration panel -->
 <banner width = "" height = ""
 		startWith = "1" 
@@ -603,7 +603,7 @@ if ($FILER['name'] !=''){
 	}
 $ran='1';
 
-$xml_bns = '<?xml version="1.0" encoding="utf-8"?>
+$xml_bns = '<?php xml version="1.0" encoding="utf-8"?>
 <!-- Configuration panel -->
 <banner width = "" height = ""
 		startWith = "1" 
@@ -925,7 +925,7 @@ else if($op == "news_del" AND $action == "multidel"){
 			$arr['ran'] = $db->fetch($res['ran']);
 			@unlink("icon/".$arr['ran']['rm_images']."");
 			$db->del(TB_RANDOM," rm_news='".$arr['news']['id']."' ");
-$xml_bns = '<?xml version="1.0" encoding="utf-8"?>
+$xml_bns = '<?php xml version="1.0" encoding="utf-8"?>
 <!-- Configuration panel -->
 <banner width = "" height = ""
 		startWith = "1" 
@@ -1134,7 +1134,7 @@ else if($op == "news_del"){
 		@unlink("icon/".$arr['ran']['rm_images']."");
 		$db->del(TB_RANDOM," rm_news='".$_GET['id']."' ");
 
-$xml_bns = '<?xml version="1.0" encoding="utf-8"?>
+$xml_bns = '<?php xml version="1.0" encoding="utf-8"?>
 <!-- Configuration panel -->
 <banner width = "" height = ""
 		startWith = "1" 

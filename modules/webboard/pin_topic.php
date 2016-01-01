@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=750 border=0 bgcolor=#FFFFFF>
       <TBODY>
@@ -9,8 +8,7 @@ CheckAdmin($admin_user, $admin_pwd);
 		  <!-- Pin  -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_webboard.gif" BORDER="0"><BR><BR>
 				<BR><BR>
-<?
-	if(CheckLevel($admin_user,"webboard_edit")){
+<?php 	if(CheckLevel($admin_user,"webboard_edit")){
 		$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 		if($_GET['action'] == "addpin"){
 			$db->update(TB_WEBBOARD," pin_date='".TIMESTAMP."' "," id='".$_GET['id']."' ");

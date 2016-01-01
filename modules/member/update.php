@@ -1,5 +1,4 @@
-<?
-require_once("mainfile.php");
+<?php require_once("mainfile.php");
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 
 $res['alter'] = $db->select_query("ALTER TABLE ".TB_MEMBER." CHANGE password password VARCHAR( 32 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ");

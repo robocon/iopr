@@ -93,8 +93,7 @@ src.bgColor = clrIn;
 </TR>
 <TR vAlign=top>
 <TD vAlign=center align=right width=108>วัน/ เดือน/ ปีเกิด :</TD>
-<?
-$dt=date('d');
+<?php $dt=date('d');
 $mt=date('m');
 $yy=date('Y');
 $yt=$yy+543;
@@ -356,8 +355,7 @@ hza.style.display = state;
 <TR vAlign=top>
 <TD vAlign=center align=right width=108>ปี พ.ศ. ที่จบการศึกษา :</TD>
 <TD width=345>
-<?
-echo "<select  name=yearfin size=1>
+<?php echo "<select  name=yearfin size=1>
 		<option >------</option>";
 for($a=$yearlast;$a<$Year;$a++){
 echo 	"<option value=$a>$a</option>";
@@ -471,8 +469,7 @@ echo "</select>";
 <TD><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="33%"><select name="icon" onChange="showimage()" class="text_box">
-<?
-								$handle=opendir('modules/alumnus/avartar/');
+<?php 								$handle=opendir('modules/alumnus/avartar/');
 								while (false!==($file = readdir($handle))) { 
 								 if ($file != "." && $file != ".." && $file != "Thumbs.db" && $file != "guest.gif") { 
 								 echo "<option value=".WEB_URL."/modules/alumnus/avartar/".$file.">$file</option>\n";
@@ -556,12 +553,11 @@ echo "</select>";
                       <INPUT NAME="email" TYPE="text" ID="email" SIZE="20">
 &nbsp;<FONT COLOR="#FF0000" SIZE="2" FACE="MS Sans Serif, Tahoma, sans-serif">**</FONT></FONT></TD>
                   </TR>
-<?
-if(USE_CAPCHA){
+<?php if(USE_CAPCHA){
 ?>
 					<TR>
 						<TD WIDTH="100" ALIGN="right">
-						<?if(CAPCHA_TYPE == 1){ 
+						<?php if(CAPCHA_TYPE == 1){ 
 							echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 						}else if(CAPCHA_TYPE == 2){ 
 							echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -569,8 +565,7 @@ if(USE_CAPCHA){
 						</TD>
 						<TD><INPUT NAME="security_code" TYPE="text" ID="security_code" MAXLENGTH="6" >&nbsp;<FONT COLOR="#FF0000" SIZE="2" FACE="MS Sans Serif, Tahoma, sans-serif">**</FONT>&nbsp;<B><FONT COLOR="#FF0000" FACE="MS Sans Serif, Tahoma, sans-serif">ใส่รหัสยืนยันป้องกัน spam</FONT></B></TD>
 					</TR>
-<?
-}
+<?php }
 //ระบบสมาชิกเสริม maxsite 1.10 พัฒนาโดย www.narongrit.net
 
 ?>

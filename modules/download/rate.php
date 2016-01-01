@@ -20,7 +20,7 @@ if ( !empty($_SESSION['admin_user']) || !empty($_SESSION['login_true']) ){
             document.getElementById("download").value="Download Now"
             document.getElementById("download").disabled=""
         } else {
-            document.getElementById("download").value="<?echo _DOWNLOAD_MOD_RATE_WAIT;?>"+counter
+            document.getElementById("download").value="<?php echo _DOWNLOAD_MOD_RATE_WAIT;?>"+counter
             document.getElementById("download").disabled="disabled"
             counter--
             setTimeout("countdown()", 1000)
@@ -68,7 +68,7 @@ if ( !empty($_SESSION['admin_user']) || !empty($_SESSION['login_true']) ){
                                     if($arr['download']['full_text']){
                                         ?>
                                         <h5><img src="images/header.gif"><br><?=_DOWNLOAD_MOD_RATE_ATT;?></h5>
-                                        <? }
+                                        <?php }
 
 
                                         $file=$arr['download']['full_text'];

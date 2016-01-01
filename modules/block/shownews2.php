@@ -6,8 +6,7 @@
 			<tr><td colspan="<?=_RESEARCH_COL;?>"><BR>
 <div align="right"><B><IMG SRC="images/icon/icon_folder.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=research"><?=_RESEARCH_ALL;?></A> &nbsp;&nbsp;&nbsp; <IMG SRC="images/icon/icon_add.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=research&file=add&op=research_add"><?=_RESEARCH_ADD;?></A></B>&nbsp;&nbsp;</div>
 <BR></td></tr>
-  <?
-
+  <?php 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $limit = 7;
 
@@ -43,21 +42,20 @@ if ($i <=_RESEARCH_COL){
 				<TD class="timemini"><font size="4"><b><?= ThaiTimeMini($arr['research']['post_date'],"");?></b></font></td>
 				<td ><?=_RESEARCH_AUTH;?> <FONT COLOR="#990000"><B><?=$arr['research']['auth'];?></font><br><font color=#C3C3C3> 
 					<?= ThaiTimeConvert($arr['research']['post_date'],"","");?> </font></td></tr>
-					<tr><td colspan="2"><?$rater_ids=$arr['research']['id'];$rater_item_name='research';include("modules/rater/raterss.php");?>
+					<tr><td colspan="2"><?php $rater_ids=$arr['research']['id'];$rater_item_name='research';include("modules/rater/raterss.php");?>
 					</B></FONT></TD>
 				</TR>
 				<TR>
 					<TD valign="top" colspan="2">
 					<img  src="icon/research_<?=$arr['research']['post_date'];?>.jpg" class="mysborder" border="0"  width="<?=_Iresearch_W;?>" align="left"><A HREF="?name=research&file=readresearch&id=<?=$arr['research']['id'];?>" target="_blank"><B><?=$arr['research']['topic'];?></A></B>
 					<?=NewsIcon(TIMESTAMP, $arr['research']['post_date'], "images/icon_new.gif");?><font color=#C3C3C3> ( <?=$arr['research']['pageview'];?> / <?=$arrs['com']['com'];?> )</font>
-					<?//=$Detail;?>
+					<?php //=$Detail;?>
 					</TD>
 				</TR>
 				<TR><TD height="3" ></TD></TR>
 				</TABLE>
 			</TD>
-<?
-$count++;
+<?php $count++;
 if (($count%_RESEARCH_COL) == 0) { echo "</TR><TR><TD colspan=2 height=\"1\" bgcolor=\"$ColorFill\"></TD></TR>"; $count=0; 
 } else{	echo "</TD>";} 
 
@@ -70,8 +68,7 @@ echo "<TR onmouseover=\"this.style.backgroundColor='#FFF0DF'\" onmouseout=\"this
 					<?=NewsIcon(TIMESTAMP, $arr['research']['post_date'], "images/icon_new.gif");?><font color="#CC3300">( <?=_RESEARCH_READ;?> <?=$arr['research']['pageview'];?> )</font> <?=_RESEARCH_AUTH;?> <font color="#CC3300"><?=$arr['research']['auth'];?>
 													</TD></tr>
 
-<?
-}
+<?php }
 $i++;
 }
 $db->closedb ();

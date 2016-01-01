@@ -119,17 +119,17 @@ var v2 = document.checkForm.new_pwd1.value;
 var v3 = document.checkForm.new_pwd2.value;
 
 if(v1.length==0){
-alert("<?echo _JAVA_FORM_CONF_OLDPASS;?>");
+alert("<?php echo _JAVA_FORM_CONF_OLDPASS;?>");
 document.checkForm.old_pwd.focus();
 return false ;
 }
 else if(v2.length==0){
-alert("<?echo _JAVA_FORM_CONF_NEWPASS;?>");
+alert("<?php echo _JAVA_FORM_CONF_NEWPASS;?>");
 document.checkForm.new_pwd1.focus();
 return false ;
 }
 else if(v3.length==0){
-alert("<?echo _JAVA_FORM_CONF_NEWPASS;?>");
+alert("<?php echo _JAVA_FORM_CONF_NEWPASS;?>");
 document.checkForm.new_pwd2.focus();
 return false ;
 }

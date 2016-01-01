@@ -1,4 +1,4 @@
-<?header("content-type: application/x-javascript; charset=tis-620");?>
+<?php header("content-type: application/x-javascript; charset=tis-620");?>
 
 	<TABLE cellSpacing=0 cellPadding=0  border=0>
       <TBODY>
@@ -6,8 +6,7 @@
           <TD width="10" vAlign=top></TD>
           <TD  vAlign=top>
 				<TABLE  align=center cellSpacing=0 width="400" cellPadding=0 border=0>
-<?
-//$_GET['id'] = intval($_GET['id']);
+<?php //$_GET['id'] = intval($_GET['id']);
 //แสดงข่าวสาร/ประชาสัมพันธ์ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['research'] = $db->select_query("SELECT * FROM ".TB_RESEARCH." WHERE id='".$_GET['id']."' ");
@@ -78,8 +77,7 @@ $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 				</TR>
 
 
-<?
-			$count  ++;
+<?php 			$count  ++;
 	}
 
 

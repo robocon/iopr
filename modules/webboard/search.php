@@ -32,14 +32,14 @@
 	          <td width="50%">
 	            <form name="formboard" method="post" action="?name=webboard&file=getsearch" onsubmit="return checkboard();">
 	              <div align="left">&nbsp; &nbsp;<strong><?=_WEBBOARD_SEARCH_TITLE_SEARCH;?></strong>&nbsp;              
-	                <input type="text" name="keyword" value="<? echo"$keyword"; ?>" style="width:150px; padding:1px">
+	                <input type="text" name="keyword" value="<?php echo"$keyword"; ?>" style="width:150px; padding:1px">
 	                <input type="submit" name="Submit" value="search">
                   </div>
 			  </form>			</td>
               <td width="37%" align="left"><script language='JavaScript'>
 					function checkboard() {
 						if(document.formboard.keyword.value=='') {
-						alert('<? echo _WEBBOARD_SEARCH_JAVA_WORD_NULL;?>') ;
+						alert('<?php echo _WEBBOARD_SEARCH_JAVA_WORD_NULL;?>') ;
 						document.formboard.keyword.focus() ;
 						return false ;
 						}
@@ -52,7 +52,7 @@
 	      <br>
           <table width="90%" height="10"  border="0" align="center" cellpadding="0" cellspacing="0">
             <tr><td align="center">
-              <? 
+              <?php 
 $keyword=$_GET[keyword];
 
 if (empty($keyword)) {
@@ -91,8 +91,7 @@ echo "$message";
 	    <td width="15%" align="center" bgcolor="#E5E5E5"><B><?=_WEBBOARD_TABLE_DATE;?></B></td>
     </tr>
 	        <tr><td colspan="4" height=1 class="dotline"></td></tr>
-	        <?
-	$SQLwhere2 = "where (topic like '%$keyword%' ) or (detail like '%$keyword%' ) or (post_name like '%$keyword%' )";
+	        <?php 	$SQLwhere2 = "where (topic like '%$keyword%' ) or (detail like '%$keyword%' ) or (post_name like '%$keyword%' )";
 //แสดงผลกระทู้ 
 $limit = _PERPAGE_BOARD ;
 $SUMPAGE = $db->num_rows(TB_WEBBOARD,"id",$SQLwhere2);
@@ -156,8 +155,7 @@ $result2 = mysql_query($sql2);
               <td> <font size="3"><b><?=_WEBBOARD_SEARCH_WORD_COMMENT;?> <u> <?=$SUMPAGE;?></u> comment</b></font></td>
             </tr>
             <tr>
-              <td><?
-				SplitPage($page,$totalpage,"?name=webboard&file=search&keyword=$_GET[keyword]");
+              <td><?php 				SplitPage($page,$totalpage,"?name=webboard&file=search&keyword=$_GET[keyword]");
 				echo $ShowSumPages  ;
 				echo "&nbsp;";
 				echo $ShowPages ;
@@ -172,8 +170,7 @@ $result2 = mysql_query($sql2);
 		<td width="80" align="center"> <B><font color="#FFFFFF"><?=_WEBBOARD_TABLE_DATE;?></font></B></td>
 </tr>
 <tr><td colspan="4" height="1" class="dotline" ></td></tr>
-<?
-$SQLwhere3 = "where (detail like '%$keyword%') or (post_name like '%$keyword%')";
+<?php $SQLwhere3 = "where (detail like '%$keyword%') or (post_name like '%$keyword%')";
 
 
 $Color = 0; 

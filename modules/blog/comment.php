@@ -1,5 +1,4 @@
-<?
-//แรียก user online ทั้งหมด
+<?php //แรียก user online ทั้งหมด
 			$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 			$res['user2'] = $db->select_query("SELECT * FROM ".TB_useronline." ");			
 			$rows['user2'] = $db->rows($res['user2']);

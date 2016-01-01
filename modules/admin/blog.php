@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 include ("editor.php");
 empty($_POST['ENABLE_COMMENT'])?$ENABLE_COMMENT="":$ENABLE_COMMENT=$_POST['ENABLE_COMMENT'];
 ?>
@@ -20,8 +19,7 @@ empty($_POST['ENABLE_COMMENT'])?$ENABLE_COMMENT="":$ENABLE_COMMENT=$_POST['ENABL
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp;  blog  </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=blog"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_BLOG_MENU_ALL_BLOG;?> </A>  &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=blog_editlevel"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_BLOG_MENU_EDIT_LEVEL;?></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=blog_category"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_MENU_DTAIL_CAT;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=blog_category&op=articlecat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_MENU_ADD_CAT;?></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=blog&op=edit_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_BLOG_MENU_ADD_MEM;?></A><BR><BR>
-<?
-//////////////////////////////////////////// แสดงรายการ blog  
+<?php //////////////////////////////////////////// แสดงรายการ blog  
 if($op == ""){
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$limit = 20 ;
@@ -43,8 +41,7 @@ if($op == ""){
    <td width="40"><CENTER><B><?=_ADMIN_TABLE_TITLE_CAT;?></B></CENTER></td>
    <td width="40"><CENTER><B>Check</B></CENTER></td>
   </tr>  
-<?
-$res['blog'] = $db->select_query("SELECT * FROM ".TB_BLOG." ORDER BY id DESC LIMIT $goto, $limit ");
+<?php $res['blog'] = $db->select_query("SELECT * FROM ".TB_BLOG." ORDER BY id DESC LIMIT $goto, $limit ");
 $count=0;
 while($arr['blog'] = $db->fetch($res['blog'])){
 	$res['category'] = $db->select_query("SELECT * FROM ".TB_BLOG_CAT." WHERE id='".$arr['blog']['category']."' ");
@@ -74,21 +71,20 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=blog&op=article_edit&id=<? echo $arr['blog']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=blog&op=article_del&id=<? echo $arr['blog']['id'];?>&prefix=<? echo $arr['blog']['post_date'];?>','<? echo _ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=blog&op=article_edit&id=<?php echo $arr['blog']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=blog&op=article_del&id=<?php echo $arr['blog']['id'];?>&prefix=<?php echo $arr['blog']['post_date'];?>','<?php echo _ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-     <td><A HREF="?name=blog&file=readblog&id=<?echo $arr['blog']['id'];?>" target="_blank"><?echo $arr['blog']['topic'];?></A><?=$CommentIcon;?><?=$PicIcon;?><?=$AttIcon;?><?=NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?></td>
-     <td ><CENTER><?echo ThaiTimeConvert($arr['blog']['post_date'],'','');?></CENTER></td>
+     <td><A HREF="?name=blog&file=readblog&id=<?php echo $arr['blog']['id'];?>" target="_blank"><?php echo $arr['blog']['topic'];?></A><?=$CommentIcon;?><?=$PicIcon;?><?=$AttIcon;?><?=NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?></td>
+     <td ><CENTER><?php echo ThaiTimeConvert($arr['blog']['post_date'],'','');?></CENTER></td>
      <td align="center">
-	 <?if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
-	 <A HREF="#"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle" alt="<?echo $arr['category']['category_name'];?>" onMouseOver="MM_displayStatusMsg('<?echo $arr['category']['category_name'];?>');return document.MM_returnValue"></A>
-	 <? } ?>
+	 <?php if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
+	 <A HREF="#"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle" alt="<?php echo $arr['category']['category_name'];?>" onMouseOver="MM_displayStatusMsg('<?php echo $arr['category']['category_name'];?>');return document.MM_returnValue"></A>
+	 <?php } ?>
 	 </td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr['blog']['id'];?>"></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr['blog']['id'];?>"></td>
     </tr>
 
-<?
-	$count++;
+<?php 	$count++;
  } 
 ?>
  </table>
@@ -99,8 +95,7 @@ $ColorFill = 'class="odd"';
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-	SplitPage($page,$totalpage,"?name=admin&file=blog");
+<?php 	SplitPage($page,$totalpage,"?name=admin&file=blog");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -213,8 +208,7 @@ else if($op == "article_edit"){
 <BR><BR>
 <B><?=_ADMIN_FORM_CAT;?> :</B><BR>
 <SELECT NAME="CATEGORY">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_BLOG_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
 	   echo "<option value=\"".$arr['category']['id']."\"";
@@ -227,17 +221,15 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B><?=_ADMIN_FORM_ICON;?> : </B><BR>
-<?
-	if ($arr['blog']['pic'] !=0){?>
-<IMG name="view01" SRC="icon/blog_<?=$arr['blog']['post_date'];?>_<?=$arr['blog']['posted'];?>.jpg" <?echo " WIDTH=\""._Iblog_W."\" HEIGHT=\""._Iblog_H."\" ";?> BORDER="0" >
-<?} else {?>
-<IMG name="view01" SRC="images/news_blank.gif" <?echo " WIDTH=\""._Iblog_W."\" HEIGHT=\""._Iblog_H."\" ";?> BORDER="0" >
-<?
-	}
+<?php 	if ($arr['blog']['pic'] !=0){?>
+<IMG name="view01" SRC="icon/blog_<?=$arr['blog']['post_date'];?>_<?=$arr['blog']['posted'];?>.jpg" <?php echo " WIDTH=\""._Iblog_W."\" HEIGHT=\""._Iblog_H."\" ";?> BORDER="0" >
+<?php } else {?>
+<IMG name="view01" SRC="images/news_blank.gif" <?php echo " WIDTH=\""._Iblog_W."\" HEIGHT=\""._Iblog_H."\" ";?> BORDER="0" >
+<?php 	}
 ?>
 <BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-<?=_ADMIN_FORM_ICON_WIDTH;?> <?echo _Iblog_W." x "._Iblog_H ;?> <?=_ADMIN_FORM_ICON_WIDTH1;?>
+<?=_ADMIN_FORM_ICON_WIDTH;?> <?php echo _Iblog_W." x "._Iblog_H ;?> <?=_ADMIN_FORM_ICON_WIDTH1;?>
 <BR><BR>
 <B><?=_ADMIN_FORM_HEADLINE;?> :</B><BR>
 <textarea cols="100"  rows="10"  name="HEADLINE" ><?=$HEADLINE;?></textarea>
@@ -248,13 +240,12 @@ $db->closedb ();
 <br>
 <B><?=_ADMIN_FORM_FILE_ATT;?> : </B><BR>
 <input type="file" name="FILESS" onpropertychange="view01.src=FILESS.value;" style="width=250;"><br>
-<INPUT TYPE="checkbox" NAME="ENABLE_COMMENT" VALUE="1" <?if($arr['blog']['enable_comment']){echo " Checked";};?>> <?=_ADMIN_FORM_ALLOW_COMMENT;?>
+<INPUT TYPE="checkbox" NAME="ENABLE_COMMENT" VALUE="1" <?php if($arr['blog']['enable_comment']){echo " Checked";};?>> <?=_ADMIN_FORM_ALLOW_COMMENT;?>
 <BR>
 <input type="submit" value="<?=_ADMIN_BUTTON_EDIT;?>" name="submit"> <input type="reset" value="<?=_ADMIN_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}
@@ -354,8 +345,7 @@ else if($op == "edit_add" ){
       <td width="80"><CENTER><B><?=_MEMBER_MOD_MEMDETAIL_PHONE;?></B></CENTER></td>
    <td width="40"><CENTER><B>Blog</B></CENTER></td>
   </tr>  
-<?
-$count=0;
+<?php $count=0;
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['user'] = $db->select_query("SELECT * FROM ".TB_MEMBER." ORDER BY id DESC LIMIT $goto, $limit ");
 while($arr['user'] = $db->fetch($res['user'])){
@@ -369,26 +359,24 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
- <a href="?name=admin&file=member_edit&member_id=<?=$arr['user']['member_id'];?>"><img src="images/admin/edit.gif" border="0" alt="<? echo _ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=member_delete&member_id=<?=$arr['user']['member_id'];?>&prefix=<? echo $arr['block']['post_date'];?>','<? echo _ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?echo _ADMIN_BUTTON_DEL;?>" ></a>
+ <a href="?name=admin&file=member_edit&member_id=<?=$arr['user']['member_id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?php echo _ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=member_delete&member_id=<?=$arr['user']['member_id'];?>&prefix=<?php echo $arr['block']['post_date'];?>','<?php echo _ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?php echo _ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
 	<td><?php echo $arr['user']['name'] ; ?></td>
 	<td><?php echo $arr['user']['email'] ; ?></td>
 	<td><?php echo $arr['user']['work'] ; ?></td>
 	<td><?php echo $arr['user']['phone'] ; ?></td>
 	<td align="center">
-				  <? if($arr['user']['blog']=='0') { echo "<a HREF=?name=admin&file=blog&op=edit_add&action=edit&id=".$arr['user']['member_id']."&status=1><img src=images/publish_x.png alt='"._ADMIN_BLOCK_ORDER_PUBLISH_OFF."'></a>"; } else { echo "<a HREF=?name=admin&file=blog&op=edit_add&action=edit&id=".$arr['user']['member_id']."&status=0><img src=images/tick.png alt='่"._ADMIN_BLOCK_ORDER_PUBLISH_ON."'></a>"; };?>
+				  <?php if($arr['user']['blog']=='0') { echo "<a HREF=?name=admin&file=blog&op=edit_add&action=edit&id=".$arr['user']['member_id']."&status=1><img src=images/publish_x.png alt='"._ADMIN_BLOCK_ORDER_PUBLISH_OFF."'></a>"; } else { echo "<a HREF=?name=admin&file=blog&op=edit_add&action=edit&id=".$arr['user']['member_id']."&status=0><img src=images/tick.png alt='่"._ADMIN_BLOCK_ORDER_PUBLISH_ON."'></a>"; };?>
 </td>
     </tr>
 
-<?
-		 $count++;
+<?php 		 $count++;
  } 
 ?>
  </table>
  </form>
-<?
-
+<?php 
 }
 
 ?>

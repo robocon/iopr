@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 include ("editor.php");
 empty($_POST['ENABLE_COMMENT'])?$ENABLE_COMMENT="":$ENABLE_COMMENT=$_POST['ENABLE_COMMENT'];
 ?>
@@ -20,8 +19,7 @@ empty($_POST['ENABLE_COMMENT'])?$ENABLE_COMMENT="":$ENABLE_COMMENT=$_POST['ENABL
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_RESEARCH_MENU_TITLE;?> </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=research"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_RESEARCH_MENU_LIST;?> </A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=research&op=research_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_RESEARCH_MENU_ADD_NEW;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=research_category"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"><?=_ADMIN_MENU_DTAIL_CAT;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=research_category&op=researchcat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"><?=_ADMIN_MENU_ADD_CAT;?></A><BR><BR>
-<?
-//////////////////////////////////////////// แสดงรายการผลงานทางวิชาการ 
+<?php //////////////////////////////////////////// แสดงรายการผลงานทางวิชาการ 
 if($op == ""){
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$limit = 20 ;
@@ -43,8 +41,7 @@ if($op == ""){
    <td width="40"><CENTER><B><?=_ADMIN_TABLE_TITLE_CAT;?></B></CENTER></td>
    <td width="40"><CENTER><B>Check</B></CENTER></td>
   </tr>  
-<?
-$res['research'] = $db->select_query("SELECT * FROM ".TB_RESEARCH." ORDER BY id DESC LIMIT $goto, $limit ");
+<?php $res['research'] = $db->select_query("SELECT * FROM ".TB_RESEARCH." ORDER BY id DESC LIMIT $goto, $limit ");
 $count=0;
 while($arr['research'] = $db->fetch($res['research'])){
 	$res['category'] = $db->select_query("SELECT * FROM ".TB_RESEARCH_CAT." WHERE id='".$arr['research']['category']."' ");
@@ -67,21 +64,20 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=research&op=research_edit&id=<? echo $arr['research']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=research&op=research_del&id=<? echo $arr['research']['id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=research&op=research_edit&id=<?php echo $arr['research']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=research&op=research_del&id=<?php echo $arr['research']['id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-     <td><A HREF="?name=research&file=readresearch&id=<?echo $arr['research']['id'];?>" target="_blank"><?echo $arr['research']['topic'];?></A><?=$CommentIcon;?><?=NewsIcon(TIMESTAMP, $arr['research']['post_date'], "images/icon_new.gif");?><font color="#CC3300">( <?=_FORM_MOD_READ;?> : <?=$arr['research']['pageview'];?> / <?=_FROM_COMMENT_NUMX;?> : <?=$arrs['com']['com'];?> )</font> <?=_ADMIN_RESEARCH_AUTH;?> <font color="#CC3300"><?=$arr['research']['auth'];?></font></td>
-     <td ><CENTER><?echo ThaiTimeConvert($arr['research']['post_date'],'','');?></CENTER></td>
+     <td><A HREF="?name=research&file=readresearch&id=<?php echo $arr['research']['id'];?>" target="_blank"><?php echo $arr['research']['topic'];?></A><?=$CommentIcon;?><?=NewsIcon(TIMESTAMP, $arr['research']['post_date'], "images/icon_new.gif");?><font color="#CC3300">( <?=_FORM_MOD_READ;?> : <?=$arr['research']['pageview'];?> / <?=_FROM_COMMENT_NUMX;?> : <?=$arrs['com']['com'];?> )</font> <?=_ADMIN_RESEARCH_AUTH;?> <font color="#CC3300"><?=$arr['research']['auth'];?></font></td>
+     <td ><CENTER><?php echo ThaiTimeConvert($arr['research']['post_date'],'','');?></CENTER></td>
      <td align="center">
-	 <?if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
-	 <A HREF="#"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle" alt="<?echo $arr['category']['category_name'];?>" onMouseOver="MM_displayStatusMsg('<?echo $arr['category']['category_name'];?>');return document.MM_returnValue"></A>
-	 <? } ?>
+	 <?php if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
+	 <A HREF="#"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle" alt="<?php echo $arr['category']['category_name'];?>" onMouseOver="MM_displayStatusMsg('<?php echo $arr['category']['category_name'];?>');return document.MM_returnValue"></A>
+	 <?php } ?>
 	 </td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr['research']['id'];?>"></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr['research']['id'];?>"></td>
     </tr>
 
-<?
-	$count++;
+<?php 	$count++;
  } 
 ?>
  </table>
@@ -92,8 +88,7 @@ $ColorFill = 'class="odd"';
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-	SplitPage($page,$totalpage,"?name=admin&file=research");
+<?php 	SplitPage($page,$totalpage,"?name=admin&file=research");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -248,8 +243,7 @@ else if($op == "research_add"){
 <BR><BR>
 <B><?=_RESEARCH_MOD_FORM_CAT;?> :</B><BR>
 <SELECT NAME="CATEGORY">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_RESEARCH_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
 	   echo "<option value=\"".$arr['category']['id']."\"";
@@ -260,9 +254,9 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B><?=_RESEARCH_MOD_FORM_AUTH_PIC;?> : </B><BR>
-<IMG name="view01" SRC="images/news_blank.gif" <?echo " WIDTH=\""._Iresearch_W."\" HEIGHT=\""._Iresearch_H."\" ";?> BORDER="0" ><BR>
+<IMG name="view01" SRC="images/news_blank.gif" <?php echo " WIDTH=\""._Iresearch_W."\" HEIGHT=\""._Iresearch_H."\" ";?> BORDER="0" ><BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-<?=_ADMIN_FORM_ICON_WIDTH;?> <?echo _Iresearch_W." x "._Iresearch_H ;?> <?=_ADMIN_FORM_CAT_ICON_WIDTH;?>
+<?=_ADMIN_FORM_ICON_WIDTH;?> <?php echo _Iresearch_W." x "._Iresearch_H ;?> <?=_ADMIN_FORM_CAT_ICON_WIDTH;?>
 <BR><BR>
 <B><?=_RESEARCH_MOD_FORM_HEADLINE;?> :</B><BR>
 <textarea cols="100"  rows="10"  name="HEADLINE" ></textarea>
@@ -286,8 +280,7 @@ $db->closedb ();
 <input type="submit" value="<?=_RESEARCH_MOD_FORM_BUTTON_ADD;?>" name="submit"> <input type="reset" value="<?=_RESEARCH_MOD_FORM_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -444,8 +437,7 @@ else if($op == "research_edit"){
 <BR><BR>
 <B><?=_RESEARCH_MOD_FORM_CAT;?> :</B><BR>
 <SELECT NAME="CATEGORY">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_RESEARCH_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
 	   echo "<option value=\"".$arr['category']['id']."\"";
@@ -457,9 +449,9 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B><?=_RESEARCH_MOD_FORM_AUTH_PIC;?> :</B><BR>
-<IMG name="view01" SRC="icon/research_<?=$arr['research']['post_date'];?>.jpg" <?echo " WIDTH=\""._Iresearch_W."\" HEIGHT=\""._Iresearch_H."\" ";?> BORDER="0" ><BR>
+<IMG name="view01" SRC="icon/research_<?=$arr['research']['post_date'];?>.jpg" <?php echo " WIDTH=\""._Iresearch_W."\" HEIGHT=\""._Iresearch_H."\" ";?> BORDER="0" ><BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-<?=_ADMIN_FORM_ICON_WIDTH;?> <?echo _Iresearch_W." x "._Iresearch_H ;?> <?=_ADMIN_FORM_CAT_ICON_WIDTH;?>
+<?=_ADMIN_FORM_ICON_WIDTH;?> <?php echo _Iresearch_W." x "._Iresearch_H ;?> <?=_ADMIN_FORM_CAT_ICON_WIDTH;?>
 <BR><BR>
 <B><?=_RESEARCH_MOD_FORM_HEADLINE;?> :</B><BR>
 <textarea cols="100"  rows="10"  name="HEADLINE" ><?=$HEADLINE;?></textarea>
@@ -478,13 +470,12 @@ $db->closedb ();
 <tr>
 <td>
 </table>
-<INPUT TYPE="checkbox" NAME="ENABLE_COMMENT" VALUE="1" <?if($arr['research']['enable_comment']){echo " Checked";};?>> <?=_RESEARCH_MOD_FORM_ENA_COM;?>
+<INPUT TYPE="checkbox" NAME="ENABLE_COMMENT" VALUE="1" <?php if($arr['research']['enable_comment']){echo " Checked";};?>> <?=_RESEARCH_MOD_FORM_ENA_COM;?>
 <BR>
 <input type="submit" value="<?=_ADMIN_RESEARCH_BUTTON_EDIT;?>" name="submit"> <input type="reset" value="<?=_RESEARCH_MOD_FORM_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

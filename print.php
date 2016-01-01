@@ -1,5 +1,4 @@
-<?
-ob_start();
+<?php ob_start();
 session_start();
 
 $globals_test = @ini_get('register_globals');
@@ -22,6 +21,5 @@ GETMODULE($_GET['name'],$_GET['file']);
 <link href="css/template_css.css" rel="stylesheet" type="text/css">
 <link href="templates/<?=WEB_TEMPLATES;?>/css/<?=WEB_TEMPLATES;?>.css" rel="stylesheet" type="text/css">
 
-<?
-include ("".$MODPATHFILE."");
+<?php include ("".$MODPATHFILE."");
 ?>

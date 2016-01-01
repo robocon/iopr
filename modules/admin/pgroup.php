@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=820 border=0>
       <TBODY>
@@ -19,8 +18,7 @@ CheckAdmin($admin_user, $admin_pwd);
 <A HREF="?name=admin&file=personnel"><IMG SRC="images/admin/admins.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_PERSONNEL_MENU_LIST;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=personnel&op=admin_add"><IMG SRC="images/admin/user.gif"  BORDER="0" align="absmiddle"><?=_ADMIN_PERSONNEL_MENU_ADD_NEW;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=pgroup"><IMG SRC="images/admin/keys.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_PERSONNEL_MENU_LIST_GROUP;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=pgroup&op=group_add"><IMG SRC="images/admin/share.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_PERSONNEL_MENU_NEW_GROUP;?></A>
 <BR><BR>
 <!-- แสดงผลรายการกลุ่มบุคลากร -->
-<?
-//////////////////////////////////////////// แสดงรายชื่อกลุ่มบุคลากร
+<?php //////////////////////////////////////////// แสดงรายชื่อกลุ่มบุคลากร
 if($op == ""){
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $limit = 20 ;
@@ -42,8 +40,7 @@ $SUMPAGE = $db->num_rows(TB_personnel_group,"gp_id","");
     <td width=20><CENTER><B><?=_ADMIN_FORM_CAT_ORDER;?></B></CENTER></td>
    <td width=20><B><CENTER>Check</CENTER></B></td>
   </tr>  
-<?
-$res['groups'] = $db->select_query("SELECT * FROM ".TB_personnel_group." ORDER BY sort LIMIT $goto, $limit ");
+<?php $res['groups'] = $db->select_query("SELECT * FROM ".TB_personnel_group." ORDER BY sort LIMIT $goto, $limit ");
 $CATCOUNT = 0 ;
 $count=0;
 while($arr['groups'] = $db->fetch($res['groups'])){
@@ -69,19 +66,18 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="60" align="center">
-      <a href="?name=admin&file=pgroup&op=group_edit&id=<? echo $arr['groups']['gp_id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=pgroup&op=group_del&id=<? echo $arr['groups']['gp_id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE_CAT;?>: <?echo $arr['groups']['gp_name'];?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=pgroup&op=group_edit&id=<?php echo $arr['groups']['gp_id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=pgroup&op=group_del&id=<?php echo $arr['groups']['gp_id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE_CAT;?>: <?php echo $arr['groups']['gp_name'];?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-	 <td><a href="?name=admin&file=pgroup&op=group_list&id=<? echo $arr['groups']['gp_id'];?>"><? echo $arr['groups']['gp_name'];?></a></td>
-     <td><a href="?name=admin&file=pgroup&op=group_list&id=<? echo $arr['groups']['gp_id'];?>"><? echo $arr['groups']['description'];?></a></td>
-     <td ><CENTER><? echo $row['user'];?></CENTER></td>
-     <td align="center" width="50"><A HREF="?name=admin&file=pgroup&op=group_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['groups']['gp_id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=pgroup&op=group_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['groups']['gp_id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
+	 <td><a href="?name=admin&file=pgroup&op=group_list&id=<?php echo $arr['groups']['gp_id'];?>"><?php echo $arr['groups']['gp_name'];?></a></td>
+     <td><a href="?name=admin&file=pgroup&op=group_list&id=<?php echo $arr['groups']['gp_id'];?>"><?php echo $arr['groups']['description'];?></a></td>
+     <td ><CENTER><?php echo $row['user'];?></CENTER></td>
+     <td align="center" width="50"><A HREF="?name=admin&file=pgroup&op=group_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['groups']['gp_id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=pgroup&op=group_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['groups']['gp_id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
 
-     <td align="center" width="40"><input type="checkbox" name="list[']" value="<? echo $arr['groups']['gp_id'];?>"></td>
+     <td align="center" width="40"><input type="checkbox" name="list[']" value="<?php echo $arr['groups']['gp_id'];?>"></td>
     </tr>
 
-<?
-		 $count++;
+<?php 		 $count++;
  } 
 ?>
  </table>
@@ -92,8 +88,7 @@ $ColorFill = 'class="odd"';
   <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-	SplitPage($page,$totalpage,"?name=admin&file=pgroup");
+<?php 	SplitPage($page,$totalpage,"?name=admin&file=pgroup");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -151,8 +146,7 @@ else if($op == "group_add"){
         <br>
         <input type="submit" value="<?=_ADMIN_PERSONNEL_FORM_BUTTON_CAT_ADD;?>" >
 </FORM>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -230,15 +224,14 @@ else if($op == "group_edit"){
 ?>
 <form action="?name=admin&file=pgroup&op=group_edit&action=edit&id=<?=$_GET['id'];?>" name="groups" method="post">
      <B><?=_ADMIN_PERSONNEL_FORM_GR_NAME;?> :</B><br>
-        <input type="text"  name="GROUP_NAME" size="40" value="<?echo $arr['group']['gp_name'];?>"><br>
+        <input type="text"  name="GROUP_NAME" size="40" value="<?php echo $arr['group']['gp_name'];?>"><br>
         <B><?=_ADMIN_PERSONNEL_FORM_GR_DETAIL;?> :</B><br>
-        <input type="text" name="GROUP_DESC"  size="40" value="<?echo $arr['group']['description'];?>"><br>
+        <input type="text" name="GROUP_DESC"  size="40" value="<?php echo $arr['group']['description'];?>"><br>
         <br>
         <br><br>
-        <input type="submit" value="<?=_ADMIN_PERSONNEL_FORM_BUTTON_CAT_EDIT;?>" ><input type="hidden" name="id"  size="40" value="<?echo $arr['group']['gp_id'];?>">
+        <input type="submit" value="<?=_ADMIN_PERSONNEL_FORM_BUTTON_CAT_EDIT;?>" ><input type="hidden" name="id"  size="40" value="<?php echo $arr['group']['gp_id'];?>">
         </form>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}
@@ -298,8 +291,7 @@ $arr['group']=$db->fetch($res['user']);
    <td align=center><b><font color=#CC0000><?=$arr['group']['gp_name'];?></font></b></td>
    </tr>
   </table><br>
- <?
-if (empty($page)){
+ <?php if (empty($page)){
 	$page=1;
 }
 $rt = $SUMPAGE%$limit ;
@@ -317,8 +309,7 @@ $goto = ($page-1)*$limit ;
 	    <td><B><CENTER><?=_ADMIN_PERSONNEL_FORM_ROW;?></CENTER></B></td>
    <td><B><CENTER>Check</CENTER></B></td>
   </tr>  
-<?
-$res['user'] = $db->select_query("SELECT * FROM ".TB_personnel." as a , ".TB_personnel_list." as b where b.u_id=a.id and  b.g_id='".$_GET['id']."' ORDER BY a.sort  LIMIT $goto, $limit ");
+<?php $res['user'] = $db->select_query("SELECT * FROM ".TB_personnel." as a , ".TB_personnel_list." as b where b.u_id=a.id and  b.g_id='".$_GET['id']."' ORDER BY a.sort  LIMIT $goto, $limit ");
 $rows['user'] = $db->rows($res['user']);
 $CATCOUNT = 0 ;
 $count=0;
@@ -345,22 +336,21 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=pgroup&op=gu_edit&id=<? echo $arr['user']['id'];?>&gid=<?=$_GET['id'];?>"><img src="images/icon/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=pgroup&op=gu_del&gid=<?=$_GET['id'];?>&id=<? echo $arr['user']['id'];?>','<?=_ADMIN_PERSONNEL_DEL_USER_MESSAGE;?> : <?echo $arr['user']['p_name'];?>');"><img src="images/icon/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=pgroup&op=gu_edit&id=<?php echo $arr['user']['id'];?>&gid=<?=$_GET['id'];?>"><img src="images/icon/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=pgroup&op=gu_del&gid=<?=$_GET['id'];?>&id=<?php echo $arr['user']['id'];?>','<?=_ADMIN_PERSONNEL_DEL_USER_MESSAGE;?> : <?php echo $arr['user']['p_name'];?>');"><img src="images/icon/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-     <td><A HREF="popup.php?name=personnel&file=popdetail&pid=<? echo $arr['user']['id'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 250} )" class="highslide">
-	 <?echo $arr['user']['p_name'];?>
+     <td><A HREF="popup.php?name=personnel&file=popdetail&pid=<?php echo $arr['user']['id'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 250} )" class="highslide">
+	 <?php echo $arr['user']['p_name'];?>
 	 </a></td>
-	      <td ><? echo $arr['user']['p_position'];?></td>
-     <td ><? echo $arr['user']['p_mail'];?></td>
-     <td ><? echo $arr['user']['p_tel'];?></td>
+	      <td ><?php echo $arr['user']['p_position'];?></td>
+     <td ><?php echo $arr['user']['p_mail'];?></td>
+     <td ><?php echo $arr['user']['p_tel'];?></td>
   
-	 <td align="center" width="50"><A HREF="?name=admin&file=pgroup&op=gu_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['user']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=file=pgroup&op=gu_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['user']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
-     <td  align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr['user']['id'];?>"></td>
+	 <td align="center" width="50"><A HREF="?name=admin&file=pgroup&op=gu_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['user']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=file=pgroup&op=gu_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['user']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
+     <td  align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr['user']['id'];?>"></td>
     </tr>
 
-<?
-	$count++;
+<?php 	$count++;
  } 
 ?>
  </table>
@@ -370,8 +360,7 @@ $ColorFill = 'class="odd"';
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-	SplitPage($page,$totalpage,"?name=admin&file=personnel");
+<?php 	SplitPage($page,$totalpage,"?name=admin&file=personnel");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;

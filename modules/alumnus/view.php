@@ -1,6 +1,5 @@
 
-<?
-include "modules/alumnus/config.inc.php";
+<?php include "modules/alumnus/config.inc.php";
  $_GET['id'] = intval($_GET['id']);
 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -17,7 +16,7 @@ $names = $arr[5];
 
 ?>
 
-<title>: : <?=_ALUM_MOD_VIEW_TITLE;?> <? echo $names ?> : :</title>
+<title>: : <?=_ALUM_MOD_VIEW_TITLE;?> <?php echo $names ?> : :</title>
 <!-- จาวา แถบสี -->
 <SCRIPT LANGUAGE="javascript"> 
 function mOvr(src,clrOver){ 
@@ -43,73 +42,72 @@ src.bgColor = clrIn;
 
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" class=grids>
 <tr valign="top" class=odd>
-<td width="20%" rowspan="16" ><div align="center"><? if ($arr[8]=="") { echo "<img src=images/nopic.jpg>"; } else { echo "<img src=icon/$arr[8]>"; } ?>
+<td width="20%" rowspan="16" ><div align="center"><?php if ($arr[8]=="") { echo "<img src=images/nopic.jpg>"; } else { echo "<img src=icon/$arr[8]>"; } ?>
     <br>
-    <? echo "$arr[4]"; ?><br>
+    <?php echo "$arr[4]"; ?><br>
 </div></td>
 <td width="30%" ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_VIEW_NAME;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td width="70%" ><? echo "$arr[2]&nbsp;&nbsp;$arr[3]"; ?></td>
+<td width="70%" ><?php echo "$arr[2]&nbsp;&nbsp;$arr[3]"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_FORM_NICK;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "$arr[4]"; ?></td>
+<td ><?php echo "$arr[4]"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_VIEW_BIRTH;?>&nbsp;:&nbsp;</strong></font></div></td>
-<?
-$thaidate=formatDateThai($arr[5]);
+<?php $thaidate=formatDateThai($arr[5]);
 ?>
-<td ><? echo "$thaidate"; ?></td>
+<td ><?php echo "$thaidate"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_FORM_OLD;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "$arr[6]"; ?></td>
+<td ><?php echo "$arr[6]"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_FORM_SEX;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? if ($arr[7]=="1") {	echo ""._ALUM_MOD_FORM_SEX_MAN."";	} elseif ($arr[6]=="2") { echo ""._ALUM_MOD_FORM_SEX_GIRL.""; } elseif ($arr[6]=="3") { echo ""._ALUM_MOD_FORM_SEX_BI.""; } else {}; ?></td>
+<td ><?php if ($arr[7]=="1") {	echo ""._ALUM_MOD_FORM_SEX_MAN."";	} elseif ($arr[6]=="2") { echo ""._ALUM_MOD_FORM_SEX_GIRL.""; } elseif ($arr[6]=="3") { echo ""._ALUM_MOD_FORM_SEX_BI.""; } else {}; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong>E-mail&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "<a href=mailto:$arr[12]>$arr[12]</a>"; ?></td>
+<td ><?php echo "<a href=mailto:$arr[12]>$arr[12]</a>"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong>Homepage&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "<a href=$arr[13] target=_blank>$arr[13]</a>"; ?></td>
+<td ><?php echo "<a href=$arr[13] target=_blank>$arr[13]</a>"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_FORM_ADD;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "$arr[14]"; ?></td>
+<td ><?php echo "$arr[14]"; ?></td>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_FORM_AMP;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "$arr[15]"; ?></td>
+<td ><?php echo "$arr[15]"; ?></td>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_FORM_PROV;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "$arr[16]"; ?></td>
+<td ><?php echo "$arr[16]"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_FORM_POST;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "$arr[31]"; ?></td>
+<td ><?php echo "$arr[31]"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_FORM_TEL;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "$arr[30]"; ?></td>
+<td ><?php echo "$arr[30]"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_VIEW_SCHOOL;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "$arr[17]"; ?></td>
+<td ><?php echo "$arr[17]"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_FORM_OFFICE;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "$arr[18]"; ?></td>
+<td ><?php echo "$arr[18]"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ><div align="right"><font color="#990000"><strong><?=_ALUM_MOD_FORM_HOPPY;?>&nbsp;:&nbsp;</strong></font></div></td>
-<td ><? echo "$arr[19]"; ?></td>
+<td ><?php echo "$arr[19]"; ?></td>
 </tr>
 <tr valign="top" class=odd>
 <td ></td>
-<td ><? if ($arr[26]=="1") { echo "<img src=modules/alumnus/img/webcam.gif>"; } else { echo ""; } ?><? if ($arr[27]=="1") { echo "<img src=modules/alumnus/img/mic.gif>"; } else { echo ""; } ?></td>
+<td ><?php if ($arr[26]=="1") { echo "<img src=modules/alumnus/img/webcam.gif>"; } else { echo ""; } ?><?php if ($arr[27]=="1") { echo "<img src=modules/alumnus/img/mic.gif>"; } else { echo ""; } ?></td>
 </tr>
 </table></td>
 </tr>

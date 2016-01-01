@@ -1,5 +1,4 @@
-<?
-//include("includes/config.in.php");
+<?php //include("includes/config.in.php");
 $host = "".DB_HOST."";
 $user = "".DB_USERNAME."";
 $pwd ="".DB_PASSWORD."";

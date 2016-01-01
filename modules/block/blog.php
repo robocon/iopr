@@ -18,7 +18,7 @@ $ColorFill = 'class="odd"';
 //		$bgc = ($bgc==$rowColor1) ? $rowColor2 : $rowColor1; 
 echo "<tr ".$ColorFill.">";
 					?>
-					<TD  align="left" width="75%"><img src="images/go.gif"> <a href="index.php?name=blog&file=blogdetail&user=<?=$arr['cblog']['posted'];?>"><?=$arr['cblog']['posted'];?></a><br> <?BlogLevel($arr['cblog']['co']);?></td><TD align="center" width="25%" valign="top"><?=$arr['cblog']['co'];?></td></tr>
+					<TD  align="left" width="75%"><img src="images/go.gif"> <a href="index.php?name=blog&file=blogdetail&user=<?=$arr['cblog']['posted'];?>"><?=$arr['cblog']['posted'];?></a><br> <?php BlogLevel($arr['cblog']['co']);?></td><TD align="center" width="25%" valign="top"><?=$arr['cblog']['co'];?></td></tr>
 <?php
 					$count++;
 					}
@@ -45,7 +45,7 @@ $ColorFill = 'class="odd"';
 echo "<tr ".$ColorFill.">";
 					?>
 
-				<TD  align="left" width="75%"><img src="images/a.gif"><a href="index.php?name=blog&file=readblog&id=<?=$arr['blog']['id'];?>"><?=$arr['blog']['topic'];?></a><?NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?></td><TD align="center" width="25%" valign="top"><a href="index.php?name=blog&file=blogdetail&user=<?=$arr['blog']['posted'];?>"><?=$arr['blog']['posted'];?></a></td></tr>
+				<TD  align="left" width="75%"><img src="images/a.gif"><a href="index.php?name=blog&file=readblog&id=<?=$arr['blog']['id'];?>"><?=$arr['blog']['topic'];?></a><?php NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?></td><TD align="center" width="25%" valign="top"><a href="index.php?name=blog&file=blogdetail&user=<?=$arr['blog']['posted'];?>"><?=$arr['blog']['posted'];?></a></td></tr>
 <?php
 										$count++;
 					}

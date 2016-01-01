@@ -27,8 +27,7 @@
 <td width="<?=$widthSUM;?>" border="0" align="center">
 								<BR>
 						
-						<?
-						$month=(isset($_GET['month']));
+						<?php 						$month=(isset($_GET['month']));
 						$year=(isset($_GET['year']));
 						if($month==''){
 							$mon = date('m');
@@ -48,8 +47,7 @@
 		  </TD>
         </TR>
 
-		<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+		<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 						$dateday=date('Y-m-d');
 						$mn=date('m')+1;
 						$daten=date('Y-'.$mn.'-d');
@@ -65,8 +63,7 @@ if($numrow !=0){
 		<tr>
             <td height="1" align="left" class="dotline"></td>
 			</tr>
-<?
-
+<?php 
 $res['calendar'] = $db->select_query("SELECT * FROM ".TB_CALENDAR." where date_event >= '$my-$mt-$dd' ORDER BY date_event  limit 10");
 
 $count=0;
@@ -90,13 +87,12 @@ $ColorFill = "#F0F0F0";
 			$link['title'] = "".stripslashes($arr['calendar']['subject'])."";
 
 ?>
-			<TD width="100%" valign=top height="20"><img src="images/admin/calendar.gif" border="0"> <font color="#990000"><b>(<? echo $arr['calendar']['date_event']; ?>)</b></font> <? echo "<a href=\"".$link['link']."\" onclick=\"return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: '500', objectHeight: '300'} )\" )\">"; ?><? echo $arr['calendar']['subject']; ?></b></a></td>	
+			<TD width="100%" valign=top height="20"><img src="images/admin/calendar.gif" border="0"> <font color="#990000"><b>(<?php echo $arr['calendar']['date_event']; ?>)</b></font> <?php echo "<a href=\"".$link['link']."\" onclick=\"return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: '500', objectHeight: '300'} )\" )\">"; ?><?php echo $arr['calendar']['subject']; ?></b></a></td>	
 												</tr>
 												<tr>
             <td height="1" align="left" class="dotline"></td>
 			</tr>
-<?
-} else {
+<?php } else {
 	echo "<tr><td align=center><font color=#FF0033><b><< "._CAL_STA_NULL." >></font></td></tr>";
 }
 }

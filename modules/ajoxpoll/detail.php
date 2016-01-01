@@ -1,5 +1,4 @@
-<?
-//session_start();
+<?php //session_start();
 $sess_id = session_id();
 require_once("../../mainfile.php");
 //*******------POLL
@@ -77,18 +76,18 @@ $showpoll .='<div align="right" width=100%><a href="javascript:getpage(\'modules
 }
 </style>
 <!--<table width="32%" border="0">
-<? 
+<?php 
 for($x=0;$x<=$all;$x++){
 ?>
   <tr>
-    <td width="92"><? //=$o[$x]; ?></td>
-    <td width="17"><? //=$opt[$x] ?></td>
-    <td width="403" style="width:250px"><div class="bars" style="width:<? //=$prc[$x] ?>%;"></div></td>    
+    <td width="92"><?php //=$o[$x]; ?></td>
+    <td width="17"><?php //=$opt[$x] ?></td>
+    <td width="403" style="width:250px"><div class="bars" style="width:<?php //=$prc[$x] ?>%;"></div></td>    
   </tr>
-<? } ?>  
+<?php } ?>  
 </table>
 -->
-<? 
+<?php 
 echo "<table width=$widthSUM>";
 for($x=0;$x<=$all;$x++){
 
@@ -126,7 +125,7 @@ for($x=0;$x<=$all;$x++){
       
       http_request.onreadystatechange = alertVote;
       http_request.open('POST', url, true);
-      http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=<?echo ISO;?>");
+      http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=<?php echo ISO;?>");
       http_request.setRequestHeader("Content-length", parameters.length);
       http_request.setRequestHeader("Connection", "close");
       http_request.send(parameters);

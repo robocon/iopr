@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 include ("editor.php");
 ?>
 
@@ -19,8 +18,7 @@ include ("editor.php");
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_IPBLOCK_MENU_TITLE;?> </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=ipblock"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"><?=_ADMIN_IPBLOCK_MENU_LIST;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=ipblock&op=ipblock_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_IPBLOCK_MENU_ADD_NEW;?></A> &nbsp;&nbsp;&nbsp;
-<?
-//////////////////////////////////////////// แสดงรายการข่าวสาร / ประชาสัมพันธ์ 
+<?php //////////////////////////////////////////// แสดงรายการข่าวสาร / ประชาสัมพันธ์ 
 if($op == ""){
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$limit = 20 ;
@@ -41,8 +39,7 @@ if($op == ""){
    <td width="250"><CENTER><B><?=_ADMIN_IPBLOCK_TABLE_HEADER_DATE;?></B></td>
    <td width="40"><CENTER><B>Check</B></CENTER></td>
   </tr>  
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 
 $res['ipblock'] = $db->select_query("SELECT * FROM ".TB_IPBLOCK." ORDER BY id  LIMIT $goto, $limit ");
 $rows['ipblock'] = $db->rows($res['ipblock']);
@@ -58,17 +55,16 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=ipblock&op=ipblock_edit&id=<? echo $arr['ipblock']['id'];?>&page=<? echo $page;?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=ipblock&op=ipblock_del&page=<? echo $page;?>&id=<? echo $arr['ipblock']['id'];?>&prefix=<? echo $arr['ipblock']['post_date'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=ipblock&op=ipblock_edit&id=<?php echo $arr['ipblock']['id'];?>&page=<?php echo $page;?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=ipblock&op=ipblock_del&page=<?php echo $page;?>&id=<?php echo $arr['ipblock']['id'];?>&prefix=<?php echo $arr['ipblock']['post_date'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-     <td align="center" width="50"><? echo $arr['ipblock']['ip'];?></td>
-	<td align="center"  ><? echo ThaiTimeConvert($arr['ipblock']['post_date'],"","1");?></td>
+     <td align="center" width="50"><?php echo $arr['ipblock']['ip'];?></td>
+	<td align="center"  ><?php echo ThaiTimeConvert($arr['ipblock']['post_date'],"","1");?></td>
 
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr['ipblock']['id'];?>"></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr['ipblock']['id'];?>"></td>
     </tr>
 
-<?
-		 $count++;
+<?php 		 $count++;
  } 
 ?>
  </table>
@@ -79,8 +75,7 @@ $ColorFill = 'class="odd"';
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-		SplitPage($page,$totalpage,"?name=admin&file=ipblock");
+<?php 		SplitPage($page,$totalpage,"?name=admin&file=ipblock");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -130,8 +125,7 @@ else if($op == "ipblock_add"){
 <input type="submit" value=" <?=_ADMIN_IPBLOCK_BUTTON_ADD;?> " name="submit"> <input type="reset" value="<?=_ADMIN_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -176,8 +170,7 @@ else if($op == "ipblock_edit" ){
 <br><input type="submit" value="<?=_ADMIN_IPBLOCK_BUTTON_EDIT;?>" name="submit"> <input type="reset" value="<?=_ADMIN_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

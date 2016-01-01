@@ -1,4 +1,4 @@
-<?PHP
+<?php PHP
 //หากมีการเรียกไฟล์นี้โดยตรง
 if (preg_match("/class.resizepic.php/i",$PHP_SELF)) {
     Header("Location: ../index.php");

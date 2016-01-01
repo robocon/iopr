@@ -1,6 +1,5 @@
-<?include ("editor.php");?>
-<?
-if ($_GET['s_page']){
+<?php include ("editor.php");?>
+<?php if ($_GET['s_page']){
 $s_pagex=$_GET['s_page'];
 } else {
 $s_pagex=0;
@@ -138,8 +137,7 @@ function emoticon(theSmilie) {
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_webboard.gif" BORDER="0"><BR>
 
 
-<?
-//áÊ´§¼Å¡ÒÃPost
+<?php //áÊ´§¼Å¡ÒÃPost
 if($PostComplete){
 	//Complete
 	echo "<meta http-equiv='refresh' content='2;url=?name=webboard'>";
@@ -157,8 +155,7 @@ if($PostComplete){
 </TR>
 <TR><TD height=1 class="dotline"></TD></TR>
 </TABLE><BR><BR>
-<?
-}else{
+<?php }else{
 	//Not Complete
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$res['web'] = $db->select_query("SELECT * FROM ".TB_WEBBOARD." WHERE id='".$_GET['id']."' ");
@@ -171,8 +168,7 @@ if($PostComplete){
 	<TD>
 	<SELECT NAME="category">
 	<OPTION value=""><?=_FROM_SEARCH_CAT_ALL;?></OPTION>
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['BoardCat'] = $db->select_query("SELECT * FROM ".TB_WEBBOARD_CAT." ORDER BY sort ");
 while($arr['BoardCat'] = $db->fetch($res['BoardCat'])){
 	echo "<OPTION value=\"".$arr['BoardCat']['id']."\"";
@@ -190,8 +186,7 @@ $db->closedb();
 	<TD><INPUT TYPE="text" NAME="topic" style="width:300" class="inputform" value="<?=$arr['web']['topic'];?>"></TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
-//¡Ã³Õ â¾ÊÃÙ»ä´é 
+<?php //¡Ã³Õ â¾ÊÃÙ»ä´é 
 if(_ENABLE_BOARD_UPLOAD){
 ?>
 <TR>
@@ -199,8 +194,7 @@ if(_ENABLE_BOARD_UPLOAD){
 	<TD><input type="file" name="FILE" style="width:250" class="inputform"> Limit <?=(_WEBBOARD_LIMIT_UPLOAD/1024);?> kB</TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
-}
+<?php }
 if($login_true || $admin_user){
 ?>
 <TR>
@@ -208,8 +202,7 @@ if($login_true || $admin_user){
 	<TD><input type="file" name="FILEATT" style="width:250" class="inputform"> Limit <?=(_WEBBOARD_LIMIT_UPLOADS/1024);?> kB</TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
-}
+<?php }
 ?>
 <TR>
 	<TD width=150 align=right valign=top><IMG SRC="images/bullet.gif" BORDER="0" ALIGN="absmiddle"> <B><?=_WEBBOARD_FORM_DETAIL_TITLE;?> : </B></TD>
@@ -218,14 +211,13 @@ if($login_true || $admin_user){
 	</TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
-	 if($login_true || $admin_user){
+<?php 	 if($login_true || $admin_user){
 } else {
 if(USE_CAPCHA){
 ?>
 						<TR>
 							<TD width=150 align=right>
-							<?if(CAPCHA_TYPE == 1){ 
+							<?php if(CAPCHA_TYPE == 1){ 
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){ 
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -234,13 +226,12 @@ if(USE_CAPCHA){
 							<TD><input name="security_code" type="text" id="security_code" size="20" maxlength="6" style="width:80" > <?=_JAVA_CAPTCHA_ADD;?></TD>
 						</TR>
 						<TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
-}
+<?php }
 }
 ?>
 <TR>
 	<TD width=150 align=right><IMG SRC="images/bullet.gif" BORDER="0" ALIGN="absmiddle"> <B><?=_WEBBOARD_FORM_AUTH_POST;?> : </B></TD>
-	<TD><INPUT TYPE="text" NAME="post_name" style="width:150" class="inputform" <?if($login_true){echo "value=\"".$login_true."\" readonly style=\"color: #FF0000\" ";} if($admin_user){echo "value=\"".$admin_user."\" readonly style=\"color: #FF0000\" ";};?>></TD>
+	<TD><INPUT TYPE="text" NAME="post_name" style="width:150" class="inputform" <?php if($login_true){echo "value=\"".$login_true."\" readonly style=\"color: #FF0000\" ";} if($admin_user){echo "value=\"".$admin_user."\" readonly style=\"color: #FF0000\" ";};?>></TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
 <TR>
@@ -250,8 +241,7 @@ if(USE_CAPCHA){
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
 </TABLE>
 </FORM>
-<?
-}
+<?php }
 //¨º¡ÒÃáÊ´§¼Å¿ÍÃìÁ Post
 ?>
 

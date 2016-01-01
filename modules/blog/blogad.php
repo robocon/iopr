@@ -1,7 +1,6 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 ?>
-<?include ("editor.php");?>
+<?php include ("editor.php");?>
 <script language="JavaScript" type="text/JavaScript">
 <!--
 function MM_jumpMenu(targ,selObj,restore){ //v3.0
@@ -23,15 +22,14 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 				<TABLE width="730" align=center cellSpacing=0 cellPadding=0 border=0 background="images/bread.jpg" height=171>
 				<TR >
 					<TD width="120" align="center" >
-					<?
-					$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+					<?php 					$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 					$res['mem'] = $db->select_query("SELECT * FROM ".TB_MEMBER." WHERE user='".$admin_user."' ");
 					$arr['mem'] = $db->fetch($res['mem']);
 					$res['cblog'] = $db->select_query("SELECT *,count(id) as co FROM ".TB_BLOG." WHERE posted='".$admin_user."' group by posted");
 					$arr['cblog'] = $db->fetch($res['cblog']);
-					if ($arr['mem']['member_pic']){?><img src="icon/<?=$arr['mem']['member_pic'];?>"> <?} else {?>
+					if ($arr['mem']['member_pic']){?><img src="icon/<?=$arr['mem']['member_pic'];?>"> <?php } else {?>
 					<img src="icon/member_nrr.gif">
-					<?}?>
+					<?php }?>
 					</TD>
 					<td valign="top" width="150">
 					<b><font color="#0033FF" size="2"><?=_BLOG_MOD_NAME;?> </font></b><br>
@@ -47,7 +45,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 					<b><font color="#CC0000" size="2"><?=$arr['mem']['work'];?></font></b><br>
 					<b><font color="#CC0000" size="2"><?=$arr['mem']['office'];?></font></b><br>
 					<b><font color="#CC0000" size="2">  <?=$arr['cblog']['co'];?> <?=_BLOG_MOD_NUMS;?></font></b><br>
-					<b><font color="#CC0000" size="2"><?BlogLevel($arr['cblog']['co']);?></font></b>
+					<b><font color="#CC0000" size="2"><?php BlogLevel($arr['cblog']['co']);?></font></b>
 					</td>
 					</tr>
 
@@ -57,8 +55,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 <tr>
 <td>
-<?
-//////////////////////////////////////////// �ʴ���¡�� blog
+<?php //////////////////////////////////////////// �ʴ���¡�� blog
 if($op == ""){
 ?>
     <TABLE cellSpacing=0 cellPadding=0 width=750 border=0>
@@ -66,8 +63,7 @@ if($op == ""){
         <TR>
           <TD width=740 vAlign=top>
 				<TABLE width=740 align=center cellSpacing=0 cellPadding=0 border=0>
-<?
-//�ʴ��������/��Ъ�����ѹ��
+<?php //�ʴ��������/��Ъ�����ѹ��
 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $limit = 20 ;
@@ -101,16 +97,15 @@ while($arr['blog'] = $db->fetch($res['blog'])){
 				<TR>
 					<TD>
 					<A HREF="?name=blog&file=readblog&id=<?=$arr['blog']['id'];?>" target="_blank">
-					<?if ($arr['blog']['pic']==1){echo "<img  src=icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg class=mysborder border=0 align=left>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=left>";} ?><B><?=$arr['blog']['topic'];?></A>  <?if ($admin_user==$arr['blog']['posted']){echo "<A HREF=\"?name=blog&file=blogad&op=article_edit&id=".$arr['blog']['id']."\"><IMG SRC=\"images/mail1[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>&nbsp;&nbsp;<a href=\"index.php?name=blog&file=blogad&op=article_del&id=".$arr['blog']['id']."\"><IMG SRC=\"images/trash_16[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>";}?></B>
-					<?NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?>
-				<BR><?=$Detail;?><br><?$rater_ids=$arr['blog']['id'];$rater_item_name="blog";include("modules/rater/raters.php");?>
+					<?php if ($arr['blog']['pic']==1){echo "<img  src=icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg class=mysborder border=0 align=left>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=left>";} ?><B><?=$arr['blog']['topic'];?></A>  <?php if ($admin_user==$arr['blog']['posted']){echo "<A HREF=\"?name=blog&file=blogad&op=article_edit&id=".$arr['blog']['id']."\"><IMG SRC=\"images/mail1[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>&nbsp;&nbsp;<a href=\"index.php?name=blog&file=blogad&op=article_del&id=".$arr['blog']['id']."\"><IMG SRC=\"images/trash_16[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>";}?></B>
+					<?php NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?>
+				<BR><?=$Detail;?><br><?php $rater_ids=$arr['blog']['id'];$rater_item_name="blog";include("modules/rater/raters.php");?>
 					</TD>
 				</TR>
 				<TR><TD height="3" ></TD></TR>
 				</TABLE>
 			</TD>
-<?
-$count++;
+<?php $count++;
 if (($count%_BLOG_COL) == 0) { echo "</TR><TR><TD colspan=2 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; }
 }
 $db->closedb ();
@@ -121,8 +116,7 @@ $db->closedb ();
 				<table border="0" cellpadding="0" cellspacing="1" width=640 align=center>
 					<tr>
 						<td>
-				<?
-				SplitPage($page,$totalpage,"?name=blog&category=".$_GET['category']."");
+				<?php 				SplitPage($page,$totalpage,"?name=blog&category=".$_GET['category']."");
 				echo $ShowSumPages ;
 				echo "<BR>";
 				echo $ShowPages ;
@@ -137,8 +131,7 @@ $db->closedb ();
         </TR>
       </TBODY>
     </TABLE>
-<?
-
+<?php 
 }
 
 else if($op == "article_add" AND $action == "add"){
@@ -245,8 +238,7 @@ else if($op == "article_add"){
 <BR><BR>
 <B><?=_FORM_CAT;?></B><BR>
 <SELECT NAME="CATEGORY">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_BLOG_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
 	   echo "<option value=\"".$arr['category']['id']."\"";
@@ -257,9 +249,9 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B><?=_FORM_ICON;?> </B><BR>
-<IMG name="view01" SRC="images/news_blank.gif" <?echo " WIDTH=\""._Iblog_W."\" HEIGHT=\""._Iblog_H."\" ";?> BORDER="0" ><BR>
+<IMG name="view01" SRC="images/news_blank.gif" <?php echo " WIDTH=\""._Iblog_W."\" HEIGHT=\""._Iblog_H."\" ";?> BORDER="0" ><BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-<?=_FORM_ICON_FIX1;?> <?echo ""._Iblog_W." x "._Iblog_H."";?> <?=_FORM_ICON_FIX2;?>
+<?=_FORM_ICON_FIX1;?> <?php echo ""._Iblog_W." x "._Iblog_H."";?> <?=_FORM_ICON_FIX2;?>
 <BR><BR>
 <B><?=_FORM_HEADLINE;?></B><BR>
 <textarea cols="50" id="editor1" rows="50"  name="HEADLINE" ></textarea>
@@ -290,8 +282,7 @@ $db->closedb ();
 <BR>
 <input type="submit" value="<?=_BLOG_BUTTON_ADD;?>" name="submit"> <input type="reset" value="<?=_BLOG_BUTTON_CLEAR;?>" name="reset">
 <BR><BR>
-<?
-	}
+<?php 	}
 
 
 else if($op == "article_edit" AND $action == "edit"){
@@ -422,8 +413,7 @@ else if($op == "article_edit"){
 <BR><BR>
 <B><?=_FORM_CAT;?> </B><BR>
 <SELECT NAME="CATEGORY">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_BLOG_CAT." ORDER BY sort ");
 while ($arr['category'] = $db->fetch($res['category'])){
 	   echo "<option value=\"".$arr['category']['id']."\"";
@@ -436,17 +426,15 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B><?=_FORM_ICON;?> </B><BR>
-<?
-	if ($arr['blog']['pic'] !=0){?>
-<IMG name="view01" SRC="icon/blog_<?=$arr['blog']['post_date'];?>_<?=$arr['blog']['posted'];?>.jpg" <?echo " WIDTH=\""._Iblog_W."\" HEIGHT=\""._Iblog_H."\" ";?> BORDER="0" >
-<?} else {?>
-<IMG name="view01" SRC="images/news_blank.gif" <?echo " WIDTH=\""._Iblog_W."\" HEIGHT=\""._Iblog_H."\" ";?> BORDER="0" >
-<?
-	}
+<?php 	if ($arr['blog']['pic'] !=0){?>
+<IMG name="view01" SRC="icon/blog_<?=$arr['blog']['post_date'];?>_<?=$arr['blog']['posted'];?>.jpg" <?php echo " WIDTH=\""._Iblog_W."\" HEIGHT=\""._Iblog_H."\" ";?> BORDER="0" >
+<?php } else {?>
+<IMG name="view01" SRC="images/news_blank.gif" <?php echo " WIDTH=\""._Iblog_W."\" HEIGHT=\""._Iblog_H."\" ";?> BORDER="0" >
+<?php 	}
 ?>
 <BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-<?=_FORM_ICON_FIX1;?> <?echo _Iblog_W." x "._Iblog_H ;?> <?=_FORM_ICON_FIX2;?>
+<?=_FORM_ICON_FIX1;?> <?php echo _Iblog_W." x "._Iblog_H ;?> <?=_FORM_ICON_FIX2;?>
 <BR><BR>
 <B><?=_FORM_HEADLINE;?> </B><BR>
 <textarea cols="50" id="editor1" rows="50"  name="HEADLINE" ><?=$HEADLINE;?></textarea>
@@ -472,13 +460,12 @@ $db->closedb ();
 <br>
 <B><?=_FORM_ATT;?> </B><BR>
 <input type="file" name="FILESS" onpropertychange="view01.src=FILESS.value;" style="width=250;"><br>
-<INPUT TYPE="checkbox" NAME="ENABLE_COMMENT" VALUE="1" <?if($arr['blog']['enable_comment']){echo " Checked";};?>> <?=_FORM_COMMENT;?>
+<INPUT TYPE="checkbox" NAME="ENABLE_COMMENT" VALUE="1" <?php if($arr['blog']['enable_comment']){echo " Checked";};?>> <?=_FORM_COMMENT;?>
 <BR>
 <input type="submit" value="<?=_BLOG_BUTTON_EDIT;?>" name="submit"> <input type="reset" value="<?=_BLOG_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-} else {
+<?php } else {
 		$ProcessOutput .= "<BR><BR>";
 		$ProcessOutput .= "<CENTER><A HREF=\"?name=admin&file=main\"><IMG SRC=\"images/icon/login-welcome.gif\" BORDER=\"0\"></A><BR><BR>";
 		$ProcessOutput .= "<FONT COLOR=\"#336600\"><B>"._BLOG_MOD_NOACC."</B></FONT><BR><BR>";

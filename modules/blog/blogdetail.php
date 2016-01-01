@@ -22,14 +22,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 									<TABLE width="740" align=center cellSpacing=1 cellPadding=1 border=0>
 				<TR>
 					<TD bgcolor="#F7F7F7" width="80">
-					<?
-					$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+					<?php 					$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 					$res['mem'] = $db->select_query("SELECT * FROM ".TB_MEMBER." WHERE user='".$_GET['user']."' ");
 					$arr['mem'] = $db->fetch($res['mem']);
 					$res['cblog'] = $db->select_query("SELECT *,count(id) as co FROM ".TB_BLOG." WHERE posted='".$_GET['user']."' group by posted");
 					$arr['cblog'] = $db->fetch($res['cblog']);					
 					?>
-					<?if ($arr['mem']['member_pic']){echo "<img  src=icon/".$arr['mem']['member_pic']." class=mysborder border=0 align=left>";} else {echo "<img class=mysborder src=icon/member_nrr.gif  border=0 align=left>";} ?>
+					<?php if ($arr['mem']['member_pic']){echo "<img  src=icon/".$arr['mem']['member_pic']." class=mysborder border=0 align=left>";} else {echo "<img class=mysborder src=icon/member_nrr.gif  border=0 align=left>";} ?>
 					</TD>
 					<td bgcolor="#F7F7F7" valign="top" width="150">
 					<b><font color="#0033FF" size="2"><?=_BLOG_MOD_NAME;?> </font><br>
@@ -45,7 +44,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 						<b><font color="#CC0000" size="2"><?=$arr['mem']['work'];?></font><br>
 					<b><font color="#CC0000" size="2"><?=$arr['mem']['office'];?></font><br>
 					<b><font color="#CC0000" size="2">  <?=$arr['cblog']['co'];?> <?=_BLOG_MOD_NUMS;?></font><br>
-					<b><font color="#CC0000" size="2"><?BlogLevel($arr['cblog']['co']);?></font>
+					<b><font color="#CC0000" size="2"><?php BlogLevel($arr['cblog']['co']);?></font>
 					</tr>
 
 				</table>
@@ -57,8 +56,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 					</tr>
 <tr>
 <td>
-<?
-//////////////////////////////////////////// แสดงรายการ blog  
+<?php //////////////////////////////////////////// แสดงรายการ blog  
 empty($_GET['page'])?$page="":$page=$_GET['page'];
 empty($_GET['op'])?$op="":$op=$_GET['op'];
 
@@ -69,8 +67,7 @@ if($op == ""){
         <TR>
           <TD width=640 vAlign=top>
 				<TABLE width=640 align=center cellSpacing=0 cellPadding=0 border=0>
-<?
-//แสดงข่าวสาร/ประชาสัมพันธ์ 
+<?php //แสดงข่าวสาร/ประชาสัมพันธ์ 
 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $limit = 20 ;
@@ -106,22 +103,21 @@ while($arr['blog'] = $db->fetch($res['blog'])){
 				<TR>
 					<TD valign="top" align="center">
 					<A HREF="?name=blog&file=readblog&id=<?=$arr['blog']['id'];?>" target="_blank">
-					<?if ($arr['blog']['pic']==1){echo "<img  src=icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg class=mysborder border=0 align=center>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=center>";} ?></a>
+					<?php if ($arr['blog']['pic']==1){echo "<img  src=icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg class=mysborder border=0 align=center>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=center>";} ?></a>
 					</td>
 					</tr>
 					<tr>
 					<td colspan="2" ><img src="images/a.gif"><A HREF="?name=blog&file=readblog&id=<?=$arr['blog']['id'];?>" target="_blank">
-					<B><?=$arr['blog']['topic'];?></A>  <?if ($login_true==$arr['blog']['posted']){echo "<A HREF=\"?name=blog&file=blog&op=article_edit&id=".$arr['blog']['id']."\">&nbsp;<IMG SRC=\"images/mail1[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>&nbsp;&nbsp;<a href=\"index.php?name=blog&file=blog&op=article_del&id=".$arr['blog']['id']."\">&nbsp;<IMG SRC=\"images/trash_16[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>";}?>
+					<B><?=$arr['blog']['topic'];?></A>  <?php if ($login_true==$arr['blog']['posted']){echo "<A HREF=\"?name=blog&file=blog&op=article_edit&id=".$arr['blog']['id']."\">&nbsp;<IMG SRC=\"images/mail1[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>&nbsp;&nbsp;<a href=\"index.php?name=blog&file=blog&op=article_del&id=".$arr['blog']['id']."\">&nbsp;<IMG SRC=\"images/trash_16[1].gif\" BORDER=\"0\" ALIGN=\"absmiddle\"></a>";}?>
 					</B>
-					<?NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?>( <?=$arr['blog']['pageview'];?> / <?=$arrs['com']['com'];?> )
-				<BR>&nbsp;&nbsp;&nbsp;&nbsp;<?=$Detail;?><br><?$rater_ids=$arr['blog']['id'];$rater_item_name="blog";include("modules/rater/raters.php");?>
+					<?php NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?>( <?=$arr['blog']['pageview'];?> / <?=$arrs['com']['com'];?> )
+				<BR>&nbsp;&nbsp;&nbsp;&nbsp;<?=$Detail;?><br><?php $rater_ids=$arr['blog']['id'];$rater_item_name="blog";include("modules/rater/raters.php");?>
 					</TD>
 				</TR>
 				<TR><TD height="3" ></TD></TR>
 				</TABLE>
 			</TD>
-<?
-$count++;
+<?php $count++;
 if (($count%_BLOG_COL) == 0) { echo "</TR><TR><TD colspan=2 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; }
 }
 $db->closedb ();
@@ -132,8 +128,7 @@ $db->closedb ();
 				<table border="0" cellpadding="0" cellspacing="1" width=740 align=center>
 					<tr>
 						<td>
-				<?
-				SplitPage($page,$totalpage,"?name=blogdetail");
+				<?php 				SplitPage($page,$totalpage,"?name=blogdetail");
 				echo $ShowSumPages ;
 				echo "<BR>";
 				echo $ShowPages ;
@@ -148,8 +143,7 @@ $db->closedb ();
         </TR>
       </TBODY>
     </TABLE>
-<?
-
+<?php 
 }
 
 ?>

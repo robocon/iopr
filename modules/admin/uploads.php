@@ -1,5 +1,4 @@
-	<?
-CheckAdmin($admin_user, $admin_pwd);
+	<?php CheckAdmin($admin_user, $admin_pwd);
 ?>
 <script language="javascript">
 	function fncCreateElement(){
@@ -51,8 +50,7 @@ CheckAdmin($admin_user, $admin_pwd);
 					<tr>
 					<TD align="center">
 
-<?
-$path="".WEB_PATH."/images/random/";
+<?php $path="".WEB_PATH."/images/random/";
 //////////////////////////////////////////// แสดงรายการข่าวสาร / ประชาสัมพันธ์ 
 if($action == ""){
 ?>
@@ -71,7 +69,7 @@ if($action == ""){
 
 
 <form method="post" name="myform" action="?name=admin&file=uploads&op=gal_del&action=multidel" enctype="multipart/form-data">
-<? 
+<?php 
 // install variables 
 $host = "images/random/"; // the folder where index.php is located 
 // path for folder, file, buttons(back and home) images 
@@ -180,8 +178,7 @@ $count++;
 </tr>
 </table>
  </form>
-<?
-}
+<?php }
 else if($action == "upload" and  $op == "up"){
 	//////////////////////////////////////////// กรณีเพิ่ม Database
 $count = 0;

@@ -1,4 +1,4 @@
-<? // Save Votes
+<?php // Save Votes
   header("Expires: Sat, 1 Jan 2010 00:00:00 GMT");
   header("Last-Modified: ".gmdate( "D, d M Y H:i:s")."GMT");
   header("Cache-Control: no-cache, must-revalidate");
@@ -49,22 +49,21 @@ for($ctr=0;$ctr<=$all;$ctr++){
 }
 </style>
 <!--<table width="32%" border="0">
-<? 
+<?php 
 for($x=0;$x<=$all;$x++){
 ?>
   <tr>
-    <td width="92"><? //=$o[$x]; ?></td>
-    <td width="17"><? //=$opt[$x] ?></td>
-    <td width="403" style="width:250px"><div class="bars" style="width:<? //=$prc[$x] ?>%;"></div></td>    
+    <td width="92"><?php //=$o[$x]; ?></td>
+    <td width="17"><?php //=$opt[$x] ?></td>
+    <td width="403" style="width:250px"><div class="bars" style="width:<?php //=$prc[$x] ?>%;"></div></td>    
   </tr>
-<? } ?>  
+<?php } ?>  
 </table>
 -->
 
 <div style="font-family:Arial, Helvetica, sans-serif;font-size:11px;">
 <strong>BAR GRAPH</strong>
-<?
-echo "<table width=$widthSUM>";
+<?php echo "<table width=$widthSUM>";
 for($x=0;$x<=$all;$x++){
 ?>
     <tr><td width="120">&nbsp;<?=$o[$x]; ?></td>
@@ -75,7 +74,7 @@ for($x=0;$x<=$all;$x++){
 	 <td width="<?=$widthSUM;?>" colspan="3"><div class="bars" style="width:<?=$prc[$x] ?>%;"></div>
 	 </td>
 	 </tr>
-      <? 
+      <?php 
 	  } ?>
 
 </table>

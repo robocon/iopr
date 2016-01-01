@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 ?>
 <link rel="stylesheet" href="css/calendar.css" type="text/css" media="screen" />
 <style type="text/css">
@@ -31,8 +30,7 @@ CheckAdmin($admin_user, $admin_pwd);
 								<table >
 		<tr>
 		<td>
-						<?
-						if(empty($_GET['year'])){
+						<?php 						if(empty($_GET['year'])){
 							$_GET['year'] = date("Y");
 						}
 						$cal = new MyCalendar;
@@ -50,8 +48,7 @@ CheckAdmin($admin_user, $admin_pwd);
 		<tr class="odd">
 		<td width="20" align="center"><?=_ADMIN_CALENDAR_TABLE_HEADER_NUM;?></td><td width="100" align="center"><?=_ADMIN_CALENDAR_TABLE_HEADER_DATE;?></td><td  width="150" align="center"><?=_ADMIN_CALENDAR_TABLE_HEADER_SUBJ;?></td><td  width="300" align="center"><?=_ADMIN_CALENDAR_TABLE_HEADER_DETAIL;?></td><td  width="60" align="center"><?=_ADMIN_CALENDAR_TABLE_HEADER_TIME;?></td></tr>
 
-	<?
-	$mt=date('m');
+	<?php 	$mt=date('m');
 	$my=date('Y');
 $res['calendar'] = $db->select_query("SELECT * FROM ".TB_CALENDAR." where date_event between  '$my-$mt-01' and '$my-$mt-31' ORDER BY date_event  ");
 $count=0;
@@ -81,23 +78,20 @@ $ColorFill = 'class="odd"';
 
 ?>
     <tr <?php echo $ColorFill; ?> >
-			<TD  align="center"><?=$rank;?></td><TD   valign=top align="center">[ <? echo $arr['calendar']['date_event']; ?>]</td><TD valign=top><img src="images/a.gif" border="0"><? echo "<a href=\"".$link['link']."\" onclick=\"return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 700, objectHeight: 500} )\" )\">"; ?><font color="<?=$textfill; ?>"><b><? echo $arr['calendar']['subject']; ?></a>
-<?
-if($admin_user){
+			<TD  align="center"><?=$rank;?></td><TD   valign=top align="center">[ <?php echo $arr['calendar']['date_event']; ?>]</td><TD valign=top><img src="images/a.gif" border="0"><?php echo "<a href=\"".$link['link']."\" onclick=\"return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 700, objectHeight: 500} )\" )\">"; ?><font color="<?=$textfill; ?>"><b><?php echo $arr['calendar']['subject']; ?></a>
+<?php if($admin_user){
 	//Admin Login Show Icon
 ?>
-				  <a href="?name=admin&file=editevent&id=<? echo $arr['calendar']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=news&op=news_del&id=<? echo $arr['calendar']['id'];?>&pic=<? echo $arr['news']['pic'];?>&prefix=<? echo $arr['calendar']['post_date'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');">
+				  <a href="?name=admin&file=editevent&id=<?php echo $arr['calendar']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=news&op=news_del&id=<?php echo $arr['calendar']['id'];?>&pic=<?php echo $arr['news']['pic'];?>&prefix=<?php echo $arr['calendar']['post_date'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');">
 
-				  <a href="javascript:Confirm('?name=admin&file=delevent&id=<? echo $arr['calendar']['id'];?>&op=calendar_del','<?echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
-<?
-}
+				  <a href="javascript:Confirm('?name=admin&file=delevent&id=<?php echo $arr['calendar']['id'];?>&op=calendar_del','<?php echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
+<?php }
 ?>
-</td><TD >	<? echo $arr['calendar']['detail']; ?></td><TD  align="center"><? echo $arr['calendar']['timeout']; ?></td>
+</td><TD >	<?php echo $arr['calendar']['detail']; ?></td><TD  align="center"><?php echo $arr['calendar']['timeout']; ?></td>
 												</tr>
 
-<?
-	$count++;
+<?php 	$count++;
 				$rank++;
 }
 

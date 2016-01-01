@@ -14,10 +14,9 @@ function emoticon(theSmilie) {
 	document.form2.COMMENT.focus();
 }
 </script>
-<? OpenTablecom();?>
+<?php OpenTablecom();?>
 				<TABLE width="730" align=center cellSpacing=0 cellPadding=0 border=0>
-<?
-$_GET['id'] = intval($_GET['id']);
+<?php $_GET['id'] = intval($_GET['id']);
 //แสดงสาระน่ารู้ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['knowledge'] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE." WHERE id='".$_GET['id']."' ");
@@ -48,7 +47,7 @@ if(!$arr['knowledge']['id']){
 
 				<TR>
 					<TD valign="top" >
-					<?if ($arr['knowledge']['pic']==1){echo "<img  class=mysborder src=icon/knowledge_".$arr['knowledge']['post_date'].".jpg border=0 align=left>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=left>";} ?>
+					<?php if ($arr['knowledge']['pic']==1){echo "<img  class=mysborder src=icon/knowledge_".$arr['knowledge']['post_date'].".jpg border=0 align=left>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=left>";} ?>
 					</td>
 					<td valign="top" >
 					<table cellSpacing=0 cellPadding=0 border=0>
@@ -85,8 +84,7 @@ if(!$arr['knowledge']['id']){
 					</TD>
 				</TR>
 </table>
-<?
-}
+<?php }
 ?>
-<?CloseTablecom();?>
+<?php CloseTablecom();?>
 

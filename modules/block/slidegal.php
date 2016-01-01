@@ -75,14 +75,14 @@ jQuery('#feature-carousel').jcarousel({
 		<tbody>
 			<tr>
 				<td class="imageframe" width="770">
-					<?opentablemod();?>
+					<?php opentablemod();?>
 					<table align="center" border="0" cellpadding="0" cellspacing="0" width="770">
 						<tbody>
 							<tr>
 								<td>
 									<div id='news-slider'>
 									<ul class='jcarousel-skin-tango' id='mycarousel'>
-											<? 
+											<?php 
 											$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 											$limit = 10; 
 											$res['gallerys'] = $db->select_query("SELECT * FROM ".TB_GALLERY." ORDER BY id DESC LIMIT $limit"); while($arr['gallerys'] = $db->fetch($res['gallerys'])){ 
@@ -91,11 +91,10 @@ jQuery('#feature-carousel').jcarousel({
 											$CAT=$arr['cat']['post_date']; 
 												?>
 											<li>
-												<a href="index.php?name=gallery&amp;file=readgal&amp;id=<?=$arr['gallerys']['id'];?>"><img border="0" src="images/gallery/gal_<? echo "".$CAT."/".$arr['gallerys']['pic'];?>" style="filter:alpha(opacity=50)" onMouseover="makevisible(this,0)" onMouseout="makevisible(this,1)"/>
+												<a href="index.php?name=gallery&amp;file=readgal&amp;id=<?=$arr['gallerys']['id'];?>"><img border="0" src="images/gallery/gal_<?php echo "".$CAT."/".$arr['gallerys']['pic'];?>" style="filter:alpha(opacity=50)" onMouseover="makevisible(this,0)" onMouseout="makevisible(this,1)"/>
 												</a>
 											</li>
-											<?
-											}
+											<?php 											}
 											?>
 										</ul>
 									</div>
@@ -103,7 +102,7 @@ jQuery('#feature-carousel').jcarousel({
 							</tr>
 						</tbody>
 					</table>
-					<?closetablemod();?>
+					<?php closetablemod();?>
 					</td>
 			</tr>
 		</tbody>

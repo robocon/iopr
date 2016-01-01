@@ -9,12 +9,11 @@ $arr['config'] = $db->fetch($res['config']);
 ?>
 <TABLE width="<?=$arr['config']['width'];?>" cellSpacing=0 cellPadding=0 border=0>
 	<TR>
-		<TD valign="top" width="<?=$arr['config']['width'];?>" background="templates/<?echo WEB_TEMPLATES;?>/images/config/<?=$arr['config']['picname'];?>"  width="<?=$arr['config']['width'];?>" height="<?=$arr['config']['height'];?>" border="0" >
+		<TD valign="top" width="<?=$arr['config']['width'];?>" background="templates/<?php echo WEB_TEMPLATES;?>/images/config/<?=$arr['config']['picname'];?>"  width="<?=$arr['config']['width'];?>" height="<?=$arr['config']['height'];?>" border="0" >
 	</td>
 </tr>
 </table>
-<?
-	} else {
+<?php 	} else {
 		  ?>
 
 <TABLE width="<?=$arr['config']['width'];?>" align=center cellSpacing=0 cellPadding=0 border=0>
@@ -34,7 +33,6 @@ pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-sh
 </td>
 </tr>
 </table>
-<?
-}
+<?php }
 ?>
 

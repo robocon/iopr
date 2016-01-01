@@ -1,5 +1,4 @@
-<?
-include ("editor.php");
+<?php include ("editor.php");
 $year=date('Y');
 $yearlast=$year+488;
 	$Year = date("Y")+544;
@@ -8,12 +7,10 @@ include "modules/alumnus/config.inc.php";
 if (ISO=='utf-8'){
 ?>
 <SCRIPT src="modules/alumnus/check_utf8.js"></SCRIPT>
-<?
-} else {
+<?php } else {
 	?>
 <SCRIPT src="modules/alumnus/check.js"></SCRIPT>
-<?
-}
+<?php }
 	?>
 <script language="javascript"> 
 <!-- 
@@ -43,8 +40,7 @@ hza.style.display = state;
  <table width="650" align=center cellSpacing=0 cellPadding=0 border=0><tr><TD ><IMG SRC="images/menu/textmenu_alumnus.png" BORDER="0"></TD></tr>
  <tr><TD height="1" class="dotline" colspan="4"></td></tr></table>
 <strong><a href="index.php"><font color="#990000"><?=_ALUM_MOD_FORM_IN;?></font></a></strong>&nbsp;&nbsp;<font color="#990000"><strong>
-<?
-include "modules/alumnus/form_search.php";
+<?php include "modules/alumnus/form_search.php";
 ?>
 
 <form action="index.php?name=alumnus&file=addok" method="post" enctype="multipart/form-data" name="webForm" id="webForm" onSubmit="return check1()">
@@ -78,8 +74,7 @@ include "modules/alumnus/form_search.php";
 </TR>
 <TR vAlign=top>
 <TD  ALIGN="right" BGCOLOR="#FFFFFF"><STRONG><?=_ALUM_MOD_FORM_BIRTHDAY;?> :</TD>
-<?
-$dt=date('d');
+<?php $dt=date('d');
 $mt=date('m');
 $yy=date('Y');
 $yt=$yy+543;
@@ -139,8 +134,7 @@ echo "</select>";
 <TR vAlign=top>
 <TD  ALIGN="right" BGCOLOR="#FFFFFF"><STRONG><?=_ALUM_MOD_FORM_YEAR_END;?> :</TD>
 <TD width=445>
-<?
-echo "<select  name=yearfin size=1>
+<?php echo "<select  name=yearfin size=1>
 		<option >------</option>";
 for($a=$yearlast;$a<$Year;$a++){
 echo 	"<option value=".$a.">".$a."</option>";
@@ -164,8 +158,7 @@ echo "</select>";
 <TR vAlign=top>
 <TD  ALIGN="right" BGCOLOR="#FFFFFF"><STRONG><?=_ALUM_MOD_FORM_PROV;?> :</TD>
 <TD width=445>
-<?
-$vprovince  = array(_PROVINCE_1, _PROVINCE_2, _PROVINCE_3, _PROVINCE_4, _PROVINCE_5, _PROVINCE_6, _PROVINCE_7, _PROVINCE_8, _PROVINCE_9, _PROVINCE_10, _PROVINCE_11, _PROVINCE_12, _PROVINCE_13, _PROVINCE_14, _PROVINCE_15, _PROVINCE_16, _PROVINCE_17, _PROVINCE_18, _PROVINCE_19, _PROVINCE_20, _PROVINCE_21, _PROVINCE_22, _PROVINCE_23, _PROVINCE_24, _PROVINCE_25, _PROVINCE_26, _PROVINCE_27, _PROVINCE_28, _PROVINCE_29, _PROVINCE_30, _PROVINCE_31, _PROVINCE_32, _PROVINCE_33, _PROVINCE_34, _PROVINCE_35, _PROVINCE_36, _PROVINCE_37, _PROVINCE_38, _PROVINCE_39, _PROVINCE_40, _PROVINCE_41, _PROVINCE_42, _PROVINCE_43, _PROVINCE_44, _PROVINCE_45, _PROVINCE_46, _PROVINCE_47, _PROVINCE_48, _PROVINCE_49, _PROVINCE_50, _PROVINCE_51, _PROVINCE_52, _PROVINCE_53, _PROVINCE_54, _PROVINCE_55, _PROVINCE_56, _PROVINCE_57, _PROVINCE_58, _PROVINCE_59, _PROVINCE_60, _PROVINCE_61, _PROVINCE_62, _PROVINCE_63, _PROVINCE_64, _PROVINCE_65, _PROVINCE_66, _PROVINCE_67, _PROVINCE_68, _PROVINCE_69, _PROVINCE_70, _PROVINCE_71, _PROVINCE_72, _PROVINCE_73, _PROVINCE_74, _PROVINCE_75, _PROVINCE_76, _PROVINCE_77);
+<?php $vprovince  = array(_PROVINCE_1, _PROVINCE_2, _PROVINCE_3, _PROVINCE_4, _PROVINCE_5, _PROVINCE_6, _PROVINCE_7, _PROVINCE_8, _PROVINCE_9, _PROVINCE_10, _PROVINCE_11, _PROVINCE_12, _PROVINCE_13, _PROVINCE_14, _PROVINCE_15, _PROVINCE_16, _PROVINCE_17, _PROVINCE_18, _PROVINCE_19, _PROVINCE_20, _PROVINCE_21, _PROVINCE_22, _PROVINCE_23, _PROVINCE_24, _PROVINCE_25, _PROVINCE_26, _PROVINCE_27, _PROVINCE_28, _PROVINCE_29, _PROVINCE_30, _PROVINCE_31, _PROVINCE_32, _PROVINCE_33, _PROVINCE_34, _PROVINCE_35, _PROVINCE_36, _PROVINCE_37, _PROVINCE_38, _PROVINCE_39, _PROVINCE_40, _PROVINCE_41, _PROVINCE_42, _PROVINCE_43, _PROVINCE_44, _PROVINCE_45, _PROVINCE_46, _PROVINCE_47, _PROVINCE_48, _PROVINCE_49, _PROVINCE_50, _PROVINCE_51, _PROVINCE_52, _PROVINCE_53, _PROVINCE_54, _PROVINCE_55, _PROVINCE_56, _PROVINCE_57, _PROVINCE_58, _PROVINCE_59, _PROVINCE_60, _PROVINCE_61, _PROVINCE_62, _PROVINCE_63, _PROVINCE_64, _PROVINCE_65, _PROVINCE_66, _PROVINCE_67, _PROVINCE_68, _PROVINCE_69, _PROVINCE_70, _PROVINCE_71, _PROVINCE_72, _PROVINCE_73, _PROVINCE_74, _PROVINCE_75, _PROVINCE_76, _PROVINCE_77);
 echo "<select  name=province size=1 >
 		<option >------------</option>";
 for($i=0;$i<count($vprovince);$i++){
@@ -238,8 +231,7 @@ echo "</select>";
 <TD><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="33%"><select name="icon" id="icon" onChange="showimages()" />
-<?
-echo "<option value=''>-------</option>";
+<?php echo "<option value=''>-------</option>";
   if ($handle = opendir("modules/alumnus/avartar")) {
     while (false !== ($item = readdir($handle))) {
       if ($item != "." && $item != ".." && $item != "Thumbs.db" && $item != "guest.gif") {
@@ -294,14 +286,13 @@ document.images.icons.src=
 <input name="emo" type="radio" value="e12">
 <img src="modules/alumnus/emotion/e12.gif" width="20" height="20" align="absmiddle"></TD>
 </TR>
-<?
- if($login_true || $admin_user){
+<?php  if($login_true || $admin_user){
 } else {
 if(USE_CAPCHA){
 ?>
 						<TR>
 							<TD  align="right">
-							<?if(CAPCHA_TYPE == 1){ 
+							<?php if(CAPCHA_TYPE == 1){ 
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){ 
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -309,8 +300,7 @@ if(USE_CAPCHA){
 							</TD>
 							<TD><input name="security_code" type="text" id="security_code" size="20" maxlength="6" style="width:80" > <?=_JAVA_CAPTCHA_ADD;?></TD>
 						</TR>
-<?
-}
+<?php }
 }
 ?>
 <TR vAlign=top>

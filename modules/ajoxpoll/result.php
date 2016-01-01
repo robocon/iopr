@@ -1,4 +1,4 @@
-<? // Save Votes
+<?php // Save Votes
   header("Expires: Sat, 1 Jan 2010 00:00:00 GMT");
   header("Last-Modified: ".gmdate( "D, d M Y H:i:s")."GMT");
   header("Cache-Control: no-cache, must-revalidate");
@@ -48,33 +48,33 @@ for($ctr=0;$ctr<=$all;$ctr++){
 }
 </style>
 <!--<table width="32%" border="0">
-<? 
+<?php 
 for($x=0;$x<=$all;$x++){
 ?>
   <tr>
-    <td width="92"><? //=$o[$x]; ?></td>
-    <td width="17"><? //=$opt[$x] ?></td>
-    <td width="403" style="width:250px"><div class="bars" style="width:<? //=$prc[$x] ?>%;"></div></td>    
+    <td width="92"><?php //=$o[$x]; ?></td>
+    <td width="17"><?php //=$opt[$x] ?></td>
+    <td width="403" style="width:250px"><div class="bars" style="width:<?php //=$prc[$x] ?>%;"></div></td>    
   </tr>
-<? } ?>  
+<?php } ?>  
 </table>
 -->
 <div style="font-family:Arial, Helvetica, sans-serif;font-size:11px;">
 <strong>BAR GRAPH</strong>
-<? 
+<?php 
 for($x=0;$x<=$all;$x++){
 ?>
     <div style="float:left;width:100px;">&nbsp;<?=$o[$x]; ?></div><div style="float:left;width:30px;">&nbsp;&nbsp;&nbsp;
 	  <?=$opt[$x] ?></div>
 	<div class="divs" style="width:30px;"><?=substr($prc[$x],0,5) ?>%</div><br><div class="divs" style="width:160px;"><div class="bars" style="width:<?=$prc[$x] ?>%;"></div></div>
   <p>
-      <? 
+      <?php 
 	  } ?>
   </p>
   
   <br />
   <strong>PIE CHART</strong>
-<? 
+<?php 
 $datas = "";
 $sel = "";
 for($x=0;$x<=$all;$x++){

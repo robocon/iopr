@@ -1,5 +1,4 @@
-<?
-/*===============================
+<?php /*===============================
 ผู้พัฒนาระบบสมาชิกสำหรับMaxsite@V.3
 นายวัชระ บุตรโท
 08-6639-6298(true), 08-3382-3296(ais)
@@ -7,8 +6,7 @@
 ็บริการ จดโดเมน และ ให้เช่าเว็บโฮสติ้ง
 ===============================*/
 ?>
-<?
-CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
+<?php CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 ?>
 <div align="left">
       <table cellspacing="0" cellpadding="0" width="100%" border="0">
@@ -50,8 +48,7 @@ CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
                                       <a href="?name=admin&amp;file=user_cp"><img src="images/admin/admins.gif"  border="0" align="absmiddle" /> จัดการผู้ดูแลระบบ</a> &nbsp;&nbsp;&nbsp;<a href="?name=admin&amp;file=user_cp&amp;op=user_add"><img src="images/admin/user.gif"  border="0" align="absmiddle" /> เพิ่มผู้ดูแลระบบ</a> &nbsp;&nbsp;&nbsp;<a href="?name=admin&amp;file=groups"><img src="images/admin/keys.gif"  border="0" align="absmiddle" /> ระดับของผู้ดูแลระบบ</a> &nbsp;&nbsp;&nbsp;<a href="?name=admin&amp;file=groups&amp;op=group_add"><img src="images/admin/share.gif"  border="0" align="absmiddle" /> เพิ่มระดับของผู้ดูแลระบบ</a> <br />
                                       <br />
                                       <!-- แสดงผลรายการผู้ดูแลระบบ -->
-                                      <?
-//////////////////////////////////////////// แสดงรายชื่อผู้ดูแลระบบ
+                                      <?php //////////////////////////////////////////// แสดงรายชื่อผู้ดูแลระบบ
 if($_GET[op] == ""){
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $limit = 20 ;
@@ -82,26 +79,24 @@ $goto = ($page-1)*$limit ;
                                               </center>
                                             </b></font></td>
                                           </tr>
-                                          <?
-$res[user] = $db->select_query("SELECT * FROM ".TB_user." ORDER BY id DESC LIMIT $goto, $limit ");
+                                          <?php $res[user] = $db->select_query("SELECT * FROM ".TB_user." ORDER BY id DESC LIMIT $goto, $limit ");
 while($arr[user] = $db->fetch($res[user])){
 	$res[groups] = $db->select_query("SELECT * FROM ".TB_ADMIN_GROUP." WHERE id='".$arr[user][level]."' ");
 	$arr[groups] = $db->fetch($res[groups]);
 ?>
                                           <tr>
-                                            <td width="50"><a href="?name=admin&amp;file=user_cp&amp;op=minepass_edit&amp;id=<? echo $arr[user][id];?>"><img src="images/icon/edit.gif" border="0" alt="แก้ไข" /></a> <a href="javascript:Confirm('?name=admin&amp;file=user_cp&amp;op=user_del&amp;id=<? echo $arr[user][id];?>','คุณมั่นใจในการลบชื่อผู้ใช้ : <?echo $arr[user][username];?>');"><img src="images/icon/trash.gif"  border="0" alt="ลบ" /></a> </td>
-                                            <td width="150"><?echo $arr[user][username];?></td>
-                                            <td width="150" ><? echo $arr[user][name];?></td>
-                                            <td ><? echo $arr[user][email];?></td>
-                                            <td align="center" width="80" ><? echo $arr[groups][name];?>
+                                            <td width="50"><a href="?name=admin&amp;file=user_cp&amp;op=minepass_edit&amp;id=<?php echo $arr[user][id];?>"><img src="images/icon/edit.gif" border="0" alt="แก้ไข" /></a> <a href="javascript:Confirm('?name=admin&amp;file=user_cp&amp;op=user_del&amp;id=<?php echo $arr[user][id];?>','คุณมั่นใจในการลบชื่อผู้ใช้ : <?php echo $arr[user][username];?>');"><img src="images/icon/trash.gif"  border="0" alt="ลบ" /></a> </td>
+                                            <td width="150"><?php echo $arr[user][username];?></td>
+                                            <td width="150" ><?php echo $arr[user][name];?></td>
+                                            <td ><?php echo $arr[user][email];?></td>
+                                            <td align="center" width="80" ><?php echo $arr[groups][name];?>
                                                 <div align="center"></div></td>
-                                            <td  align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr[user][id];?>" /></td>
+                                            <td  align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr[user][id];?>" /></td>
                                           </tr>
                                           <tr>
                                             <td colspan="6" height="1" class="dotline"></td>
                                           </tr>
-                                          <?
- } 
+                                          <?php  } 
 ?>
                                         </table>
                                         <div align="right">
@@ -110,8 +105,7 @@ while($arr[user] = $db->fetch($res[user])){
                                           <input type="submit" value="   ลบ   " onclick="return delConfirm(document.myform)" />
                                         </div>
                                       </form>
-                                    <?
-	SplitPage($page,$totalpage,"?name=admin&file=user_cp");
+                                    <?php 	SplitPage($page,$totalpage,"?name=admin&file=user_cp");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -207,10 +201,10 @@ else if($_GET[op] == "user_add"){
                                           </tr>
                                           <tr>
                                             <td><div align="right"><b>ภาพส่วนตัว :</b></div></td>
-                                            <td><img src="images/user_blank.gif" name="view01" border="0" id="view01" <?echo " WIDTH=\""._Iuser_W."\" HEIGHT=\""._Iuser_H."\" ";?> /><br />
+                                            <td><img src="images/user_blank.gif" name="view01" border="0" id="view01" <?php echo " WIDTH=\""._Iuser_W."\" HEIGHT=\""._Iuser_H."\" ";?> /><br />
                                                 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;" />
                                                 <br />
-                                              รูปเป็นไฟล์ .jpg  .jpeg ขนาด <?echo _Iuser_W." x "._Iuser_H ;?> Pixels เท่านั้น (หากรูปใหญ่จะย่อให้อัตโนมัติ) <br /></td>
+                                              รูปเป็นไฟล์ .jpg  .jpeg ขนาด <?php echo _Iuser_W." x "._Iuser_H ;?> Pixels เท่านั้น (หากรูปใหญ่จะย่อให้อัตโนมัติ) <br /></td>
                                           </tr>
                                           <tr>
                                             <td><div align="right"><b>อีเมล์ :</b></div></td>
@@ -227,8 +221,7 @@ else if($_GET[op] == "user_add"){
                                           <tr>
                                             <td><div align="right"><b>Level :</b></div></td>
                                             <td><select name="LEVEL" id="LEVEL">
-                                                <?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+                                                <?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[groups] = $db->select_query("SELECT * FROM ".TB_ADMIN_GROUP." ORDER BY id ");
    while ($arr[groups] = $db->fetch($res[groups]))
    {
@@ -244,8 +237,7 @@ $db->closedb ();
                                           </tr>
                                         </table>
                                     </form>
-                                    <?
-	}else{
+                                    <?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -348,10 +340,10 @@ else if($_GET[op] == "user_edit"){
                                         </tr>
                                         <tr>
                                           <td><div align="right"><b>ภาพส่วนตัว :</b></div></td>
-                                          <td><img src="usericon/<?=$arr[user][post_date];?>.jpg" name="view01" border="0" id="view01" <?echo " WIDTH=\""._Iuser_W."\" HEIGHT=\""._Iuser_H."\" ";?> /><br />
+                                          <td><img src="usericon/<?=$arr[user][post_date];?>.jpg" name="view01" border="0" id="view01" <?php echo " WIDTH=\""._Iuser_W."\" HEIGHT=\""._Iuser_H."\" ";?> /><br />
                                               <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;" />
                                               <br />
-                                          รูปเป็นไฟล์ .jpg  .jpeg ขนาด <?echo _Iuser_W." x "._Iuser_H ;?> Pixels เท่านั้น (หากรูปใหญ่จะย่อให้อัตโนมัติ) <br /></td>
+                                          รูปเป็นไฟล์ .jpg  .jpeg ขนาด <?php echo _Iuser_W." x "._Iuser_H ;?> Pixels เท่านั้น (หากรูปใหญ่จะย่อให้อัตโนมัติ) <br /></td>
                                         </tr>
                                         <tr>
                                           <td><div align="right"><b>อีเมล์ :</b></div></td>
@@ -369,8 +361,7 @@ else if($_GET[op] == "user_edit"){
                                         <tr>
                                           <td><div align="right"><b>Level :</b></div></td>
                                           <td><select name="LEVEL" id="LEVEL">
-                                              <?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+                                              <?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[groups] = $db->select_query("SELECT * FROM ".TB_ADMIN_GROUP." ORDER BY id ");
    while ($arr[groups] = $db->fetch($res[groups]))
    {
@@ -389,8 +380,7 @@ $db->closedb ();
                                         </tr>
                                         </table>
                                     </form>
-                                    <?
-	}else{
+                                    <?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}
@@ -517,7 +507,7 @@ else if($_GET[op] == "minepass_edit"){
 		$arr[user] = $db->fetch($res[user]);
 		$db->closedb ();
 ?>
-                                      <form method="post" action="?name=admin&file=user_cp&op=minepass_edit&action=edit&id=<? echo $arr[user][id];?>" enctype="multipart/form-data">
+                                      <form method="post" action="?name=admin&file=user_cp&op=minepass_edit&action=edit&id=<?php echo $arr[user][id];?>" enctype="multipart/form-data">
                                         <table width="100%">
                                           <tr>
                                             <td width="150"><div align="right"><b>ชื่อผู้ใช้ :</b></div></td>
@@ -533,10 +523,10 @@ else if($_GET[op] == "minepass_edit"){
                                           </tr>
                                           <tr>
                                             <td><div align="right"><b>ภาพส่วนตัว :</b></div></td>
-                                            <td><img src="usericon/<?=$arr[user][post_date];?>.jpg" name="view01" border="0" id="view" <?echo " WIDTH=\""._Iuser_W."\" HEIGHT=\""._Iuser_H."\" ";?> /><br />
+                                            <td><img src="usericon/<?=$arr[user][post_date];?>.jpg" name="view01" border="0" id="view" <?php echo " WIDTH=\""._Iuser_W."\" HEIGHT=\""._Iuser_H."\" ";?> /><br />
                                                 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;" id="FILE" />
                                                 <br />
-                                              รูปเป็นไฟล์ .jpg  .jpeg ขนาด <?echo _Iuser_W." x "._Iuser_H ;?> Pixels เท่านั้น (หากรูปใหญ่จะย่อให้อัตโนมัติ) <br /></td>
+                                              รูปเป็นไฟล์ .jpg  .jpeg ขนาด <?php echo _Iuser_W." x "._Iuser_H ;?> Pixels เท่านั้น (หากรูปใหญ่จะย่อให้อัตโนมัติ) <br /></td>
                                           </tr>
                                           <tr>
                                             <td><div align="right"><b>อีเมล์ :</b></div></td>
@@ -554,8 +544,7 @@ else if($_GET[op] == "minepass_edit"){
                                           <tr>
                                             <td><div align="right"><b>Level :</b></div></td>
                                             <td><select name="LEVEL" id="LEVEL">
-                                                <?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+                                                <?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[groups] = $db->select_query("SELECT * FROM ".TB_ADMIN_GROUP." ORDER BY id ");
    while ($arr[groups] = $db->fetch($res[groups]))
    {
@@ -574,8 +563,7 @@ $db->closedb ();
                                           </tr>
                                         </table>
                                     </form>
-                                    <?
-	}else{
+                                    <?php 	}else{
 		//กรณีไม่ผ่าน
 		echo $PermissionFalse ;
 	}

@@ -1,4 +1,4 @@
-<? include("../../mainfile.php"); ?>
+<?php include("../../mainfile.php"); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -162,8 +162,7 @@ alert('Max limit reach');
 }
 </script>
 
-<?
-$do = $_GET['do'];; 
+<?php $do = $_GET['do'];; 
 $pid = $_GET['id'];
 
 ?>
@@ -187,8 +186,7 @@ else {
 </script>
 <h2><a href="managepoll.php?do=add">Add</a> | 
   <a href="javascript:void();" onclick="submitt()">Delete</a>
-  <?
-if($do=='del'){
+  <?php if($do=='del'){
 //error_reporting(0);	
 	$itm = $_POST['xtr'];
 
@@ -202,14 +200,14 @@ for($x=1;$x<=$itm;$x++){
 ?>
 </h2>
 	<h1>Manage Polls
-  <? 
+  <?php 
 		/*$qq = mysql_query("select title from content_categories where id = '$cat'");
 		$rec = mysql_fetch_array($qq);
 		echo $rec['title'];*/
 	?></h1>
 	<span name="myspan" id="myspan"></span>
 
-<? if($do=='' || $do=='del'){  ?> 
+<?php if($do=='' || $do=='del'){  ?> 
 <div id="article-table-list">
 <form id="form1" name="form1" method="post" action="managepoll.php?do=del">
   <table width="100%" border="0" style="border:#333333 solid 1px;">
@@ -218,8 +216,7 @@ for($x=1;$x<=$itm;$x++){
       <td width="6%" bgcolor="#b3bfb9"><span class="style3">ID</span></td>
       <td width="27%" bgcolor="#b3bfb9"><span class="style3">Poll Question</span></td>
       </tr>
-    <?
-$ctr = 0;
+    <?php $ctr = 0;
 $q = mysql_query("select * from web_polls order by id desc limit 20");
 $bg = 1;
 while($rec=mysql_fetch_array($q)){
@@ -246,7 +243,7 @@ while($rec=mysql_fetch_array($q)){
         <?=$rec['poll_question'] ?>
       </a></td>
       </tr>
-    <? } ?>
+    <?php } ?>
     <tr>
       <td bgcolor="#b3bfb9"><input name="xtr" type="hidden" id="xtr" value="<?=$ctr ?>" /></td>
       <td bgcolor="#b3bfb9">&nbsp;</td>
@@ -255,11 +252,10 @@ while($rec=mysql_fetch_array($q)){
   </table>
 </form>
 <p>
-  <? }elseif($do=='add'){ ?>
+  <?php }elseif($do=='add'){ ?>
 </p>
 <form id="form2" name="form2" method="post" action="">
-<?
-if(isset($_POST['savep'])){
+<?php if(isset($_POST['savep'])){
 $question = $_POST['poll_question'];
 $ctr = $_POST['ctr'];
 $page = mysql_real_escape_string($_POST['page']);
@@ -301,10 +297,9 @@ echo "<script>alert('New Poll Created');parent.location='managepoll.php'</script
   </table>
 </form>
 
-  <? }elseif($do=='edit'){ ?>
+  <?php }elseif($do=='edit'){ ?>
 <form id="form2" name="form2" method="post" action="">
-<?
-if(isset($_POST['savee'])){
+<?php if(isset($_POST['savee'])){
 $question = $_POST['poll_question'];
 $ctr = $_POST['ctr2'];
 $page = mysql_real_escape_string($_POST['page']);
@@ -339,8 +334,8 @@ $octr = count($op) - 2;
     <tr>
       <td height="31">SHOW ON </td>
       <td><select name="page" id="page">
-        <option value="home" <? if($rec['page']=='home'){echo 'selected="selected"';} ?>  >Home</option>
-        <option value="entertainment" <? if($rec['page']=='entertainment'){echo 'selected="selected"';} ?>>Entertainment</option>
+        <option value="home" <?php if($rec['page']=='home'){echo 'selected="selected"';} ?>  >Home</option>
+        <option value="entertainment" <?php if($rec['page']=='entertainment'){echo 'selected="selected"';} ?>>Entertainment</option>
       </select></td>
     </tr>
 <script>
@@ -357,8 +352,8 @@ function addTextbox(){
     <tr>
       <td height="30" valign="top"><input type="button" value="Add Option" onclick="addTextbox()" /></td>
       <td>
-      <? for($xx=0;$xx<=$octr;$xx++){ ?><input name="opt<?=$xx; ?>" type="text" value="<?=$op[$xx]; ?>" size="40"/><br /><? } ?>     
-      <? for($xx=$octr+1;$xx<10;$xx++){ ?><input id="opt<?=$xx; ?>" name="opt<?=$xx; ?>" type="text" value="" size="40" style="display:none" /><? } ?>           
+      <?php for($xx=0;$xx<=$octr;$xx++){ ?><input name="opt<?=$xx; ?>" type="text" value="<?=$op[$xx]; ?>" size="40"/><br /><?php } ?>     
+      <?php for($xx=$octr+1;$xx<10;$xx++){ ?><input id="opt<?=$xx; ?>" name="opt<?=$xx; ?>" type="text" value="" size="40" style="display:none" /><?php } ?>           
       </td>
     </tr>
     <tr> 
@@ -369,7 +364,7 @@ function addTextbox(){
     </tr>
   </table>
 </form>
-<? } ?>
+<?php } ?>
 </div>
 </div>
 </body>

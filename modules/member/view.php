@@ -39,13 +39,12 @@ $dbarr = mysql_fetch_array($result) ;
 				</TR>
   <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
   <TR>
-        <TD COLSPAN="3"><STRONG><FONT SIZE="4"><IMG SRC="images/human.gif" > <FONT COLOR="#FF3300"><u><FONT COLOR="#0000FF"><? echo _MEMBER_MOD_MEMDETAIL_TITLE;?> <?php echo $dbarr['user'] ; ?>
+        <TD COLSPAN="3"><STRONG><FONT SIZE="4"><IMG SRC="images/human.gif" > <FONT COLOR="#FF3300"><u><FONT COLOR="#0000FF"><?php echo _MEMBER_MOD_MEMDETAIL_TITLE;?> <?php echo $dbarr['user'] ; ?>
         </FONT></u></FONT></FONT></STRONG></TD>
       <TR>
 	          <TD WIDTH="30%" ROWSPAN="5" VALIGN="top">
           <DIV ALIGN="left">
-		  <?
-					//Show Picture
+		  <?php 					//Show Picture
 					if($dbarr[member_pic]){
 						$postpicupload = @getimagesize ("member_pic/".$dbarr[member_pic]."");
 
@@ -61,43 +60,43 @@ $dbarr = mysql_fetch_array($result) ;
           <DIV ALIGN="left"></DIV></TD>
 
 
-        <TD WIDTH="24%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_MEMID;?> : </FONT></STRONG></TD>
+        <TD WIDTH="24%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_MEMID;?> : </FONT></STRONG></TD>
         <TD WIDTH="45%">
           <DIV ALIGN="left">&nbsp;&nbsp;<?php echo $dbarr['member_id'] ; ?></FONT></DIV></TD>
       </TR>
       <TR>
-        <TD WIDTH="24%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_NAME;?> : </FONT></STRONG></TD>
+        <TD WIDTH="24%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_NAME;?> : </FONT></STRONG></TD>
         <TD WIDTH="45%">
           <DIV ALIGN="left">&nbsp;&nbsp;<?php echo $dbarr['name'] ; ?></FONT></DIV></TD>
         </TR>
       <TR>
-        <TD WIDTH="24%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_BIRTDAY;?> : </FONT></STRONG></TD>
+        <TD WIDTH="24%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_BIRTDAY;?> : </FONT></STRONG></TD>
         <TD>&nbsp;&nbsp;<?php echo $dbarr['date']."/".$dbarr['month']."/".$dbarr['year']  ; ?></FONT></TD>
         </TR>
       <TR>
-        <TD WIDTH="24%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_SEX;?> : </FONT></STRONG></TD>
+        <TD WIDTH="24%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_SEX;?> : </FONT></STRONG></TD>
         <TD>&nbsp;&nbsp;<?php echo $dbarr['sex'] ; ?></FONT></TD>
         <TR>
-        <TD WIDTH="24%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_FORM_USER_EDU;?> : </FONT></STRONG></TD>
+        <TD WIDTH="24%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_FORM_USER_EDU;?> : </FONT></STRONG></TD>
         <TD>&nbsp;&nbsp;<?php echo $dbarr['education'] ; ?></FONT></TD>
         <TR><td></td>
         <TD WIDTH="14%" ALIGN="right"><STRONG>email : </FONT></STRONG></TD>
         <TD>&nbsp;&nbsp;<?php echo $dbarr['email'] ;?></FONT></TD>
       <TR><td></td>
-        <TD WIDTH="14%" ALIGN="right"> <STRONG><? echo _MEMBER_MOD_FORM_USER_WORK;?> : </STRONG></FONT></TD>
+        <TD WIDTH="14%" ALIGN="right"> <STRONG><?php echo _MEMBER_MOD_FORM_USER_WORK;?> : </STRONG></FONT></TD>
         <TD>&nbsp;&nbsp;<?php echo $dbarr['work'] ; ?></FONT></TD>
       <TR><td></td>
-        <TD WIDTH="14%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_TIMEADD;?> : </STRONG></FONT></TD>
+        <TD WIDTH="14%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_TIMEADD;?> : </STRONG></FONT></TD>
         <TD>&nbsp;&nbsp;<?php echo $dbarr['signup'] ; ?></FONT></TD>
       <TR><td></td>
-        <TD WIDTH="14%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_LASTLOG;?> : </FONT></STRONG></TD>
+        <TD WIDTH="14%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_LASTLOG;?> : </FONT></STRONG></TD>
         <TD>&nbsp;&nbsp;<?php echo $dbarr['lastlog'] ; ?></TD>
       <TR><td></td>
-        <TD WIDTH="24%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_PHONE;?> : </FONT></STRONG></TD>
+        <TD WIDTH="24%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_PHONE;?> : </FONT></STRONG></TD>
         <TD>&nbsp;&nbsp;<?php echo $dbarr['phone'] ;?></FONT></TD>
       <TR><td></td>
-        <TD WIDTH="14%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_AGE;?> : </FONT></STRONG></TD>
-        <TD>&nbsp;&nbsp;<?php echo $dbarr['age'] ; ?> <? echo _MEMBER_MOD_MEMDETAIL_PEE;?> </FONT></TD>
+        <TD WIDTH="14%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_AGE;?> : </FONT></STRONG></TD>
+        <TD>&nbsp;&nbsp;<?php echo $dbarr['age'] ; ?> <?php echo _MEMBER_MOD_MEMDETAIL_PEE;?> </FONT></TD>
     </TABLE>
     <P>&nbsp;</P></TD>
   </TR>

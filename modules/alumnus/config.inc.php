@@ -1,5 +1,4 @@
-<?
-empty($_GET['name'])?$name="":$name=$_GET['name'];
+<?php empty($_GET['name'])?$name="":$name=$_GET['name'];
 empty($_GET['file'])?$file="":$file=$_GET['file'];
 empty($_SESSION['admin_user'])?$admin_user="":$admin_user=$_SESSION['admin_user'];
 empty($_SESSION['admin_pwd'])?$admin_pwd="":$admin_pwd=$_SESSION['admin_pwd'];

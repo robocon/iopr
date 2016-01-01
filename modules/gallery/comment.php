@@ -1,5 +1,4 @@
-<?
-if(!$_POST['NAME'] OR !$_POST['COMMENT']){
+<?php if(!$_POST['NAME'] OR !$_POST['COMMENT']){
 	echo "<script language='javascript'>" ;
 	echo "alert('"._JAVA_DATA_NULL."')" ;
 	echo "</script>" ;

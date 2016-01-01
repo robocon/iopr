@@ -32,14 +32,14 @@
 	          <td width="50%">
 	            <form name="formboard" method="post" action="?name=search&file=getsearch" onsubmit="return checkboard();">
 	              <div align="left">&nbsp; &nbsp;<strong><?=_WEBBOARD_SEARCH_TITLE_SEARCH;?> </strong>&nbsp;              
-	                <input type="text" name="keyword" value="<? echo"$keyword"; ?>" style="width:150px; padding:1px">
+	                <input type="text" name="keyword" value="<?php echo"$keyword"; ?>" style="width:150px; padding:1px">
 	                <input type="submit" name="Submit" value="search">
                   </div>
 			  </form>			</td>
               <td width="37%" align="left"><script language='JavaScript'>
 					function checkboard() {
 						if(document.formboard.keyword.value=='') {
-						alert('<? echo _WEBBOARD_SEARCH_JAVA_WORD_NULL;?>') ;
+						alert('<?php echo _WEBBOARD_SEARCH_JAVA_WORD_NULL;?>') ;
 						document.formboard.keyword.focus() ;
 						return false ;
 						}
@@ -52,7 +52,7 @@
 	      <br>
           <table width="90%" height="10"  border="0" align="center" cellpadding="0" cellspacing="0">
             <tr><td align="left">
-              <? 
+              <?php 
 $keyword=$_GET[keyword];
 $SQLwhere2 = "where (topic like '%$keyword%' ) or (detail like '%$keyword%' ) or (posted like '%$keyword%' )";
 //แสดงผลกระทู้ 
@@ -71,8 +71,7 @@ function highlight($word, $subject) {
 <font color=#0033CC size=3>1. <?=_SEARCH_FORM_TITLE_1;?></font>
 </td></tr>
 <tr><td align="center">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $sql="select * From ".TB_NEWS." where (topic like '%$keyword%') or (detail like '%$keyword%') or (posted like '%$keyword%')";	//เลือกข้อมูลใน DB จากตารางหมวด
 $result = mysql_query($sql);
 $num_rows=mysql_num_rows($result);	 //จำนวนเรคอร์ด
@@ -97,8 +96,7 @@ echo "$message";
 	    <td width="15%" align="center" bgcolor="#E5E5E5"><B><?=_WEBBOARD_TABLE_DATE;?></B></td>
     </tr>
 	        <tr><td colspan="4" height=1 class="dotline"></td></tr>
-<?
-$SUMPAGE = $db->num_rows(TB_NEWS,"id",$SQLwhere2);
+<?php $SUMPAGE = $db->num_rows(TB_NEWS,"id",$SQLwhere2);
 
 if (empty($page)){
 	$page=1;
@@ -138,16 +136,14 @@ $postnames = highlight("$keyword", '<span>'.$search[posted].'</span>');
 ?>
             </td></tr>
     </table>
-<?
-}
+<?php }
 ?>
 </td></tr>
 <tr><td align="left">
 <font color=#0033CC size=3>2. <?=_SEARCH_FORM_TITLE_2;?></font>
 </td></tr>
 <tr><td align="center">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $sql="select * From ".TB_BLOG." where (topic like '%$keyword%') or (detail like '%$keyword%') or (posted like '%$keyword%')";	//เลือกข้อมูลใน DB จากตารางหมวด
 $result = mysql_query($sql);
 $num_rows=mysql_num_rows($result);	 //จำนวนเรคอร์ด
@@ -172,8 +168,7 @@ echo "$message";
 	    <td width="15%" align="center" bgcolor="#E5E5E5"><B><?=_WEBBOARD_TABLE_DATE;?></B></td>
     </tr>
 	        <tr><td colspan="4" height=1 class="dotline"></td></tr>
-<?
-$SUMPAGE = $db->num_rows(TB_BLOG,"id",$SQLwhere2);
+<?php $SUMPAGE = $db->num_rows(TB_BLOG,"id",$SQLwhere2);
 
 if (empty($page)){
 	$page=1;
@@ -213,16 +208,14 @@ $postnames = highlight("$keyword", '<span>'.$search[posted].'</span>');
 ?>
             </td></tr>
     </table>
-<?
-}
+<?php }
 ?>
 </td></tr>
 <tr><td align="left">
 <font color=#0033CC size=3>3. <?=_SEARCH_FORM_TITLE_3;?></font>
 </td></tr>
 <tr><td align="center">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $sql="select * From ".TB_DOWNLOAD." where (topic like '%$keyword%') or (detail like '%$keyword%') or (posted like '%$keyword%')";	//เลือกข้อมูลใน DB จากตารางหมวด
 $result = mysql_query($sql);
 $num_rows=mysql_num_rows($result);	 //จำนวนเรคอร์ด
@@ -248,8 +241,7 @@ echo "$message";
 	    <td width="15%" align="center" bgcolor="#E5E5E5"><B><?=_WEBBOARD_TABLE_DATE;?></B></td>
     </tr>
 	        <tr><td colspan="4" height=1 class="dotline"></td></tr>
-<?
-$SUMPAGE = $db->num_rows(TB_DOWNLOAD,"id",$SQLwhere2);
+<?php $SUMPAGE = $db->num_rows(TB_DOWNLOAD,"id",$SQLwhere2);
 
 if (empty($page)){
 	$page=1;
@@ -289,16 +281,14 @@ $postnames = highlight("$keyword", '<span>'.$search[posted].'</span>');
 ?>
             </td></tr>
     </table>
-<?
-}
+<?php }
 ?>
 </td></tr>
 <tr><td align="left">
 <font color=#0033CC size=3>4. <?=_SEARCH_FORM_TITLE_4;?></font>
 </td></tr>
 <tr><td align="center">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $sql="select * From ".TB_KNOWLEDGE." where (topic like '%$keyword%') or (detail like '%$keyword%') or (posted like '%$keyword%')";	//เลือกข้อมูลใน DB จากตารางหมวด
 $result = mysql_query($sql);
 $num_rows=mysql_num_rows($result);	 //จำนวนเรคอร์ด
@@ -324,8 +314,7 @@ echo "$message";
 	    <td width="15%" align="center" bgcolor="#E5E5E5"><B><?=_WEBBOARD_TABLE_DATE;?></B></td>
     </tr>
 	        <tr><td colspan="4" height=1 class="dotline"></td></tr>
-<?
-$SUMPAGE = $db->num_rows(TB_KNOWLEDGE,"id",$SQLwhere2);
+<?php $SUMPAGE = $db->num_rows(TB_KNOWLEDGE,"id",$SQLwhere2);
 
 if (empty($page)){
 	$page=1;
@@ -365,16 +354,14 @@ $postnames = highlight("$keyword", '<span>'.$search[posted].'</span>');
 ?>
             </td></tr>
     </table>
-<?
-}
+<?php }
 ?>
 </td></tr>
 <tr><td align="left">
 <font color=#0033CC size=3>5. <?=_SEARCH_FORM_TITLE_5;?></font>
 </td></tr>
 <tr><td align="center">
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $sql="select * From ".TB_RESEARCH." where (topic like '%$keyword%') or (detail like '%$keyword%') or (posted like '%$keyword%')";	//เลือกข้อมูลใน DB จากตารางหมวด
 $result = mysql_query($sql);
 $num_rows=mysql_num_rows($result);	 //จำนวนเรคอร์ด
@@ -400,8 +387,7 @@ echo "$message";
 	    <td width="15%" align="center" bgcolor="#E5E5E5"><B><?=_WEBBOARD_TABLE_DATE;?></B></td>
     </tr>
 	        <tr><td colspan="4" height=1 class="dotline"></td></tr>
-<?
-$SUMPAGE = $db->num_rows(TB_RESEARCH,"id",$SQLwhere2);
+<?php $SUMPAGE = $db->num_rows(TB_RESEARCH,"id",$SQLwhere2);
 
 if (empty($page)){
 	$page=1;
@@ -441,11 +427,9 @@ $postnames = highlight("$keyword", '<span>'.$search[posted].'</span>');
 ?>
             </td></tr>
     </table>
-<?
-}
+<?php }
 ?>
             </td></tr>
-<?
-}
+<?php }
 ?>
 </table>

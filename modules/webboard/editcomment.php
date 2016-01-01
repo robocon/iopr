@@ -1,4 +1,4 @@
-<?include ("editor.php");?>
+<?php include ("editor.php");?>
 <?php
 if ($_GET['s_page']){
 $s_pagex=$_GET['s_page'];
@@ -250,14 +250,14 @@ if(_ENABLE_BOARD_UPLOAD){
 	</TD>
 </TR>
 
-      <? 
+      <?php 
 	 if($login_true || $admin_user){
 } else {
 if(USE_CAPCHA){
 ?>
       <TR>
         <TD width=150 align=right>
-          <?if(CAPCHA_TYPE == 1){ 
+          <?php if(CAPCHA_TYPE == 1){ 
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){ 
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";

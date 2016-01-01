@@ -1,11 +1,11 @@
 				<script language='JavaScript'>
 					function check_Form_login() {
 						if(document.checkForm2.user_login.value=='') {
-						alert('<?echo _MEMBER_MOD_CHECK_USER_MESS_NULL;?>') ;
+						alert('<?php echo _MEMBER_MOD_CHECK_USER_MESS_NULL;?>') ;
 						document.checkForm2.user_login.focus() ;
 						return false ;
 						} else if(document.checkForm2.pwd_login.value=='') {
-							alert('<? echo _MEMBER_MOD_FORM_JAVA_PASS;?>') ;
+							alert('<?php echo _MEMBER_MOD_FORM_JAVA_PASS;?>') ;
 							document.checkForm2.pwd_login.focus() ;
 							return false ;
 						} else {
@@ -14,8 +14,7 @@
 						}
                       </script>
 
-		<?
-empty($_SESSION['login_true'])?$login_true="":$login_true=$_SESSION['login_true'];
+		<?php empty($_SESSION['login_true'])?$login_true="":$login_true=$_SESSION['login_true'];
 empty($_SESSION['admin_user'])?$admin_user="":$admin_user=$_SESSION['admin_user'];
 if ($admin_user) {
 
@@ -27,12 +26,12 @@ if ($admin_user) {
 
 <center><table border="0" cellpadding="0" cellspacing="0" width="<?=$widthSUM;?>">
 			
-			<? if ($arr['admin']['picture']<>""){?>
-			<tr><td align="center"><img src="icon/<?=$arr['admin']['picture'];?>" name="view01" border="0" id="view01" <?echo "WIDTH="._Iadmin_W."";?> /></td></tr>
-			<? } else {
+			<?php if ($arr['admin']['picture']<>""){?>
+			<tr><td align="center"><img src="icon/<?=$arr['admin']['picture'];?>" name="view01" border="0" id="view01" <?php echo "WIDTH="._Iadmin_W."";?> /></td></tr>
+			<?php } else {
 			?>
-			<tr><td align="center"><img src="icon/admin.png" name="view01" border="0" id="view01" <?echo "WIDTH="._Iadmin_W."  ";?> /></td></tr>
-			<? } ?>
+			<tr><td align="center"><img src="icon/admin.png" name="view01" border="0" id="view01" <?php echo "WIDTH="._Iadmin_W."  ";?> /></td></tr>
+			<?php } ?>
 			<tr>
 			<td align="center">Hello <?=$admin_user; ?></td>
 			</tr>
@@ -70,7 +69,7 @@ if ($admin_user) {
 
 			<table cellspacing="0" cellpadding="0" width="<?=$widthSUM;?>" border="0">
 			
-		<?		if($arr['user']['member_pic']==""){ 
+		<?php 	if($arr['user']['member_pic']==""){ 
 	echo "<tr><td align=center><IMG SRC=\"icon/member_nrr.gif\" BORDER=0 ALIGN=center class=membericon></td></tr>";
 	}else{  
 	echo "<tr><td align=center><IMG SRC=\"icon/".$arr['user']['member_pic']."\" BORDER=0 ALIGN=center></td></tr>";
@@ -105,8 +104,7 @@ if ($admin_user) {
 			</td>
 </tr>
 </table>
-			<?
-			} else if($login_true =='' && $admin_user=='') {
+			<?php 			} else if($login_true =='' && $admin_user=='') {
 
 		 ?>
 
@@ -124,11 +122,10 @@ if ($admin_user) {
 				<TD width='87' align='right'  valign='top'>Password : </TD>
 				<TD><input name='pwd_login' type='password' id='pwd_login' size='15'></TD>
 				</TR>
-				<?
-				if(USE_CAPCHA){
+				<?php 				if(USE_CAPCHA){
 				?>
                  <tr>
-                 <td width='95' align='right' ><?if(CAPCHA_TYPE == 1){
+                 <td width='95' align='right' ><?php if(CAPCHA_TYPE == 1){
 							echo "<img src=\"capcha/CaptchaSecurityImages.php?path=".WEB_PATH."&width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 						}else if(CAPCHA_TYPE == 2){ 
 							echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -136,7 +133,7 @@ if ($admin_user) {
                     </td>
                     <td><input name="security_code" type="text" id="security_code" maxlength="6" size='15'/></td>
                     </tr>
-                    <? } ?>
+                    <?php } ?>
 					<TR align='right' valign='top'>
 					<TD colspan='2' align='center' valign='middle'><input name='submit' type='submit' value='<?=_MEMBER_LOGIN;?>'></TD>
 					</TR>
@@ -149,8 +146,7 @@ if ($admin_user) {
 				</tr>
 				</table>
 
-<?
-	//echo "".$_SESSION['admin_user']."<br>";
+<?php 	//echo "".$_SESSION['admin_user']."<br>";
 	//echo "".$_SESSION['user_user']."<br>";
 }
 
@@ -166,8 +162,7 @@ if ($admin_user) {
 <table border="0" cellpadding="0" cellspacing="0" width="<?=$widthSUM;?>" bgcolor="#F7F7F7" >
 <tr><td width="<?=$widthSUM;?>" bgcolor="#F7F7F7" colspan="2"><img src="images/admin/members[1].png" border="0"> <?=_MEMBER_ALL;?> <font color="#FF0033"><?=$rows['member']['members'];?> </font><?=_COUNT_ONLINE_KON;?></td></tr>
 <tr><td width="<?=$widthSUM;?>" bgcolor="#F7F7F7" colspan="2"><img src="images/admin/i_member[1].gif" border="0"> <?=_MEMBER_ALL_ONLINE;?> <font color="#FF0033"><?=$rows['user2']['online'];?> </font><?=_COUNT_ONLINE_KON;?></td></tr>
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $sql = "SELECT * FROM `".TB_MEMBER."` AS a, `".TB_useronline."` AS b WHERE b.useronline = a.user";
 $query = $db->select_query($sql);
 
@@ -175,13 +170,12 @@ $count=0;
 while($online = $db->fetch($query)){
 	if ($count==0) { echo "<TR bgcolor=#F7F7F7>"; }
 ?>
-<td width="50%"  align="center" bgcolor="#F7F7F7" ><? if($online['member_pic']==""){ ?>
+<td width="50%"  align="center" bgcolor="#F7F7F7" ><?php if($online['member_pic']==""){ ?>
 	<IMG SRC="images/user_blank.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
-	<A HREF="icon/<? echo $online['member_pic'];?>" class="highslide" onclick="return hs.expand(this)"><IMG SRC="icon/<?=$online['member_pic']; ?>" width='48' BORDER='1' ALIGN='center' ></a>
-	<? };?><br>[<?=$online['user'];?>]
-<?
-$count++;
+	<?php }else{  ?>
+	<A HREF="icon/<?php echo $online['member_pic'];?>" class="highslide" onclick="return hs.expand(this)"><IMG SRC="icon/<?=$online['member_pic']; ?>" width='48' BORDER='1' ALIGN='center' ></a>
+	<?php };?><br>[<?=$online['user'];?>]
+<?php $count++;
 
 if (($count%_MEMBER_COL) == 0) { echo "</TR><TR bgcolor=#F7F7F7><TD colspan=2 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; 
 } else{

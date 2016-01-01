@@ -1,4 +1,4 @@
-<?include ("editor.php");?>
+<?php include ("editor.php");?>
 <?php
 $year=date('Y');
 $yearlast=$year+488;
@@ -117,8 +117,7 @@ else
 });
 
 </script>
-<?
-function mosMakePassword($length) {
+<?php function mosMakePassword($length) {
 	$salt = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789";
 	$len = strlen($salt);
 	$makepass="";
@@ -198,8 +197,7 @@ function mosMakePassword($length) {
 </TR>
 <TR vAlign=top>
                     <TD WIDTH="21%" ALIGN="right" BGCOLOR="#FFFFFF">&nbsp;&nbsp;<STRONG><?=_MEMBER_MOD_FORM_USER_BIRTH;?> :</TD>
-<?
-$dt=date('d');
+<?php $dt=date('d');
 $mt=date('m');
 $yy=date('Y');
 $yt=$yy+543;
@@ -255,8 +253,7 @@ echo "</select>";
                   </TR>
 <TR vAlign=top>
 <TD vAlign=center align=right WIDTH="21%"><STRONG>&nbsp;&nbsp;<?=_ALUM_MOD_FORM_PROV;?> :</TD>
-<TD width=345><?
-$vprovince  = array(_PROVINCE_1, _PROVINCE_2, _PROVINCE_3, _PROVINCE_4, _PROVINCE_5, _PROVINCE_6, _PROVINCE_7, _PROVINCE_8, _PROVINCE_9, _PROVINCE_10, _PROVINCE_11, _PROVINCE_12, _PROVINCE_13, _PROVINCE_14, _PROVINCE_15, _PROVINCE_16, _PROVINCE_17, _PROVINCE_18, _PROVINCE_19, _PROVINCE_20, _PROVINCE_21, _PROVINCE_22, _PROVINCE_23, _PROVINCE_24, _PROVINCE_25, _PROVINCE_26, _PROVINCE_27, _PROVINCE_28, _PROVINCE_29, _PROVINCE_30, _PROVINCE_31, _PROVINCE_32, _PROVINCE_33, _PROVINCE_34, _PROVINCE_35, _PROVINCE_36, _PROVINCE_37, _PROVINCE_38, _PROVINCE_39, _PROVINCE_40, _PROVINCE_41, _PROVINCE_42, _PROVINCE_43, _PROVINCE_44, _PROVINCE_45, _PROVINCE_46, _PROVINCE_47, _PROVINCE_48, _PROVINCE_49, _PROVINCE_50, _PROVINCE_51, _PROVINCE_52, _PROVINCE_53, _PROVINCE_54, _PROVINCE_55, _PROVINCE_56, _PROVINCE_57, _PROVINCE_58, _PROVINCE_59, _PROVINCE_60, _PROVINCE_61, _PROVINCE_62, _PROVINCE_63, _PROVINCE_64, _PROVINCE_65, _PROVINCE_66, _PROVINCE_67, _PROVINCE_68, _PROVINCE_69, _PROVINCE_70, _PROVINCE_71, _PROVINCE_72, _PROVINCE_73, _PROVINCE_74, _PROVINCE_75, _PROVINCE_76, _PROVINCE_77);
+<TD width=345><?php $vprovince  = array(_PROVINCE_1, _PROVINCE_2, _PROVINCE_3, _PROVINCE_4, _PROVINCE_5, _PROVINCE_6, _PROVINCE_7, _PROVINCE_8, _PROVINCE_9, _PROVINCE_10, _PROVINCE_11, _PROVINCE_12, _PROVINCE_13, _PROVINCE_14, _PROVINCE_15, _PROVINCE_16, _PROVINCE_17, _PROVINCE_18, _PROVINCE_19, _PROVINCE_20, _PROVINCE_21, _PROVINCE_22, _PROVINCE_23, _PROVINCE_24, _PROVINCE_25, _PROVINCE_26, _PROVINCE_27, _PROVINCE_28, _PROVINCE_29, _PROVINCE_30, _PROVINCE_31, _PROVINCE_32, _PROVINCE_33, _PROVINCE_34, _PROVINCE_35, _PROVINCE_36, _PROVINCE_37, _PROVINCE_38, _PROVINCE_39, _PROVINCE_40, _PROVINCE_41, _PROVINCE_42, _PROVINCE_43, _PROVINCE_44, _PROVINCE_45, _PROVINCE_46, _PROVINCE_47, _PROVINCE_48, _PROVINCE_49, _PROVINCE_50, _PROVINCE_51, _PROVINCE_52, _PROVINCE_53, _PROVINCE_54, _PROVINCE_55, _PROVINCE_56, _PROVINCE_57, _PROVINCE_58, _PROVINCE_59, _PROVINCE_60, _PROVINCE_61, _PROVINCE_62, _PROVINCE_63, _PROVINCE_64, _PROVINCE_65, _PROVINCE_66, _PROVINCE_67, _PROVINCE_68, _PROVINCE_69, _PROVINCE_70, _PROVINCE_71, _PROVINCE_72, _PROVINCE_73, _PROVINCE_74, _PROVINCE_75, _PROVINCE_76, _PROVINCE_77);
 echo "<select  name=province size=1 >
 		<option >------------</option>";
 for($i=0;$i<count($vprovince);$i++){
@@ -277,8 +274,7 @@ echo "</select>";
                   <TR>
                     <TD WIDTH="21%" ALIGN="right" BGCOLOR="#FFFFFF"><STRONG>&nbsp;&nbsp;<?=_MEMBER_MOD_FORM_USER_EDU;?> : </STRONG></FONT></TD>
                     <TD BGCOLOR="#FFFFFF">
-<?
-$education  = array(_EDU_1, _EDU_2, _EDU_3, _EDU_4, _EDU_5, _EDU_6, _EDU_7);
+<?php $education  = array(_EDU_1, _EDU_2, _EDU_3, _EDU_4, _EDU_5, _EDU_6, _EDU_7);
 echo "<select  name=education size=1 >
 		<option >------------</option>";
 for($i=0;$i<count($education);$i++){
@@ -291,8 +287,7 @@ echo "</select>";
                   <TR>
                     <TD WIDTH="21%" ALIGN="right" BGCOLOR="#FFFFFF"><STRONG>&nbsp;&nbsp;<?=_MEMBER_MOD_FORM_USER_WORK;?> : </STRONG></FONT></TD>
                     <TD BGCOLOR="#FFFFFF">
-<?
-$vwork  = array(_WORK_1, _WORK_2, _WORK_3, _WORK_4, _WORK_5, _WORK_6, _WORK_7, _WORK_8, _WORK_9, _WORK_10, _WORK_11, _WORK_12, _WORK_13, _WORK_14, _WORK_15, _WORK_16, _WORK_17, _WORK_18, _WORK_19, _WORK_20, _WORK_21, _WORK_22, _WORK_23);
+<?php $vwork  = array(_WORK_1, _WORK_2, _WORK_3, _WORK_4, _WORK_5, _WORK_6, _WORK_7, _WORK_8, _WORK_9, _WORK_10, _WORK_11, _WORK_12, _WORK_13, _WORK_14, _WORK_15, _WORK_16, _WORK_17, _WORK_18, _WORK_19, _WORK_20, _WORK_21, _WORK_22, _WORK_23);
 echo "<select  name=work size=1 >
 		<option >------------</option>";
 for($i=0;$i<count($vwork);$i++){
@@ -319,12 +314,11 @@ echo "</select>";
                       Limit <?=(_MEMBER_LIMIT_UPLOAD/1024);?> kB, [ width x height ]=100x80 pixels </TD>
                   </TR>
 
-<?
-if(USE_CAPCHA){
+<?php if(USE_CAPCHA){
 ?>
 					<TR>
 						<TD WIDTH="21%" ALIGN="right">
-						<?if(CAPCHA_TYPE == 1){ 
+						<?php if(CAPCHA_TYPE == 1){ 
 							echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 						}else if(CAPCHA_TYPE == 2){ 
 							echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -332,8 +326,7 @@ if(USE_CAPCHA){
 						</TD>
 						<TD><INPUT NAME="security_code" TYPE="text" ID="security_code" MAXLENGTH="6" >&nbsp;<FONT COLOR="#FF0000" >**</FONT>&nbsp;<B><FONT COLOR="#FF0000" ><?=_MEMBER_MOD_FORM_USER_SPAM;?></FONT></B></TD>
 					</TR>
-<?
-}
+<?php }
 //ÃÐººÊÁÒªÔ¡àÊÃÔÁ maxsite 1.10 ¾Ñ²¹Òâ´Â www.narongrit.net
 
 ?>
@@ -379,7 +372,7 @@ if(document.getElementById('FILE').value!=""){
                 }
             } 
             if(permiss==0){
-                    alert("<? echo _MEMBER_MOD_FORM_JAVA_TYPE_PIC;?>");     
+                    alert("<?php echo _MEMBER_MOD_FORM_JAVA_TYPE_PIC;?>");     
                 document.getElementById('FILE').value="" ; 
                 return false;              
             }        
@@ -391,7 +384,7 @@ if(document.getElementById('FILE').value!=""){
 // var dotpos=x.lastIndexOf(".");
 // if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
 //   {
-//   alert("<?echo _MEMBER_MOD_FORM_JAVA_EMAIL;?>");
+//   alert("<?php echo _MEMBER_MOD_FORM_JAVA_EMAIL;?>");
 //   return false;
 //   }
 
@@ -399,17 +392,17 @@ var mail = document.getElementById('email').value;
 var pattern = /.+@.+\..+/;
 var validate = pattern.test(mail);
 if (validate===false){
-  alert("<?echo _MEMBER_MOD_FORM_JAVA_EMAIL;?>");
+  alert("<?php echo _MEMBER_MOD_FORM_JAVA_EMAIL;?>");
   return false;
 }
 
 if(document.checkForm.name.value=="") {
-  alert("<?echo _MEMBER_MOD_FORM_JAVA_USER;?>") ;
+  alert("<?php echo _MEMBER_MOD_FORM_JAVA_USER;?>") ;
   document.checkForm.name.focus() ;
   return false ;
 }
 else if(document.checkForm.pwd_name1.value=="") {
-  alert("<?echo _MEMBER_MOD_FORM_JAVA_PASS;?>") ;
+  alert("<?php echo _MEMBER_MOD_FORM_JAVA_PASS;?>") ;
   document.checkForm.pwd_name1.focus() ;
   return false ;
 }
@@ -419,40 +412,40 @@ else if(document.checkForm.pwd_name1.value.length<4){
   return false ;
 }
 else if(document.checkForm.year.value=="") {
-  alert("<?echo _MEMBER_MOD_FORM_JAVA_BIRTH;?>") ;
+  alert("<?php echo _MEMBER_MOD_FORM_JAVA_BIRTH;?>") ;
   document.checkForm.year.focus() ;
   return false ;
 }
 else if(isNaN(document.checkForm.year.value)) {
-  alert("<?echo _MEMBER_MOD_FORM_JAVA_YEAR;?>") ;
+  alert("<?php echo _MEMBER_MOD_FORM_JAVA_YEAR;?>") ;
   document.checkForm.year.focus() ;
   return false ;
 }
 else if(document.checkForm.age.value=="") {
-  alert("<?echo _MEMBER_MOD_FORM_JAVA_AGE;?>") ;
+  alert("<?php echo _MEMBER_MOD_FORM_JAVA_AGE;?>") ;
   document.checkForm.age.focus() ;
   return false ;
 }else if(isNaN(document.checkForm.age.value)) {
-  alert("<?echo _MEMBER_MOD_FORM_JAVA_AGE_NUM;?>") ;
+  alert("<?php echo _MEMBER_MOD_FORM_JAVA_AGE_NUM;?>") ;
   document.checkForm.age.focus() ;
   return false ;
 }
 else if(document.checkForm.province.selectedIndex==0) {
-  alert("<?echo _MEMBER_MOD_FORM_JAVA_PROV;?>") ;
+  alert("<?php echo _MEMBER_MOD_FORM_JAVA_PROV;?>") ;
   return false ;
 }
 else if(isNaN(document.checkForm.zipcode.value)) {
-  alert("<?echo _MEMBER_MOD_FORM_JAVA_POST;?>") ;
+  alert("<?php echo _MEMBER_MOD_FORM_JAVA_POST;?>") ;
   document.checkForm.zipcode.focus() ;
   return false ;
 }
 else if(document.checkForm.user_name.value=="") {
-  alert("<?echo _MEMBER_MOD_FORM_JAVA_USERNAME;?>") ;
+  alert("<?php echo _MEMBER_MOD_FORM_JAVA_USERNAME;?>") ;
   document.checkForm.user_name.focus() ;
   return false ;
 }
 else if(document.checkForm.email.value=="") {
-  alert("<?echo _MEMBER_MOD_FORM_JAVA_EMAIL_NULL;?>") ;
+  alert("<?php echo _MEMBER_MOD_FORM_JAVA_EMAIL_NULL;?>") ;
   return false ;
 }else{
   return true ;

@@ -1,5 +1,4 @@
-<?
-require_once('getid3/getid3.php');
+<?php require_once('getid3/getid3.php');
 // getId3 library uses deprecated eregi_* functions 
 // which generate errors under PHP 5.3 - so I excluded them
 //error_reporting(E_ALL ^ E_DEPRECATED);

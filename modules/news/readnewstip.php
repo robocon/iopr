@@ -1,4 +1,4 @@
-<?header("content-type: application/x-javascript; charset=tis-620");?>
+<?php header("content-type: application/x-javascript; charset=tis-620");?>
 
 	<TABLE cellSpacing=0 cellPadding=0  border=0>
       <TBODY>
@@ -6,8 +6,7 @@
           <TD width="10" vAlign=top></TD>
           <TD  vAlign=top>
 				<TABLE  align=center cellSpacing=0 width="400" cellPadding=0 border=0>
-<?
-$_GET['id'] = intval($_GET['id']);
+<?php $_GET['id'] = intval($_GET['id']);
 //แสดงข่าวสาร/ประชาสัมพันธ์ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['news'] = $db->select_query("SELECT * FROM ".TB_NEWS." WHERE id='".$_GET['id']."' ");
@@ -38,7 +37,7 @@ if(!$arr['news']['id']){
 					<table>
 					<tr>
 					<td valign="top" >
-					<?if ($arr['news']['pic']==1){echo "<img  src=icon/news_".$arr['news']['post_date'].".jpg class=mysborder border=0 align=left>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=left>";} ?>
+					<?php if ($arr['news']['pic']==1){echo "<img  src=icon/news_".$arr['news']['post_date'].".jpg class=mysborder border=0 align=left>";} else {echo "<img class=mysborder src=images/icon/".$arr['category']['icon']." border=0 align=left>";} ?>
 					</td>
 					<td>
 
@@ -81,8 +80,7 @@ if(!$arr['news']['id']){
 				</TR>
 
 
-<?
-			$count  ++;
+<?php 			$count  ++;
 	}
 
 

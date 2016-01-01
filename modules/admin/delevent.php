@@ -1,5 +1,4 @@
-<?
-CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
+<?php CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 
 if($_GET[op] == "calendar_del"){
 	if(CheckLevel($_SESSION['admin_user'],$_GET[op])){
@@ -43,8 +42,7 @@ if($_GET[op] == "calendar_del"){
 					<TD>
 					<BR><B>&nbsp;&nbsp;<IMG SRC="images/icon/calendar.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_CALENDAR_FORM_TITLE_FORM;?></B>
 					<BR><BR>
-<?
-if(!$ProcessOutput){
+<?php if(!$ProcessOutput){
 ?>
 <CENTER><IMG SRC="images/icon/dangerous.png" BORDER="0"><BR><BR><B><?=_ADMIN_CALENDAR_FORM_CON_MESSAGE;?></B>
 <FORM METHOD=POST ACTION="?name=admin&file=delevent&op=calendar_del&id=<?=$_GET['id'];?>&refer=<?=$arr['event']['date_event'];?>">
@@ -52,8 +50,7 @@ if(!$ProcessOutput){
 <INPUT TYPE="submit" VALUE=" <?=_ADMIN_CALENDAR_FORM_BUTTON_DEL;?> ">
 </FORM>
 </CENTER>
-<?
-}else{
+<?php }else{
 	echo $ProcessOutput ;
 }
 ?>

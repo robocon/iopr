@@ -1,5 +1,4 @@
-<?
-if (strstr($_SERVER['HTTP_USER_AGENT'], 'Yandex')){ $bot='Yandex';}
+<?php if (strstr($_SERVER['HTTP_USER_AGENT'], 'Yandex')){ $bot='Yandex';}
 else if (strstr($_SERVER['HTTP_USER_AGENT'], 'Googlebot')){$bot='Google';}
 else if (strstr($_SERVER['HTTP_USER_AGENT'], 'Mediapartners-Google')){$bot='Mediapartners-Google (Adsense)';}
 else if (strstr($_SERVER['HTTP_USER_AGENT'], 'Slurp')){$bot='Hot Bot search';}

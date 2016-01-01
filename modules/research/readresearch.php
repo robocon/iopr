@@ -1,6 +1,5 @@
-<?include ("editor.php");?>
-<?
-//แรียก user online ทั้งหมด
+<?php include ("editor.php");?>
+<?php //แรียก user online ทั้งหมด
 			$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 			$res['user2'] = $db->select_query("SELECT * FROM ".TB_useronline." ");			
 			$rows['user2'] = $db->rows($res['user2']);
@@ -37,10 +36,9 @@ function emoticon(theSmilie) {
           <TD width="740" vAlign=top>
 		  <!-- research -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/research.gif" BORDER="0"><BR><BR>
-		  <? OpenTablecom();?>
+		  <?php OpenTablecom();?>
 				<TABLE width="730" align=center cellSpacing=0 cellPadding=0 border=0>
-<?
-//$_GET['id'] = intval($_GET['id']);
+<?php //$_GET['id'] = intval($_GET['id']);
 //แสดงข่าวสาร/ประชาสัมพันธ์ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['research'] = $db->select_query("SELECT * FROM ".TB_RESEARCH." WHERE id='".$_GET['id']."' ");
@@ -81,14 +79,12 @@ $db->closedb ();
 
 					<TD width=100%  valign="top"><FONT COLOR="#000099" size=2><?=_FORM_MOD_READ_CONT;?> </font><FONT COLOR="#CC0000" size=2><?=$arr['research']['topic'];?></FONT></font><?=NewsIcon(TIMESTAMP, $arr['research']['post_date'], "images/icon_new.gif");?><br><br></font><FONT size=2><?=_RESEARCH_AUTHX;?> : <FONT COLOR="#CC0000" size=2> <?=$arr['research']['auth'];?></FONT></B></font><br>
 					<?= ThaiTimeConvert($arr['research']['post_date'],"1","");?>
-<?
-if($admin_user){
+<?php if($admin_user){
 	//Admin Login Show Icon
 ?>
-				  <a href="?name=admin&file=research&op=research_edit&id=<? echo $arr['research']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
-				  <a href="javascript:Confirm('?name=admin&file=research&op=research_del&id=<? echo $arr['research']['id'];?>&prefix=<? echo $arr['research']['post_date'];?>','<? echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
-<?
-}
+				  <a href="?name=admin&file=research&op=research_edit&id=<?php echo $arr['research']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
+				  <a href="javascript:Confirm('?name=admin&file=research&op=research_del&id=<?php echo $arr['research']['id'];?>&prefix=<?php echo $arr['research']['post_date'];?>','<?php echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
+<?php }
 				  ?>
 				  <BR>
 					<?=_DETAIL_PRIVIEW;?> : <?=$arr['research']['pageview'];?>&nbsp;&nbsp;&nbsp; <?=_RESEARCH_MOD_DOWN_COUNT;?> :  <?=$arr['research']['rate'];?> <?=_RESEARCH_MOD_DOWN_COUNT_NUM;?>
@@ -97,8 +93,7 @@ if($admin_user){
 </tr>
 <tr>
 <td colspan=2>
-<?
-$rater_ids=$_GET['id'];
+<?php $rater_ids=$_GET['id'];
 $rater_item_name='research';
 include("modules/rater/rater.php");
 ?>
@@ -118,32 +113,29 @@ include("modules/rater/rater.php");
 				<TR>
 					<TD height="1" class="dotline" colspan="2"></TD>
 				</TR>
-					<?
-
+					<?php 
  if($full !='' AND $abst !=''){ ?>
 <tr><td width=100% bgcolor=#F7F7F7 align=center colspan=2><font size=2><b><?=_FORM_MOD_DONWLOAD;?>&nbsp;<a href="popup.php?name=research&file=rate&id=<?=$id;?>&filess=<?=$arr['research']['full_text'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 300} )" class="highslide"> ( Fulltext )</a>&nbsp;<a href="popup.php?name=research&file=rate&id=<?=$id;?>&filess=<?=$arr['research']['abstract'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 300} )" class="highslide">&nbsp;( <?=_RESEARCH_MOD_ABSTRACT;?> )&nbsp;</a></font></td></tr>
-<?} 
+<?php } 
  if($full !='' AND $abst ==''){ 	?>
 <tr><td width=100% bgcolor=#F7F7F7  align=center colspan=2><font size=2><b><?=_FORM_MOD_DONWLOAD;?>&nbsp;<a href="popup.php?name=research&file=rate&id=<?=$id;?>&filess=<?=$arr['research']['full_text'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 300} )" class="highslide"> ( Fulltext )</a></font></b></td></tr>
-<?}
+<?php }
  if($full =='' AND $abst !=''){ 	?>
 <tr><td width=100% bgcolor=#F7F7F7  align=center colspan=2><font size=2><b><?=_FORM_MOD_DONWLOAD;?>&nbsp;<a href="popup.php?name=research&file=rate&id=<?=$id;?>&filess=<?=$arr['research']['abstract'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 300} )" class="highslide">&nbsp;( <?=_RESEARCH_MOD_ABSTRACT;?>)&nbsp;</a></font></b></td></tr>
-<?} 
+<?php } 
 
 ?>
 </table>
-<?
-}
+<?php }
 ?>
-<?CloseTablecom();?>
+<?php CloseTablecom();?>
 <table align=center cellSpacing=0 cellPadding=0 border=0 width=750>
 
 				<TR>
 					<TD align=left>
 					<BR>
 					<B><FONT COLOR="#990000"><?=$arr['category']['category_name'];?> <?=_FROM_LINK_FIVECONT;?></B></FONT><BR><BR>
-<?
-//แสดงข่าวสาร/ประชาสัมพันธ์ 5 อันดับล่าสุดของหมวดหมู่ 
+<?php //แสดงข่าวสาร/ประชาสัมพันธ์ 5 อันดับล่าสุดของหมวดหมู่ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['cat_research'] = $db->select_query("SELECT * FROM ".TB_RESEARCH." WHERE category='".$arr['category']['id']."' ORDER BY id DESC LIMIT 5 ");
 $rows['cat_research'] = $db->rows($res['cat_research']); 
@@ -153,8 +145,7 @@ if(!$rows['cat_research']){
 while($arr['cat_research'] = $db->fetch($res['cat_research'])){
 ?>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/suggest.gif" BORDER="0" ALIGN="absmiddle"> <B><A HREF="?name=research&file=readresearch&id=<?=$arr['cat_research']['id'];?>" target="_blank"><?=$arr['cat_research']['topic'];?></A></B> <?= ThaiTimeConvert($arr['cat_research']['post_date'],"","");?><BR>
-<?
-}
+<?php }
 $db->closedb ();
 ?>
 					</TD>
@@ -162,8 +153,7 @@ $db->closedb ();
 			</TABLE>
 			<BR><BR>
 			
-<?
-if($arr['research']['enable_comment']){
+<?php if($arr['research']['enable_comment']){
 
 	//Check Comment
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -188,8 +178,7 @@ if($arr['research']['enable_comment']){
 <tr>
           <td bgcolor="#FFFFFF" valign="top" align="center" width="100"> 
 <br>
-<?
-	$Name=$arr['comment']['name'];
+<?php 	$Name=$arr['comment']['name'];
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['admin'] = $db->select_query("SELECT * FROM ".TB_ADMIN." ");
 $arr['admin'] = $db->fetch($res['admin']);
@@ -197,29 +186,28 @@ $arr['admin'] = $db->fetch($res['admin']);
 if ($arr['admin']['username']==$Name) {
  ?>
 <A HREF="?name=admin&file=user&id=<?=$arr['admin']['id']; ?>">
-	<? if($arr['admin']['picture']==""){ ?>
+	<?php if($arr['admin']['picture']==""){ ?>
 	<IMG SRC="icon/member_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 	<IMG SRC="icon/<?=$arr['admin']['picture']; ?>" width='80' BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? } 
- ?> </a><?
-}else {
+	<?php } 
+ ?> </a><?php }else {
 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['member'] = $db->select_query("SELECT * FROM ".TB_MEMBER." where user='".$Name."' ");
 $arr['member'] = $db->fetch($res['member']);
 
 ?>
-	<? if($arr['member']['id']==""){ ?>
+	<?php if($arr['member']['id']==""){ ?>
 		<IMG SRC="icon/guest_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 <A HREF="?name=member&file=member_Message&id=<?=$arr['member']['id']; ?>">
-	<? if($arr['member']['member_pic']==""){ ?>
+	<?php if($arr['member']['member_pic']==""){ ?>
 	<IMG SRC="icon/member_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 	<IMG SRC="icon/<?=$arr['member']['member_pic']; ?>" width='80' BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? };?></a>
-<?  }; 
+	<?php };?></a>
+<?php  }; 
 
 	};
 ?>
@@ -242,7 +230,7 @@ $arr['member'] = $db->fetch($res['member']);
 		<td >
 			<img src="images/com/b_04.jpg" width="23" alt=""></td>
 		<td bgcolor="#F5F5F5"  width="100%" alt=""><B><FONT COLOR="#990000"><?=_FROM_COMMENT_NUM;?> <?=$count;?></FONT></B>
-				<?if($admin_user){echo " <A HREF=\"?name=research&file=delete_comment&id=".$_GET['id']."&comment=".$arr['comment']['id']."\"><IMG SRC=\"images/admin/trash.gif\" height=\"18\"  BORDER=\"0\" ALIGN=\"absmiddle\"></A>";};?>
+				<?php if($admin_user){echo " <A HREF=\"?name=research&file=delete_comment&id=".$_GET['id']."&comment=".$arr['comment']['id']."\"><IMG SRC=\"images/admin/trash.gif\" height=\"18\"  BORDER=\"0\" ALIGN=\"absmiddle\"></A>";};?>
 				<?= ThaiTimeConvert($arr['comment']['post_date'],"1","1");?>
 		</td>
 		<td background="images/com/b_05.jpg" width="10" alt="" height="100%"></td>
@@ -259,7 +247,7 @@ $arr['member'] = $db->fetch($res['member']);
 	</tr>
 		<tr>
 		<td background="images/com/b_06.jpg" width="23" height="100%" alt=""></td>
-		<td width="100%" alt="" ><hr><FONT COLOR="#990000"><?=_FORM_MOD_POSTEDX;?> </FONT></B> <?=$arr['comment']['name'];?> &nbsp;&nbsp; <FONT COLOR="#990000"><B><?=_FROM_COMMENT_IP;?> </B></FONT><?echo preg_replace('/([0-9]+\.[0-9]+)\.[0-9]+\.[0-9]+/', '\1<span style="color:red">.xxx.xxx</span>', $arr['comment']['ip']);?>
+		<td width="100%" alt="" ><hr><FONT COLOR="#990000"><?=_FORM_MOD_POSTEDX;?> </FONT></B> <?=$arr['comment']['name'];?> &nbsp;&nbsp; <FONT COLOR="#990000"><B><?=_FROM_COMMENT_IP;?> </B></FONT><?php echo preg_replace('/([0-9]+\.[0-9]+)\.[0-9]+\.[0-9]+/', '\1<span style="color:red">.xxx.xxx</span>', $arr['comment']['ip']);?>
 			</td>
 		<td background="images/com/b_05.jpg" width="10" height="100%" alt=""></td>
 	</tr>
@@ -275,8 +263,7 @@ $arr['member'] = $db->fetch($res['member']);
 </td>
 </tr>
 </table>
-<?
-	}
+<?php 	}
 	echo "<center>";
 	SplitPage($page,$totalpage,"?name=research&file=readresearch&id=".$_GET['id']."");
 	echo $ShowSumPages ;
@@ -298,16 +285,15 @@ $arr['member'] = $db->fetch($res['member']);
 						<TABLE cellSpacing=5 cellPadding=0 width=550 border=0 align="center">
 						<TR>
 							<TD width="80" align="right"><B><?=_FROM_COMMENT_AUTH;?> </B></TD>
-							<TD><INPUT TYPE="text" NAME="NAME" style="width:300" <?if($login_true){echo "value=\"".$login_true."\" readonly style=\"color: #FF0000\" ";};?><?if($admin_user){echo "value=\"".$admin_user."\" readonly style=\"color: #FF0000\" ";};?>></TD>
+							<TD><INPUT TYPE="text" NAME="NAME" style="width:300" <?php if($login_true){echo "value=\"".$login_true."\" readonly style=\"color: #FF0000\" ";};?><?php if($admin_user){echo "value=\"".$admin_user."\" readonly style=\"color: #FF0000\" ";};?>></TD>
 						</TR>
-<?
- if($login_true || $admin_user){
+<?php  if($login_true || $admin_user){
 } else {
 if(USE_CAPCHA){
 ?>
 						<TR>
 							<TD width="80" align="right">
-							<?if(CAPCHA_TYPE == 1){ 
+							<?php if(CAPCHA_TYPE == 1){ 
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){ 
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -315,8 +301,7 @@ if(USE_CAPCHA){
 							</TD>
 							<TD><input name="security_code" type="text" id="security_code" size="20" maxlength="6" style="width:80" > <?=_JAVA_CAPTCHA_ADD;?> </TD>
 						</TR>
-<?
-}
+<?php }
 }
 ?>
 						<TR>
@@ -341,8 +326,7 @@ if(USE_CAPCHA){
 <?=_FROM_COMMENT_AGREE;?> <A HREF="mailto:<?=WEB_EMAIL;?>"><?=WEB_EMAIL;?></A> <?=_FROM_COMMENT_AGREE2;?>
 			<BR><BR>
 			<!-- End Enable Comment -->
-<?
-}
+<?php }
 ?>
 
 			<!-- End research -->

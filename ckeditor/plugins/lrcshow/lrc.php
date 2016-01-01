@@ -17,8 +17,7 @@ var player="wmp";
 var auto="no";
 var loop="no";
 var lrcurl="";
-<?
-$url=$_GET['url'];
+<?php $url=$_GET['url'];
 $player=$_GET['player'];
 $auto=$_GET['auto'];
 $loop=$_GET['loop'];
@@ -57,8 +56,7 @@ echo "lrcurl='$lrc';";
 <script type="text/javascript" src="js/lrcbox.js"></script>
 <link type="text/css" rel="stylesheet" href="lrcstyle.css"></link>
 <span id="lrcdata" style="display:none"><!--
-<?
-if ($lrc) {
+<?php if ($lrc) {
 $root= $_SERVER['DOCUMENT_ROOT'];
 $lrctxt = $root . $lrc; //set the path to a lyrics text file
 require_once $lrctxt;

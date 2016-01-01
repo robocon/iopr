@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 include ("editor.php");
 if(ISO =='utf-8'){
 		$Filename = "editortalk_utf8.html";
@@ -51,8 +50,7 @@ $TextContent = stripslashes($TextContent);
 					<TD>
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; Editor's Talk</B>
 					<BR><BR>
-<?
-if(empty($ProcessOutput)){
+<?php if(empty($ProcessOutput)){
 ?>
 						<FORM NAME="myform" METHOD=POST ACTION="?name=admin&file=editortalk&op=editortalk_edit">
 						<BR>
@@ -60,8 +58,7 @@ if(empty($ProcessOutput)){
 <textarea cols="100" id="EDITORTALK" rows="50" class="ckeditor"  name="EDITORTALK" ><?=$TextContent;?></textarea>
 						<input type="submit" value="<?=_ADMIN_EDITOR_TALK_BUTTON_EDIT;?>" name="submit"> <input type="reset" value="<?=_ADMIN_BUTTON_CLEAR;?>" name="reset">
 						</FORM>
-<?
-}else{
+<?php }else{
 	echo $ProcessOutput ;
 }
 ?>

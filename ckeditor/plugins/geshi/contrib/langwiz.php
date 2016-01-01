@@ -813,8 +813,7 @@ echo "</pre>";
     <div id="langfile">
         <fieldset>
         <legend>Language File Source</legend>
-<?
-$G = new GeSHi('', 'php');
+<?php $G = new GeSHi('', 'php');
 $langfile_source = gen_langfile($lang);
 $G->set_source($langfile_source);
 echo $G->parse_code();
@@ -826,8 +825,7 @@ unset($G);
     <input type="submit" name="btn" value="Send!" />
 </form>
 
-<p>Operation completed in <?
-$time_end = explode(' ', microtime());
+<p>Operation completed in <?php $time_end = explode(' ', microtime());
 $time_diff = $time_end[0] + $time_end[1] - $time_start[0] - $time_start[1];
 
 echo sprintf("%.2f", $time_diff);
@@ -836,8 +834,7 @@ echo sprintf("%.2f", $time_diff);
 <div id="footer">GeSHi &copy; 2004-2007 Nigel McNie, 2007-2009 Benny Baumann, released under the GNU GPL</div>
 </body>
 </html>
-<?
-
+<?php 
 function str_to_phpstring($str, $doublequote = false){
     if($doublequote) {
         return '"' . strtr($str,

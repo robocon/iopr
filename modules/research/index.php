@@ -1,5 +1,4 @@
-<?
-//แรียก user online ทั้งหมด
+<?php //แรียก user online ทั้งหมด
 			$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 			$res['user2'] = $db->select_query("SELECT * FROM ".TB_useronline." ");			
 			$rows['user2'] = $db->rows($res['user2']);
@@ -20,7 +19,7 @@
 			<script language='JavaScript'>
 					function checkboard() {
 						if(document.formboard.keyword.value=='') {
-						alert('<?echo _FROM_SEARCH_NULL;?>') ;
+						alert('<?php echo _FROM_SEARCH_NULL;?>') ;
 						document.formboard.keyword.focus() ;
 						return false ;
 						}
@@ -47,24 +46,22 @@
                 <td height="50" bgcolor="#F8F8F8"><form name="formsearch" method="post" action="?name=research&file=research_search">
                     <div align="left">
 &nbsp;&nbsp;<strong><font color="#009933"><?=_FROM_SEARCH_WORD;?></font></strong>&nbsp;
-            <input type="text" name="keyword" value="<? echo"$keyword"; ?>">
+            <input type="text" name="keyword" value="<?php echo"$keyword"; ?>">
 &nbsp;&nbsp;&nbsp;<strong> <?=_FROM_SEARCH_FIELD;?></strong>
             <select name="fields">
-              <option value="id" <? if($_POST['fields']=='id'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_ID;?> </option>
-              <option value="topic" <? if($_POST['fields']=='topic'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_TOPIC;?> </option>
-              <option value="headline" <? if($_POST['fields']=='headline'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_HEADLINE;?></option>
+              <option value="id" <?php if($_POST['fields']=='id'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_ID;?> </option>
+              <option value="topic" <?php if($_POST['fields']=='topic'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_TOPIC;?> </option>
+              <option value="headline" <?php if($_POST['fields']=='headline'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_HEADLINE;?></option>
             </select>
 &nbsp;&nbsp;&nbsp;
             <input type="hidden" name="category" value="<?=$category;?>">
             <input type="submit" name="Submit" value="<?=_FROM_SEARCH_BUTTON;?>">
 &nbsp;<b><img src="images/admin/opendir.gif" align="absmiddle"> <a href="?name=research"><?=_FROM_SEARCH_ALL;?></a>
-<?
-if($admin_user){
+<?php if($admin_user){
 	//Admin Login Show Icon
 ?>
 				  &nbsp;&nbsp;&nbsp;&nbsp;<a href="?name=admin&file=research&op=article_add"><img src="images/admin/i-editor.png" align="absmiddle"> </a>
-<?
-}
+<?php }
 ?>
 <br>
           </b></div>
@@ -75,8 +72,7 @@ if($admin_user){
                   <td bgcolor="#F8F8F8"><div align="left"> &nbsp;&nbsp;<strong><font color="#009933"><?=_FROM_SEARCH_CAT;?> :</font></strong>&nbsp;
                           <select name="category" onchange="if(options[selectedIndex].value){location = options[selectedIndex].value};  MM_jumpMenu('parent',this,0)">
                             <option value="?name=research"><?=_FROM_SEARCH_CAT_ALL;?></option>
-                            <?
-
+                            <?php 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_RESEARCH_CAT." ORDER BY sort  ");
 while($arr['category'] = $db->fetch($res['category'])){
@@ -97,7 +93,7 @@ empty($_POST['keyword'])?$keyword="":$keyword=$_POST['keyword'];
             </form>
 </tr>
             </table>
-            <? 
+            <?php 
 if (empty($keyword) or empty($fields))
 {
 //////////////////////////////////////////// แสดงรายการผลงานทางวิชาการ 
@@ -128,8 +124,7 @@ if($category){
    <td width="100"><CENTER><B><?=_RESEARCH_MOD_FORM_TABLE_CAT;?></B></CENTER></td>
    <td width="50"><CENTER><B>FullText</B></CENTER></td>
   </tr>  
-<?
-$res['research'] = $db->select_query("SELECT * FROM ".TB_RESEARCH." $SQLwhere2 ORDER BY id DESC LIMIT $goto, $limit ");
+<?php $res['research'] = $db->select_query("SELECT * FROM ".TB_RESEARCH." $SQLwhere2 ORDER BY id DESC LIMIT $goto, $limit ");
 $rank=1;
 $count=0;
 while($arr['research'] = $db->fetch($res['research'])){
@@ -159,15 +154,13 @@ echo "<tr ".$ColorFill.">";
 	}
 ?>
      <td  valign="top" align=center >
-	 <?
-if($admin_user){
+	 <?php if($admin_user){
 	//Admin Login Show Icon
 ?>
-      <a href="?name=admin&file=research&op=research_edit&id=<? echo $arr['research']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=research&op=research_del&id=<? echo $arr['research']['id'];?>&prefix=<? echo $arr['research']['post_date'];?>','<?echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
+      <a href="?name=admin&file=research&op=research_edit&id=<?php echo $arr['research']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=research&op=research_del&id=<?php echo $arr['research']['id'];?>&prefix=<?php echo $arr['research']['post_date'];?>','<?php echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
 	  
-	  <?
-	//	  echo "$rank";
+	  <?php 	//	  echo "$rank";
 } else {
 echo "$ranks";
 }
@@ -175,26 +168,25 @@ echo "$ranks";
 	  ?>
 
     </td> 
-     <td  valign="top"><A HREF="?name=research&file=readresearch&id=<?echo $arr['research']['id'];?>" target="_blank"><?echo $arr['research']['topic'];?></A><?=$CommentIcon;?><?=NewsIcon(TIMESTAMP, $arr['research']['post_date'], "images/icon_new.gif");?><font color="#CC3300">( <?=_FORM_MOD_READ;?> <?=$arr['research']['pageview'];?> / <?=_FORM_MOD_DONWLOAD;?> : <?=$arr['research']['rate'];?> )</font> <?=_RESEARCH_AUTH;?> <font color="#CC3300"><?=$arr['research']['auth'];?></font></td>
-     <td  valign="top"><CENTER><?echo ThaiTimeConvert($arr['research']['post_date'],'','');?></CENTER></td>
+     <td  valign="top"><A HREF="?name=research&file=readresearch&id=<?php echo $arr['research']['id'];?>" target="_blank"><?php echo $arr['research']['topic'];?></A><?=$CommentIcon;?><?=NewsIcon(TIMESTAMP, $arr['research']['post_date'], "images/icon_new.gif");?><font color="#CC3300">( <?=_FORM_MOD_READ;?> <?=$arr['research']['pageview'];?> / <?=_FORM_MOD_DONWLOAD;?> : <?=$arr['research']['rate'];?> )</font> <?=_RESEARCH_AUTH;?> <font color="#CC3300"><?=$arr['research']['auth'];?></font></td>
+     <td  valign="top"><CENTER><?php echo ThaiTimeConvert($arr['research']['post_date'],'','');?></CENTER></td>
      <td align="center"  valign="top">
-	 <?if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
-	 <A HREF="#"><?echo $arr['category']['category_name'];?></A>
-	 <? } ?>
+	 <?php if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
+	 <A HREF="#"><?php echo $arr['category']['category_name'];?></A>
+	 <?php } ?>
 	 </td>
      <td align="center"  valign="top">
-	 	 <?if($arr['research']['full_text']){ $fullt=$arr['research']['posted']; $timedd=$arr['research']['post_date']; ?>
+	 	 <?php if($arr['research']['full_text']){ $fullt=$arr['research']['posted']; $timedd=$arr['research']['post_date']; ?>
 		 
 		  <a href="?name=research&file=rate&id=<?=$arr['research']['id']; ?>&filess=<?=$arr['research']['full_text'];?>"><font color="#0066FF">FullText</a>
-		  <? } else {
+		  <?php } else {
 		 echo "<font color=#CC0000>< "._RESEARCH_MOD_FORM_NULLID." >";
 	 }?>
 	 </td>
 
     </tr>
 
-<?
-
+<?php 
 $rank++;
 
 	 $count++;
@@ -203,8 +195,7 @@ $rank++;
 ?>
  </table>
  </form><BR><BR>
-<?
-	SplitPage($page,$totalpage,"?name=research");
+<?php 	SplitPage($page,$totalpage,"?name=research");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -242,8 +233,7 @@ echo"<center><br><br>"._FROM_SEARCH_NULL."</b> </center><br><br><br><br><br>";
 ?>
           </div>
 		  <TABLE width="740" align=center cellSpacing=0 cellPadding=0 border=0>
-            <?
-
+            <?php 
 //แสดงสาระ research  
 if($_GET['category']){
 	$SQLwhere = " category='".$_GET['category']."' ";
@@ -298,15 +288,13 @@ $topics = highlight("$keyword", '<span>'.$arr['research']['topic'].'</span>');
 $details = highlight("$keyword", '<span>'.$arr['research']['headline'].'</span>');
 ?>
      <td  valign="top" align=center >
-	 <?
-if($admin_user){
+	 <?php if($admin_user){
 	//Admin Login Show Icon
 ?>
-      <a href="?name=admin&file=research&op=research_edit&id=<? echo $arr['research']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=research&op=research_del&id=<? echo $arr['research']['id'];?>&prefix=<? echo $arr['research']['post_date'];?>','<? echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
+      <a href="?name=admin&file=research&op=research_edit&id=<?php echo $arr['research']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_FROM_IMG_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=research&op=research_del&id=<?php echo $arr['research']['id'];?>&prefix=<?php echo $arr['research']['post_date'];?>','<?php echo _FROM_COMFIRM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_FROM_IMG_DEL;?>" ></a>
 	  
-	  <?
-	//	  echo "$rank";
+	  <?php 	//	  echo "$rank";
 } else {
 echo "$ranks";
 }
@@ -314,26 +302,25 @@ echo "$ranks";
 	  ?>
 
     </td> 
-     <td  valign="top"><A HREF="?name=research&file=readresearch&id=<?echo $arr['research']['id'];?>" target="_blank"><?echo $topics;?></A><?=$CommentIcon;?><?=NewsIcon(TIMESTAMP, $arr['research']['post_date'], "images/icon_new.gif");?><font color="#CC3300">( <?=_RESEARCH_READ;?> <?=$arr['research']['pageview'];?> / <?=_FORM_MOD_DONWLOAD;?> : <?=$arr['research']['rate'];?> )</font> <?=_RESEARCH_AUTH;?> <font color="#CC3300"><?=$arr['research']['auth'];?></font></td>
-     <td  valign="top"><CENTER><?echo ThaiTimeConvert($arr['research']['post_date'],'','');?></CENTER></td>
+     <td  valign="top"><A HREF="?name=research&file=readresearch&id=<?php echo $arr['research']['id'];?>" target="_blank"><?php echo $topics;?></A><?=$CommentIcon;?><?=NewsIcon(TIMESTAMP, $arr['research']['post_date'], "images/icon_new.gif");?><font color="#CC3300">( <?=_RESEARCH_READ;?> <?=$arr['research']['pageview'];?> / <?=_FORM_MOD_DONWLOAD;?> : <?=$arr['research']['rate'];?> )</font> <?=_RESEARCH_AUTH;?> <font color="#CC3300"><?=$arr['research']['auth'];?></font></td>
+     <td  valign="top"><CENTER><?php echo ThaiTimeConvert($arr['research']['post_date'],'','');?></CENTER></td>
      <td align="center"  valign="top">
-	 <?if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
-	 <A HREF="#"><?echo $arr['category']['category_name'];?></A>
-	 <? } ?>
+	 <?php if($arr['category']['category_name']){ //หากมีหมวดแสดงรูป ?>
+	 <A HREF="#"><?php echo $arr['category']['category_name'];?></A>
+	 <?php } ?>
 	 </td>
      <td align="center"  valign="top">
-	 	 <?if($arr['research']['full_text']){ $fullt=$arr['research']['posted']; $timedd=$arr['research']['post_date']; ?>
+	 	 <?php if($arr['research']['full_text']){ $fullt=$arr['research']['posted']; $timedd=$arr['research']['post_date']; ?>
 		 
 		  <a href="?name=research&file=rate&id=<?=$arr['research']['id']; ?>&filess=<?=$arr['research']['full_text'];?>"><font color="#0066FF">FullText</a>
-		  <? } else {
+		  <?php } else {
 		 echo "<font color=#CC0000>< "._RESEARCH_MOD_FORM_NULLID." >";
 	 }?>
 	 </td>
 
     </tr>
 
-<?
-		  $rank++;
+<?php 		  $rank++;
 	 $count++;
  } 
 ?>
@@ -341,15 +328,14 @@ echo "$ranks";
 		  <BR>
           <table border="0" cellpadding="0" cellspacing="1" width="740" align=center>
             <tr>
-              <td><?
-				SplitPage($page,$totalpage,"?name=research&category=".$_GET['category']."");
+              <td><?php 				SplitPage($page,$totalpage,"?name=research&category=".$_GET['category']."");
 				echo $ShowSumPages ;
 				echo "<BR>";
 				echo $ShowPages ;
 				?>
               </td>
             </tr>
-          </table> <? } ?>
+          </table> <?php } ?>
 						<BR><BR>
 					</TD>
 				</TR>

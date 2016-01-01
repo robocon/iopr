@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 include ("editor.php");
 ?>
 
@@ -19,8 +18,7 @@ include ("editor.php");
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_PAGE_MENU_TITLE;?> </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=page"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_PAGE_MENU_TITLE_LIST;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=page&op=page_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"><?=_ADMIN_PAGE_MENU_TITLE_ADD_NEW;?></A> &nbsp;&nbsp;&nbsp;
-<?
-//////////////////////////////////////////// แสดงรายการข่าวสาร / ประชาสัมพันธ์ 
+<?php //////////////////////////////////////////// แสดงรายการข่าวสาร / ประชาสัมพันธ์ 
 if($op == ""){
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$limit = 20 ;
@@ -45,8 +43,7 @@ if($op == ""){
    <td width="40"><CENTER><B>Check</B></CENTER></td>
 
   </tr>  
-<?
-$res['page'] = $db->select_query("SELECT * FROM ".TB_PAGE." ORDER BY sort  LIMIT $goto, $limit ");
+<?php $res['page'] = $db->select_query("SELECT * FROM ".TB_PAGE." ORDER BY sort  LIMIT $goto, $limit ");
 $rows['page'] = $db->rows($res['page']);
 $CATCOUNT = 0 ;
 $count=0;
@@ -72,26 +69,25 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=page&op=page_edit&id=<? echo $arr['page']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=page&op=page_del&id=<? echo $arr['page']['id'];?>&prefix=<? echo $arr['page']['post_date'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=page&op=page_edit&id=<?php echo $arr['page']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=page&op=page_del&id=<?php echo $arr['page']['id'];?>&prefix=<?php echo $arr['page']['post_date'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td>
-<?	 echo '<td>';
+<?php  echo '<td>';
 //echo $arr['page']['links'];
 if($arr['page']['links']){ echo '<a href='.$arr['page']['proto'].''.$arr['page']['links'].' target='.$arr['page']['target'].' >'.$arr['page']['menuname'].'</a>';
 } else { echo '<a href="?name=page&file=page&op='.$arr['page']['name'].'"> '.$arr['page']['menuname'].'</a>';}
 echo '';
 ?></td>
-     <td ><CENTER><? echo $arr['page']['menugr'];?></CENTER></td>
-	  <td ><CENTER><? if ($arr['page']['links'] !=''){ echo "<font color=#00CC00><b>LINK</font></b>"; } else { echo "<font color=#CC0000><b>PAGE</font></b>"; } ?></CENTER></td>
+     <td ><CENTER><?php echo $arr['page']['menugr'];?></CENTER></td>
+	  <td ><CENTER><?php if ($arr['page']['links'] !=''){ echo "<font color=#00CC00><b>LINK</font></b>"; } else { echo "<font color=#CC0000><b>PAGE</font></b>"; } ?></CENTER></td>
 
-	  <td ><CENTER><? if ($arr['page']['status']=='1'){ echo "<a HREF=?name=admin&file=page&op=page_update&action=update&id=".$arr['page']['id']."&status=0><img src=images/tick.png></a>"; } else if ($arr['page']['status']=='0'){ echo "<a HREF=?name=admin&file=page&op=page_update&action=update&id=".$arr['page']['id']."&status=1><img src=images/publish_x.png></a>"; }?></CENTER></td>
+	  <td ><CENTER><?php if ($arr['page']['status']=='1'){ echo "<a HREF=?name=admin&file=page&op=page_update&action=update&id=".$arr['page']['id']."&status=0><img src=images/tick.png></a>"; } else if ($arr['page']['status']=='0'){ echo "<a HREF=?name=admin&file=page&op=page_update&action=update&id=".$arr['page']['id']."&status=1><img src=images/publish_x.png></a>"; }?></CENTER></td>
 
-     <td align="center" width="50"><A HREF="?name=admin&file=page&op=page_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['page']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=page&op=page_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['page']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<? echo $arr['page']['id'];?>"></td>
+     <td align="center" width="50"><A HREF="?name=admin&file=page&op=page_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['page']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_UP;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=page&op=page_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['page']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<?php echo $arr['page']['id'];?>"></td>
     </tr>
 
-<?
-		 $count++;
+<?php 		 $count++;
  } 
 ?>
  </table>
@@ -102,8 +98,7 @@ echo '';
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-	SplitPage($page,$totalpage,"?name=admin&file=page");
+<?php 	SplitPage($page,$totalpage,"?name=admin&file=page");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -196,8 +191,7 @@ else if($op == "page_add"){
 <BR><BR>
 <B><?=_ADMIN_PAGE_MENU_TABLE_CAT_GROUP;?> :</B><BR>
                           <select name="MENUGR" >
-                            <?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+                            <?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_PAGE." group by menugr ORDER BY sort  ");
 while($arr['category'] = $db->fetch($res['category'])){
 	echo "<option value=".$arr['category']['menugr']."";
@@ -235,8 +229,7 @@ $db->closedb ();
 <input type="submit" value="<?=_ADMIN_PAGE_BUTTON_ADD;?>" name="submit"> <input type="reset" value="<?=_ADMIN_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -390,8 +383,7 @@ else if($op == "page_edit" ){
 <BR><BR>
 <B><?=_ADMIN_PAGE_MENU_TABLE_CAT_GROUP;?> :</B><BR>
                           <select name="MENUGR" >
-                            <?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+                            <?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['category'] = $db->select_query("SELECT * FROM ".TB_PAGE." group by menugr ORDER BY sort  ");
 while($arr['category'] = $db->fetch($res['category'])){
 	echo "<option value=".$arr['category']['menugr']."";
@@ -412,25 +404,24 @@ $db->closedb ();
 <B>2. <?=_ADMIN_PAGE_MENU_TABLE_NEW_LINK;?></B><BR>
 <B>Protocal : </B>
                           <select name="PROTO" >
-                            <option value="http://" <?if ($arr['page']['proto']=='http://') { echo " Selected" ; } ?>>http://</option>
-							<option value="https://" <?if ($arr['page']['proto']=='https://') { echo " Selected" ; } ?>>https://</option>
-							<option value="ftp://" <?if ($arr['page']['proto']=='ftp://') { echo " Selected" ; } ?>>ftp://</option>
-							<option value="" <?if ($arr['page']['proto']=='') { echo " Selected" ; } ?>>--orther--</option>
+                            <option value="http://" <?php if ($arr['page']['proto']=='http://') { echo " Selected" ; } ?>>http://</option>
+							<option value="https://" <?php if ($arr['page']['proto']=='https://') { echo " Selected" ; } ?>>https://</option>
+							<option value="ftp://" <?php if ($arr['page']['proto']=='ftp://') { echo " Selected" ; } ?>>ftp://</option>
+							<option value="" <?php if ($arr['page']['proto']=='') { echo " Selected" ; } ?>>--orther--</option>
 </select><B> Url : </B><INPUT TYPE="text" NAME="LINKS" size="50" value="<?=$arr['page']['links'];?>">
 <B>taget : </B>
                           <select name="TARGET" >
-                            <option value="" <?if ($arr['page']['target']=='') { echo " Selected" ; } ?>>-- noset--</option>
-							<option value="_blank" <?if ($arr['page']['target']=='_blank') { echo " Selected" ; } ?>>New Window</option>
-							<option value="_top" <?if ($arr['page']['target']=='_top') { echo " Selected" ; } ?>>Topmost Window</option>
-							<option value="_seft" <?if ($arr['page']['target']=='_seft') { echo " Selected" ; } ?>>Same Window</option>
-							<option value="_parent" <?if ($arr['page']['target']=='_parent') { echo " Selected" ; } ?>>Parent Window</option>
+                            <option value="" <?php if ($arr['page']['target']=='') { echo " Selected" ; } ?>>-- noset--</option>
+							<option value="_blank" <?php if ($arr['page']['target']=='_blank') { echo " Selected" ; } ?>>New Window</option>
+							<option value="_top" <?php if ($arr['page']['target']=='_top') { echo " Selected" ; } ?>>Topmost Window</option>
+							<option value="_seft" <?php if ($arr['page']['target']=='_seft') { echo " Selected" ; } ?>>Same Window</option>
+							<option value="_parent" <?php if ($arr['page']['target']=='_parent') { echo " Selected" ; } ?>>Parent Window</option>
 </select>
 <BR><br>
 <input type="submit" value="<?=_ADMIN_PAGE_BUTTON_EDIT;?>" name="submit"> <input type="reset" value="<?=_ADMIN_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

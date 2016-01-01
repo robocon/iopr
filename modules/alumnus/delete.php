@@ -1,11 +1,9 @@
-<?
-if (!empty($_SESSION['admin_user'])){
+<?php if (!empty($_SESSION['admin_user'])){
 	?>
  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_alumnus.png" BORDER="0">
  <table width="750" align=center cellSpacing=0 cellPadding=0 border=0><tr><TD height="1" class="dotline" colspan="4"></TD></tr></table>
  <br>
-<?
-include("modules/alumnus/config.inc.php");
+<?php include("modules/alumnus/config.inc.php");
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $result = $db->select_query("select * from ".TB_ALUMNUS." where id='".$_GET['id']."' ") ;
 while ($arr = $db->sql_fetchrow($result))
@@ -57,7 +55,6 @@ print "<meta http-equiv=refresh content=0;URL=index.php?name=alumnus>";
 </table></td>
 </tr>
 </table>
-<?
-print "<meta http-equiv=refresh content=0;URL=index.php?name=admin>";
+<?php print "<meta http-equiv=refresh content=0;URL=index.php?name=admin>";
 }
 ?>

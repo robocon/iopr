@@ -1,4 +1,4 @@
-<?include ("editor.php");?>
+<?php include ("editor.php");?>
     <TABLE cellSpacing=0 cellPadding=0 width=750 border=0>
       <TBODY>
         <TR>
@@ -236,7 +236,7 @@ if(_ENABLE_BOARD_UPLOAD){
 		}
 		?>		<br><font color="red"><?=_WEBBOARD_FORM_UPLOAD_PIC_TITLE;?></font><br><input type="file" name="FILE" style="width:250" class="inputform"> Limit <?=(_WEBBOARD_LIMIT_UPLOAD/1024);?> kB  </TD>
     </TR>
-<? } 
+<?php } 
 if($login_true || $admin_user){
 ?>
 <TR>
@@ -251,7 +251,7 @@ if($login_true || $admin_user){
 ?>
 <TR>
 	<TD width=150 align=right><B><?=_WEBBOARD_FORM_TOPIC_MEMBER_ONLY;?> : </B></TD>
-	<TD><input type=checkbox name=show  value=1 <?if ($arr['webboard']['enable_show']==1){echo "checked";}?>><?=_WEBBOARD_FORM_TOPIC_MEMBER_ONLY_1;?>&nbsp;&nbsp;<input type=checkbox name=show  value=0 <?if ($arr['webboard']['enable_show']==0){echo "checked";}?>><?=_WEBBOARD_FORM_TOPIC_MEMBER_ONLY_2;?></TD>
+	<TD><input type=checkbox name=show  value=1 <?php if ($arr['webboard']['enable_show']==1){echo "checked";}?>><?=_WEBBOARD_FORM_TOPIC_MEMBER_ONLY_1;?>&nbsp;&nbsp;<input type=checkbox name=show  value=0 <?php if ($arr['webboard']['enable_show']==0){echo "checked";}?>><?=_WEBBOARD_FORM_TOPIC_MEMBER_ONLY_2;?></TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
 <?php
@@ -264,14 +264,14 @@ if($login_true || $admin_user){
 		<script type="text/javascript">CKEDITOR.replace ( 'editor1',{toolbar: 'Basic'});</script>
 	</TD>
 </TR>
-  <? 
+  <?php 
 	 if($login_true==$VIEWBOARD['post_name'] || $admin_user){
 } else {
 if(USE_CAPCHA){
 ?>
       <TR>
         <TD  align=right width="150">
-          <?if(CAPCHA_TYPE == 1){ 
+          <?php if(CAPCHA_TYPE == 1){ 
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){ 
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";

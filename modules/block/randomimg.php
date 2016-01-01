@@ -1,8 +1,7 @@
 		<center><table width="100%" border="0" cellpadding="0" cellspacing="0">
 		<tr>
 		<td align="center">
-<?
-		$dir=opendir("images/random");
+<?php 		$dir=opendir("images/random");
 		$file="";
 		$a=0;
 		$i=0;
@@ -23,12 +22,11 @@
 					<table width="100%" border="0" cellpadding="0" cellspacing="0" height="<?=$heights;?>">
 				<tr>
 				<TD vAlign=top align=center >
-				<? include 'modules/randomimg/index2.php'; ?>
+				<?php include 'modules/randomimg/index2.php'; ?>
 			</td>
 				</tr>
 		</table>
-		<?
-		}
+		<?php 		}
 	}
 closedir($dir);
 ?>

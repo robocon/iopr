@@ -1,4 +1,4 @@
-<?include ("editor.php");?>
+<?php include ("editor.php");?>
 <script type="text/javascript">
 function showemotion() {
 	emotion1.style.display = 'none';
@@ -27,7 +27,7 @@ function emoticon(theSmilie) {
 		</td>
 		</tr>
 
-            <?// include("connectdb.php"); 
+            <?php // include("connectdb.php"); 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $limit = 10 ;
   //ส่วนแสดงผล
@@ -60,8 +60,7 @@ while($arr['gbook'] = $db->fetch($res['gbook'])){
 		  ?>
 <tr>
           <td bgcolor="#FFFFFF" valign="top" align="center" width="100"> 
-<?
-
+<?php 
 	if ($is_member==1){
 
 
@@ -72,34 +71,33 @@ $arr['admin'] = $db->fetch($res['admin']);
 if ($arr['admin']['username']==$Name) {
  ?>
 <A HREF="?name=admin&file=user&id=<?=$arr['admin']['id']; ?>">
-	<? if($arr['admin']['picture']==""){ ?>
+	<?php if($arr['admin']['picture']==""){ ?>
 	<IMG SRC="icon/member_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 	<IMG SRC="icon/<?=$arr['admin']['picture']; ?>" width='80' BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? } 
- ?> </a><?
-}else {
+	<?php } 
+ ?> </a><?php }else {
 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['member'] = $db->select_query("SELECT * FROM ".TB_MEMBER." where user='".$Name."' ");
 $arr['member'] = $db->fetch($res['member']);
 ?>
-	<? if($arr['member']['id']==""){ ?>
+	<?php if($arr['member']['id']==""){ ?>
 		<IMG SRC="icon/guest_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 <a href='popup.php?name=member&file=member_view&id=<?=$arr['member']['id'];?>' onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 300} )" class="highslide" >
-	<? if($arr['member']['member_pic']==""){ ?>
+	<?php if($arr['member']['member_pic']==""){ ?>
 	<IMG SRC="icon/member_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }else{  ?>
+	<?php }else{  ?>
 	<IMG SRC="icon/<?=$arr['member']['member_pic']; ?>" width='80' BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-	<? }; ?></a>
-<? }; 
+	<?php }; ?></a>
+<?php }; 
 
 	};
 	
 	}else {?>
 		<IMG SRC="icon/guest_nrr.gif" BORDER='1' ALIGN='center' class="membericon" style="filter:alpha(opacity=100)" onMouseover="makevisible(this,1)" onMouseout="makevisible(this,0)">
-<?	}
+<?php }
 	?>
 <br></font><font color="#003399">[ 
 <?=$Name;?>
@@ -117,7 +115,7 @@ $arr['member'] = $db->fetch($res['member']);
 		<td >
 			<img src="images/com/b_04.jpg" width="23" alt=""></td>
 		<td bgcolor="#F5F5F5"  width="100%" alt="">
-		&nbsp;&nbsp;<b><?=_GBOOK_POSTED;?> </b><?=$Date; ?> &nbsp;&nbsp;&nbsp;&nbsp;<b><?=_FORM_MOD_POSTEDX;?> </b><?=$Name;?>&nbsp;&nbsp;&nbsp;&nbsp;<b><?=_FROM_COMMENT_IP;?> </b><?echo preg_replace('/([0-9]+\.[0-9]+)\.[0-9]+\.[0-9]+/', '\1<span style="color:red">.xxx.xxx</span>', $IP);?>
+		&nbsp;&nbsp;<b><?=_GBOOK_POSTED;?> </b><?=$Date; ?> &nbsp;&nbsp;&nbsp;&nbsp;<b><?=_FORM_MOD_POSTEDX;?> </b><?=$Name;?>&nbsp;&nbsp;&nbsp;&nbsp;<b><?=_FROM_COMMENT_IP;?> </b><?php echo preg_replace('/([0-9]+\.[0-9]+)\.[0-9]+\.[0-9]+/', '\1<span style="color:red">.xxx.xxx</span>', $IP);?>
 		</td>
 		<td background="images/com/b_05.jpg" width="10" alt="" height="100%"></td>
 	</tr>
@@ -127,16 +125,16 @@ $arr['member'] = $db->fetch($res['member']);
 		<table width="567" cellpadding="0" cellspacing="0" border="0">
 		<tr>
 		<td border=0 width="567">
-			<?if($admin_user){ echo "<a href=\"index.php?name=admin&file=gbook&op=gbook_edit&id=".$No."\"><IMG SRC=\"images/mail1[1].gif\" BORDER=\"0\" ></a>&nbsp;&nbsp;<a href=\"index.php?name=admin&file=gbook&op=gbook_del&action=del&id=".$No."\"><IMG SRC=\"images/trash_16[1].gif\" BORDER=\"0\" ></a>";}?>
+			<?php if($admin_user){ echo "<a href=\"index.php?name=admin&file=gbook&op=gbook_edit&id=".$No."\"><IMG SRC=\"images/mail1[1].gif\" BORDER=\"0\" ></a>&nbsp;&nbsp;<a href=\"index.php?name=admin&file=gbook&op=gbook_del&action=del&id=".$No."\"><IMG SRC=\"images/trash_16[1].gif\" BORDER=\"0\" ></a>";}?>
 		</td></tr>
 		<tr><td width="567"><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<? echo $Message;?>
+			<?php echo $Message;?>
 		</td></tr>
 		<tr><td width="567">
 		<hr>
 		&nbsp;&nbsp;<b>Homepage : </b><a href="<?=$Url;?>" target="_blank_" ><?=$Url;?></a>&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;<b>Email : </b> <? if(strlen($Email)==0) { $Email ="<font color='#009900'>"._GBOOK_EMAIL_SELECT."</font>"; 	echo $Email; } else {echo "<a href='mailto:$Email'>$Email</a>";} ?>
+		&nbsp;&nbsp;<b>Email : </b> <?php if(strlen($Email)==0) { $Email ="<font color='#009900'>"._GBOOK_EMAIL_SELECT."</font>"; 	echo $Email; } else {echo "<a href='mailto:$Email'>$Email</a>";} ?>
 		</td></tr></table>
 			</td>
 		<td background="images/com/b_05.jpg" width="10" height="100%" alt=""></td>
@@ -150,7 +148,7 @@ $arr['member'] = $db->fetch($res['member']);
 	</tr>
 </table>
             <br>
-            <?}?>
+            <?php }?>
             <br>
 </td>
 </tr>
@@ -160,7 +158,7 @@ $arr['member'] = $db->fetch($res['member']);
             <table width="100%" border="0" cellspacing="0" align="center">
               <tr>
                <td align="center">
-<?/* สร้างปุ่มย้อนกลับ */
+<?php /* สร้างปุ่มย้อนกลับ */
 				SplitPage($page,$totalpage,"?name=gbook&category=".$category."");
 				echo $ShowSumPages ;
 				echo "<BR>";
@@ -201,8 +199,7 @@ $arr['member'] = $db->fetch($res['member']);
                   </td>
                     <td width="10" align="center"  height="100%"  background="images/pic/news-right.png"></td>
                 </tr>
-<?
- if($login_true || $admin_user){
+<?php  if($login_true || $admin_user){
 } else {
 if(USE_CAPCHA){
 ?>
@@ -210,7 +207,7 @@ if(USE_CAPCHA){
                     <td width="10" valign="top" height="100%" background="images/pic/news-left.png"></td>
                     <td width="120" valign="top"  align="right" bgcolor="#FFFFFF"><?=_JAVA_CAPTCHA_NAME;?></font></td>
                   <td width="500" align="left"> 
-							<?if(CAPCHA_TYPE == 1){ 
+							<?php if(CAPCHA_TYPE == 1){ 
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){ 
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -219,15 +216,14 @@ if(USE_CAPCHA){
                   </td>
                     <td width="10" align="center"  height="100%"  background="images/pic/news-right.png"></td>
 						</TR>
-<?
-}
+<?php }
 }
 ?>
                 <tr> 
                     <td width="10" valign="top" height="100%" background="images/pic/news-left.png"></td>
                     <td width="120" valign="top"  align="right" bgcolor="#FFFFFF">*<?=_GBOOK_POSTED_USER;?></font></td>
                   <td width="500" align="left"> 
-                    <input type="text" name="Name" size="40" maxlength="35" <?if($login_true){echo "value=\"".$login_true."\" readonly style=\"color: #FF0000\" ";};?><?if($admin_user){echo "value=\"".$admin_user."\" readonly style=\"color: #FF0000\" ";};?>>
+                    <input type="text" name="Name" size="40" maxlength="35" <?php if($login_true){echo "value=\"".$login_true."\" readonly style=\"color: #FF0000\" ";};?><?php if($admin_user){echo "value=\"".$admin_user."\" readonly style=\"color: #FF0000\" ";};?>>
                   </td>
                     <td width="10" align="center"  height="100%"  background="images/pic/news-right.png"></td>
 						</TR>
@@ -258,10 +254,10 @@ if(USE_CAPCHA){
 <script type="text/javascript">
 function checkfrms(){
   if(document.form2.Messages.value==""){
-	alert("<?echo _GBOOK_JAVA_MESSAGE;?>");
+	alert("<?php echo _GBOOK_JAVA_MESSAGE;?>");
     return false;
   }else if(document.form2.Name.value==""){
-	alert("<?echo _GBOOK_JAVA_USER;?>");
+	alert("<?php echo _GBOOK_JAVA_USER;?>");
     return false;
   }else{
     return true;

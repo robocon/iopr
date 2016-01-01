@@ -23,8 +23,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                   <td bgcolor="#F8F8F8"><div align="left"> <font color="#009933"><?=_WEBBOARD_SEARCH_CAT;?> :</font>
                           <select name="category" onchange="MM_jumpMenu('parent',this,0)">
                             <option value="?name=webboard"><?=_WEBBOARD_JUM_ALLCAT;?></option>
-                            <?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+                            <?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['categorys'] = $db->select_query("SELECT * FROM ".TB_WEBBOARD_CAT." ORDER BY sort "); 
 while($arr['categorys'] = $db->fetch($res['categorys'])){
 	echo "<option value=\"?name=webboard&categorys=".$arr['categorys']['id']."\" ";
@@ -44,12 +43,12 @@ while($arr['categorys'] = $db->fetch($res['categorys'])){
                 <td height="50" bgcolor="#F8F8F8"><form name="formsearch" method="post" action="?name=webboard&file=webboard_search">
                     <div align="left">
 &nbsp;&nbsp;<strong><font color="#009933"><?=_FROM_SEARCH_WORD;?></font></strong>&nbsp;
-            <input type="text" name="keyword" value="<? echo"$keyword"; ?>">
+            <input type="text" name="keyword" value="<?php echo"$keyword"; ?>">
 &nbsp;&nbsp;&nbsp;<strong> <?=_FROM_SEARCH_FIELD;?></strong>
             <select name="fields">
-              <option value="id" <? if($_POST['fields']=='id'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_ID;?> </option>
-              <option value="topic" <? if($_POST['fields']=='topic'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_TOPIC;?> </option>
-              <option value="detail" <? if($_POST['fields']=='detail'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_DETAIL;?></option>
+              <option value="id" <?php if($_POST['fields']=='id'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_ID;?> </option>
+              <option value="topic" <?php if($_POST['fields']=='topic'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_TOPIC;?> </option>
+              <option value="detail" <?php if($_POST['fields']=='detail'){echo "selected";}?>><?=_FROM_SEARCH_FIELD_DETAIL;?></option>
             </select>
 &nbsp;&nbsp;&nbsp;
             <input type="hidden" name="category" value="<?=$category;?>">
@@ -58,7 +57,7 @@ while($arr['categorys'] = $db->fetch($res['categorys'])){
                 </form></td>
               </tr>
             </table>
-            <? 
+            <?php 
 $fields=$_POST['fields'];
 $keyword=$_POST['keyword'];
 if (empty($keyword)) {
@@ -97,8 +96,7 @@ echo"<center><br><br>"._FROM_SEARCH_ACC_NULL."<b>$keyword</b> "._FROM_SEARCH_FIE
 	<td bgcolor="#E5E5E5" width="120"><CENTER><B><?=_WEBBOARD_TABLE_DATE;?></B></CENTER></td>
 </tr>
 <tr><td colspan="3" height=1 class="dotline"></td></tr>
-            <?
-
+            <?php 
 //แสดงสาระความรู้ 
 if($_GET['categorys']){
 	$SQLwhere = " category='".$_GET['categorys']."' ";
@@ -165,8 +163,7 @@ echo "</table>";
 				<table border="0" cellpadding="0" cellspacing="1" width="740" align=center>
 					<tr>
 						<td>
-				<?
-				SplitPage($page,$totalpage,"?name=webboard&category=".$_GET['categorys']."");
+				<?php 				SplitPage($page,$totalpage,"?name=webboard&category=".$_GET['categorys']."");
 				echo $ShowSumPages ;
 				echo "<BR>";
 				echo $ShowPages ;

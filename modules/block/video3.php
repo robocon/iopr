@@ -3,8 +3,7 @@
 										<tr>
 										<td class='imageframe'>
   													<TABLE width="<?=$widthSUMC;?>" align=center cellSpacing=0 cellPadding=0 border=0>
-  <?
-
+  <?php 
 empty($_GET['category'])?$category="2":$category=$_GET['category'];
 //$_GET['category']=1;
 if(!empty($category)){
@@ -46,37 +45,36 @@ $durationx = $arr['video']['times'];
 															<TD align="center" >
 															<TABLE width="200" border=0 cellSpacing=0 cellPadding=0>
 															<tr>
-															<TD align="left" ><img src="images/video_icon.png" border="0"><a HREF="index.php?name=video2&file=readvideo&id=<?=$arr['video']['id'];?>" ><b><? echo $arr['video']['topic'];?></a><?=NewsIcon(TIMESTAMP, $arr['video']['post_date'], "images/icon_new.gif");?></b>
+															<TD align="left" ><img src="images/video_icon.png" border="0"><a HREF="index.php?name=video2&file=readvideo&id=<?=$arr['video']['id'];?>" ><b><?php echo $arr['video']['topic'];?></a><?=NewsIcon(TIMESTAMP, $arr['video']['post_date'], "images/icon_new.gif");?></b>
 															</td>
 															</tr>
-															<TD align="left" ><b>By : <FONT COLOR="#990000"><? echo $arr['video']['posted'];?></font></b>
+															<TD align="left" ><b>By : <FONT COLOR="#990000"><?php echo $arr['video']['posted'];?></font></b>
 															</td>
 															</tr>
 															<tr>
 															<TD align="center" >
 															<div class="photo" >
 																
-<a HREF="index.php?name=video2&file=readvideo&id=<?=$arr['video']['id'];?>" ><span></span><img src="<?if ($arr['video']['youtube']!=1){ if ($arr['video']['pic']){echo "video/thumbs/".$arr['video']['pic'].""; } else{ echo "images/video_blank.gif";} }else { echo "http://img.youtube.com/vi/".$arr['video']['video']."/default.jpg";}?>"  width="<?=_IVIDEOT_W;?>" height="<?=_IVIDEOT_H;?>"></a>
-<div class="photox"><?echo $durationx;?></div>
+<a HREF="index.php?name=video2&file=readvideo&id=<?=$arr['video']['id'];?>" ><span></span><img src="<?php if ($arr['video']['youtube']!=1){ if ($arr['video']['pic']){echo "video/thumbs/".$arr['video']['pic'].""; } else{ echo "images/video_blank.gif";} }else { echo "http://img.youtube.com/vi/".$arr['video']['video']."/default.jpg";}?>"  width="<?=_IVIDEOT_W;?>" height="<?=_IVIDEOT_H;?>"></a>
+<div class="photox"><?php echo $durationx;?></div>
 
 															</div>
 															</td>
 															</tr>
 															<tr >
-															<TD align="left" ><b>Rated :</b> <? $rater_ids=$arr['video']['id'];$rater_item_name='video';include("modules/rater/raterx.php");?>
+															<TD align="left" ><b>Rated :</b> <?php $rater_ids=$arr['video']['id'];$rater_item_name='video';include("modules/rater/raterx.php");?>
 															</td>
 															</tr>
 															<tr >
-<?
-//$date = date("D M j G:i:s T Y",$arr['video']['post_date']);
+<?php //$date = date("D M j G:i:s T Y",$arr['video']['post_date']);
 $date = date("M,j Y",$arr['video']['post_date']);
 ?>
-															<TD align="left" ><b>Added :</b> <? echo $date;?>
+															<TD align="left" ><b>Added :</b> <?php echo $date;?>
 </td>
 </tr>
 
 															<tr >
-															<TD align="left" ><b>Duration :</b> <? echo "".$durationx."";?>
+															<TD align="left" ><b>Duration :</b> <?php echo "".$durationx."";?>
 </td>
 </tr>
 															</table>
@@ -86,8 +84,7 @@ $date = date("M,j Y",$arr['video']['post_date']);
 
 													</TD>
 
-<?
-$count++;
+<?php $count++;
 
 if (($count%_VIDEO_COL) == 0) { echo "</TR><TR><TD colspan=2 height="1" class="dotline"></TD></TR>"; $count=0; 
 } else{

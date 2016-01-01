@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=820 border=0>
       <TBODY>
@@ -16,8 +15,7 @@ CheckAdmin($admin_user, $admin_pwd);
 					<TD>
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; <?=_ADMIN_WEBBOARD_MENU_TITLE;?> </B>
 					<BR><BR><A HREF="?name=admin&file=webboard"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_WEBBOARD_MENU_TITLE_LIST;?></A> &nbsp;&nbsp;&nbsp;	<A HREF="?name=admin&file=webboard_category"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_MENU_DTAIL_CAT;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=webboard_category&op=webboard_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_MENU_ADD_CAT;?></A><BR><BR>
-<?
-//////////////////////////////////////////// แสดงรายการ
+<?php //////////////////////////////////////////// แสดงรายการ
 if($op == ""){
 ?>
 <form action="?name=admin&file=webboard_category&op=webboard_del&action=multidel" name="myform" method="post">
@@ -30,8 +28,7 @@ if($op == ""){
    <td align="center" width="50"><B><?=_ADMIN_FORM_CAT_ORDER;?></B></font></td>
    <td><B><CENTER>Check</CENTER></B></font></td>
   </tr>  
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['boardcat'] = $db->select_query("SELECT * FROM ".TB_WEBBOARD_CAT." ORDER BY sort ");
 $rows['boardcat'] = $db->rows($res['boardcat']);
 $CATCOUNT = 0 ;
@@ -58,18 +55,17 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=webboard_category&op=webboard_edit&id=<? echo $arr['boardcat']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=webboard_category&op=webboard_del&id=<? echo $arr['boardcat']['id'];?>','<?=_ADMIN_WEBBOARD_MESSAGE_COM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=webboard_category&op=webboard_edit&id=<?php echo $arr['boardcat']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=webboard_category&op=webboard_del&id=<?php echo $arr['boardcat']['id'];?>','<?=_ADMIN_WEBBOARD_MESSAGE_COM_DEL;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-     <td><?echo $arr['boardcat']['category_name'];?></td>
-     <td align="center" width="100" ><?if ($arr['boardcat']['status']==1){echo "<font color=#CC3300>"._ADMIN_WEBBOARD_MEMBER_ONLY."</font>"; } else { echo "<font color=#00CC00>"._ADMIN_WEBBOARD_MEMBER_OTHER."</font>";  }?></td>
-	 <td align="center" width="50" ><?echo $row['sumboard'] ;?></td>
-     <td align="center" width="50"><A HREF="?name=admin&file=webboard_category&op=webboard_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr['boardcat']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_U;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=webboard_category&op=webboard_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr['boardcat']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<? echo $arr['boardcat']['id'];?>"></td>
+     <td><?php echo $arr['boardcat']['category_name'];?></td>
+     <td align="center" width="100" ><?php if ($arr['boardcat']['status']==1){echo "<font color=#CC3300>"._ADMIN_WEBBOARD_MEMBER_ONLY."</font>"; } else { echo "<font color=#00CC00>"._ADMIN_WEBBOARD_MEMBER_OTHER."</font>";  }?></td>
+	 <td align="center" width="50" ><?php echo $row['sumboard'] ;?></td>
+     <td align="center" width="50"><A HREF="?name=admin&file=webboard_category&op=webboard_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr['boardcat']['id'];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_U;?>"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=webboard_category&op=webboard_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr['boardcat']['id'];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="<?=_ADMIN_ORDER_DOWN;?>"></A></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<?php echo $arr['boardcat']['id'];?>"></td>
     </tr>
 
-<?
-		 $count++;
+<?php 		 $count++;
  }
 $db->closedb ();
 ?>
@@ -81,8 +77,7 @@ $db->closedb ();
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form>
-<?
-}
+<?php }
 else if($op == "webboard_add" AND $action == "add"){
 	//////////////////////////////////////////// กรณีเพิ่ม Database
 	if(CheckLevel($admin_user,$op)){
@@ -128,8 +123,7 @@ else if($op == "webboard_add"){
 <BR><BR>
 <INPUT TYPE="submit" value="<?=_ADMIN_WEBBOARD_BUTTON_CAT_ADD;?>">
 </FORM>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
 	}
@@ -212,12 +206,11 @@ else if($op == "webboard_edit"){
 </textarea>
 <script type="text/javascript">CKEDITOR.replace ( 'editor1',{toolbar: 'AdminBasic'});</script>
 <BR><BR>
-<B><?=_ADMIN_WEBBOARD_MEMBER_SIT;?></b><input type=radio name=STATUS value=0 <? if ($arr['boardcat']['status']==0) { echo "checked"; } ?>><B><?=_ADMIN_WEBBOARD_MEMBER_OTHER;?></B><input type=radio name=STATUS value=1 <? if ($arr['boardcat']['status']==1) { echo "checked"; } ?>><B><?=_ADMIN_WEBBOARD_MEMBER_ONLY;?></B><br>
+<B><?=_ADMIN_WEBBOARD_MEMBER_SIT;?></b><input type=radio name=STATUS value=0 <?php if ($arr['boardcat']['status']==0) { echo "checked"; } ?>><B><?=_ADMIN_WEBBOARD_MEMBER_OTHER;?></B><input type=radio name=STATUS value=1 <?php if ($arr['boardcat']['status']==1) { echo "checked"; } ?>><B><?=_ADMIN_WEBBOARD_MEMBER_ONLY;?></B><br>
 <BR><BR>
 <INPUT TYPE="submit" value="<?=_ADMIN_WEBBOARD_BUTTON_CAT_EDIT;?>">
 </FORM>
-<?
-	}else{
+<?php 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
 	}

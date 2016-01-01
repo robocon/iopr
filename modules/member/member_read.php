@@ -54,14 +54,13 @@ $dbarr = mysql_fetch_array($result) ;
         <TD COLSPAN="5"><STRONG><FONT SIZE="4"><IMG SRC="images/human.gif" > <FONT COLOR="#FF3300"><u><FONT COLOR="#0000FF"><?=_MEMBER_MOD_MEMDETAIL_TITLE;?> <?php echo $dbarr['user'] ; ?>
         </FONT></u></FONT></FONT></STRONG></TD>
       <TR>
-        <TD WIDTH="30%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_MEMID;?> : </FONT></STRONG></TD>
+        <TD WIDTH="30%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_MEMID;?> : </FONT></STRONG></TD>
         <TD WIDTH="22%">
           <DIV ALIGN="left"><?php echo $dbarr['member_id'] ; ?></FONT></DIV></TD>
-        <TD WIDTH="11%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_MEMPIC;?> : </FONT></STRONG></TD>
+        <TD WIDTH="11%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_MEMPIC;?> : </FONT></STRONG></TD>
         <TD WIDTH="37%" ROWSPAN="5" VALIGN="top">
           <DIV ALIGN="left">
-		  <?
-					//Show Picture
+		  <?php 					//Show Picture
 					if($dbarr[member_pic]){
 						$postpicupload = @getimagesize ("icon/".$dbarr[member_pic]."");
 						if ( $postpicupload[0] > _MEMBER_LIMIT_PICWIDTH ) {
@@ -82,12 +81,12 @@ $dbarr = mysql_fetch_array($result) ;
         <TD WIDTH="11%" ALIGN="right"><STRONG></STRONG></TD>
         </TR>
       <TR>
-        <TD WIDTH="30%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_NAME;?> : </FONT></STRONG></TD>
+        <TD WIDTH="30%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_NAME;?> : </FONT></STRONG></TD>
         <TD><?php echo $dbarr['name'] ; ?></FONT></TD>
         <TD WIDTH="11%" ALIGN="right">&nbsp;</TD>
         </TR>
       <TR>
-        <TD WIDTH="30%" ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_SEX;?> :</FONT></STRONG></TD>
+        <TD WIDTH="30%" ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_SEX;?> :</FONT></STRONG></TD>
         <TD><?php echo $dbarr['sex'] ; ?></FONT></TD>
         <TD WIDTH="11%" ALIGN="right">&nbsp;</TD>
         <TR>
@@ -105,7 +104,7 @@ $dbarr = mysql_fetch_array($result) ;
         <TD WIDTH="11%" ALIGN="right">&nbsp;</TD>
         <TD>&nbsp;</TD>
       <TR>
-        <TD ALIGN="right"><STRONG><? echo _MEMBER_MOD_MEMDETAIL_LASTLOG;?> : </STRONG></FONT></TD>
+        <TD ALIGN="right"><STRONG><?php echo _MEMBER_MOD_MEMDETAIL_LASTLOG;?> : </STRONG></FONT></TD>
         <TD><?php echo $dbarr['lastlog'] ; ?></a></font></TD>
         <TD>&nbsp;</TD>
         <TD>&nbsp;</TD>
@@ -126,4 +125,4 @@ $dbarr = mysql_fetch_array($result) ;
   </DIV></TD>
 </BODY>
 </HTML>
-<? } ?>
+<?php } ?>

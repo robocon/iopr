@@ -1,5 +1,4 @@
-<?
-//แรียก user online ทั้งหมด
+<?php //แรียก user online ทั้งหมด
 			$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 			$res['user2'] = $db->select_query("SELECT * FROM ".TB_useronline." ");			
 			$rows['user2'] = $db->rows($res['user2']);
@@ -20,7 +19,7 @@ function countdown() {
     document.getElementById("download").value="Download Now"
     document.getElementById("download").disabled=""
   } else {
-    document.getElementById("download").value="<? echo _RESEARCH_MOD_DOWN_WAIT;?>"+counter
+    document.getElementById("download").value="<?php echo _RESEARCH_MOD_DOWN_WAIT;?>"+counter
     document.getElementById("download").disabled="disabled"
     counter--
     setTimeout("countdown()", 1000)
@@ -47,8 +46,7 @@ return true
 		  <!-- download -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/research.gif" BORDER="0"><BR><BR>
 				<TABLE width="490" align=center cellSpacing=0 cellPadding=0 border=0>
-<?
-$_GET['id'] = intval($_GET['id']);
+<?php $_GET['id'] = intval($_GET['id']);
 //แสดงข่าวสาร/ประชาสัมพันธ์ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['research'] = $db->select_query("SELECT * FROM ".TB_RESEARCH." WHERE id='".$_GET['id']."' ");
@@ -66,11 +64,10 @@ if(!$filess){
 				</TR>
 				<TR>
 					<TD align=center width="80%" ><br>
-					<?
-					 if($filess){ 	  
+					<?php 					 if($filess){ 	  
 ?>
 <h5><img src="images/header.gif"><br><?=_RESEARCH_MOD_DOWN_BUTTON_LOAD;?></h5>
-<? }
+<?php }
 
   
   //$file=$arr['research']['full_text'];
@@ -81,8 +78,7 @@ if(!$filess){
 ?>
 
 <table id=maintable border=0 cellpadding=0 cellspacing=0 align=center width=100% height=100%><tr><td align=center>
-<?
-  echo ""._RESEARCH_MOD_DOWN_WAIT_LOAD." <a href=$wb_picture> "._RESEARCH_MOD_DOWN_WAIT_LOAD_CLICK."</a> ";
+<?php   echo ""._RESEARCH_MOD_DOWN_WAIT_LOAD." <a href=$wb_picture> "._RESEARCH_MOD_DOWN_WAIT_LOAD_CLICK."</a> ";
   echo "<br /> <br />"._RESEARCH_MOD_DOWN_THANK." ";
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$q['Pageview'] = "UPDATE ".TB_RESEARCH." SET rate = rate+1 WHERE id = '".$_GET['id']."' ";
@@ -142,8 +138,7 @@ function CloseThisWindow() {
 				</table>
 </body>
 </html>
-<?
-
+<?php 
 //			} else {
 //include 'modules/user/danger.html';
 //		  }

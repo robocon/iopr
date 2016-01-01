@@ -9,12 +9,11 @@
 
 				<TR>
 					<TD>
-					<A HREF="?name=video"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"><b><font color="#0033FF" size="2"> รายการ video หน้าหลัก</A> &nbsp;&nbsp;&nbsp;<? if($admin_user){?><A HREF="?name=admin&file=video&op=video_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> เพิ่ม video จากไฟล์</A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video_youtube"><IMG SRC="images/admin/7_40.gif"  BORDER="0" align="absmiddle"> เพิ่มไฟล์ video ใหม่จาก youtube </A>  &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video_category&op=videocat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> เพิ่มหมวดหมู่</A><?}?></font></td></tr>
+					<A HREF="?name=video"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"><b><font color="#0033FF" size="2"> รายการ video หน้าหลัก</A> &nbsp;&nbsp;&nbsp;<?php if($admin_user){?><A HREF="?name=admin&file=video&op=video_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> เพิ่ม video จากไฟล์</A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video_youtube"><IMG SRC="images/admin/7_40.gif"  BORDER="0" align="absmiddle"> เพิ่มไฟล์ video ใหม่จาก youtube </A>  &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=video_category&op=videocat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> เพิ่มหมวดหมู่</A><?php }?></font></td></tr>
 									<TR>
 					<TD height="1" class="dotline"></TD>
 				</TR><td>
-<?
-//////////////////////////////////////////// แสดงรายการvideo 
+<?php //////////////////////////////////////////// แสดงรายการvideo 
 if($op == ""){
 	$limit = 10 ;
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -29,8 +28,7 @@ if($op == ""){
 ?>
  <table width="100%" cellspacing="2" cellpadding="1" >
 
-<?
-$count=0;
+<?php $count=0;
 $res['video'] = $db->select_query("SELECT * FROM ".TB_VIDEO_CAT." ORDER BY id DESC LIMIT $goto, $limit ");
 while($arr['video'] = $db->fetch($res['video'])){
 	if ($count==0) { echo "<TR>"; }
@@ -50,8 +48,8 @@ while($arr['video'] = $db->fetch($res['video'])){
 <tr><td   width=30 border=0 background= "images/border/LL.gif"></td>
 <td  border=0>
 <div class="photo">
-<a href="?name=video&op=video_detail&id=<? echo $arr['video']['id'];?>"><span></span>
-<img width="<?=_IVIDEOT_W;?>" src="<?if($arr['category']['pic']){ echo "video/thumbs/".$arr['category']['pic'].""; } else {  if ($arr['category']['youtube']==1){ echo "http://img.youtube.com/vi/".$arr['category']['video']."/default.jpg";}else{ echo "images/news_blank.gif";}}?>" width="<?=_IVIDEOT_W;?>" height="<?=_IVIDEOT_H;?>" />
+<a href="?name=video&op=video_detail&id=<?php echo $arr['video']['id'];?>"><span></span>
+<img width="<?=_IVIDEOT_W;?>" src="<?php if($arr['category']['pic']){ echo "video/thumbs/".$arr['category']['pic'].""; } else {  if ($arr['category']['youtube']==1){ echo "http://img.youtube.com/vi/".$arr['category']['video']."/default.jpg";}else{ echo "images/news_blank.gif";}}?>" width="<?=_IVIDEOT_W;?>" height="<?=_IVIDEOT_H;?>" />
 </a><div></td>
 <td width=14 border=0 background= "images/border/RR.gif"></td></tr>
 <tr><td  height=15 border=0 background= images/border/BL.gif></td>
@@ -59,15 +57,14 @@ while($arr['video'] = $db->fetch($res['video'])){
 <td height=15 border=0 background= "images/border/BR.gif"></td></tr></table>
 </td>
 <td valign="top">
-<font color="#990000"><b><a href="?name=video&op=video_detail&id=<? echo $arr['video']['id'];?>"><? echo $arr['video']['category_name'];?></b></font></a><?=NewsIcon(TIMESTAMP, $arr['video']['post_date'], "images/icon_new.gif");?> ( <?echo ThaiTimeConvert($arr['video']['post_date'],'','');?> ) <? if($admin_user){?><a href="?name=admin&file=video_category&op=videocat_edit&id=<? echo $arr['video']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=video_category&op=videocat_del&id=<? echo $arr['video']['id'];?>&pic=<? echo $arr['video']['pic'];?>&prefix=<? echo $arr['video']['post_date'];?>','คุณมั่นใจในการลบหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a><?}?><br>&nbsp;&nbsp;&nbsp;&nbsp;<? echo $arr['video']['category_detail'];?>
+<font color="#990000"><b><a href="?name=video&op=video_detail&id=<?php echo $arr['video']['id'];?>"><?php echo $arr['video']['category_name'];?></b></font></a><?=NewsIcon(TIMESTAMP, $arr['video']['post_date'], "images/icon_new.gif");?> ( <?php echo ThaiTimeConvert($arr['video']['post_date'],'','');?> ) <?php if($admin_user){?><a href="?name=admin&file=video_category&op=videocat_edit&id=<?php echo $arr['video']['id'];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=video_category&op=videocat_del&id=<?php echo $arr['video']['id'];?>&pic=<?php echo $arr['video']['pic'];?>&prefix=<?php echo $arr['video']['post_date'];?>','คุณมั่นใจในการลบหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a><?php }?><br>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $arr['video']['category_detail'];?>
 </td>
 </tr>
 </table>
 </td>
 
-<?
-$count++;
+<?php $count++;
 //if (($count%_videoCAT_COL) == 0) { echo "</TR><TR><TD colspan=3 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; }
  //else{
 	//echo "</TD>";
@@ -77,8 +74,7 @@ echo "</TR><TR><TD colspan=2 height=\"1\" class=\"dotline\"></TD></TR>";
 ?>
 
  </table>
-<?
-	SplitPage($page,$totalpage,"?name=video");
+<?php 	SplitPage($page,$totalpage,"?name=video");
 	echo "$ShowSumPages [จำนวน $SUMPAGE อัลบัม]";
 	echo "<BR>";
 	echo $ShowPages ;
@@ -91,8 +87,7 @@ echo "</TR><TR><TD colspan=2 height=\"1\" class=\"dotline\"></TD></TR>";
 <tr>
 <TD width="100%"><FONT COLOR="#990099" >
 <hr>
-<?
-//แสดง video  10 อันดับล่าสุดของหมวดหมู่ 
+<?php //แสดง video  10 อันดับล่าสุดของหมวดหมู่ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['cat_video'] = $db->select_query("SELECT * FROM ".TB_VIDEO." ORDER BY id DESC LIMIT 10 ");
 $rows['cat_video'] = $db->rows($res['cat_video']); 
@@ -102,16 +97,14 @@ if(!$rows['cat_video']){
 while($arr['cat_video'] = $db->fetch($res['cat_video'])){
 ?>
 					<IMG SRC="images/icon/suggest.gif" BORDER="0" ALIGN="absmiddle"> <B><A HREF="?name=video&file=readvideo&id=<?=$arr['cat_video']['id'];?>" target="_blank"><?=$arr['cat_video']['topic'];?></A></B> <?= ThaiTimeConvert($arr['cat_video']['post_date'],"","");?><BR>
-<?
-}
+<?php }
 $db->closedb ();
 ?>
 
 					</TD>
 				</TR>
 				</table>
-<?
-
+<?php 
 }
 
 else if($_GET['op'] == "video_detail"){
@@ -138,15 +131,14 @@ $CAT=$arr['cat']['post_date'];
 ?>
  <table width="100%" cellspacing="2" cellpadding="1" >
 <tr>
-<td bgcolor="#F7F7F7" colspan="<?=_VIDEO_COL;?>"><font color="#990000" size="4"><b> >> <? echo $arr['cat']['category_name'];?></b></font></a>  <?=NewsIcon(TIMESTAMP, $arr['cat']['post_date'], "images/icon_new.gif");?> ( <?echo ThaiTimeConvert($arr['cat']['post_date'],'','');?> )  <br></font><font size="2"><? echo $arr['cat']['category_detail'];?>
+<td bgcolor="#F7F7F7" colspan="<?=_VIDEO_COL;?>"><font color="#990000" size="4"><b> >> <?php echo $arr['cat']['category_name'];?></b></font></a>  <?=NewsIcon(TIMESTAMP, $arr['cat']['post_date'], "images/icon_new.gif");?> ( <?php echo ThaiTimeConvert($arr['cat']['post_date'],'','');?> )  <br></font><font size="2"><?php echo $arr['cat']['category_detail'];?>
 </font></td>
 </tr>
 <tr>
 <td colspan="<?=_VIDEO_COL;?>">&nbsp;&nbsp;<td>
 </tr>
 
-<?
-
+<?php 
 $count=0;
 $res['video'] = $db->select_query("SELECT * FROM ".TB_VIDEO." WHERE category='".$arr['cat']['id']."' ORDER BY id DESC LIMIT $goto, $limit");
 while($arr['video'] = $db->fetch($res['video'])){
@@ -160,7 +152,7 @@ while($arr['video'] = $db->fetch($res['video'])){
 				<tr>
 				<td  border=0  align="center" >
 				<div class="photo">
-				<a HREF="index.php?name=video&file=readvideo&id=<?=$arr['video']['id'];?>" ><span></span><img src="<?if ($arr['video']['pic']){echo "video/thumbs/".$arr['video']['pic'].""; } else { if ($arr['video']['youtube']==1){ echo "http://img.youtube.com/vi/".$arr['video']['video']."/default.jpg";}else{ echo "images/news_blank.gif";}}?>" width="<?=_IVIDEOT_W;?>" height="<?=_IVIDEOT_H;?>"></a>
+				<a HREF="index.php?name=video&file=readvideo&id=<?=$arr['video']['id'];?>" ><span></span><img src="<?php if ($arr['video']['pic']){echo "video/thumbs/".$arr['video']['pic'].""; } else { if ($arr['video']['youtube']==1){ echo "http://img.youtube.com/vi/".$arr['video']['video']."/default.jpg";}else{ echo "images/news_blank.gif";}}?>" width="<?=_IVIDEOT_W;?>" height="<?=_IVIDEOT_H;?>"></a>
 				</div>
 				</td>
 				<td class='shadow_right'><div class='shadow_top_right'></div></td>
@@ -171,7 +163,7 @@ while($arr['video'] = $db->fetch($res['video'])){
   </tr>
 <tr>
 <td align="right">
-<a HREF="index.php?name=video&file=readvideo&id=<?=$arr['video']['id'];?>" ><img src="images/icon-view.gif" border="0"></a> <? if($admin_user){?><a href="javascript:Confirm('?name=admin&file=video&op=video_del&cat=<? echo $CAT;?>&id=<? echo $arr['video']['id'];?>&pic=<? echo $arr['video']['pic'];?>&cats=<? echo $arr['cat']['id'];?>&prefix=<? echo $arr['video']['post_date'];?>','คุณมั่นใจในการลบหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a><?}?>
+<a HREF="index.php?name=video&file=readvideo&id=<?=$arr['video']['id'];?>" ><img src="images/icon-view.gif" border="0"></a> <?php if($admin_user){?><a href="javascript:Confirm('?name=admin&file=video&op=video_del&cat=<?php echo $CAT;?>&id=<?php echo $arr['video']['id'];?>&pic=<?php echo $arr['video']['pic'];?>&cats=<?php echo $arr['cat']['id'];?>&prefix=<?php echo $arr['video']['post_date'];?>','คุณมั่นใจในการลบหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a><?php }?>
 </td>
 </tr>
 <tr>
@@ -185,16 +177,14 @@ while($arr['video'] = $db->fetch($res['video'])){
 
 </table>
 </td>
-<?
-$count++;
+<?php $count++;
 if (($count%_VIDEO_COL) == 0) { echo "</TR><TR><TD colspan=5 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; }
  
 }
 echo "</table>";
 ?>
 
-<?
-	SplitPage($page,$totalpage,"?name=video&op=video_detail&id=".$_GET['id']."");
+<?php 	SplitPage($page,$totalpage,"?name=video&op=video_detail&id=".$_GET['id']."");
 	echo "$ShowSumPages [จำนวน $SUMPAGE video]";
 	echo "<BR>";
 	echo $ShowPages ;

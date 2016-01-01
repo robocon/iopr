@@ -26,8 +26,7 @@ hza.style.display = state;
 </script> 
  <table width="750" align=center cellSpacing=0 cellPadding=0 border=0><tr><TD ><IMG SRC="images/menu/textmenu_alumnus.png" BORDER="0"></TD></tr>
  <tr><TD height="1" class="dotline" colspan="4"></td></tr></table>
-<?
-include "modules/alumnus/config.inc.php";
+<?php include "modules/alumnus/config.inc.php";
 include "modules/alumnus/form_search.php";
 
 
@@ -164,8 +163,7 @@ echo "<tr ".$ColorFill.">";
 		<td  align=left vAlign=top >";
 		?>
 		<A HREF="popup.php?name=alumnus&file=view&id=<?=$arr[0];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 520, objectHeight: 480} )" class="highslide">
-		<?
-		echo "$arr[2]  $arr[3] [$arr[4]]</a></td>
+		<?php 		echo "$arr[2]  $arr[3] [$arr[4]]</a></td>
 		<td  align=center vAlign=top >$sex</td>
 		<td  align=left vAlign=top >$arr[20]</td>
 		<td  align=center vAlign=top >$arr[11]</td>
@@ -182,8 +180,7 @@ $count++;
 //mysql_close( $show_db );
 
 ?>
-<?
-
+<?php 
 // แสดงหน้า link ไปยังหน้าอื่นๆ
 echo "<table width='98%' border='0' cellspacing='0' cellpadding='0' class=grids><tr  class=odd>";
 echo "<br>";

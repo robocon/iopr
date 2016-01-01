@@ -1,6 +1,5 @@
 
-<?
-$summ=$widthSUMC-10;
+<?php $summ=$widthSUMC-10;
 ?>
 
   													<TABLE width="<?=$summ;?>" align=center cellSpacing=0 cellPadding=5 border=0>

@@ -1,5 +1,4 @@
-<?
-CheckAdmin($admin_user, $admin_pwd);
+<?php CheckAdmin($admin_user, $admin_pwd);
 ?>
 
 	<TABLE cellSpacing=0 cellPadding=0 width=820 border=0>
@@ -18,8 +17,7 @@ CheckAdmin($admin_user, $admin_pwd);
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp;  blog  </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=blog"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_BLOG_MENU_ALL_BLOG;?> </A>  &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=blog_editlevel"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_BLOG_MENU_EDIT_LEVEL;?></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=blog_category"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_MENU_DTAIL_CAT;?></A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=blog_category&op=articlecat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_MENU_ADD_CAT;?></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=blog&op=edit_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> <?=_ADMIN_BLOG_MENU_ADD_MEM;?></A><BR><BR>
-<?
-//////////////////////////////////////////// แสดงรายการ blog  
+<?php //////////////////////////////////////////// แสดงรายการ blog  
 if($op == ""){
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 	$limit = 20 ;
@@ -40,8 +38,7 @@ if($op == ""){
    <td width="100"><CENTER><B><?=_ADMIN_BLOG_TABLE_LEVEL_COUNT;?></B></font></CENTER></td>
    <td width="40"><CENTER><B>Check</B></font></CENTER></td>
   </tr>  
-<?
-$res['blog'] = $db->select_query("SELECT * FROM ".TB_BLOG_LEVEL." ORDER BY level_id  LIMIT $goto, $limit ");
+<?php $res['blog'] = $db->select_query("SELECT * FROM ".TB_BLOG_LEVEL." ORDER BY level_id  LIMIT $goto, $limit ");
 $count=0;
 while($arr['blog'] = $db->fetch($res['blog'])){
 
@@ -54,16 +51,15 @@ $ColorFill = 'class="odd"';
 ?>
     <tr <?php echo $ColorFill; ?> >
      <td width="44">
-      <a href="?name=admin&file=blog_editlevel&op=level_edit&id=<? echo $arr['blog']['level_id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=blog_editlevel&op=level_del&id=<? echo $arr['blog']['level_id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE_CAT;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
+      <a href="?name=admin&file=blog_editlevel&op=level_edit&id=<?php echo $arr['blog']['level_id'];?>"><img src="images/admin/edit.gif" border="0" alt="<?=_ADMIN_BUTTON_EDIT;?>" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=blog_editlevel&op=level_del&id=<?php echo $arr['blog']['level_id'];?>','<?=_ADMIN_BUTTON_DEL_MESSAGE_CAT;?>');"><img src="images/admin/trash.gif"  border="0" alt="<?=_ADMIN_BUTTON_DEL;?>" ></a>
      </td> 
-     <td><?BlogLevel($arr['blog']['level_count']);?></td>
-     <td ><CENTER><?echo $arr['blog']['level_count'];?></CENTER></td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<? echo $arr['blog']['level_id'];?>"></td>
+     <td><?php BlogLevel($arr['blog']['level_count']);?></td>
+     <td ><CENTER><?php echo $arr['blog']['level_count'];?></CENTER></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[']" value="<?php echo $arr['blog']['level_id'];?>"></td>
     </tr>
 
-<?
-$count++;
+<?php $count++;
 } 
 ?>
  </table>
@@ -74,8 +70,7 @@ $count++;
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
-	SplitPage($page,$totalpage,"?name=admin&file=blog_editlevel");
+<?php 	SplitPage($page,$totalpage,"?name=admin&file=blog_editlevel");
 	echo $ShowSumPages ;
 	echo "<BR>";
 	echo $ShowPages ;
@@ -127,8 +122,7 @@ else if($op == "level_edit"){
 <input type="submit" value=" <?=_ADMIN_BLOG_BUTTON_LEVEL_EDIT;?> " name="submit"> <input type="reset" value="<?=_ADMIN_BUTTON_CLEAR;?>" name="reset">
 </FORM>
 <BR><BR>
-<?
-
+<?php 
 }
 else if($op == "level_del" AND $action == "multidel"){
 	//////////////////////////////////////////// กรณีลบ Multi

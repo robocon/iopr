@@ -4,8 +4,7 @@
 <tr>
 <td width="<?=$widthSUM;?>" align="center">
 
-<?
-$color = "green"; // สีของข้อความที่แปล
+<?php $color = "green"; // สีของข้อความที่แปล
 
 $contents ="<form name=\"trn\" id=\"trn\">ป้อนข้อความ :<br>
 <input name=\"txt\" type=\"text\" id=\"txt\" size=\"25\"><br>

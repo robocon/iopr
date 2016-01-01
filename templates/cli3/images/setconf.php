@@ -1,5 +1,4 @@
-<?
-require_once("includes/config.in.php");
+<?php require_once("includes/config.in.php");
 if(ISO =='utf-8'){
 require_once("lang/thai_utf8.php");
 } else {
@@ -32,10 +31,10 @@ define("WEB_EMAIL","".$email."") ;
 define("WEB_TEMPLATES","".$templates."") ;
 ?>
 <script type="text/javascript">
-var dayArrayShort = new Array('<? echo _S_Sunday;?>', '<? echo _S_Monday;?>', '<? echo _S_Tuesday;?>', '<? echo _S_Wednesday;?>', '<? echo _S_Thursday;?>', '<? echo _S_Friday;?>', '<? echo _S_Saturday;?>');
-var dayArrayMed = new Array('<? echo _S_Sunday;?>', '<? echo _S_Monday;?>', '<? echo _S_Tuesday;?>', '<? echo _S_Wednesday;?>', '<? echo _S_Thursday;?>', '<? echo _S_Friday;?>', '<? echo _S_Saturday;?>');
-var dayArrayLong = new Array('<? echo _Sunday;?>', '<? echo _Monday;?>', '<? echo _Tuesday;?>', '<? echo _Wednesday;?>', '<? echo _Thursday;?>', '<? echo _Friday;?>', '<? echo _Saturday;?>');
-var monthArrayShort = new Array('<? echo _Month_1;?>', '<? echo _Month_2;?>', '<? echo _Month_3;?>', '<? echo _Month_4;?>', '<? echo _Month_5;?>', '<? echo _Month_6;?>', '<? echo _Month_7;?>', '<? echo _Month_8;?>', '<? echo _Month_9;?>', '<? echo _Month_10;?>', '<? echo _Month_11;?>', '<? echo _Month_12;?>');
-var monthArrayMed = new Array('<? echo _Month_1;?>', '<? echo _Month_2;?>', '<? echo _Month_3;?>', '<? echo _Month_4;?>', '<? echo _Month_5;?>', '<? echo _Month_6;?>', '<? echo _Month_7;?>', '<? echo _Month_8;?>', '<? echo _Month_9;?>', '<? echo _Month_10;?>', '<? echo _Month_11;?>', '<? echo _Month_12;?>');
-var monthArrayLong = new Array('<? echo _F_Month_1;?>', '<? echo _F_Month_2;?>', '<? echo _F_Month_3;?>', '<? echo _F_Month_4;?>', '<? echo _F_Month_5;?>', '<? echo _F_Month_6;?>', '<? echo _F_Month_7;?>', '<? echo _F_Month_8;?>', '<? echo _F_Month_9;?>', '<? echo _F_Month_10;?>', '<? echo _F_Month_11;?>', '<? echo _F_Month_12;?>');
+var dayArrayShort = new Array('<?php echo _S_Sunday;?>', '<?php echo _S_Monday;?>', '<?php echo _S_Tuesday;?>', '<?php echo _S_Wednesday;?>', '<?php echo _S_Thursday;?>', '<?php echo _S_Friday;?>', '<?php echo _S_Saturday;?>');
+var dayArrayMed = new Array('<?php echo _S_Sunday;?>', '<?php echo _S_Monday;?>', '<?php echo _S_Tuesday;?>', '<?php echo _S_Wednesday;?>', '<?php echo _S_Thursday;?>', '<?php echo _S_Friday;?>', '<?php echo _S_Saturday;?>');
+var dayArrayLong = new Array('<?php echo _Sunday;?>', '<?php echo _Monday;?>', '<?php echo _Tuesday;?>', '<?php echo _Wednesday;?>', '<?php echo _Thursday;?>', '<?php echo _Friday;?>', '<?php echo _Saturday;?>');
+var monthArrayShort = new Array('<?php echo _Month_1;?>', '<?php echo _Month_2;?>', '<?php echo _Month_3;?>', '<?php echo _Month_4;?>', '<?php echo _Month_5;?>', '<?php echo _Month_6;?>', '<?php echo _Month_7;?>', '<?php echo _Month_8;?>', '<?php echo _Month_9;?>', '<?php echo _Month_10;?>', '<?php echo _Month_11;?>', '<?php echo _Month_12;?>');
+var monthArrayMed = new Array('<?php echo _Month_1;?>', '<?php echo _Month_2;?>', '<?php echo _Month_3;?>', '<?php echo _Month_4;?>', '<?php echo _Month_5;?>', '<?php echo _Month_6;?>', '<?php echo _Month_7;?>', '<?php echo _Month_8;?>', '<?php echo _Month_9;?>', '<?php echo _Month_10;?>', '<?php echo _Month_11;?>', '<?php echo _Month_12;?>');
+var monthArrayLong = new Array('<?php echo _F_Month_1;?>', '<?php echo _F_Month_2;?>', '<?php echo _F_Month_3;?>', '<?php echo _F_Month_4;?>', '<?php echo _F_Month_5;?>', '<?php echo _F_Month_6;?>', '<?php echo _F_Month_7;?>', '<?php echo _F_Month_8;?>', '<?php echo _F_Month_9;?>', '<?php echo _F_Month_10;?>', '<?php echo _F_Month_11;?>', '<?php echo _F_Month_12;?>');
 </script>

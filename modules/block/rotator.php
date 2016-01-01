@@ -5,7 +5,7 @@
 			// cache buster
 			var cacheBuster = "?t=" + Date.parse(new Date());
 			// stage dimensions		
-			var stageW = <? echo $widthCU; ?>;//"100%";
+			var stageW = <?php echo $widthCU; ?>;//"100%";
 			var stageH = "250";//"100%";
 			
 			

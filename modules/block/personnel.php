@@ -1,5 +1,4 @@
-<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['user'] = $db->select_query("SELECT * FROM ".TB_personnel." where boss='1' ");
 $arr['user'] = $db->fetch($res['user']);
 
@@ -10,8 +9,8 @@ $arr['user'] = $db->fetch($res['user']);
 <td align="center">
 <table class='iconframe' cellpadding="0" cellspacing="0">
 <tr>
-  <td class='imageframe' align="center"> <A HREF="images/personnel/<? echo $arr['user']['p_pic'];?>" class="highslide" onclick="return hs.expand(this)">
-	  <img src='images/personnel/thb_<? echo $arr['user']['p_pic'];?>' /></a></td>
+  <td class='imageframe' align="center"> <A HREF="images/personnel/<?php echo $arr['user']['p_pic'];?>" class="highslide" onclick="return hs.expand(this)">
+	  <img src='images/personnel/thb_<?php echo $arr['user']['p_pic'];?>' /></a></td>
   <td class='shadow_right'><div class='shadow_top_right'></div></td>
 </tr>
 <tr>
@@ -22,15 +21,14 @@ $arr['user'] = $db->fetch($res['user']);
 </td>
 </tr>
 	 <tr >
-	  <td align="center"><A HREF="popup.php?name=personnel&file=popdetail&pid=<?=$arr['user']['id'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 250} )" class="highslide"><? echo $arr['user']['p_name'];?><br><b><font color="#CC0000"><? echo $arr['user']['p_position'];?></b><br><? echo $arr['user']['p_data'];?></font></a></td>
+	  <td align="center"><A HREF="popup.php?name=personnel&file=popdetail&pid=<?=$arr['user']['id'];?>" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 250} )" class="highslide"><?php echo $arr['user']['p_name'];?><br><b><font color="#CC0000"><?php echo $arr['user']['p_position'];?></b><br><?php echo $arr['user']['p_data'];?></font></a></td>
 
 </tr>
 
 	<tr>
 	<td>
 	<table cellspacing="0" cellpadding="0" width="<?=$widthSUM;?>" border="0">
-	<?
-$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
+	<?php $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res['groupstext'] = $db->select_query("SELECT * FROM ".TB_personnel_group." ORDER BY gp_id ");
 while ($arr['groupstext'] = $db->fetch($res['groupstext']))
    {

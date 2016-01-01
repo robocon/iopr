@@ -115,12 +115,12 @@ function check() {
 var v1 = document.checkForm2.subject_total.value ;
 var v2 = document.checkForm2.message_total.value ;
 if(v1.length == 0) {
-alert("<? echo _MEMBER_MOD_CHECK_EMAIL_MESS_NULL;?>") ;
+alert("<?php echo _MEMBER_MOD_CHECK_EMAIL_MESS_NULL;?>") ;
 document.checkForm2.subject_total.focus();
 return false ;
 }
 else if(v2.length==0) {
-alert("<? echo _GBOOK_JAVA_MESSAGE;?>") ;
+alert("<?php echo _GBOOK_JAVA_MESSAGE;?>") ;
 document.checkForm2.message_total.focus() ;
 return false ;
 }

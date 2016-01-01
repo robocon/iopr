@@ -37,8 +37,7 @@ include("modules/admin/workboard/language/lang-thai.php");
 					<TD >
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main"><?=_ADMIN_GOBACK;?></A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp;<?=_WORKBOARD_ADMIN_MENU_TITLE;?></B>
 <br>
-<?
-
+<?php 
 function workboardIndex(){
 workboard_admin_menu();
 	global $db , $bgcolor2;

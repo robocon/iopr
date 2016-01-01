@@ -1,6 +1,5 @@
 ﻿<meta http-equiv="Content-Type" content="text/html; charset=<?=$iso;?>">
-<?
-//header("content-type: application/x-javascript; charset=tis-620");
+<?php //header("content-type: application/x-javascript; charset=tis-620");
 $file=("news.xml"); // ใส่ url ของเวปที่ท่านต้องการดึงข่าวมาครับ
 //$file=iconv("UTF-8","TIS-620",$file);
 $rss=array();

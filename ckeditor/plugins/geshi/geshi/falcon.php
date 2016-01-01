@@ -164,7 +164,7 @@ $language_data = array (
     ),
     'STRICT_MODE_APPLIES' => GESHI_MAYBE,
     'SCRIPT_DELIMITERS' => array(
-        0 => array( '<?' => '?>' )
+        0 => array( '<?php ' => '?>' )
     ),
     'HIGHLIGHT_STRICT_BLOCK' => array(
         0 => true

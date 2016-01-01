@@ -7,8 +7,7 @@
   													<TABLE width="<?=$widthSUMC;?>" align=center cellSpacing=0 cellPadding=0 border=0>
 													<tr>
 													<td>
-  <?
-  //header("content-type: application/x-javascript; charset=utf-8");
+  <?php   //header("content-type: application/x-javascript; charset=utf-8");
 //  include ("http://maxtom.sytes.net/modules/rss/readnews.php");
  //   include iconv("UTF-8","TIS-620","http://maxtom.sytes.net/modules/rss/readnews.php");
 ini_set('allow_url_fopen','On'); 
@@ -65,7 +64,7 @@ echo "</table>";
 													<td>
 													</tr>
 													<tr>
-													<td colspan="2" align="right"><A HREF="<?echo $site;?>index.php?name=news&category=2" ><img src="images/admin/2_15.gif"></a></td>
+													<td colspan="2" align="right"><A HREF="<?php echo $site;?>index.php?name=news&category=2" ><img src="images/admin/2_15.gif"></a></td>
 													</tr>
 													</table>
 											</td>

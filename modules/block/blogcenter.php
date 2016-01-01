@@ -41,7 +41,7 @@ if ($i <=_NEWS_COL){
 					$res['cblog'] = $db->select_query("SELECT *,count(id) as co FROM ".TB_BLOG." WHERE posted='".$arr['blog']['posted']."' group by posted");
 					$arr['cblog'] = $db->fetch($res['cblog']);					
 					?>
-					<? if ($arr['mem']['member_pic']){ echo "<img src=\"icon/".$arr['mem']['member_pic']."\" width=\"60\">";
+					<?php if ($arr['mem']['member_pic']){ echo "<img src=\"icon/".$arr['mem']['member_pic']."\" width=\"60\">";
 					} else {
 						echo "<img src=\"icon/member_nrr.gif\" width=\"60\">";
 					}
@@ -56,7 +56,7 @@ if ($i <=_NEWS_COL){
 					<td valign="top" >
 					<b><font color="#CC0000" size="2"><?=$arr['mem']['user'];?></font><br>
 					<b><font color="#CC0000" size="2">  <?=$arr['cblog']['co'];?> <?=_BLOG_MOD_NUMS;?> </font><br>
-					<b><font color="#CC0000" size="2"><?BlogLevel($arr['cblog']['co']);?></font><br>
+					<b><font color="#CC0000" size="2"><?php BlogLevel($arr['cblog']['co']);?></font><br>
 					<b><font color=#C3C3C3> <?= ThaiTimeConvert($arr['blog']['post_date'],"","");?></font>
 					</td>
 					</tr>
@@ -66,7 +66,7 @@ if ($i <=_NEWS_COL){
 					</tr>
 					<tr>
 					<td colspan="3">
-					<?$rater_ids=$arr['blog']['id'];$rater_item_name='blog';include("modules/rater/raterss.php");?>
+					<?php $rater_ids=$arr['blog']['id'];$rater_item_name='blog';include("modules/rater/raterss.php");?>
 					</td>
 					</tr>
 				<TR>
@@ -77,7 +77,7 @@ if ($i <=_NEWS_COL){
 															<tr>
 															<TD colspan="2" align="center">
 															<A HREF="?name=blog&file=readblog&id=<?=$arr['blog']['id'];?>" >
-																				<? if($arr['blog']['pic']){ echo "<img src=\"icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg\">";
+																				<?php if($arr['blog']['pic']){ echo "<img src=\"icon/blog_".$arr['blog']['post_date']."_".$arr['blog']['posted'].".jpg\">";
 					} else {
 					echo "<img src=\"images/icon/".$arr['category']['icon']."\">";
 					}
@@ -107,7 +107,7 @@ echo "<TR onmouseover=\"this.style.backgroundColor='#FFF0DF'\" onmouseout=\"this
 												<TD width="100%" valign=top height="20" align="left" colspan="<?=_NEWS_COL;?>">
 												<div class="">
 															<IMG SRC="images/17.png" BORDER="0" ALIGN="absmiddle">
-															<A HREF="<? WEB_URL;?>index.php?name=blog&file=readblog&id=<?=$arr['blog']['id'];?>" target="_blank" name="<?=$arr['blog']['topic'];?>" ><font color="#990066">(<?= ThaiTimeConvert($arr['blog']['post_date'],"","");?>)</font><B><?=$arr['blog']['topic'];?></A></B>
+															<A HREF="<?php WEB_URL;?>index.php?name=blog&file=readblog&id=<?=$arr['blog']['id'];?>" target="_blank" name="<?=$arr['blog']['topic'];?>" ><font color="#990066">(<?= ThaiTimeConvert($arr['blog']['post_date'],"","");?>)</font><B><?=$arr['blog']['topic'];?></A></B>
 					<?=NewsIcon(TIMESTAMP, $arr['blog']['post_date'], "images/icon_new.gif");?>( <?=$arr['blog']['pageview'];?> / <?=$arrs['com']['com'];?> ) <?=_BLOG_AUTH;?> <?=$arr['blog']['posted'];?> 
 					</div>
 													</TD></tr>

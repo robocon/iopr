@@ -1,5 +1,4 @@
-<?
-
+<?php 
 require_once("mainfile.php");
 
 $poll_id = $_GET['poll_id'];
@@ -42,31 +41,31 @@ for($ctr=0;$ctr<=$all;$ctr++){
 }
 </style>
 <!--<table width="32%" border="0">
-<? 
+<?php 
 for($x=0;$x<=$all;$x++){
 ?>
   <tr>
-    <td width="92"><? //=$o[$x]; ?></td>
-    <td width="17"><? //=$opt[$x] ?></td>
-    <td width="403" style="width:250px"><div class="bars" style="width:<? //=$prc[$x] ?>%;"></div></td>    
+    <td width="92"><?php //=$o[$x]; ?></td>
+    <td width="17"><?php //=$opt[$x] ?></td>
+    <td width="403" style="width:250px"><div class="bars" style="width:<?php //=$prc[$x] ?>%;"></div></td>    
   </tr>
-<? } ?>  
+<?php } ?>  
 </table>
 -->
 <div style="font-family:Arial, Helvetica, sans-serif;font-size:11px;">
 <table class="grids" cellspacing="0" cellpadding="0">
 <tr class="odd"><td colspan="3"><strong>BAR GRAPH</strong></td>
-<? 
+<?php 
 for($x=0;$x<=$all;$x++){
 ?>
     <tr ><td ><div class="divs" style="width:80px;"><?=$o[$x]; ?> (<?=$opt[$x] ?>)</div></td>
 	<td><div class="divs" style="width:50px;"><?=substr($prc[$x],0,5) ?>%</div></td><td><div class="divs" style="width:300px;"><div class="bars" style="width:<?=$prc[$x] ?>%;"></div></div></td></tr>
-      <? 
+      <?php 
 	  } ?>
   </table>
   <br />
   <strong>PIE CHART</strong>
-<? 
+<?php 
 $datas = "";
 $sel = "";
 for($x=0;$x<=$all;$x++){
@@ -87,8 +86,7 @@ $selx=tis620_to_utf8($sel);
 ?>
 <div align="left"><img src="modules/ajoxpoll/chartbig.php?data=<?=$datas; ?>&label=<?=$selx; ?>"></div><br />
 <font color="#CC0000" size="3"><b>Total Votes : <?=$total; ?></b></font></div>
-<?
- } else {
+<?php  } else {
 echo "<center><font color=#CC0000 size=3><b>"._POLL_VOTE_NULL."</b></font></center>";
 }
 ?>

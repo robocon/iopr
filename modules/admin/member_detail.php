@@ -72,8 +72,7 @@ $dbarr = mysql_fetch_array($result) ;
         <TD WIDTH="14%" ALIGN="right"><STRONG><?=_MEMBER_MOD_MEMDETAIL_MEMPIC;?> : </FONT></STRONG></TD>
         <TD WIDTH="37%" ROWSPAN="5" VALIGN="top">
           <DIV ALIGN="left">
-		  <?
-					//Show Picture
+		  <?php 					//Show Picture
 					if($dbarr['member_pic']){
 						$postpicupload = @getimagesize ("icon/".$dbarr['member_pic']."");
 						if ( $postpicupload[0] > _MEMBER_LIMIT_PICWIDTH ) {
@@ -143,4 +142,4 @@ $dbarr = mysql_fetch_array($result) ;
   </TR>
 </TABLE>
 
-<? } ?>
+<?php } ?>

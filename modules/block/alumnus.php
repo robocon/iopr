@@ -1,4 +1,4 @@
-<meta http-equiv="Content-Type" content="text/html; charset=<?echo ISO;?>">
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo ISO;?>">
 <?php
 $summ=$widthSUMC-10;
 ?>
